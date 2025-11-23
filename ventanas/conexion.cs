@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace mqtt_serial
+namespace mqtt_serial.ventanas
 {
-    public partial class main : Form
+    public partial class conexion : Form
     {
-        public main()
+        public conexion()
         {
             InitializeComponent();
-        }
-
-        private void button_conexion_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
