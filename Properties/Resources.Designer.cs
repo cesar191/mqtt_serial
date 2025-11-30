@@ -73,6 +73,16 @@ namespace mqtt_serial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Generated_Image_11vvqd11vvqd11vv {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Generated_Image_11vvqd11vvqd11vv", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hugeicons__chart {
             get {
                 object obj = ResourceManager.GetObject("hugeicons--chart", resourceCulture);

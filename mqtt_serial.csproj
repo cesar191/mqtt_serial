@@ -52,16 +52,37 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="funciones\buttonRadius.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ventanas\adquirir_Q1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ventanas\adquirir_Q1.Designer.cs">
+      <DependentUpon>adquirir_Q1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ventanas\Adquirir_Q2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ventanas\Adquirir_Q2.Designer.cs">
+      <DependentUpon>Adquirir_Q2.cs</DependentUpon>
+    </Compile>
     <Compile Include="ventanas\conexion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ventanas\conexion.Designer.cs">
       <DependentUpon>conexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ventanas\control_Q1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ventanas\control_Q1.Designer.cs">
+      <DependentUpon>control_Q1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ventanas\control_Q1Q2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ventanas\control_Q1Q2.Designer.cs">
+      <DependentUpon>control_Q1Q2.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -76,6 +97,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ventanas\adquirir_Q1.resx">
+      <DependentUpon>adquirir_Q1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ventanas\Adquirir_Q2.resx">
+      <DependentUpon>Adquirir_Q2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ventanas\conexion.resx">
+      <DependentUpon>conexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ventanas\control_Q1.resx">
+      <DependentUpon>control_Q1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ventanas\control_Q1Q2.resx">
+      <DependentUpon>control_Q1Q2.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,10 +131,13 @@
     <Content Include="imagenes\logo_usco.png" />
     <Content Include="imagenes\ventilador_off.png" />
     <Content Include="imagenes\ventilador_on.png" />
+    <None Include="Resources\Gemini_Generated_Image_11vvqd11vvqd11vv.png" />
     <None Include="Resources\cbi--battery-temp.png" />
     <None Include="Resources\hugeicons--chart.png" />
     <None Include="Resources\icon-park-outline--connection-box.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="funciones\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
