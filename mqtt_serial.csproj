@@ -33,8 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="M2Mqtt.Net, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\M2Mqtt.4.3.0.0\lib\net45\M2Mqtt.Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +56,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="funciones\ControlPID.cs" />
+    <Compile Include="funciones\VariablesControl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ventanas\adquirir_Q1.cs">
@@ -112,6 +118,7 @@
     <EmbeddedResource Include="ventanas\control_Q1Q2.resx">
       <DependentUpon>control_Q1Q2.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,13 +138,13 @@
     <Content Include="imagenes\logo_usco.png" />
     <Content Include="imagenes\ventilador_off.png" />
     <Content Include="imagenes\ventilador_on.png" />
+    <None Include="Resources\game-icons--electrical-resistance.png" />
+    <None Include="Resources\fluent--temperature-16-filled.png" />
     <None Include="Resources\Gemini_Generated_Image_11vvqd11vvqd11vv.png" />
     <None Include="Resources\cbi--battery-temp.png" />
     <None Include="Resources\hugeicons--chart.png" />
     <None Include="Resources\icon-park-outline--connection-box.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="funciones\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

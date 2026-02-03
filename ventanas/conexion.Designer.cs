@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.paneldatos = new System.Windows.Forms.Panel();
-            this.panel_user_pass = new System.Windows.Forms.Panel();
+            this.panelDatos = new System.Windows.Forms.Panel();
+            this.panelUserPass = new System.Windows.Forms.Panel();
             this.textBoxPass = new System.Windows.Forms.TextBox();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.labelpassword = new System.Windows.Forms.Label();
+            this.textBoxNameUser = new System.Windows.Forms.TextBox();
+            this.labelPassword = new System.Windows.Forms.Label();
             this.labelNameuser = new System.Windows.Forms.Label();
             this.panel_ip_serial = new System.Windows.Forms.Panel();
             this.label_Conexion_Baudio = new System.Windows.Forms.Label();
@@ -41,41 +41,47 @@
             this.comboBoxIPCOM = new System.Windows.Forms.ComboBox();
             this.label_IP_COM = new System.Windows.Forms.Label();
             this.panel_conexion = new System.Windows.Forms.Panel();
-            this.buttonrefrescar = new System.Windows.Forms.Button();
+            this.buttonRefrescar = new System.Windows.Forms.Button();
             this.buttonConectar = new System.Windows.Forms.Button();
             this.comboBoxTipoConexion = new System.Windows.Forms.ComboBox();
             this.labelTexconexion = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.paneldatos.SuspendLayout();
-            this.panel_user_pass.SuspendLayout();
+            this.labelTiempo = new System.Windows.Forms.Label();
+            this.labelCorriente2 = new System.Windows.Forms.Label();
+            this.labelCorriente1 = new System.Windows.Forms.Label();
+            this.labelTemperatura2 = new System.Windows.Forms.Label();
+            this.labelTemperatura1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panelDatos.SuspendLayout();
+            this.panelUserPass.SuspendLayout();
             this.panel_ip_serial.SuspendLayout();
             this.panel_conexion.SuspendLayout();
             this.SuspendLayout();
             // 
-            // paneldatos
+            // panelDatos
             // 
-            this.paneldatos.Controls.Add(this.panel_user_pass);
-            this.paneldatos.Controls.Add(this.panel_ip_serial);
-            this.paneldatos.Controls.Add(this.panel_conexion);
-            this.paneldatos.Controls.Add(this.comboBoxTipoConexion);
-            this.paneldatos.Controls.Add(this.labelTexconexion);
-            this.paneldatos.Location = new System.Drawing.Point(334, 151);
-            this.paneldatos.Margin = new System.Windows.Forms.Padding(2);
-            this.paneldatos.Name = "paneldatos";
-            this.paneldatos.Size = new System.Drawing.Size(437, 344);
-            this.paneldatos.TabIndex = 0;
+            this.panelDatos.Controls.Add(this.panelUserPass);
+            this.panelDatos.Controls.Add(this.panel_ip_serial);
+            this.panelDatos.Controls.Add(this.panel_conexion);
+            this.panelDatos.Controls.Add(this.comboBoxTipoConexion);
+            this.panelDatos.Controls.Add(this.labelTexconexion);
+            this.panelDatos.Location = new System.Drawing.Point(334, 151);
+            this.panelDatos.Margin = new System.Windows.Forms.Padding(2);
+            this.panelDatos.Name = "panelDatos";
+            this.panelDatos.Size = new System.Drawing.Size(437, 344);
+            this.panelDatos.TabIndex = 0;
             // 
-            // panel_user_pass
+            // panelUserPass
             // 
-            this.panel_user_pass.Controls.Add(this.textBoxPass);
-            this.panel_user_pass.Controls.Add(this.textBoxName);
-            this.panel_user_pass.Controls.Add(this.labelpassword);
-            this.panel_user_pass.Controls.Add(this.labelNameuser);
-            this.panel_user_pass.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_user_pass.Location = new System.Drawing.Point(0, 158);
-            this.panel_user_pass.Name = "panel_user_pass";
-            this.panel_user_pass.Size = new System.Drawing.Size(437, 100);
-            this.panel_user_pass.TabIndex = 7;
+            this.panelUserPass.Controls.Add(this.textBoxPass);
+            this.panelUserPass.Controls.Add(this.textBoxNameUser);
+            this.panelUserPass.Controls.Add(this.labelPassword);
+            this.panelUserPass.Controls.Add(this.labelNameuser);
+            this.panelUserPass.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelUserPass.Location = new System.Drawing.Point(0, 158);
+            this.panelUserPass.Name = "panelUserPass";
+            this.panelUserPass.Size = new System.Drawing.Size(437, 100);
+            this.panelUserPass.TabIndex = 7;
             // 
             // textBoxPass
             // 
@@ -85,24 +91,24 @@
             this.textBoxPass.Size = new System.Drawing.Size(200, 30);
             this.textBoxPass.TabIndex = 6;
             // 
-            // textBoxName
+            // textBoxNameUser
             // 
-            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.textBoxName.Location = new System.Drawing.Point(0, 31);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(200, 30);
-            this.textBoxName.TabIndex = 5;
+            this.textBoxNameUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.textBoxNameUser.Location = new System.Drawing.Point(0, 31);
+            this.textBoxNameUser.Name = "textBoxNameUser";
+            this.textBoxNameUser.Size = new System.Drawing.Size(200, 30);
+            this.textBoxNameUser.TabIndex = 5;
             // 
-            // labelpassword
+            // labelPassword
             // 
-            this.labelpassword.AutoSize = true;
-            this.labelpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.labelpassword.ForeColor = System.Drawing.Color.White;
-            this.labelpassword.Location = new System.Drawing.Point(234, 3);
-            this.labelpassword.Name = "labelpassword";
-            this.labelpassword.Size = new System.Drawing.Size(114, 25);
-            this.labelpassword.TabIndex = 4;
-            this.labelpassword.Text = "Contraseña";
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.labelPassword.ForeColor = System.Drawing.Color.White;
+            this.labelPassword.Location = new System.Drawing.Point(234, 3);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(114, 25);
+            this.labelPassword.TabIndex = 4;
+            this.labelPassword.Text = "Contraseña";
             // 
             // labelNameuser
             // 
@@ -170,7 +176,7 @@
             // 
             // panel_conexion
             // 
-            this.panel_conexion.Controls.Add(this.buttonrefrescar);
+            this.panel_conexion.Controls.Add(this.buttonRefrescar);
             this.panel_conexion.Controls.Add(this.buttonConectar);
             this.panel_conexion.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_conexion.Location = new System.Drawing.Point(0, 271);
@@ -178,20 +184,20 @@
             this.panel_conexion.Size = new System.Drawing.Size(437, 73);
             this.panel_conexion.TabIndex = 5;
             // 
-            // buttonrefrescar
+            // buttonRefrescar
             // 
-            this.buttonrefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
-            this.buttonrefrescar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonrefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonrefrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.buttonrefrescar.ForeColor = System.Drawing.Color.White;
-            this.buttonrefrescar.Location = new System.Drawing.Point(287, 0);
-            this.buttonrefrescar.Name = "buttonrefrescar";
-            this.buttonrefrescar.Size = new System.Drawing.Size(150, 73);
-            this.buttonrefrescar.TabIndex = 1;
-            this.buttonrefrescar.Text = "Refrescar";
-            this.buttonrefrescar.UseVisualStyleBackColor = false;
-            this.buttonrefrescar.Click += new System.EventHandler(this.buttonrefrescar_Click);
+            this.buttonRefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
+            this.buttonRefrescar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.buttonRefrescar.ForeColor = System.Drawing.Color.White;
+            this.buttonRefrescar.Location = new System.Drawing.Point(287, 0);
+            this.buttonRefrescar.Name = "buttonRefrescar";
+            this.buttonRefrescar.Size = new System.Drawing.Size(150, 73);
+            this.buttonRefrescar.TabIndex = 1;
+            this.buttonRefrescar.Text = "Refrescar";
+            this.buttonRefrescar.UseVisualStyleBackColor = false;
+            this.buttonRefrescar.Click += new System.EventHandler(this.buttonrefrescar_Click);
             // 
             // buttonConectar
             // 
@@ -206,6 +212,7 @@
             this.buttonConectar.TabIndex = 0;
             this.buttonConectar.Text = "Conectar";
             this.buttonConectar.UseVisualStyleBackColor = false;
+            this.buttonConectar.Click += new System.EventHandler(this.buttonConectar_Click);
             // 
             // comboBoxTipoConexion
             // 
@@ -234,6 +241,60 @@
             this.labelTexconexion.TabIndex = 0;
             this.labelTexconexion.Text = "Tipo de conexión";
             // 
+            // labelTiempo
+            // 
+            this.labelTiempo.AutoSize = true;
+            this.labelTiempo.ForeColor = System.Drawing.Color.White;
+            this.labelTiempo.Location = new System.Drawing.Point(682, 41);
+            this.labelTiempo.Name = "labelTiempo";
+            this.labelTiempo.Size = new System.Drawing.Size(35, 13);
+            this.labelTiempo.TabIndex = 10;
+            this.labelTiempo.Text = "label5";
+            // 
+            // labelCorriente2
+            // 
+            this.labelCorriente2.AutoSize = true;
+            this.labelCorriente2.ForeColor = System.Drawing.Color.White;
+            this.labelCorriente2.Location = new System.Drawing.Point(570, 41);
+            this.labelCorriente2.Name = "labelCorriente2";
+            this.labelCorriente2.Size = new System.Drawing.Size(35, 13);
+            this.labelCorriente2.TabIndex = 9;
+            this.labelCorriente2.Text = "label5";
+            // 
+            // labelCorriente1
+            // 
+            this.labelCorriente1.AutoSize = true;
+            this.labelCorriente1.ForeColor = System.Drawing.Color.White;
+            this.labelCorriente1.Location = new System.Drawing.Point(492, 41);
+            this.labelCorriente1.Name = "labelCorriente1";
+            this.labelCorriente1.Size = new System.Drawing.Size(35, 13);
+            this.labelCorriente1.TabIndex = 8;
+            this.labelCorriente1.Text = "label5";
+            // 
+            // labelTemperatura2
+            // 
+            this.labelTemperatura2.AutoSize = true;
+            this.labelTemperatura2.ForeColor = System.Drawing.Color.White;
+            this.labelTemperatura2.Location = new System.Drawing.Point(415, 41);
+            this.labelTemperatura2.Name = "labelTemperatura2";
+            this.labelTemperatura2.Size = new System.Drawing.Size(35, 13);
+            this.labelTemperatura2.TabIndex = 7;
+            this.labelTemperatura2.Text = "label5";
+            // 
+            // labelTemperatura1
+            // 
+            this.labelTemperatura1.AutoSize = true;
+            this.labelTemperatura1.ForeColor = System.Drawing.Color.White;
+            this.labelTemperatura1.Location = new System.Drawing.Point(343, 41);
+            this.labelTemperatura1.Name = "labelTemperatura1";
+            this.labelTemperatura1.Size = new System.Drawing.Size(35, 13);
+            this.labelTemperatura1.TabIndex = 6;
+            this.labelTemperatura1.Text = "label5";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // conexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,38 +302,52 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(37)))), ((int)(((byte)(95)))));
             this.ClientSize = new System.Drawing.Size(1060, 640);
-            this.Controls.Add(this.paneldatos);
+            this.Controls.Add(this.labelTiempo);
+            this.Controls.Add(this.labelCorriente2);
+            this.Controls.Add(this.labelCorriente1);
+            this.Controls.Add(this.labelTemperatura2);
+            this.Controls.Add(this.labelTemperatura1);
+            this.Controls.Add(this.panelDatos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "conexion";
-            this.paneldatos.ResumeLayout(false);
-            this.paneldatos.PerformLayout();
-            this.panel_user_pass.ResumeLayout(false);
-            this.panel_user_pass.PerformLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.conexion_FormClosing);
+            this.Load += new System.EventHandler(this.conexion_Load);
+            this.panelDatos.ResumeLayout(false);
+            this.panelDatos.PerformLayout();
+            this.panelUserPass.ResumeLayout(false);
+            this.panelUserPass.PerformLayout();
             this.panel_ip_serial.ResumeLayout(false);
             this.panel_ip_serial.PerformLayout();
             this.panel_conexion.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel paneldatos;
+        private System.Windows.Forms.Panel panelDatos;
         private System.Windows.Forms.Label labelTexconexion;
         private System.Windows.Forms.ComboBox comboBoxTipoConexion;
         private System.Windows.Forms.Panel panel_conexion;
-        private System.Windows.Forms.Button buttonrefrescar;
+        private System.Windows.Forms.Button buttonRefrescar;
         private System.Windows.Forms.Button buttonConectar;
-        private System.Windows.Forms.Panel panel_user_pass;
+        private System.Windows.Forms.Panel panelUserPass;
         private System.Windows.Forms.Panel panel_ip_serial;
         private System.Windows.Forms.Label label_IP_COM;
-        private System.Windows.Forms.Label labelpassword;
+        private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelNameuser;
         private System.Windows.Forms.Label label_Conexion_Baudio;
         private System.Windows.Forms.ComboBox comboBoxConexionBaudio;
         private System.Windows.Forms.ComboBox comboBoxIPCOM;
-        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxNameUser;
         private System.Windows.Forms.TextBox textBoxPass;
         private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Label labelTiempo;
+        private System.Windows.Forms.Label labelCorriente2;
+        private System.Windows.Forms.Label labelCorriente1;
+        private System.Windows.Forms.Label labelTemperatura2;
+        private System.Windows.Forms.Label labelTemperatura1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

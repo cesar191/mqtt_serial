@@ -16,5 +16,7 @@ namespace mqtt_serial.ventanas
         {
             InitializeComponent();
         }
+
+       
     }
 }

@@ -16,5 +16,13 @@ namespace mqtt_serial.ventanas
         {
             InitializeComponent();
         }
+
+        private void buttonRefrescar_Click(object sender, EventArgs e)
+        {
+            labelKp.Text = comboBoxKp.Text;
+            labelKI.Text=comboBoxKi.Text;
+            labelKd.Text=comboBoxKd.Text;
+            labelTs.Text=comboBoxTs.Text;
+        }
     }
 }
