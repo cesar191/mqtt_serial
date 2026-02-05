@@ -14,18 +14,18 @@ namespace mqtt_serial.funciones
     {
         #region variablesControl
         //datos recibidos
-        private static string temperatura1;
-        private static string temperatura2;
-        private static string corriente1;
-        private static string corriente2;
-        private static string tiempo;
+        private static string temperatura1="0";
+        private static string temperatura2="0";
+        private static string corriente1 = "0";
+        private static string corriente2 = "0";
+        private static string tiempo = "0";
         //datos a enviar
-        private static string pwm1;
-        private static string pwm2;
-        private static string alarmaLed1;
-        private static string alarmaLed2;
-        private static string ventilador1;
-        private static string ventilador2;
+        private static string pwm1="0";
+        private static string pwm2="0";
+        private static string alarmaLed1="0";
+        private static string alarmaLed2="0";
+        private static string ventilador1 = "0";
+        private static string ventilador2 = "0";
         
         //convierto las variables a una propiedad manipulable para las interfaces
         

@@ -188,7 +188,7 @@
             // 
             this.buttonRefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
             this.buttonRefrescar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRefrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonRefrescar.ForeColor = System.Drawing.Color.White;
             this.buttonRefrescar.Location = new System.Drawing.Point(287, 0);
@@ -203,7 +203,7 @@
             // 
             this.buttonConectar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(169)))), ((int)(((byte)(94)))));
             this.buttonConectar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonConectar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConectar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonConectar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonConectar.ForeColor = System.Drawing.Color.Transparent;
             this.buttonConectar.Location = new System.Drawing.Point(0, 0);
@@ -293,6 +293,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // conexion

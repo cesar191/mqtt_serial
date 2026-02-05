@@ -225,6 +225,8 @@ namespace mqtt_serial.ventanas
                             }
                             else
                             {
+                                mqttClient = new MqttClient(comboBoxIPCOM.Text);
+                                mqttClient.Connect(comboBoxConexionBaudio.Text);
                                 conexionMqtt();
                             }
                         }
@@ -254,6 +256,8 @@ namespace mqtt_serial.ventanas
                             }
                             else
                             {
+                                mqttClient = new MqttClient(comboBoxIPCOM.Text);
+                                mqttClient.Connect(comboBoxConexionBaudio.Text,textBoxNameUser.Text,textBoxPass.Text);
                                 conexionMqtt();
                             }
                         }
@@ -272,12 +276,14 @@ namespace mqtt_serial.ventanas
             }
         }
         private void conexionMqtt(){
-            mqttClient = new MqttClient(comboBoxIPCOM.Text);
+            
            
-            mqttClient.Connect(comboBoxConexionBaudio.Text);
+            
             if (mqttClient.IsConnected && buttonConectar.Text == "Conectar")
-            {
-                VariablesControl.Temperatura1 = "conectado";
+            {   //imporante tener en cuenta el timer por que es lo que puede causar problemas mas adelante
+                timer1.Enabled = true;
+                //
+                //VariablesControl.Temperatura1 = "conectado";
                 comboBoxTipoConexion.Enabled = false;
                 buttonConectar.Text = "Desconectar";
                 buttonConectar.BackColor = Color.FromArgb(227, 58, 24);
@@ -300,15 +306,16 @@ namespace mqtt_serial.ventanas
             else //if (buttonConectar.Text == "Desconectar")
             {
                 if (mqttClient.IsConnected)
-                {
-                    VariablesControl.Temperatura1 = "desconectado";
+                {   //
+                    timer1.Enabled = false;
+                    //
+                    //VariablesControl.Temperatura1 = "desconectado";
                     mqttClient.Disconnect();
                     mqttClient = null;
                 }
                 comboBoxTipoConexion.Enabled = true;
                 buttonConectar.Text = "Conectar";
-                buttonConectar.BackColor = Color.FromArgb(44, 169, 94);
-                
+                buttonConectar.BackColor = Color.FromArgb(44, 169, 94);                
             }
         }
         
@@ -320,7 +327,9 @@ namespace mqtt_serial.ventanas
                 serialPort1.BaudRate = int.Parse(comboBoxConexionBaudio.Text);
                 serialPort1.Open();
                 if (serialPort1.IsOpen)
-                {
+                {   //
+                    timer1.Enabled= true;
+                    //
                     comboBoxTipoConexion.Enabled = false;
                     buttonConectar.Text = "Desconectar";
                     buttonConectar.BackColor = Color.FromArgb(227, 58, 24);
@@ -335,7 +344,9 @@ namespace mqtt_serial.ventanas
             else
             {
                 if (serialPort1.IsOpen)
-                {
+                {   //
+                    timer1.Enabled = false;
+                    //
                     serialPort1.Close();
                     buttonConectar.Text = "Conectar";
                 }
@@ -373,16 +384,45 @@ namespace mqtt_serial.ventanas
 
         private void conexion_Load(object sender, EventArgs e)
         {
-            timer1.Enabled = true;
+            //timer1.Enabled = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            labelTemperatura1.Text = "T1 " + VariablesControl.Temperatura1;
-            labelTemperatura2.Text = "T2 " + VariablesControl.Temperatura2;
-            labelCorriente1.Text = "I1 " + VariablesControl.Corriente1;
-            labelCorriente2.Text = "I2 " + VariablesControl.Corriente2;
-            labelTiempo.Text = "time " + VariablesControl.Tiempo;
+            //labelTemperatura1.Text = "T1 " + VariablesControl.Temperatura1;
+            //labelTemperatura2.Text = "T2 " + VariablesControl.Temperatura2;
+            //labelCorriente1.Text = "I1 " + VariablesControl.Corriente1;
+            //labelCorriente2.Text = "I2 " + VariablesControl.Corriente2;
+            //labelTiempo.Text = "time " + VariablesControl.Tiempo;
+            try
+            {
+                if (mqttClient.IsConnected)
+                {
+
+                    string[] topic =
+                    {
+                    "test/datos/pwm1",
+                    "test/datos/pwm2",
+                    "test/datos/led1",
+                    "test/datos/led2",
+                    "test/datos/ventilador1",
+                    "test/datos/ventilador2",
+                };
+                    mqttClient.Publish(topic[0], Encoding.UTF8.GetBytes(VariablesControl.Pwm1));
+                    mqttClient.Publish(topic[1], Encoding.UTF8.GetBytes(VariablesControl.Pwm2));
+                    mqttClient.Publish(topic[2], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed1));
+                    mqttClient.Publish(topic[3], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed2));
+                    mqttClient.Publish(topic[4], Encoding.UTF8.GetBytes(VariablesControl.Ventilador1));
+                    mqttClient.Publish(topic[5], Encoding.UTF8.GetBytes(VariablesControl.Ventilador2));
+                }
+
+            }
+            catch
+            {
+
+            }
+           
+            
         }
     }
  }

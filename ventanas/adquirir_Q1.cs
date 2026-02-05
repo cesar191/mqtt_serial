@@ -101,12 +101,18 @@ namespace mqtt_serial.ventanas
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //test
             labelTemperatura1.Text = "T1 " + VariablesControl.Temperatura1;
             labelTemperatura2.Text = "T2 " + VariablesControl.Temperatura2;
             labelCorriente1.Text = "I1 " + VariablesControl.Corriente1;
             labelCorriente2.Text = "I2 " + VariablesControl.Corriente2;
             labelTiempo.Text = "time " + VariablesControl.Tiempo;
+            //codigo util
+            labelCurrent.Text = "I1 " +VariablesControl.Corriente1;
+            labelTemperature.Text = "T1 " + VariablesControl.Temperatura1;
+
             VariablesControl.Pwm1=trackBarPWM.Value.ToString();
+            VariablesControl.AlarmaLed1 = comboBoxTemperatura.Text;
         }
 
         private void adquirir_Q1_FormClosing(object sender, FormClosingEventArgs e)
