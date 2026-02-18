@@ -14,19 +14,13 @@ namespace mqtt_serial.ventanas
 {
     public partial class adquirir_Q1 : Form
     {
-        //#region variablesControl
-        //private string temperatura1;
+       
+        private double temperatura1;
         //private string temperatura2;
-        //private string corriente1;
-        //private string corriente2;
-        //private string tiempo;
-
-        //public string Temperatura1 { get { return temperatura1; } set { temperatura1 = value; } }
-        //public string Temperatura2 { get { return temperatura2; } set { temperatura2 = value; } }
-        //public string Corriente1 { get { return corriente1; } set { corriente1 = value; } }
-        //public string Corriente2 { get { return corriente2; } set { corriente2 = value; } }
-        //public string Tiempo { get { return tiempo; } set { tiempo = value; } }
-        //#endregion 
+        private double corriente1;
+        private double tiempo;
+        private double pwm;
+       
 
         public adquirir_Q1()
         {
@@ -97,6 +91,7 @@ namespace mqtt_serial.ventanas
         private void adquirir_Q1_Load(object sender, EventArgs e)
         {
             timer1.Enabled = true;
+            trackBarPWM.Value = 0;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -110,9 +105,34 @@ namespace mqtt_serial.ventanas
             //codigo util
             labelCurrent.Text = "I1 " +VariablesControl.Corriente1;
             labelTemperature.Text = "T1 " + VariablesControl.Temperatura1;
-
+            //enviar datos
             VariablesControl.Pwm1=trackBarPWM.Value.ToString();
             VariablesControl.AlarmaLed1 = comboBoxTemperatura.Text;
+            //para graficar
+            pwm = trackBarPWM.Value;
+            temperatura1=double.Parse(VariablesControl.Temperatura1)/100;
+            corriente1=double.Parse(VariablesControl.Corriente1)/100;
+            tiempo=double.Parse(VariablesControl.Tiempo);
+            if (tiempo > 10)
+            {
+                if (tiempo > 300)
+                {
+                    this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo-300;
+                    //this.chargraficaQ1.ChartAreas[0].AxisX.Maximum = tiempo;
+                }
+                this.chargraficaQ1.Series[2].Name = "pwm";
+                //this.chargraficaQ1.ChartAreas[1].AxisY.Maximum = corriente1 + 0.5;
+                //this.chargraficaQ1.ChartAreas[1].AxisY.Minimum = corriente1 - 0.5;
+                this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[0].Points.AddXY(tiempo, temperatura1)));
+                //this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[1].Points.AddXY(tiempo, pwm)));
+                this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[2].Points.AddXY(tiempo, pwm)));
+            }
+            else
+            {
+                this.chargraficaQ1.Series[0].Points.Clear();
+                this.chargraficaQ1.Series[1].Points.Clear();
+                this.chargraficaQ1.Series[2].Points.Clear();
+            }            
         }
 
         private void adquirir_Q1_FormClosing(object sender, FormClosingEventArgs e)

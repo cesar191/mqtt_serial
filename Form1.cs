@@ -22,26 +22,12 @@ namespace mqtt_serial
             Adquirir_Q2 ventanaAdquirirQ2;
             control_Q1 ventanaControlQ1; 
             control_Q1Q2 ventanaControlQ1Q2;
-
         #endregion
-        #region variablesControl
-            //private string temperatura1;
-            //private string temperatura2;
-            //private string corriente1;
-            //private string corriente2;
-            //private string tiempo;
-
-            //public string Temperatura1 { get { return temperatura1; } set { temperatura1 = value; } }
-            //public string Temperatura2 { get { return temperatura2; } set { temperatura2 = value; } }
-            //public string Corriente1 { get { return corriente1; } set { corriente1 = value; } }
-            //public string Corriente2 { get { return corriente2; } set { corriente2 = value; } }
-            //public string Tiempo { get { return tiempo; } set { tiempo = value; } }
-        #endregion 
 
         public pantalla_principal()
         {
             InitializeComponent();
-            //Console.WriteLine( ventanaConexion.Temperatura1); 
+            
             
         }
 

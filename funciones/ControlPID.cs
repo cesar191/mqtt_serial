@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing.Design;
+using System.Drawing.Text;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
@@ -11,118 +12,95 @@ namespace mqtt_serial.funciones
 {
     public class ControlPID
     {
-        private string errorString;
-        private string kp;
-        private string ki;
-        private string kd;
-        private string ts;
-        private string pwm;
+        private double errorDouble = 0;
+        private double kp = 0;
+        private double ki = 0;
+        private double kd = 0;
+        private double ts = 0;
+        private double pwm = 0;
 
-        private double[] errorDouble = new double[3];
-
-        private double kpDouble;
-        private double kiDouble;
-        private double kdDouble;
-        private double tsDouble;
-        private double[] pwmDouble=new double[2];
+        private double[] errorArray = new double[3];
+        private double[] pwmArray = new double[2];
 
 
+        //datos recibidos y enviados desde la ventana
+        public double Kp { get { return kp; } set { kp = value; } }
+        public double Ki { get { return ki; } set { ki = value; } }
+        public double Kd { get { return kd; } set { kd = value; } }
+        public double Ts { get { return ts; } set { ts = value; } }
+        public double ErrorDouble { get { return errorDouble; } set { errorDouble = value; } }
+        public double PWM { get { return pwm; } set { pwm = value; } }
+        
+        //verificacion de actualizacion de valores
 
-        public string Kp {get { return kp;}set { kp = value; }}
-		public string Ki {get {return ki;} set {ki = value;}}
-        public string Kd {get {return kd;} set {kd = value;}}
-        public string Ts {get {return ts;} set {ts = value;}}
-        public string ErrorString {get {return errorString;} set {errorString = value;}} 
-        public string PWM { get {return pwm;} set {pwm = value;}}
+        public double[] ErrorArray { get { return errorArray; } set { errorArray = value; } }
+        public double[] PwmArray { get { return pwmArray; } set { pwmArray = value; } }
 
         public ControlPID()
         {
-            pwm = "0";
+            pwm = 0;
         }
 
         // calculos para el %pwm dependiendo de que tipo de control sea
-        public ControlPID(string error, string kp, string ts)
+        public void SystemControlP(double errorDouble, double kp)
         {
-            bool validaciondatos = double.TryParse(kp, out kpDouble) &&
-                                  double.TryParse(error, out errorDouble[0]) &&
-                                  double.TryParse(ts, out tsDouble);
-            if (validaciondatos){
 
-                pwmDouble[0]=errorDouble[0]*kpDouble;
+            errorArray[0] = errorDouble;
+            pwmArray[0]=errorArray[0]*kp;
+            validacion(pwmArray[0]);
 
-                if (pwmDouble[0] > 100)
-                {
-                    pwm = "100";
-                }
-                else if (pwmDouble[0] < 0)
-                {
-                    pwm = "0";
-                }
-                else
-                {
-                    pwm = pwmDouble[0].ToString();
-                }
-
-            }
-            else
-            {
-               // MessageBox.Show("uno de los valores no es un numero");
-            }
+            
 
         }
-        public ControlPID(string error,string kp, string ki, string ts)
+        public void SystemControlPI(double errorDouble, double kp, double ki, double ts)
         {
-            bool validaciondatos = double.TryParse(kp, out kpDouble)&& 
-                                   double.TryParse(ki, out kiDouble)&&
-                                   double.TryParse(error, out errorDouble[0])&&
-                                   double.TryParse(ts, out tsDouble);
-            if (validaciondatos)
+            pwmArray[1] = pwmArray[0];
+            errorArray[1] = errorArray[0];
+            //
+            errorArray[0] = errorDouble;
+            pwmArray[0] = pwmArray[1] + (kp + ki * ts) * errorArray[0] - kp * errorArray[1];
+            
+            
+            validacion(pwmArray[0]);
+
+
+        }
+        public void SystemControlPID(double errorDouble,double kp,double ki,double kd, double ts)
+        {
+          
+            double q0 = (kp + (kd / ts));
+            double q1 = (-kp + ki * ts - (2 * (kd / ts)));
+            double q2 = (kd / ts);
+            //actualizar
+            pwmArray[1] = pwmArray[0];
+            errorArray[2] = errorArray[1];
+            errorArray[1] = errorArray[0];
+            //control
+            errorArray[0] = errorDouble;
+            pwmArray[0] = pwmArray[1]+q0*errorArray[0]+q1*errorArray[1]+q2*errorArray[2];
+                
+            validacion(pwmArray[0]);
+
+
+
+        }
+        public void validacion(double pwmDoublef)
+        {
+            if (pwmDoublef > 100)
             {
+                pwm = 100;
                 
             }
+            else if (pwmDoublef < 0)
+            {
+                pwm = 0;
+            }
             else
             {
-                MessageBox.Show("uno de los valores no es un numero");
+                pwm = pwmDoublef;
             }
+            pwmArray[0] = pwm;
         }
-        public ControlPID(string error,string kp, string ki,string kd, string ts)
-        {
-            bool validaciondatos = double.TryParse(kp, out kpDouble)&& 
-                                   double.TryParse(ki, out kiDouble)&& 
-                                   double.TryParse(kd, out kdDouble)&& 
-                                   double.TryParse(error, out errorDouble[0])&& 
-                                   double.TryParse(ts, out tsDouble);
-            if (validaciondatos)
-            {
-                double q0 = (kpDouble + (kdDouble / tsDouble));
-                double q1 = (-kpDouble + kiDouble * tsDouble - (2 * (kdDouble / tsDouble)));
-                double q2 = (kdDouble / tsDouble);
-                pwmDouble[0] = pwmDouble[1]+q0*errorDouble[0]+q1*errorDouble[1]+q2*errorDouble[2];
-                pwmDouble[1] = pwmDouble[0];
-                errorDouble[2] = errorDouble[1];
-                errorDouble[1]= errorDouble[0];
-
-                if(pwmDouble[0] > 100)
-                {
-                    pwm = "100";
-                }
-                else if (pwmDouble[0] < 0)
-                {
-                    pwm = "0";
-                }
-                else
-                {
-                    pwm = pwmDouble[0].ToString();
-                }
-
-            }
-            
-            else
-            {
-                MessageBox.Show("uno de los valores no es un numero");
-            }
-        }
-        
     }
 
 

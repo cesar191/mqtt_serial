@@ -30,18 +30,6 @@ namespace mqtt_serial.ventanas
         //variables a manejar
         public MqttClient mqttClient;
 
-        //private string temperatura1;
-        //private string temperatura2;
-        //private string corriente1;
-        //private string corriente2;
-        //private string tiempo;
-
-        //public string Temperatura1 { get {return temperatura1; } set {temperatura1 = value;}}
-        //public string Temperatura2 { get {return temperatura2; } set {temperatura2 = value;}}
-        //public string Corriente1 { get { return corriente1; } set {corriente1 = value; } }
-        //public string Corriente2 { get {return corriente2; } set {corriente2 = value; } }
-        //public string Tiempo { get { return tiempo; } set { tiempo = value; }  }
-
 
         public conexion()
         {
@@ -61,24 +49,16 @@ namespace mqtt_serial.ventanas
         {
             try
             {
-                // 1. Obtiene el nombre del host local
-                string hostName = Dns.GetHostName();
-
-                // 2. Obtiene toda la información de IP asociada al host
-                IPHostEntry hostEntry = Dns.GetHostEntry(hostName);
-
-                // 3. Usa LINQ para encontrar la primera dirección IPv4
-                IPAddress ipv4Address = hostEntry.AddressList
-                    .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
-
-                // 4. Devuelve la dirección IP si se encontró
-                if (ipv4Address != null)
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                foreach (var ip in host.AddressList)
                 {
-                    return ipv4Address.ToString();
+                    if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        return ip.ToString();
+                    }
                 }
+                throw new Exception("No network adapters with an IPv4 address in the system!");
 
-                // Si no se encuentra una IPv4 (caso raro, pero posible)
-                return "ERROR: No se encontró una dirección IPv4 válida.";
             }
             catch (Exception ex)
             {
@@ -389,11 +369,11 @@ namespace mqtt_serial.ventanas
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //labelTemperatura1.Text = "T1 " + VariablesControl.Temperatura1;
-            //labelTemperatura2.Text = "T2 " + VariablesControl.Temperatura2;
-            //labelCorriente1.Text = "I1 " + VariablesControl.Corriente1;
-            //labelCorriente2.Text = "I2 " + VariablesControl.Corriente2;
-            //labelTiempo.Text = "time " + VariablesControl.Tiempo;
+            labelTemperatura1.Text = "T1 " + VariablesControl.Temperatura1;
+            labelTemperatura2.Text = "T2 " + VariablesControl.Temperatura2;
+            labelCorriente1.Text = "I1 " + VariablesControl.Corriente1;
+            labelCorriente2.Text = "I2 " + VariablesControl.Corriente2;
+            labelTiempo.Text = "time " + VariablesControl.Tiempo;
             try
             {
                 if (mqttClient.IsConnected)
