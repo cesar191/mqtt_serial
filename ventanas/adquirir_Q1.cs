@@ -112,7 +112,7 @@ namespace mqtt_serial.ventanas
             pwm = trackBarPWM.Value;
             temperatura1=double.Parse(VariablesControl.Temperatura1)/100;
             corriente1=double.Parse(VariablesControl.Corriente1)/100;
-            tiempo=double.Parse(VariablesControl.Tiempo);
+            tiempo=double.Parse(VariablesControl.Tiempo)/100;
             if (tiempo > 10)
             {
                 if (tiempo > 300)
@@ -139,5 +139,7 @@ namespace mqtt_serial.ventanas
         {
             timer1.Enabled = false;
         }
+
+        
     }
 }

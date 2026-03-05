@@ -111,7 +111,7 @@ namespace mqtt_serial.ventanas
                 pwm = controlPID.PWM;
                 temperatura1 = double.Parse(VariablesControl.Temperatura1) / 100;
                 corriente1 = double.Parse(VariablesControl.Corriente1) / 100;
-                tiempo = double.Parse(VariablesControl.Tiempo);
+                tiempo = double.Parse(VariablesControl.Tiempo)/100;
                 //
                 if (tiempo > 10)
                 {
@@ -139,7 +139,7 @@ namespace mqtt_serial.ventanas
                 labelError2.Text= controlPID.ErrorArray[2].ToString();
                 labelPWM.Text = controlPID.PwmArray[0].ToString() + " " + controlPID.PwmArray[1].ToString();
                 //encender el led
-                if (int.Parse(comboBoxTemperatura.Text)>=temperatura1)
+                if (int.Parse(comboBoxTemperatura.Text)<=temperatura1)
                 {
                     VariablesControl.AlarmaLed1 = "on";
                 }

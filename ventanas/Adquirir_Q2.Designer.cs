@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,24 +51,26 @@
             this.labelCurrent = new System.Windows.Forms.Label();
             this.labelTemperature = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.chargraficaQ1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chargraficaQ2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPWM)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chargraficaQ1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chargraficaQ2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.comboBoxPWM);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.trackBarPWM);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(240, 601);
@@ -75,6 +78,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
@@ -87,6 +91,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
@@ -98,6 +103,7 @@
             // 
             // comboBoxPWM
             // 
+            this.comboBoxPWM.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboBoxPWM.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.comboBoxPWM.ForeColor = System.Drawing.Color.Black;
             this.comboBoxPWM.FormatString = "N0";
@@ -128,9 +134,12 @@
             this.comboBoxPWM.Name = "comboBoxPWM";
             this.comboBoxPWM.Size = new System.Drawing.Size(75, 33);
             this.comboBoxPWM.TabIndex = 3;
+            this.comboBoxPWM.SelectedIndexChanged += new System.EventHandler(this.comboBoxPWM_SelectedIndexChanged);
+            this.comboBoxPWM.TextChanged += new System.EventHandler(this.comboBoxPWM_TextChanged);
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
@@ -142,6 +151,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
@@ -153,6 +163,7 @@
             // 
             // trackBarPWM
             // 
+            this.trackBarPWM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.trackBarPWM.Location = new System.Drawing.Point(137, 167);
             this.trackBarPWM.Maximum = 100;
             this.trackBarPWM.Name = "trackBarPWM";
@@ -160,13 +171,15 @@
             this.trackBarPWM.Size = new System.Drawing.Size(45, 228);
             this.trackBarPWM.TabIndex = 0;
             this.trackBarPWM.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPWM.Scroll += new System.EventHandler(this.trackBarPWM_Scroll);
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.labelCurrent);
             this.panel2.Controls.Add(this.labelTemperature);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(804, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(240, 601);
@@ -174,6 +187,7 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.comboBoxTemperatura);
@@ -240,6 +254,7 @@
             // 
             // labelCurrent
             // 
+            this.labelCurrent.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.labelCurrent.ForeColor = System.Drawing.Color.White;
             this.labelCurrent.Image = global::mqtt_serial.Properties.Resources.game_icons__electrical_resistance;
@@ -253,6 +268,7 @@
             // 
             // labelTemperature
             // 
+            this.labelTemperature.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTemperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.labelTemperature.ForeColor = System.Drawing.Color.White;
             this.labelTemperature.Image = global::mqtt_serial.Properties.Resources.fluent__temperature_16_filled;
@@ -267,73 +283,100 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.chargraficaQ1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(240, 0);
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.chargraficaQ2);
+            this.panel3.Location = new System.Drawing.Point(239, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(564, 601);
+            this.panel3.Size = new System.Drawing.Size(565, 601);
             this.panel3.TabIndex = 3;
             // 
-            // chargraficaQ1
+            // chargraficaQ2
             // 
-            chartArea1.AxisX.Crossing = -1.7976931348623157E+308D;
-            chartArea1.AxisX.InterlacedColor = System.Drawing.Color.White;
-            chartArea1.AxisX.MajorGrid.Interval = 0D;
-            chartArea1.AxisX.MajorGrid.IntervalOffset = 0D;
-            chartArea1.AxisX.MajorGrid.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea1.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisX.MajorTickMark.Interval = 0D;
-            chartArea1.AxisX.MajorTickMark.IntervalOffset = 0D;
-            chartArea1.AxisX.MajorTickMark.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea1.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea1.AxisX.MaximumAutoSize = 100F;
-            chartArea1.AxisX.Title = "time(s)";
-            chartArea1.AxisX.ToolTip = "0";
-            chartArea1.AxisX2.MaximumAutoSize = 100F;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.Title = "temperature  °C";
-            chartArea1.AxisY2.IsLogarithmic = true;
-            chartArea1.CursorX.LineColor = System.Drawing.SystemColors.ActiveCaptionText;
-            chartArea1.Name = "ChartAreaTempPWM";
-            chartArea2.AxisX.Title = "time(s)";
-            chartArea2.AxisY.Title = "current  mA";
-            chartArea2.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.BackSecondaryColor = System.Drawing.Color.White;
-            chartArea2.Name = "Corriente";
-            this.chargraficaQ1.ChartAreas.Add(chartArea1);
-            this.chargraficaQ1.ChartAreas.Add(chartArea2);
-            legend1.Name = "Legend1";
-            legend2.BackColor = System.Drawing.Color.Transparent;
-            legend2.Name = "Legend2";
-            legend2.Position.Auto = false;
-            legend2.Position.Height = 10.25641F;
-            legend2.Position.Width = 23.26821F;
-            legend2.Position.X = 70F;
-            legend2.Position.Y = 50F;
-            this.chargraficaQ1.Legends.Add(legend1);
-            this.chargraficaQ1.Legends.Add(legend2);
-            this.chargraficaQ1.Location = new System.Drawing.Point(0, 114);
-            this.chargraficaQ1.Name = "chargraficaQ1";
-            series1.ChartArea = "ChartAreaTempPWM";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.EmptyPointStyle.Color = System.Drawing.Color.Black;
-            series1.Legend = "Legend1";
-            series1.Name = "Temperatura";
-            series2.ChartArea = "ChartAreaTempPWM";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
-            series2.Legend = "Legend1";
-            series2.Name = "PWM";
-            series3.ChartArea = "Corriente";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend2";
-            series3.Name = "corriente";
-            this.chargraficaQ1.Series.Add(series1);
-            this.chargraficaQ1.Series.Add(series2);
-            this.chargraficaQ1.Series.Add(series3);
-            this.chargraficaQ1.Size = new System.Drawing.Size(564, 326);
-            this.chargraficaQ1.TabIndex = 0;
-            this.chargraficaQ1.Text = "chart1";
+            this.chargraficaQ2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chargraficaQ2.BackColor = System.Drawing.Color.Transparent;
+            chartArea13.AxisX.InterlacedColor = System.Drawing.Color.Silver;
+            chartArea13.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea13.AxisX.MajorGrid.Interval = 0D;
+            chartArea13.AxisX.MajorGrid.IntervalOffset = 0D;
+            chartArea13.AxisX.MajorGrid.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea13.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea13.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea13.AxisX.MajorTickMark.Interval = 0D;
+            chartArea13.AxisX.MajorTickMark.IntervalOffset = 0D;
+            chartArea13.AxisX.MajorTickMark.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea13.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea13.AxisX.MaximumAutoSize = 100F;
+            chartArea13.AxisX.ScrollBar.BackColor = System.Drawing.Color.Black;
+            chartArea13.AxisX.Title = "time(s)";
+            chartArea13.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea13.AxisX.ToolTip = "0";
+            chartArea13.AxisX2.MaximumAutoSize = 100F;
+            chartArea13.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea13.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea13.AxisY.Title = "temperature  °C";
+            chartArea13.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea13.BackColor = System.Drawing.Color.White;
+            chartArea13.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea13.CursorX.LineColor = System.Drawing.SystemColors.ActiveCaptionText;
+            chartArea13.CursorX.SelectionColor = System.Drawing.Color.Silver;
+            chartArea13.Name = "ChartAreaTempPWM";
+            chartArea14.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea14.AxisX.Title = "time(s)";
+            chartArea14.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea14.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea14.AxisY.Title = "current  mA";
+            chartArea14.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea14.BackColor = System.Drawing.Color.Gray;
+            chartArea14.BackSecondaryColor = System.Drawing.Color.White;
+            chartArea14.Name = "Corriente";
+            this.chargraficaQ2.ChartAreas.Add(chartArea13);
+            this.chargraficaQ2.ChartAreas.Add(chartArea14);
+            legend13.BackColor = System.Drawing.Color.White;
+            legend13.DockedToChartArea = "ChartAreaTempPWM";
+            legend13.IsDockedInsideChartArea = false;
+            legend13.Name = "Legend1";
+            legend14.BackColor = System.Drawing.Color.White;
+            legend14.DockedToChartArea = "Corriente";
+            legend14.IsDockedInsideChartArea = false;
+            legend14.Name = "Legend2";
+            this.chargraficaQ2.Legends.Add(legend13);
+            this.chargraficaQ2.Legends.Add(legend14);
+            this.chargraficaQ2.Location = new System.Drawing.Point(0, 63);
+            this.chargraficaQ2.Name = "chargraficaQ2";
+            series19.BorderWidth = 3;
+            series19.ChartArea = "ChartAreaTempPWM";
+            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series19.Color = System.Drawing.Color.Red;
+            series19.EmptyPointStyle.Color = System.Drawing.Color.Black;
+            series19.Legend = "Legend1";
+            series19.Name = "Temperatura";
+            series20.BorderWidth = 3;
+            series20.ChartArea = "ChartAreaTempPWM";
+            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
+            series20.Color = System.Drawing.Color.Teal;
+            series20.Legend = "Legend1";
+            series20.Name = "PWM";
+            series21.BorderWidth = 3;
+            series21.ChartArea = "Corriente";
+            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series21.Color = System.Drawing.Color.Blue;
+            series21.Legend = "Legend2";
+            series21.Name = "corriente";
+            this.chargraficaQ2.Series.Add(series19);
+            this.chargraficaQ2.Series.Add(series20);
+            this.chargraficaQ2.Series.Add(series21);
+            this.chargraficaQ2.Size = new System.Drawing.Size(564, 475);
+            this.chargraficaQ2.TabIndex = 1;
+            this.chargraficaQ2.Text = "chart1";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Adquirir_Q2
             // 
@@ -347,6 +390,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Adquirir_Q2";
             this.Text = "Adquirir_Q2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Adquirir_Q2_FormClosing);
+            this.Load += new System.EventHandler(this.Adquirir_Q2_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPWM)).EndInit();
@@ -354,7 +399,7 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chargraficaQ1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chargraficaQ2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -376,6 +421,7 @@
         private System.Windows.Forms.Label labelCurrent;
         private System.Windows.Forms.Label labelTemperature;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chargraficaQ1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chargraficaQ2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
