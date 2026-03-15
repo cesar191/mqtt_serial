@@ -29,39 +29,42 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelVentanaControl1 = new System.Windows.Forms.Panel();
-            this.panelVentanaControl2 = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelPWM = new System.Windows.Forms.Label();
             this.labelError2 = new System.Windows.Forms.Label();
             this.labelError1 = new System.Windows.Forms.Label();
             this.labelError = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.labelPWM = new System.Windows.Forms.Label();
             this.chargraficaQ1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.labelCurrent = new System.Windows.Forms.Label();
-            this.labelTemperature = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBoxTemperatura = new System.Windows.Forms.ComboBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBoxVentilador = new System.Windows.Forms.PictureBox();
             this.buttonVentilador = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBoxTemperatura = new System.Windows.Forms.ComboBox();
+            this.labelCurrent = new System.Windows.Forms.Label();
+            this.labelTemperature = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonRefrescar = new System.Windows.Forms.Button();
+            this.comboBoxSetPoint = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxTs = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -69,28 +72,28 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxKi = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonRefrescar = new System.Windows.Forms.Button();
-            this.comboBoxSetPoint = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.comboBoxKp = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.panelVentanaControl2 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -98,29 +101,25 @@
             this.label18 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.panel10 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panelVentanaControl1.SuspendLayout();
-            this.panelVentanaControl2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chargraficaQ1)).BeginInit();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVentilador)).BeginInit();
             this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panelVentanaControl2.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -138,7 +137,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1023, 1000);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(972, 1000);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelVentanaControl1
@@ -151,25 +150,33 @@
             this.panelVentanaControl1.Controls.Add(this.panel1);
             this.panelVentanaControl1.Location = new System.Drawing.Point(3, 3);
             this.panelVentanaControl1.Name = "panelVentanaControl1";
-            this.panelVentanaControl1.Size = new System.Drawing.Size(1017, 494);
+            this.panelVentanaControl1.Size = new System.Drawing.Size(966, 494);
             this.panelVentanaControl1.TabIndex = 0;
             // 
-            // panelVentanaControl2
+            // panel2
             // 
-            this.panelVentanaControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelVentanaControl2.Controls.Add(this.panel6);
-            this.panelVentanaControl2.Controls.Add(this.panel8);
-            this.panelVentanaControl2.Controls.Add(this.panel10);
-            this.panelVentanaControl2.Location = new System.Drawing.Point(3, 503);
-            this.panelVentanaControl2.Name = "panelVentanaControl2";
-            this.panelVentanaControl2.Size = new System.Drawing.Size(1017, 494);
-            this.panelVentanaControl2.TabIndex = 1;
+            this.panel2.Controls.Add(this.labelPWM);
+            this.panel2.Controls.Add(this.labelError2);
+            this.panel2.Controls.Add(this.labelError1);
+            this.panel2.Controls.Add(this.labelError);
+            this.panel2.Controls.Add(this.chargraficaQ1);
+            this.panel2.Location = new System.Drawing.Point(235, -3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(513, 501);
+            this.panel2.TabIndex = 6;
             // 
-            // timer1
+            // labelPWM
             // 
-            this.timer1.Interval = 1000;
+            this.labelPWM.AutoSize = true;
+            this.labelPWM.ForeColor = System.Drawing.Color.White;
+            this.labelPWM.Location = new System.Drawing.Point(283, 30);
+            this.labelPWM.Name = "labelPWM";
+            this.labelPWM.Size = new System.Drawing.Size(35, 13);
+            this.labelPWM.TabIndex = 6;
+            this.labelPWM.Text = "label6";
             // 
             // labelError2
             // 
@@ -201,144 +208,141 @@
             this.labelError.TabIndex = 3;
             this.labelError.Text = "label6";
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.labelPWM);
-            this.panel2.Controls.Add(this.labelError2);
-            this.panel2.Controls.Add(this.labelError1);
-            this.panel2.Controls.Add(this.labelError);
-            this.panel2.Controls.Add(this.chargraficaQ1);
-            this.panel2.Location = new System.Drawing.Point(235, -3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(564, 501);
-            this.panel2.TabIndex = 6;
-            // 
-            // labelPWM
-            // 
-            this.labelPWM.AutoSize = true;
-            this.labelPWM.ForeColor = System.Drawing.Color.White;
-            this.labelPWM.Location = new System.Drawing.Point(283, 30);
-            this.labelPWM.Name = "labelPWM";
-            this.labelPWM.Size = new System.Drawing.Size(35, 13);
-            this.labelPWM.TabIndex = 6;
-            this.labelPWM.Text = "label6";
-            // 
             // chargraficaQ1
             // 
             this.chargraficaQ1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chargraficaQ1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.AxisX.Crossing = -1.7976931348623157E+308D;
-            chartArea1.AxisX.InterlacedColor = System.Drawing.Color.White;
-            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea1.AxisX.MajorGrid.Interval = 0D;
-            chartArea1.AxisX.MajorGrid.IntervalOffset = 0D;
-            chartArea1.AxisX.MajorGrid.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea1.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisX.MajorTickMark.Interval = 0D;
-            chartArea1.AxisX.MajorTickMark.IntervalOffset = 0D;
-            chartArea1.AxisX.MajorTickMark.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea1.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea1.AxisX.MaximumAutoSize = 100F;
-            chartArea1.AxisX.ScrollBar.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.AxisX.Title = "time(s)";
-            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.AxisX.ToolTip = "0";
-            chartArea1.AxisX2.MaximumAutoSize = 100F;
-            chartArea1.AxisX2.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.Title = "temperature  °C";
-            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY2.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.BackColor = System.Drawing.Color.Gray;
-            chartArea1.CursorX.LineColor = System.Drawing.SystemColors.ActiveCaptionText;
-            chartArea1.CursorX.SelectionColor = System.Drawing.Color.PaleGoldenrod;
-            chartArea1.Name = "ChartAreaTempPWM";
-            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea2.AxisX.Title = "time(s)";
-            chartArea2.AxisX.TitleForeColor = System.Drawing.Color.White;
-            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea2.AxisY.Title = "current  mA";
-            chartArea2.AxisY.TitleForeColor = System.Drawing.Color.White;
-            chartArea2.BackColor = System.Drawing.Color.Gray;
-            chartArea2.BackSecondaryColor = System.Drawing.Color.White;
-            chartArea2.Name = "Corriente";
-            this.chargraficaQ1.ChartAreas.Add(chartArea1);
-            this.chargraficaQ1.ChartAreas.Add(chartArea2);
-            legend1.BackColor = System.Drawing.Color.White;
-            legend1.DockedToChartArea = "ChartAreaTempPWM";
-            legend1.IsDockedInsideChartArea = false;
-            legend1.Name = "Legend1";
-            legend2.BackColor = System.Drawing.Color.White;
-            legend2.DockedToChartArea = "Corriente";
-            legend2.IsDockedInsideChartArea = false;
-            legend2.Name = "Legend2";
-            this.chargraficaQ1.Legends.Add(legend1);
-            this.chargraficaQ1.Legends.Add(legend2);
+            chartArea5.AxisX.Crossing = -1.7976931348623157E+308D;
+            chartArea5.AxisX.InterlacedColor = System.Drawing.Color.White;
+            chartArea5.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea5.AxisX.MajorGrid.Interval = 0D;
+            chartArea5.AxisX.MajorGrid.IntervalOffset = 0D;
+            chartArea5.AxisX.MajorGrid.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea5.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea5.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea5.AxisX.MajorTickMark.Interval = 0D;
+            chartArea5.AxisX.MajorTickMark.IntervalOffset = 0D;
+            chartArea5.AxisX.MajorTickMark.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea5.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea5.AxisX.MaximumAutoSize = 100F;
+            chartArea5.AxisX.ScrollBar.BackColor = System.Drawing.Color.Transparent;
+            chartArea5.AxisX.Title = "time(s)";
+            chartArea5.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea5.AxisX.ToolTip = "0";
+            chartArea5.AxisX2.MaximumAutoSize = 100F;
+            chartArea5.AxisX2.TitleForeColor = System.Drawing.Color.White;
+            chartArea5.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea5.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea5.AxisY.Title = "temperature  °C";
+            chartArea5.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea5.AxisY2.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea5.AxisY2.TitleForeColor = System.Drawing.Color.White;
+            chartArea5.BackColor = System.Drawing.Color.Gray;
+            chartArea5.CursorX.LineColor = System.Drawing.SystemColors.ActiveCaptionText;
+            chartArea5.CursorX.SelectionColor = System.Drawing.Color.PaleGoldenrod;
+            chartArea5.Name = "ChartAreaTempPWM";
+            chartArea6.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea6.AxisX.Title = "time(s)";
+            chartArea6.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea6.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea6.AxisY.Title = "current  mA";
+            chartArea6.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea6.BackColor = System.Drawing.Color.Gray;
+            chartArea6.BackSecondaryColor = System.Drawing.Color.White;
+            chartArea6.Name = "Corriente";
+            this.chargraficaQ1.ChartAreas.Add(chartArea5);
+            this.chargraficaQ1.ChartAreas.Add(chartArea6);
+            legend5.BackColor = System.Drawing.Color.White;
+            legend5.DockedToChartArea = "ChartAreaTempPWM";
+            legend5.IsDockedInsideChartArea = false;
+            legend5.Name = "Legend1";
+            legend6.BackColor = System.Drawing.Color.White;
+            legend6.DockedToChartArea = "Corriente";
+            legend6.IsDockedInsideChartArea = false;
+            legend6.Name = "Legend2";
+            this.chargraficaQ1.Legends.Add(legend5);
+            this.chargraficaQ1.Legends.Add(legend6);
             this.chargraficaQ1.Location = new System.Drawing.Point(0, 63);
             this.chargraficaQ1.Name = "chargraficaQ1";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartAreaTempPWM";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Color = System.Drawing.Color.Red;
-            series1.EmptyPointStyle.Color = System.Drawing.Color.Black;
-            series1.Legend = "Legend1";
-            series1.Name = "Temperatura";
-            series2.BorderWidth = 3;
-            series2.ChartArea = "ChartAreaTempPWM";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
-            series2.Color = System.Drawing.Color.Cyan;
-            series2.Legend = "Legend1";
-            series2.Name = "PWM";
-            series3.BorderWidth = 3;
-            series3.ChartArea = "Corriente";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Color = System.Drawing.Color.Blue;
-            series3.Legend = "Legend2";
-            series3.Name = "corriente";
-            this.chargraficaQ1.Series.Add(series1);
-            this.chargraficaQ1.Series.Add(series2);
-            this.chargraficaQ1.Series.Add(series3);
-            this.chargraficaQ1.Size = new System.Drawing.Size(564, 376);
+            series7.BorderWidth = 3;
+            series7.ChartArea = "ChartAreaTempPWM";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.Color = System.Drawing.Color.Red;
+            series7.EmptyPointStyle.Color = System.Drawing.Color.Black;
+            series7.Legend = "Legend1";
+            series7.Name = "Temperatura";
+            series8.BorderWidth = 3;
+            series8.ChartArea = "ChartAreaTempPWM";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
+            series8.Color = System.Drawing.Color.Cyan;
+            series8.Legend = "Legend1";
+            series8.Name = "PWM";
+            series9.BorderWidth = 3;
+            series9.ChartArea = "Corriente";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series9.Color = System.Drawing.Color.Blue;
+            series9.Legend = "Legend2";
+            series9.Name = "corriente";
+            this.chargraficaQ1.Series.Add(series7);
+            this.chargraficaQ1.Series.Add(series8);
+            this.chargraficaQ1.Series.Add(series9);
+            this.chargraficaQ1.Size = new System.Drawing.Size(513, 376);
             this.chargraficaQ1.TabIndex = 1;
             this.chargraficaQ1.Text = "chart1";
             // 
-            // labelCurrent
+            // panel3
             // 
-            this.labelCurrent.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.labelCurrent.ForeColor = System.Drawing.Color.White;
-            this.labelCurrent.Image = global::mqtt_serial.Properties.Resources.game_icons__electrical_resistance;
-            this.labelCurrent.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelCurrent.Location = new System.Drawing.Point(51, 102);
-            this.labelCurrent.Name = "labelCurrent";
-            this.labelCurrent.Size = new System.Drawing.Size(150, 25);
-            this.labelCurrent.TabIndex = 12;
-            this.labelCurrent.Text = "Current";
-            this.labelCurrent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.pictureBoxVentilador);
+            this.panel3.Controls.Add(this.buttonVentilador);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.labelCurrent);
+            this.panel3.Controls.Add(this.labelTemperature);
+            this.panel3.Location = new System.Drawing.Point(748, -3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(240, 501);
+            this.panel3.TabIndex = 5;
             // 
-            // labelTemperature
+            // pictureBoxVentilador
             // 
-            this.labelTemperature.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelTemperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.labelTemperature.ForeColor = System.Drawing.Color.White;
-            this.labelTemperature.Image = global::mqtt_serial.Properties.Resources.fluent__temperature_16_filled;
-            this.labelTemperature.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelTemperature.Location = new System.Drawing.Point(51, 47);
-            this.labelTemperature.Margin = new System.Windows.Forms.Padding(0);
-            this.labelTemperature.Name = "labelTemperature";
-            this.labelTemperature.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelTemperature.Size = new System.Drawing.Size(150, 35);
-            this.labelTemperature.TabIndex = 11;
-            this.labelTemperature.Text = "    Temperature";
-            this.labelTemperature.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBoxVentilador.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxVentilador.Image = global::mqtt_serial.Properties.Resources.ventilador_off;
+            this.pictureBoxVentilador.Location = new System.Drawing.Point(35, 290);
+            this.pictureBoxVentilador.Name = "pictureBoxVentilador";
+            this.pictureBoxVentilador.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxVentilador.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxVentilador.TabIndex = 15;
+            this.pictureBoxVentilador.TabStop = false;
+            // 
+            // buttonVentilador
+            // 
+            this.buttonVentilador.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonVentilador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(169)))), ((int)(((byte)(94)))));
+            this.buttonVentilador.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonVentilador.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonVentilador.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.buttonVentilador.ForeColor = System.Drawing.Color.White;
+            this.buttonVentilador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonVentilador.Location = new System.Drawing.Point(94, 290);
+            this.buttonVentilador.Name = "buttonVentilador";
+            this.buttonVentilador.Size = new System.Drawing.Size(130, 52);
+            this.buttonVentilador.TabIndex = 14;
+            this.buttonVentilador.Text = "Encender";
+            this.buttonVentilador.UseVisualStyleBackColor = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.comboBoxTemperatura);
+            this.panel4.Location = new System.Drawing.Point(27, 166);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(200, 100);
+            this.panel4.TabIndex = 13;
             // 
             // label7
             // 
@@ -396,57 +400,124 @@
             this.comboBoxTemperatura.Size = new System.Drawing.Size(75, 33);
             this.comboBoxTemperatura.TabIndex = 9;
             // 
-            // pictureBoxVentilador
+            // labelCurrent
             // 
-            this.pictureBoxVentilador.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxVentilador.Image = global::mqtt_serial.Properties.Resources.ventilador_off;
-            this.pictureBoxVentilador.Location = new System.Drawing.Point(35, 290);
-            this.pictureBoxVentilador.Name = "pictureBoxVentilador";
-            this.pictureBoxVentilador.Size = new System.Drawing.Size(50, 50);
-            this.pictureBoxVentilador.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxVentilador.TabIndex = 15;
-            this.pictureBoxVentilador.TabStop = false;
+            this.labelCurrent.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.labelCurrent.ForeColor = System.Drawing.Color.White;
+            this.labelCurrent.Image = global::mqtt_serial.Properties.Resources.game_icons__electrical_resistance;
+            this.labelCurrent.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelCurrent.Location = new System.Drawing.Point(51, 102);
+            this.labelCurrent.Name = "labelCurrent";
+            this.labelCurrent.Size = new System.Drawing.Size(150, 25);
+            this.labelCurrent.TabIndex = 12;
+            this.labelCurrent.Text = "Current";
+            this.labelCurrent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // buttonVentilador
+            // labelTemperature
             // 
-            this.buttonVentilador.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonVentilador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(169)))), ((int)(((byte)(94)))));
-            this.buttonVentilador.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonVentilador.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonVentilador.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.buttonVentilador.ForeColor = System.Drawing.Color.White;
-            this.buttonVentilador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonVentilador.Location = new System.Drawing.Point(94, 290);
-            this.buttonVentilador.Name = "buttonVentilador";
-            this.buttonVentilador.Size = new System.Drawing.Size(130, 52);
-            this.buttonVentilador.TabIndex = 14;
-            this.buttonVentilador.Text = "Encender";
-            this.buttonVentilador.UseVisualStyleBackColor = false;
+            this.labelTemperature.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelTemperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.labelTemperature.ForeColor = System.Drawing.Color.White;
+            this.labelTemperature.Image = global::mqtt_serial.Properties.Resources.fluent__temperature_16_filled;
+            this.labelTemperature.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelTemperature.Location = new System.Drawing.Point(51, 47);
+            this.labelTemperature.Margin = new System.Windows.Forms.Padding(0);
+            this.labelTemperature.Name = "labelTemperature";
+            this.labelTemperature.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelTemperature.Size = new System.Drawing.Size(150, 35);
+            this.labelTemperature.TabIndex = 11;
+            this.labelTemperature.Text = "    Temperature";
+            this.labelTemperature.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel4
+            // panel1
             // 
-            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.comboBoxTemperatura);
-            this.panel4.Location = new System.Drawing.Point(27, 166);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 100);
-            this.panel4.TabIndex = 13;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.Controls.Add(this.buttonRefrescar);
+            this.panel1.Controls.Add(this.comboBoxSetPoint);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Location = new System.Drawing.Point(-5, -3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(240, 501);
+            this.panel1.TabIndex = 4;
             // 
-            // panel3
+            // buttonRefrescar
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.pictureBoxVentilador);
-            this.panel3.Controls.Add(this.buttonVentilador);
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.labelCurrent);
-            this.panel3.Controls.Add(this.labelTemperature);
-            this.panel3.Location = new System.Drawing.Point(799, -3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(240, 501);
-            this.panel3.TabIndex = 5;
+            this.buttonRefrescar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
+            this.buttonRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonRefrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.buttonRefrescar.Location = new System.Drawing.Point(12, 375);
+            this.buttonRefrescar.Name = "buttonRefrescar";
+            this.buttonRefrescar.Size = new System.Drawing.Size(200, 50);
+            this.buttonRefrescar.TabIndex = 17;
+            this.buttonRefrescar.Text = "Refrescar";
+            this.buttonRefrescar.UseVisualStyleBackColor = false;
+            // 
+            // comboBoxSetPoint
+            // 
+            this.comboBoxSetPoint.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBoxSetPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.comboBoxSetPoint.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxSetPoint.FormatString = "N0";
+            this.comboBoxSetPoint.FormattingEnabled = true;
+            this.comboBoxSetPoint.Items.AddRange(new object[] {
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50",
+            "55",
+            "60",
+            "65",
+            "70",
+            "75",
+            "80",
+            "85",
+            "90",
+            "95",
+            "100"});
+            this.comboBoxSetPoint.Location = new System.Drawing.Point(108, 19);
+            this.comboBoxSetPoint.Name = "comboBoxSetPoint";
+            this.comboBoxSetPoint.Size = new System.Drawing.Size(110, 33);
+            this.comboBoxSetPoint.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(16, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 25);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "SetPoint";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel5.Controls.Add(this.label9);
+            this.panel5.Controls.Add(this.comboBoxTs);
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Controls.Add(this.comboBoxKd);
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.comboBoxKi);
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Controls.Add(this.comboBoxKp);
+            this.panel5.Location = new System.Drawing.Point(12, 74);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(200, 248);
+            this.panel5.TabIndex = 14;
             // 
             // label9
             // 
@@ -595,82 +666,6 @@
             this.label1.Text = "KP";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // buttonRefrescar
-            // 
-            this.buttonRefrescar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefrescar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
-            this.buttonRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonRefrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.buttonRefrescar.Location = new System.Drawing.Point(12, 375);
-            this.buttonRefrescar.Name = "buttonRefrescar";
-            this.buttonRefrescar.Size = new System.Drawing.Size(200, 50);
-            this.buttonRefrescar.TabIndex = 17;
-            this.buttonRefrescar.Text = "Refrescar";
-            this.buttonRefrescar.UseVisualStyleBackColor = false;
-            // 
-            // comboBoxSetPoint
-            // 
-            this.comboBoxSetPoint.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBoxSetPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxSetPoint.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxSetPoint.FormatString = "N0";
-            this.comboBoxSetPoint.FormattingEnabled = true;
-            this.comboBoxSetPoint.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxSetPoint.Location = new System.Drawing.Point(108, 19);
-            this.comboBoxSetPoint.Name = "comboBoxSetPoint";
-            this.comboBoxSetPoint.Size = new System.Drawing.Size(110, 33);
-            this.comboBoxSetPoint.TabIndex = 16;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(16, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 25);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "SetPoint";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel5.Controls.Add(this.label9);
-            this.panel5.Controls.Add(this.comboBoxTs);
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Controls.Add(this.comboBoxKd);
-            this.panel5.Controls.Add(this.label3);
-            this.panel5.Controls.Add(this.comboBoxKi);
-            this.panel5.Controls.Add(this.label1);
-            this.panel5.Controls.Add(this.comboBoxKp);
-            this.panel5.Location = new System.Drawing.Point(12, 74);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(200, 248);
-            this.panel5.TabIndex = 14;
-            // 
             // comboBoxKp
             // 
             this.comboBoxKp.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
@@ -704,22 +699,43 @@
             this.comboBoxKp.Size = new System.Drawing.Size(110, 33);
             this.comboBoxKp.TabIndex = 9;
             // 
-            // panel1
+            // panelVentanaControl2
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.Controls.Add(this.buttonRefrescar);
-            this.panel1.Controls.Add(this.comboBoxSetPoint);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.panel5);
-            this.panel1.Location = new System.Drawing.Point(-5, -3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(240, 501);
-            this.panel1.TabIndex = 4;
+            this.panelVentanaControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelVentanaControl2.Controls.Add(this.panel6);
+            this.panelVentanaControl2.Controls.Add(this.panel8);
+            this.panelVentanaControl2.Controls.Add(this.panel10);
+            this.panelVentanaControl2.Location = new System.Drawing.Point(3, 503);
+            this.panelVentanaControl2.Name = "panelVentanaControl2";
+            this.panelVentanaControl2.Size = new System.Drawing.Size(966, 494);
+            this.panelVentanaControl2.TabIndex = 1;
             // 
-            // timer2
+            // panel6
             // 
-            this.timer2.Interval = 1000;
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.Controls.Add(this.label11);
+            this.panel6.Controls.Add(this.label4);
+            this.panel6.Controls.Add(this.label6);
+            this.panel6.Controls.Add(this.label10);
+            this.panel6.Controls.Add(this.chart1);
+            this.panel6.Location = new System.Drawing.Point(235, -3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(513, 501);
+            this.panel6.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(283, 30);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(35, 13);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "label6";
             // 
             // label4
             // 
@@ -751,144 +767,141 @@
             this.label10.TabIndex = 3;
             this.label10.Text = "label6";
             // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.Controls.Add(this.label11);
-            this.panel6.Controls.Add(this.label4);
-            this.panel6.Controls.Add(this.label6);
-            this.panel6.Controls.Add(this.label10);
-            this.panel6.Controls.Add(this.chart1);
-            this.panel6.Location = new System.Drawing.Point(235, -3);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(564, 501);
-            this.panel6.TabIndex = 6;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(283, 30);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 13);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "label6";
-            // 
             // chart1
             // 
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.AxisX.Crossing = -1.7976931348623157E+308D;
-            chartArea3.AxisX.InterlacedColor = System.Drawing.Color.White;
-            chartArea3.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea3.AxisX.MajorGrid.Interval = 0D;
-            chartArea3.AxisX.MajorGrid.IntervalOffset = 0D;
-            chartArea3.AxisX.MajorGrid.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea3.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea3.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea3.AxisX.MajorTickMark.Interval = 0D;
-            chartArea3.AxisX.MajorTickMark.IntervalOffset = 0D;
-            chartArea3.AxisX.MajorTickMark.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea3.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
-            chartArea3.AxisX.MaximumAutoSize = 100F;
-            chartArea3.AxisX.ScrollBar.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.AxisX.Title = "time(s)";
-            chartArea3.AxisX.TitleForeColor = System.Drawing.Color.White;
-            chartArea3.AxisX.ToolTip = "0";
-            chartArea3.AxisX2.MaximumAutoSize = 100F;
-            chartArea3.AxisX2.TitleForeColor = System.Drawing.Color.White;
-            chartArea3.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea3.AxisY.Title = "temperature  °C";
-            chartArea3.AxisY.TitleForeColor = System.Drawing.Color.White;
-            chartArea3.AxisY2.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea3.AxisY2.TitleForeColor = System.Drawing.Color.White;
-            chartArea3.BackColor = System.Drawing.Color.Gray;
-            chartArea3.CursorX.LineColor = System.Drawing.SystemColors.ActiveCaptionText;
-            chartArea3.CursorX.SelectionColor = System.Drawing.Color.PaleGoldenrod;
-            chartArea3.Name = "ChartAreaTempPWM";
-            chartArea4.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea4.AxisX.Title = "time(s)";
-            chartArea4.AxisX.TitleForeColor = System.Drawing.Color.White;
-            chartArea4.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea4.AxisY.Title = "current  mA";
-            chartArea4.AxisY.TitleForeColor = System.Drawing.Color.White;
-            chartArea4.BackColor = System.Drawing.Color.Gray;
-            chartArea4.BackSecondaryColor = System.Drawing.Color.White;
-            chartArea4.Name = "Corriente";
-            this.chart1.ChartAreas.Add(chartArea3);
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend3.BackColor = System.Drawing.Color.White;
-            legend3.DockedToChartArea = "ChartAreaTempPWM";
-            legend3.IsDockedInsideChartArea = false;
-            legend3.Name = "Legend1";
-            legend4.BackColor = System.Drawing.Color.White;
-            legend4.DockedToChartArea = "Corriente";
-            legend4.IsDockedInsideChartArea = false;
-            legend4.Name = "Legend2";
-            this.chart1.Legends.Add(legend3);
-            this.chart1.Legends.Add(legend4);
+            chartArea7.AxisX.Crossing = -1.7976931348623157E+308D;
+            chartArea7.AxisX.InterlacedColor = System.Drawing.Color.White;
+            chartArea7.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea7.AxisX.MajorGrid.Interval = 0D;
+            chartArea7.AxisX.MajorGrid.IntervalOffset = 0D;
+            chartArea7.AxisX.MajorGrid.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea7.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea7.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea7.AxisX.MajorTickMark.Interval = 0D;
+            chartArea7.AxisX.MajorTickMark.IntervalOffset = 0D;
+            chartArea7.AxisX.MajorTickMark.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea7.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
+            chartArea7.AxisX.MaximumAutoSize = 100F;
+            chartArea7.AxisX.ScrollBar.BackColor = System.Drawing.Color.Transparent;
+            chartArea7.AxisX.Title = "time(s)";
+            chartArea7.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea7.AxisX.ToolTip = "0";
+            chartArea7.AxisX2.MaximumAutoSize = 100F;
+            chartArea7.AxisX2.TitleForeColor = System.Drawing.Color.White;
+            chartArea7.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea7.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea7.AxisY.Title = "temperature  °C";
+            chartArea7.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea7.AxisY2.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea7.AxisY2.TitleForeColor = System.Drawing.Color.White;
+            chartArea7.BackColor = System.Drawing.Color.Gray;
+            chartArea7.CursorX.LineColor = System.Drawing.SystemColors.ActiveCaptionText;
+            chartArea7.CursorX.SelectionColor = System.Drawing.Color.PaleGoldenrod;
+            chartArea7.Name = "ChartAreaTempPWM";
+            chartArea8.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea8.AxisX.Title = "time(s)";
+            chartArea8.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea8.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea8.AxisY.Title = "current  mA";
+            chartArea8.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea8.BackColor = System.Drawing.Color.Gray;
+            chartArea8.BackSecondaryColor = System.Drawing.Color.White;
+            chartArea8.Name = "Corriente";
+            this.chart1.ChartAreas.Add(chartArea7);
+            this.chart1.ChartAreas.Add(chartArea8);
+            legend7.BackColor = System.Drawing.Color.White;
+            legend7.DockedToChartArea = "ChartAreaTempPWM";
+            legend7.IsDockedInsideChartArea = false;
+            legend7.Name = "Legend1";
+            legend8.BackColor = System.Drawing.Color.White;
+            legend8.DockedToChartArea = "Corriente";
+            legend8.IsDockedInsideChartArea = false;
+            legend8.Name = "Legend2";
+            this.chart1.Legends.Add(legend7);
+            this.chart1.Legends.Add(legend8);
             this.chart1.Location = new System.Drawing.Point(0, 63);
             this.chart1.Name = "chart1";
-            series4.BorderWidth = 3;
-            series4.ChartArea = "ChartAreaTempPWM";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Color = System.Drawing.Color.Red;
-            series4.EmptyPointStyle.Color = System.Drawing.Color.Black;
-            series4.Legend = "Legend1";
-            series4.Name = "Temperatura";
-            series5.BorderWidth = 3;
-            series5.ChartArea = "ChartAreaTempPWM";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
-            series5.Color = System.Drawing.Color.Cyan;
-            series5.Legend = "Legend1";
-            series5.Name = "PWM";
-            series6.BorderWidth = 3;
-            series6.ChartArea = "Corriente";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series6.Color = System.Drawing.Color.Blue;
-            series6.Legend = "Legend2";
-            series6.Name = "corriente";
-            this.chart1.Series.Add(series4);
-            this.chart1.Series.Add(series5);
-            this.chart1.Series.Add(series6);
-            this.chart1.Size = new System.Drawing.Size(564, 376);
+            series10.BorderWidth = 3;
+            series10.ChartArea = "ChartAreaTempPWM";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series10.Color = System.Drawing.Color.Red;
+            series10.EmptyPointStyle.Color = System.Drawing.Color.Black;
+            series10.Legend = "Legend1";
+            series10.Name = "Temperatura";
+            series11.BorderWidth = 3;
+            series11.ChartArea = "ChartAreaTempPWM";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
+            series11.Color = System.Drawing.Color.Cyan;
+            series11.Legend = "Legend1";
+            series11.Name = "PWM";
+            series12.BorderWidth = 3;
+            series12.ChartArea = "Corriente";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series12.Color = System.Drawing.Color.Blue;
+            series12.Legend = "Legend2";
+            series12.Name = "corriente";
+            this.chart1.Series.Add(series10);
+            this.chart1.Series.Add(series11);
+            this.chart1.Series.Add(series12);
+            this.chart1.Size = new System.Drawing.Size(513, 376);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             // 
-            // label12
+            // panel8
             // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Image = global::mqtt_serial.Properties.Resources.game_icons__electrical_resistance;
-            this.label12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label12.Location = new System.Drawing.Point(51, 102);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(150, 25);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Current";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.Controls.Add(this.pictureBox1);
+            this.panel8.Controls.Add(this.button1);
+            this.panel8.Controls.Add(this.panel7);
+            this.panel8.Controls.Add(this.label12);
+            this.panel8.Controls.Add(this.label13);
+            this.panel8.Location = new System.Drawing.Point(748, -3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(240, 501);
+            this.panel8.TabIndex = 5;
             // 
-            // label13
+            // pictureBox1
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Image = global::mqtt_serial.Properties.Resources.fluent__temperature_16_filled;
-            this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label13.Location = new System.Drawing.Point(51, 47);
-            this.label13.Margin = new System.Windows.Forms.Padding(0);
-            this.label13.Name = "label13";
-            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label13.Size = new System.Drawing.Size(150, 35);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "    Temperature";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::mqtt_serial.Properties.Resources.ventilador_off;
+            this.pictureBox1.Location = new System.Drawing.Point(35, 290);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(169)))), ((int)(((byte)(94)))));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(94, 290);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 52);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Encender";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel7.Controls.Add(this.label14);
+            this.panel7.Controls.Add(this.label15);
+            this.panel7.Controls.Add(this.comboBox1);
+            this.panel7.Location = new System.Drawing.Point(27, 166);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(200, 100);
+            this.panel7.TabIndex = 13;
             // 
             // label14
             // 
@@ -946,57 +959,124 @@
             this.comboBox1.Size = new System.Drawing.Size(75, 33);
             this.comboBox1.TabIndex = 9;
             // 
-            // pictureBox1
+            // label12
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::mqtt_serial.Properties.Resources.ventilador_off;
-            this.pictureBox1.Location = new System.Drawing.Point(35, 290);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Image = global::mqtt_serial.Properties.Resources.game_icons__electrical_resistance;
+            this.label12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label12.Location = new System.Drawing.Point(51, 102);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(150, 25);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Current";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // label13
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(169)))), ((int)(((byte)(94)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(94, 290);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 52);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Encender";
-            this.button1.UseVisualStyleBackColor = false;
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Image = global::mqtt_serial.Properties.Resources.fluent__temperature_16_filled;
+            this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label13.Location = new System.Drawing.Point(51, 47);
+            this.label13.Margin = new System.Windows.Forms.Padding(0);
+            this.label13.Name = "label13";
+            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label13.Size = new System.Drawing.Size(150, 35);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "    Temperature";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel7
+            // panel10
             // 
-            this.panel7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel7.Controls.Add(this.label14);
-            this.panel7.Controls.Add(this.label15);
-            this.panel7.Controls.Add(this.comboBox1);
-            this.panel7.Location = new System.Drawing.Point(27, 166);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(200, 100);
-            this.panel7.TabIndex = 13;
+            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel10.Controls.Add(this.button2);
+            this.panel10.Controls.Add(this.comboBox5);
+            this.panel10.Controls.Add(this.label20);
+            this.panel10.Controls.Add(this.panel9);
+            this.panel10.Location = new System.Drawing.Point(-5, -3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(240, 501);
+            this.panel10.TabIndex = 4;
             // 
-            // panel8
+            // button2
             // 
-            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel8.Controls.Add(this.pictureBox1);
-            this.panel8.Controls.Add(this.button1);
-            this.panel8.Controls.Add(this.panel7);
-            this.panel8.Controls.Add(this.label12);
-            this.panel8.Controls.Add(this.label13);
-            this.panel8.Location = new System.Drawing.Point(799, -3);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(240, 501);
-            this.panel8.TabIndex = 5;
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(12, 375);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(200, 50);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Refrescar";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.comboBox5.ForeColor = System.Drawing.Color.Black;
+            this.comboBox5.FormatString = "N0";
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "0",
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50",
+            "55",
+            "60",
+            "65",
+            "70",
+            "75",
+            "80",
+            "85",
+            "90",
+            "95",
+            "100"});
+            this.comboBox5.Location = new System.Drawing.Point(108, 19);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(110, 33);
+            this.comboBox5.TabIndex = 16;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(16, 19);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(86, 25);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "SetPoint";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel9
+            // 
+            this.panel9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel9.Controls.Add(this.label16);
+            this.panel9.Controls.Add(this.comboBox2);
+            this.panel9.Controls.Add(this.label17);
+            this.panel9.Controls.Add(this.comboBox3);
+            this.panel9.Controls.Add(this.label18);
+            this.panel9.Controls.Add(this.comboBox4);
+            this.panel9.Controls.Add(this.label19);
+            this.panel9.Controls.Add(this.comboBox6);
+            this.panel9.Location = new System.Drawing.Point(12, 74);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(200, 248);
+            this.panel9.TabIndex = 14;
             // 
             // label16
             // 
@@ -1145,82 +1225,6 @@
             this.label19.Text = "KP";
             this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 375);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 50);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Refrescar";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBox5.ForeColor = System.Drawing.Color.Black;
-            this.comboBox5.FormatString = "N0";
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBox5.Location = new System.Drawing.Point(108, 19);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(110, 33);
-            this.comboBox5.TabIndex = 16;
-            // 
-            // label20
-            // 
-            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(16, 19);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(86, 25);
-            this.label20.TabIndex = 15;
-            this.label20.Text = "SetPoint";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel9
-            // 
-            this.panel9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel9.Controls.Add(this.label16);
-            this.panel9.Controls.Add(this.comboBox2);
-            this.panel9.Controls.Add(this.label17);
-            this.panel9.Controls.Add(this.comboBox3);
-            this.panel9.Controls.Add(this.label18);
-            this.panel9.Controls.Add(this.comboBox4);
-            this.panel9.Controls.Add(this.label19);
-            this.panel9.Controls.Add(this.comboBox6);
-            this.panel9.Location = new System.Drawing.Point(12, 74);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(200, 248);
-            this.panel9.TabIndex = 14;
-            // 
             // comboBox6
             // 
             this.comboBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
@@ -1254,18 +1258,9 @@
             this.comboBox6.Size = new System.Drawing.Size(110, 33);
             this.comboBox6.TabIndex = 9;
             // 
-            // panel10
+            // timer1
             // 
-            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel10.Controls.Add(this.button2);
-            this.panel10.Controls.Add(this.comboBox5);
-            this.panel10.Controls.Add(this.label20);
-            this.panel10.Controls.Add(this.panel9);
-            this.panel10.Location = new System.Drawing.Point(-5, -3);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(240, 501);
-            this.panel10.TabIndex = 4;
+            this.timer1.Interval = 1000;
             // 
             // control_Q1Q2
             // 
@@ -1280,29 +1275,29 @@
             this.Text = "control_Q1Q2";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panelVentanaControl1.ResumeLayout(false);
-            this.panelVentanaControl2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chargraficaQ1)).EndInit();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVentilador)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panelVentanaControl2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1369,6 +1364,5 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
     }
 }

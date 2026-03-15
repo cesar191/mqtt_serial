@@ -37,6 +37,7 @@
             this.buttonConexion = new System.Windows.Forms.Button();
             this.pictureBoxLogoUni = new System.Windows.Forms.PictureBox();
             this.panel_ventanas = new System.Windows.Forms.Panel();
+            this.buttonEstadoConexion = new System.Windows.Forms.Button();
             this.panel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoUni)).BeginInit();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             this.panel_menu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel_menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(12)))), ((int)(((byte)(77)))));
+            this.panel_menu.Controls.Add(this.buttonEstadoConexion);
             this.panel_menu.Controls.Add(this.buttonAdquiriQ1);
             this.panel_menu.Controls.Add(this.buttonControlQ1Q2);
             this.panel_menu.Controls.Add(this.buttonAdquiriQ2);
@@ -185,6 +187,21 @@
             this.panel_ventanas.Size = new System.Drawing.Size(1060, 700);
             this.panel_ventanas.TabIndex = 1;
             // 
+            // buttonEstadoConexion
+            // 
+            this.buttonEstadoConexion.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonEstadoConexion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(58)))), ((int)(((byte)(24)))));
+            this.buttonEstadoConexion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonEstadoConexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.buttonEstadoConexion.ForeColor = System.Drawing.Color.White;
+            this.buttonEstadoConexion.Location = new System.Drawing.Point(19, 587);
+            this.buttonEstadoConexion.Name = "buttonEstadoConexion";
+            this.buttonEstadoConexion.Size = new System.Drawing.Size(200, 70);
+            this.buttonEstadoConexion.TabIndex = 6;
+            this.buttonEstadoConexion.Text = "Desconectar";
+            this.buttonEstadoConexion.UseVisualStyleBackColor = false;
+            this.buttonEstadoConexion.Click += new System.EventHandler(this.buttonEstadoConexion_Click);
+            // 
             // pantalla_principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,6 +237,7 @@
         private System.Windows.Forms.Button buttonControlQ1Q2;
         private System.Windows.Forms.PictureBox pictureBoxLogoUni;
         private System.Windows.Forms.Panel panel_ventanas;
+        private System.Windows.Forms.Button buttonEstadoConexion;
     }
 }
 

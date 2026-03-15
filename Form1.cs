@@ -1,4 +1,5 @@
-﻿using mqtt_serial.ventanas;
+﻿using mqtt_serial.funciones;
+using mqtt_serial.ventanas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -128,6 +129,7 @@ namespace mqtt_serial
             return formulario;
 
         }
+       
         
         //cerrar ventana
         private void CerrarForm<formhija>() where formhija : Form, new()
@@ -164,8 +166,8 @@ namespace mqtt_serial
             CerrarForm<control_Q1Q2>();
 
             ventanaConexion = AbrirSubVentana<conexion>();
-            
-            
+            buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
+
         }
         
         //al presionar el boton de conectar
@@ -180,7 +182,8 @@ namespace mqtt_serial
             //abrir ventana
             ventanaConexion = AbrirSubVentana<conexion>();
             //labelPrueba.Text =ventanaConexion.Temperatura1;
-            
+            buttonEstadoConexion.Visible = false;
+
         }
         //al presionar el boton de adquirir 1
         private void button_adquiri_q1_Click(object sender, EventArgs e)
@@ -199,7 +202,9 @@ namespace mqtt_serial
             CerrarForm<control_Q1Q2>();
             //se abre la ventana necesaria
             ventanaAdquirirQ1 = AbrirSubVentana<adquirir_Q1>();
-            
+
+            buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
+
         }
         
         
@@ -220,7 +225,7 @@ namespace mqtt_serial
             CerrarForm<control_Q1Q2>();
 
             ventanaControlQ1 = AbrirSubVentana<control_Q1>();
-
+            buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
         }
         //al presionar el boton adquirir 2
         private void button_adquiri_q2_Click(object sender, EventArgs e)
@@ -239,6 +244,7 @@ namespace mqtt_serial
             CerrarForm<control_Q1Q2>();
 
             ventanaAdquirirQ2 = AbrirSubVentana<Adquirir_Q2>();
+            buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
         }
 
         //al presionar el boton de control 2
@@ -258,17 +264,24 @@ namespace mqtt_serial
             //CerrarForm<control_Q1Q2>();
 
             ventanaControlQ1Q2 = AbrirSubVentana<control_Q1Q2>();
+            buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
         }
 
 
         private void pantalla_principal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //CerrarForm<conexion>();
-            //CerrarForm<adquirir_Q1>();
-            //CerrarForm<Adquirir_Q2>();
-            //CerrarForm<control_Q1>();
-            //CerrarForm<control_Q1Q2>();
+            CerrarForm<conexion>();
+            CerrarForm<adquirir_Q1>();
+            CerrarForm<Adquirir_Q2>();
+            CerrarForm<control_Q1>();
+            CerrarForm<control_Q1Q2>();
 
+        }
+
+        private void buttonEstadoConexion_Click(object sender, EventArgs e)
+        {
+            VariablesControl.EstadoDeConexion = false;
+            buttonEstadoConexion.Visible = false;
         }
     }
 }

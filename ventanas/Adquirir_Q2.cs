@@ -113,12 +113,12 @@ namespace mqtt_serial.ventanas
                     this.chargraficaQ2.ChartAreas[0].AxisX.Minimum = tiempo - 300;
                     //this.chargraficaQ1.ChartAreas[0].AxisX.Maximum = tiempo;
                 }
-                this.chargraficaQ2.Series[2].Name = "pwm";
+                //this.chargraficaQ2.Series[2].Name = "pwm";
                 //this.chargraficaQ1.ChartAreas[1].AxisY.Maximum = corriente1 + 0.5;
                 //this.chargraficaQ1.ChartAreas[1].AxisY.Minimum = corriente1 - 0.5;
                 this.chargraficaQ2.Invoke((MethodInvoker)(() => chargraficaQ2.Series[0].Points.AddXY(tiempo, temperatura2)));
-                //this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[1].Points.AddXY(tiempo, pwm)));
-                this.chargraficaQ2.Invoke((MethodInvoker)(() => chargraficaQ2.Series[2].Points.AddXY(tiempo, pwm)));
+                this.chargraficaQ2.Invoke((MethodInvoker)(() => chargraficaQ2.Series[2].Points.AddXY(tiempo, corriente2)));
+                this.chargraficaQ2.Invoke((MethodInvoker)(() => chargraficaQ2.Series[1].Points.AddXY(tiempo, pwm)));
             }
             else
             {

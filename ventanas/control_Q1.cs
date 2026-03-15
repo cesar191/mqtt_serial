@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,6 +31,9 @@ namespace mqtt_serial.ventanas
         private double corriente1;
         private double tiempo;
         private double pwm;
+
+        
+
 
         private void SystemControl( double errorDouble, double kp,double ki, double kd, double ts)
         {
@@ -123,6 +127,14 @@ namespace mqtt_serial.ventanas
                     }
                     //this.chargraficaQ1.ChartAreas[1].AxisY.Maximum = corriente1 + 0.5;
                     //this.chargraficaQ1.ChartAreas[1].AxisY.Minimum = corriente1 - 0.5;
+
+                    //
+                    VariablesControl.listaTemperatura1.Add(temperatura1);
+                    VariablesControl.listaCorriente1.Add(corriente1);
+                    VariablesControl.listaPWM1.Add(pwm);
+                    VariablesControl.listaTiempo.Add(tiempo);
+                    //
+                    
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[0].Points.AddXY(tiempo, temperatura1)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[1].Points.AddXY(tiempo, pwm)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[2].Points.AddXY(tiempo, corriente1)));
@@ -132,12 +144,10 @@ namespace mqtt_serial.ventanas
                     this.chargraficaQ1.Series[0].Points.Clear();
                     this.chargraficaQ1.Series[1].Points.Clear();
                     this.chargraficaQ1.Series[2].Points.Clear();
+
+                    VariablesControl.limpiarLista();
                 }
-                //textos de prueba
-                labelError.Text = controlPID.ErrorArray[0].ToString();
-                labelError1.Text= controlPID.ErrorArray[1].ToString();
-                labelError2.Text= controlPID.ErrorArray[2].ToString();
-                labelPWM.Text = controlPID.PwmArray[0].ToString() + " " + controlPID.PwmArray[1].ToString();
+                
                 //encender el led
                 if (int.Parse(comboBoxTemperatura.Text)<=temperatura1)
                 {

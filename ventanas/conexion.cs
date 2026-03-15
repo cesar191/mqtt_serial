@@ -247,6 +247,7 @@ namespace mqtt_serial.ventanas
             if (mqttClient.IsConnected && buttonConectar.Text == "Conectar")
             {   //imporante tener en cuenta el timer por que es lo que puede causar problemas mas adelante
                 timer1.Enabled = true;
+                VariablesControl.EstadoDeConexion = true;
                 //
                 //VariablesControl.Temperatura1 = "conectado";
                 comboBoxTipoConexion.Enabled = false;
@@ -273,7 +274,10 @@ namespace mqtt_serial.ventanas
                 if (mqttClient.IsConnected)
                 {   //
                     timer1.Enabled = false;
-                   
+
+                    
+                    //
+
                     mqttClient.Publish(topicEnviar[0], Encoding.UTF8.GetBytes("0"));
                     mqttClient.Publish(topicEnviar[1], Encoding.UTF8.GetBytes("0"));
                     mqttClient.Publish(topicEnviar[2], Encoding.UTF8.GetBytes("off"));
@@ -301,6 +305,7 @@ namespace mqtt_serial.ventanas
                 if (serialPort1.IsOpen)
                 {   //
                     timer1.Enabled= true;
+                    VariablesControl.EstadoDeConexion = true;
                     //
                     comboBoxTipoConexion.Enabled = false;
                     buttonConectar.Text = "Desconectar";
@@ -345,13 +350,14 @@ namespace mqtt_serial.ventanas
                 }
                 else if(serialPort1.IsOpen)
                 {
-                    serialPort1.Close ();
+                    serialPort1.Close();
                 }
             }
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
             }
+            //MessageBox.Show("se esta cerrando");
         }
 
         private void conexion_Load(object sender, EventArgs e)
@@ -362,11 +368,6 @@ namespace mqtt_serial.ventanas
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            labelTemperatura1.Text = "T1 " + VariablesControl.Temperatura1;
-            labelTemperatura2.Text = "T2 " + VariablesControl.Temperatura2;
-            labelCorriente1.Text = "I1 " + VariablesControl.Corriente1;
-            labelCorriente2.Text = "I2 " + VariablesControl.Corriente2;
-            labelTiempo.Text = "time " + VariablesControl.Tiempo;
             try
             {
                 if (mqttClient.IsConnected)
@@ -378,6 +379,17 @@ namespace mqtt_serial.ventanas
                     mqttClient.Publish(topicEnviar[3], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed2));
                     mqttClient.Publish(topicEnviar[4], Encoding.UTF8.GetBytes(VariablesControl.Ventilador1));
                     mqttClient.Publish(topicEnviar[5], Encoding.UTF8.GetBytes(VariablesControl.Ventilador2));
+                }
+                if(!VariablesControl.EstadoDeConexion)
+                {
+                    if (mqttClient.IsConnected)
+                    {
+                        conexionMqtt();
+                    }
+                    if (serialPort1.IsOpen)
+                    {
+                        conexionSerial(); 
+                    }
                 }
 
             }

@@ -46,18 +46,11 @@
             this.comboBoxTipoConexion = new System.Windows.Forms.ComboBox();
             this.labelTexconexion = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.labelTiempo = new System.Windows.Forms.Label();
-            this.labelCorriente2 = new System.Windows.Forms.Label();
-            this.labelCorriente1 = new System.Windows.Forms.Label();
-            this.labelTemperatura2 = new System.Windows.Forms.Label();
-            this.labelTemperatura1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panelDatos.SuspendLayout();
             this.panelUserPass.SuspendLayout();
             this.panel_ip_serial.SuspendLayout();
             this.panel_conexion.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelDatos
@@ -244,73 +237,10 @@
             this.labelTexconexion.TabIndex = 0;
             this.labelTexconexion.Text = "Tipo de conexión";
             // 
-            // labelTiempo
-            // 
-            this.labelTiempo.AutoSize = true;
-            this.labelTiempo.ForeColor = System.Drawing.Color.White;
-            this.labelTiempo.Location = new System.Drawing.Point(321, 16);
-            this.labelTiempo.Name = "labelTiempo";
-            this.labelTiempo.Size = new System.Drawing.Size(35, 13);
-            this.labelTiempo.TabIndex = 10;
-            this.labelTiempo.Text = "label5";
-            // 
-            // labelCorriente2
-            // 
-            this.labelCorriente2.AutoSize = true;
-            this.labelCorriente2.ForeColor = System.Drawing.Color.White;
-            this.labelCorriente2.Location = new System.Drawing.Point(220, 16);
-            this.labelCorriente2.Name = "labelCorriente2";
-            this.labelCorriente2.Size = new System.Drawing.Size(35, 13);
-            this.labelCorriente2.TabIndex = 9;
-            this.labelCorriente2.Text = "label5";
-            // 
-            // labelCorriente1
-            // 
-            this.labelCorriente1.AutoSize = true;
-            this.labelCorriente1.ForeColor = System.Drawing.Color.White;
-            this.labelCorriente1.Location = new System.Drawing.Point(141, 16);
-            this.labelCorriente1.Name = "labelCorriente1";
-            this.labelCorriente1.Size = new System.Drawing.Size(35, 13);
-            this.labelCorriente1.TabIndex = 8;
-            this.labelCorriente1.Text = "label5";
-            // 
-            // labelTemperatura2
-            // 
-            this.labelTemperatura2.AutoSize = true;
-            this.labelTemperatura2.ForeColor = System.Drawing.Color.White;
-            this.labelTemperatura2.Location = new System.Drawing.Point(80, 16);
-            this.labelTemperatura2.Name = "labelTemperatura2";
-            this.labelTemperatura2.Size = new System.Drawing.Size(35, 13);
-            this.labelTemperatura2.TabIndex = 7;
-            this.labelTemperatura2.Text = "label5";
-            // 
-            // labelTemperatura1
-            // 
-            this.labelTemperatura1.AutoSize = true;
-            this.labelTemperatura1.ForeColor = System.Drawing.Color.White;
-            this.labelTemperatura1.Location = new System.Drawing.Point(24, 16);
-            this.labelTemperatura1.Name = "labelTemperatura1";
-            this.labelTemperatura1.Size = new System.Drawing.Size(35, 13);
-            this.labelTemperatura1.TabIndex = 6;
-            this.labelTemperatura1.Text = "label5";
-            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.Controls.Add(this.labelTemperatura1);
-            this.panel1.Controls.Add(this.labelTiempo);
-            this.panel1.Controls.Add(this.labelTemperatura2);
-            this.panel1.Controls.Add(this.labelCorriente2);
-            this.panel1.Controls.Add(this.labelCorriente1);
-            this.panel1.Location = new System.Drawing.Point(345, 75);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(439, 50);
-            this.panel1.TabIndex = 11;
             // 
             // conexion
             // 
@@ -319,7 +249,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(37)))), ((int)(((byte)(95)))));
             this.ClientSize = new System.Drawing.Size(1060, 640);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelDatos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "conexion";
@@ -332,8 +261,6 @@
             this.panel_ip_serial.ResumeLayout(false);
             this.panel_ip_serial.PerformLayout();
             this.panel_conexion.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -357,12 +284,6 @@
         private System.Windows.Forms.TextBox textBoxNameUser;
         private System.Windows.Forms.TextBox textBoxPass;
         private System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.Label labelTiempo;
-        private System.Windows.Forms.Label labelCorriente2;
-        private System.Windows.Forms.Label labelCorriente1;
-        private System.Windows.Forms.Label labelTemperatura2;
-        private System.Windows.Forms.Label labelTemperatura1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Panel panel1;
     }
 }
