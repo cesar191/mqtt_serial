@@ -1,7 +1,7 @@
 # Información del proyecto
-Este proyecto esta implementado para poder realizar practicas de control PID de manera IOT al usar MQTT como servidor, el cual se comunica con una tarjeta ESP32
+Este proyecto esta implementado para poder realizar practicas de control PID de manera IOT al usar MQTT como servidor, el cual se comunica con una tarjeta ESP32 para el respectivo control.
 ## Usos del software correcto
-para que el software funcione correctament se debe tener lo siguiente
+para que el software funcione correctamente se debe tener lo siguiente
 - Instalado Mosquito (para el Mqtt local)
 - Los topicos que manejen en la ESP32 serian los siguientes
   - para recibir informacióm:
