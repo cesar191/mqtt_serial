@@ -4,13 +4,13 @@ Este proyecto esta implementado para poder realizar practicas de control PID de 
 para que el software funcione correctamente se debe tener lo siguiente
 - Instalado Mosquito (para el Mqtt local)
 - Los topicos que manejen en la ESP32 serian los siguientes
-  - para recibir informacióm:
+  - para enviar informacióm:
     - test/sensor/temperatura1
     - test/sensor/temperatura2
     - test/sensor/corrienteQ1
     - test/sensor/corrienteQ2
     - test/sensor/tiempo
-  - para enviar la información:
+  - para recibir la información:
     - test/datos/pwm1
     - test/datos/pwm2
     - test/datos/led1
