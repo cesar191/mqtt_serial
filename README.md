@@ -10,10 +10,10 @@ para que el software funcione correctamente se debe tener lo siguiente
     - test/sensor/corrienteQ1
     - test/sensor/corrienteQ2
     - test/sensor/tiempo
-- para enviar la información:
-  - test/datos/pwm1
-  - test/datos/pwm2
-  - test/datos/led1
-  - test/datos/led2
-  - test/datos/ventilador1
-  - test/datos/ventilador2
+  - para enviar la información:
+    - test/datos/pwm1
+    - test/datos/pwm2
+    - test/datos/led1
+    - test/datos/led2
+    - test/datos/ventilador1
+    - test/datos/ventilador2
