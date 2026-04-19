@@ -6,10 +6,10 @@ para que el software funcione correctament se debe tener lo siguiente
 - Los topicos que manejen en la ESP32 serian los siguientes
   - para recibir informacióm:
     - test/sensor/temperatura1
-    -test/sensor/temperatura2
-    -test/sensor/corrienteQ1
-    -test/sensor/corrienteQ2
-    -test/sensor/tiempo
+    - test/sensor/temperatura2
+    - test/sensor/corrienteQ1
+    - test/sensor/corrienteQ2
+    - test/sensor/tiempo
 - para enviar la información:
   - test/datos/pwm1
   - test/datos/pwm2
