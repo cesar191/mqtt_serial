@@ -1,4 +1,5 @@
-﻿using mqtt_serial.funciones;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using mqtt_serial.funciones;
 using SpreadsheetLight;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -19,17 +21,18 @@ namespace mqtt_serial.ventanas
     {
        
         private double temperatura1;
-        //private string temperatura2;
         private double corriente1;
         private double tiempo;
         private double pwm;
-        private string pathSave= @"C:\Users\CESAR\Desktop\DatosInterfaz\";
-        private string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");//example20260315_123350 
+
+        private string pathSave = VariablesControl.pathSave + @"AdquirirQ1\";
+        
        
 
         public adquirir_Q1()
         {
             InitializeComponent();
+            
             
         }
 
@@ -98,95 +101,131 @@ namespace mqtt_serial.ventanas
             comboBoxPWM.Text=trackBarPWM.Value.ToString();
             timer1.Enabled = true;
             trackBarPWM.Value = 0;
+            //limpiar lista de datos y crear la carpeta donde se alojan los datos e imagen de proceso
+            VariablesControl.limpiarLista();
             Directory.CreateDirectory(pathSave);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        { 
+        {
             //codigo util
-            labelCurrent.Text = "I1 " +VariablesControl.Corriente1;
-            labelTemperature.Text = "T1 " + VariablesControl.Temperatura1;
-            //enviar datos
-            VariablesControl.Pwm1=trackBarPWM.Value.ToString();
-            VariablesControl.AlarmaLed1 = comboBoxTemperatura.Text;
-            //para graficar
-            pwm = trackBarPWM.Value;
-            temperatura1=double.Parse(VariablesControl.Temperatura1)/100;
-            corriente1=(double.Parse(VariablesControl.Corriente1)/100)*1000;
-            tiempo=double.Parse(VariablesControl.Tiempo)/100;
-            if (tiempo > 10)
-            {
-                if (tiempo > 300)
+            try {
+                //enviar datos
+                VariablesControl.Pwm1 = trackBarPWM.Value.ToString();
+                //VariablesControl.AlarmaLed1 = comboBoxTemperatura.Text;
+
+                //para graficar
+                pwm = trackBarPWM.Value;
+                temperatura1 = double.Parse(VariablesControl.Temperatura1.Replace('.', ','));
+                corriente1 = (double.Parse(VariablesControl.Corriente1.Replace('.', ','))) * 1000;
+                tiempo = double.Parse(VariablesControl.Tiempo.Replace('.', ','));
+
+                
+                checkBoxCurrent.Text= " " + corriente1 + " mA";
+                labelTemperature.Text = " " + temperatura1 + " °C";
+                if (checkBoxCurrent.Checked)
                 {
-                    this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo-300;
-                    //this.chargraficaQ1.ChartAreas[0].AxisX.Maximum = tiempo;
+                    this.chargraficaQ1.Series[1].Enabled = true;
+                }
+                else
+                {
+                    this.chargraficaQ1.Series[1].Enabled = false;
                 }
 
-                //
-                VariablesControl.listaTemperatura1.Add(temperatura1);
-                VariablesControl.listaCorriente1.Add(corriente1);
-                VariablesControl.listaPWM1.Add(pwm);
-                VariablesControl.listaTiempo.Add(tiempo);
-                //
+                if (tiempo > 10 && VariablesControl.EstadoDeConexion)
+                {
+                    VariablesControl.listaTemperatura1.Add(temperatura1);
+                    VariablesControl.listaCorriente1.Add(corriente1);
+                    VariablesControl.listaPWM1.Add(pwm);
+                    VariablesControl.listaTiempo.Add(tiempo);
+                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[0].Points.AddXY(tiempo, temperatura1)));
+                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[1].Points.AddXY(tiempo, corriente1)));
+                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[2].Points.AddXY(tiempo, pwm)));
 
-                //this.chargraficaQ1.ChartAreas[1].AxisY.Maximum = corriente1 + 0.5;
-                //this.chargraficaQ1.ChartAreas[1].AxisY.Minimum = corriente1 - 0.5;
-                //chargraficaQ1.Series[1].IsVisibleInLegend = false;
-                this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[0].Points.AddXY(tiempo, temperatura1)));
-                this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[1].Points.AddXY(tiempo, corriente1)));
-                this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[2].Points.AddXY(tiempo, pwm)));
+                }
+                else
+                {
+                    this.chargraficaQ1.Series[0].Points.Clear();
+                    this.chargraficaQ1.Series[1].Points.Clear();
+                    this.chargraficaQ1.Series[2].Points.Clear();
 
+                    VariablesControl.limpiarLista();
+                }
 
-                
+                if (double.TryParse(comboBoxTemperatura.Text, out double tempAlarma))
+                {
+                    // La conversión fue exitosa, ahora comparamos
+                    if (tempAlarma <= temperatura1)
+                    {
+                        VariablesControl.AlarmaLed1 = "on";
+                        labelTemperature.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+                        VariablesControl.AlarmaLed1 = "off";
+                        labelTemperature.ForeColor = System.Drawing.Color.White;
+                    }
+                }
+                else
+                {
+                    // Opcional: Manejar el caso donde el texto no es un número válido
+                    VariablesControl.AlarmaLed1 = "off";
+                    labelTemperature.ForeColor = System.Drawing.Color.White;
+                }
             }
-            else
+            catch
             {
-                this.chargraficaQ1.Series[0].Points.Clear();
-                this.chargraficaQ1.Series[1].Points.Clear();
-                this.chargraficaQ1.Series[2].Points.Clear();
-                
-                VariablesControl.limpiarLista();
-            }            
+
+            }
+            
         }
 
         private void adquirir_Q1_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer1.Enabled = false;
-            //foreach(var punto in chargraficaQ1.Series[0].Points)
-            //{
-            //    double x = punto.XValue;
-            //    double y = punto.YValues[0]; // Accede al primer valor Y
-            //    Console.WriteLine($"X: {x}, Y: {y}");
-            //}
-            
+
         }
 
         private void buttonExportarExcel_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
-            this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_Adquirir1_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
-
-            //Console.WriteLine(VariablesControl.listaTemperatura1.Count);
-            if (VariablesControl.listaTiempo.Count>0)
+            try
             {
-                SLDocument document = new SLDocument();
+                timer1.Stop();
+                //alternativa para que el usuario escoga donde guardar la informacion
+                //if (folderBrowserDialog1.ShowDialog()==DialogResult.OK)
+                //{
+                //    Console.WriteLine(folderBrowserDialog1.SelectedPath);
+                //}
 
-                document.SetCellValue(1, 1, "Tiempo");
-                document.SetCellValue(1, 2, "Temperatura1");
-                document.SetCellValue(1, 3, "Corriente1");
-                document.SetCellValue(1, 4, "PWM1");
-                for (int i=0; i<VariablesControl.listaTiempo.Count; i++)
+                this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_Adquirir1_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.png", System.Drawing.Imaging.ImageFormat.Png);
+
+                if (VariablesControl.listaTiempo.Count > 0)
                 {
-                    document.SetCellValue(i + 2, 1, VariablesControl.listaTiempo[i].ToString());
-                    document.SetCellValue(i+2, 2, VariablesControl.listaTemperatura1[i].ToString());
-                    document.SetCellValue(i + 2, 3, VariablesControl.listaCorriente1[i].ToString());
-                    document.SetCellValue(i + 2, 4, VariablesControl.listaPWM1[i].ToString());
+                    SLDocument document = new SLDocument();
+
+                    document.SetCellValue(1, 1, "Tiempo");
+                    document.SetCellValue(1, 2, "Temperatura1");
+                    document.SetCellValue(1, 3, "Corriente1");
+                    document.SetCellValue(1, 4, "PWM1");
+                    for (int i = 0; i < VariablesControl.listaTiempo.Count; i++)
+                    {
+                        document.SetCellValue(i + 2, 1, VariablesControl.listaTiempo[i]);
+                        document.SetCellValue(i + 2, 2, VariablesControl.listaTemperatura1[i]);
+                        document.SetCellValue(i + 2, 3, VariablesControl.listaCorriente1[i]);
+                        document.SetCellValue(i + 2, 4, VariablesControl.listaPWM1[i]);
+                    }
+                    document.SaveAs($@"{pathSave}DatosGrafica_AdquirirQ1_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.xlsx");
                 }
-                document.SaveAs($@"{pathSave}DatosGrafica_AdquirirQ1_{fecha}.xlsx");
+                timer1.Start();
+                MessageBox.Show($"Se exporto los datos en la ubicacion: \n {pathSave}");
             }
-            timer1.Start();
-            
+            catch
+            {
+
+            }
             
         }
+
+       
     }
 }

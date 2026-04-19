@@ -121,7 +121,8 @@ namespace mqtt_serial.ventanas
                         this.comboBoxConexionBaudio.Items.AddRange(new object[] { "Laptop1", "ControlPC" });
 
                         break;
-                    case (2)://opción de comunicacion serial
+                    case (2):
+                    //case (2)://opción de comunicacion serial
                         //datos para la comunicación
 
                         this.panelUserPass.Visible = false;
@@ -274,10 +275,7 @@ namespace mqtt_serial.ventanas
                 if (mqttClient.IsConnected)
                 {   //
                     timer1.Enabled = false;
-
-                    
                     //
-
                     mqttClient.Publish(topicEnviar[0], Encoding.UTF8.GetBytes("0"));
                     mqttClient.Publish(topicEnviar[1], Encoding.UTF8.GetBytes("0"));
                     mqttClient.Publish(topicEnviar[2], Encoding.UTF8.GetBytes("off"));
@@ -344,7 +342,7 @@ namespace mqtt_serial.ventanas
             {
                 if (mqttClient != null)
                 {
-                    if (mqttClient.IsConnected) { 
+                    if (mqttClient.IsConnected) {
                         mqttClient.Disconnect();
                     }
                 }
@@ -395,7 +393,7 @@ namespace mqtt_serial.ventanas
             }
             catch
             {
-
+                MessageBox.Show("hubo un error");
             }
            
             

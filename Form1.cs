@@ -270,11 +270,14 @@ namespace mqtt_serial
 
         private void pantalla_principal_FormClosing(object sender, FormClosingEventArgs e)
         {
+
             CerrarForm<conexion>();
             CerrarForm<adquirir_Q1>();
             CerrarForm<Adquirir_Q2>();
             CerrarForm<control_Q1>();
             CerrarForm<control_Q1Q2>();
+
+          
 
         }
 

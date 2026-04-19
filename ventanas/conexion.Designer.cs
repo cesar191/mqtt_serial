@@ -217,8 +217,7 @@
             this.comboBoxTipoConexion.FormattingEnabled = true;
             this.comboBoxTipoConexion.Items.AddRange(new object[] {
             "MQTT (local)",
-            "MQTT (servidor)",
-            "Serial"});
+            "MQTT (servidor)"});
             this.comboBoxTipoConexion.Location = new System.Drawing.Point(0, 25);
             this.comboBoxTipoConexion.Name = "comboBoxTipoConexion";
             this.comboBoxTipoConexion.Size = new System.Drawing.Size(437, 33);

@@ -29,6 +29,10 @@ namespace mqtt_serial.funciones
         //estados de prueba y lista de datos
         private static bool estadoDeConexion = false;
 
+        public static string pathSave = $@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\DatosInterfaz\";
+        //public static string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");//example 20260315_123350 
+
+
         public static List<double> listaTemperatura1 = new List<double>();
         public static List<double> listaTemperatura2 = new List<double>();
         public static List<double> listaCorriente1 = new List<double>();
@@ -36,6 +40,10 @@ namespace mqtt_serial.funciones
         public static List<double> listaTiempo = new List<double>();
         public static List<double> listaPWM1 = new List<double>();
         public static List<double> listaPWM2 = new List<double>();
+        public static List<double> listaSetPoint1=new List<double>();
+        public static List<double> listaSetPoint2 = new List<double>();
+
+
         //convierto las variables a una propiedad manipulable para las interfaces
 
         public static string Temperatura1 { get { return temperatura1; } set { temperatura1 = value; } }
@@ -63,19 +71,21 @@ namespace mqtt_serial.funciones
 
         public static void limpiarLista()
         {
-            if(listaTemperatura1.Count>0){ 
-                listaCorriente1.Clear();
-                listaCorriente2.Clear();
+            listaTiempo.Clear(); 
 
-                listaTemperatura1.Clear();
-                listaTemperatura2.Clear();
+            listaTemperatura1.Clear();
+            listaTemperatura2.Clear();
 
-                listaTiempo.Clear();
+            listaCorriente1.Clear();
+            listaCorriente2.Clear();
 
-                listaPWM1.Clear();
-                listaPWM2.Clear();
-            }
-        }   
+            listaPWM1.Clear();
+            listaPWM2.Clear();
+
+            listaSetPoint1.Clear();
+            listaSetPoint2.Clear();
+        }
+        
     }
     
 }
