@@ -32,7 +32,7 @@ namespace mqtt_serial.funciones
         public static string pathSave = $@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\DatosInterfaz\";
         //public static string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");//example 20260315_123350 
 
-
+        //lista de variables para exportar a excel
         public static List<double> listaTemperatura1 = new List<double>();
         public static List<double> listaTemperatura2 = new List<double>();
         public static List<double> listaCorriente1 = new List<double>();
@@ -42,6 +42,19 @@ namespace mqtt_serial.funciones
         public static List<double> listaPWM2 = new List<double>();
         public static List<double> listaSetPoint1=new List<double>();
         public static List<double> listaSetPoint2 = new List<double>();
+
+        //exportar cambios de valores 
+        public static List<double> listaTiempo2=new List<double>();
+        public static List<double> listaKp1 = new List<double>();
+        public static List<double> listaKp2 = new List<double>();
+        public static List<double> listaKi1 = new List<double>();
+        public static List<double> listaKi2 = new List<double>();
+        public static List<double> listaKd1 = new List<double>();
+        public static List<double> listaKd2 = new List<double>();
+        public static List<double> listaTs1 = new List<double>();
+        public static List<double> listaTs2 = new List<double>();
+
+
 
 
         //convierto las variables a una propiedad manipulable para las interfaces
@@ -71,6 +84,7 @@ namespace mqtt_serial.funciones
 
         public static void limpiarLista()
         {
+            //parametros de grafica
             listaTiempo.Clear(); 
 
             listaTemperatura1.Clear();
@@ -84,6 +98,21 @@ namespace mqtt_serial.funciones
 
             listaSetPoint1.Clear();
             listaSetPoint2.Clear();
+            
+            //parametros de control
+            listaKd1.Clear();
+            listaKd2.Clear();
+            
+            listaKp1.Clear();
+            listaKp2.Clear();
+            
+            listaKi1.Clear();
+            listaKi2.Clear();
+            
+            listaTs1.Clear();
+            listaTs2.Clear();
+
+            listaTiempo2.Clear();
         }
         
     }

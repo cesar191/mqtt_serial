@@ -85,6 +85,13 @@ namespace mqtt_serial.ventanas
             {
                 controlPID.PwmArray[i] = 0;
             }
+
+            VariablesControl.listaTiempo2.Add(tiempo);
+            VariablesControl.listaKp1.Add(kp);
+            VariablesControl.listaKi1.Add(ki);
+            VariablesControl.listaKd1.Add(kd);
+            VariablesControl.listaTs1.Add(ts);
+
         }
 
         private void control_Q1_Load(object sender, EventArgs e)
@@ -239,17 +246,27 @@ namespace mqtt_serial.ventanas
                 //{
                 //    Console.WriteLine(folderBrowserDialog1.SelectedPath);
                 //}
+                string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");
 
-                this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.png", System.Drawing.Imaging.ImageFormat.Png);
+                this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
 
                 if (VariablesControl.listaTiempo.Count > 0)
                 {
                     SLDocument document = new SLDocument();
+                    
+                    //lista de titulos del excel
                     document.SetCellValue(1, 1, "Tiempo");
                     document.SetCellValue(1, 2, "Temperatura1");
                     document.SetCellValue(1, 3, "Corriente1");
                     document.SetCellValue(1, 4, "PWM1");
                     document.SetCellValue(1, 5, "SetPoint");
+
+                    document.SetCellValue(1, 7,  "Kp");
+                    document.SetCellValue(1, 8, "Ki");
+                    document.SetCellValue(1, 9, "Kd");
+                    document.SetCellValue(1, 10, "Ts");
+                    document.SetCellValue(1, 11, "Cambio (s)");
+
                     for (int i = 0; i < VariablesControl.listaTiempo.Count; i++)
                     {
                         document.SetCellValue(i + 2, 1, VariablesControl.listaTiempo[i]);
@@ -258,8 +275,20 @@ namespace mqtt_serial.ventanas
                         document.SetCellValue(i + 2, 4, VariablesControl.listaPWM1[i]);
                         document.SetCellValue(i + 2, 5, VariablesControl.listaSetPoint1[i]);
                     }
-                    
-                    document.SaveAs($@"{pathSave}DatosGrafica_ControlQ1_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.xlsx");
+                    for(int i = 0; i < VariablesControl.listaTiempo2.Count; i++)
+                    {
+                        document.SetCellValue(i + 2, 7, VariablesControl.listaKp1[i]);
+                        document.SetCellValue(i + 2, 8, VariablesControl.listaKi1[i]);
+                        document.SetCellValue(i + 2, 9, VariablesControl.listaKd1[i]);
+                        document.SetCellValue(i + 2, 10, VariablesControl.listaTs1[i]);
+                        document.SetCellValue(i + 2, 11, VariablesControl.listaTiempo2[i]);
+
+                    }
+                    SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_ControlQ1_{fecha}.png");
+                    imagenGrafica.SetPosition(1, 14);
+                    document.InsertPicture(imagenGrafica);
+
+                    document.SaveAs($@"{pathSave}DatosGrafica_ControlQ1_{fecha}.xlsx");
                 }
                 timer1.Start();
                 MessageBox.Show($"Se exporto los datos en la ubicacion: \n {pathSave}");

@@ -1,5 +1,6 @@
 ﻿using mqtt_serial.funciones;
 using SpreadsheetLight;
+using SpreadsheetLight.Drawing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,16 +17,17 @@ namespace mqtt_serial.ventanas
 {
     public partial class control_Q1Q2 : Form
     {
-
+    #region parametros de  control y medicion
         private double temperatura1, temperatura2, corriente1, corriente2, tiempo;
 
         private double pwm1, pwm2, setPoint1 = 0, setPoint2 = 0, errorDouble1 = 0, errorDouble2 = 0;
         private double kp1 = 0, kp2 = 0, ki1 = 0, ki2 = 0, kd1 = 0, kd2 = 0, ts1 = 0, ts2 = 0;
+     
 
-        
 
         private ControlPID controlPIDQ1 = new ControlPID();
         private ControlPID controlPIDQ2 = new ControlPID();
+        #endregion
 
         private string pathSave = VariablesControl.pathSave + @"ControlQ1Q2\";
 
@@ -113,6 +115,18 @@ namespace mqtt_serial.ventanas
             {
                 controlPIDQ1.PwmArray[i] = 0;
             }
+
+            //para exportar al excel
+            VariablesControl.listaKp1.Add(kp1);
+            VariablesControl.listaKp2.Add(kp2);
+            VariablesControl.listaKi1.Add(ki1);
+            VariablesControl.listaKi2.Add(ki2);
+            VariablesControl.listaKd1.Add(kd1);
+            VariablesControl.listaKd2.Add(kd2);
+            VariablesControl.listaTs1.Add(ts1);
+            VariablesControl.listaTs2.Add(ts2);
+
+            VariablesControl.listaTiempo2.Add(tiempo);
         }
         private void buttonRefrescarQ2_Click(object sender, EventArgs e)
         {
@@ -129,6 +143,19 @@ namespace mqtt_serial.ventanas
             {
                 controlPIDQ2.PwmArray[i] = 0;
             }
+
+            //para exportar al excel
+            VariablesControl.listaKp1.Add(kp1);
+            VariablesControl.listaKp2.Add(kp2);
+            VariablesControl.listaKi1.Add(ki1);
+            VariablesControl.listaKi2.Add(ki2);
+            VariablesControl.listaKd1.Add(kd1);
+            VariablesControl.listaKd2.Add(kd2);
+            VariablesControl.listaTs1.Add(ts1);
+            VariablesControl.listaTs2.Add(ts2);
+
+            VariablesControl.listaTiempo2.Add(tiempo);
+
         }
 
         private void control_Q1Q2_Load(object sender, EventArgs e)
@@ -175,7 +202,7 @@ namespace mqtt_serial.ventanas
                 //}
                 string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");
 
-                this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
+                this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1Q2_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
 
                 if (VariablesControl.listaTiempo.Count > 0)
                 {
@@ -191,6 +218,18 @@ namespace mqtt_serial.ventanas
                     document.SetCellValue(1, 8, "PWM1");
                     document.SetCellValue(1, 9, "SetPoint2");
 
+                    document.SetCellValue(1, 12, "Kp1");
+                    document.SetCellValue(1, 13, "Ki1");
+                    document.SetCellValue(1, 14, "Kd1");
+                    document.SetCellValue(1, 15, "Ts1");
+                    document.SetCellValue(1, 16, "Cambio (s)");
+
+                    document.SetCellValue(1, 17, "Kp2");
+                    document.SetCellValue(1, 18, "Ki2");
+                    document.SetCellValue(1, 19, "Kd2");
+                    document.SetCellValue(1, 20, "Ts2");
+                    
+
                     for (int i = 0; i < VariablesControl.listaTiempo.Count; i++)
                     {
                         document.SetCellValue(i + 2, 1, VariablesControl.listaTiempo[i]);
@@ -205,7 +244,22 @@ namespace mqtt_serial.ventanas
                         document.SetCellValue(i + 2, 9, VariablesControl.listaSetPoint2[i]);
                     }
 
-                    document.SaveAs($@"{pathSave}DatosGrafica_ControlQ1_{fecha}.xlsx");
+                    for (int i=0; i<VariablesControl.listaTiempo2.Count;i++)
+                    {
+                        document.SetCellValue(i + 2, 12, VariablesControl.listaKp1[i]);
+                        document.SetCellValue(i + 2, 13, VariablesControl.listaKi1[i]);
+                        document.SetCellValue(i + 2, 14, VariablesControl.listaKd1[i]);
+                        document.SetCellValue(i + 2, 15, VariablesControl.listaTs1[i]);
+                        document.SetCellValue(i + 2, 16, VariablesControl.listaTiempo2[i]);
+                        document.SetCellValue(i + 2, 17, VariablesControl.listaKp2[i]);
+                        document.SetCellValue(i + 2, 18, VariablesControl.listaKi2[i]);
+                        document.SetCellValue(i + 2, 19, VariablesControl.listaKd2[i]);
+                        document.SetCellValue(i + 2, 20, VariablesControl.listaTs2[i]);
+                    }
+                    SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_ControlQ1Q2_{fecha}.png");
+                    imagenGrafica.SetPosition(1,22);
+                    document.InsertPicture(imagenGrafica);
+                    document.SaveAs($@"{pathSave}DatosGrafica_ControlQ1Q2_{fecha}.xlsx");
                 }
                 timer1.Start();
                 MessageBox.Show($"Se exporto los datos en la ubicacion: \n {pathSave}");

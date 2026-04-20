@@ -1,6 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
 using mqtt_serial.funciones;
 using SpreadsheetLight;
+using SpreadsheetLight.Drawing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -196,8 +197,8 @@ namespace mqtt_serial.ventanas
                 //{
                 //    Console.WriteLine(folderBrowserDialog1.SelectedPath);
                 //}
-
-                this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_Adquirir1_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.png", System.Drawing.Imaging.ImageFormat.Png);
+                string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_Adquirir1_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
 
                 if (VariablesControl.listaTiempo.Count > 0)
                 {
@@ -214,7 +215,12 @@ namespace mqtt_serial.ventanas
                         document.SetCellValue(i + 2, 3, VariablesControl.listaCorriente1[i]);
                         document.SetCellValue(i + 2, 4, VariablesControl.listaPWM1[i]);
                     }
-                    document.SaveAs($@"{pathSave}DatosGrafica_AdquirirQ1_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.xlsx");
+
+                    SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_Adquirir1_{fecha}.png");
+                    imagenGrafica.SetPosition(1, 6);
+                    document.InsertPicture(imagenGrafica);
+
+                    document.SaveAs($@"{pathSave}DatosGrafica_AdquirirQ1_{fecha}.xlsx");
                 }
                 timer1.Start();
                 MessageBox.Show($"Se exporto los datos en la ubicacion: \n {pathSave}");

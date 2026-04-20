@@ -549,7 +549,7 @@
             this.chargraficaQ1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.chargraficaQ1.BackColor = System.Drawing.Color.Transparent;
+            this.chargraficaQ1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(37)))), ((int)(((byte)(95)))));
             this.chargraficaQ1.BackSecondaryColor = System.Drawing.Color.White;
             chartArea1.AlignWithChartArea = "graficaPWM";
             chartArea1.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
@@ -605,10 +605,11 @@
             this.chargraficaQ1.ChartAreas.Add(chartArea1);
             this.chargraficaQ1.ChartAreas.Add(chartArea2);
             this.chargraficaQ1.ContextMenuStrip = this.contextMenuStripGrafica;
+            legend1.AutoFitMinFontSize = 10;
             legend1.BackColor = System.Drawing.Color.White;
             legend1.DockedToChartArea = "ChartAreaTempCurrent";
             legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             legend1.IsDockedInsideChartArea = false;
             legend1.IsEquallySpacedItems = true;
             legend1.IsTextAutoFit = false;
@@ -617,7 +618,9 @@
             legend2.BackColor = System.Drawing.Color.White;
             legend2.DockedToChartArea = "graficaPWM";
             legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             legend2.IsDockedInsideChartArea = false;
+            legend2.IsTextAutoFit = false;
             legend2.Name = "LegendGraficaPWM";
             this.chargraficaQ1.Legends.Add(legend1);
             this.chargraficaQ1.Legends.Add(legend2);

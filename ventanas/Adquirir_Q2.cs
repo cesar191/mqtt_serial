@@ -1,5 +1,6 @@
 ﻿using mqtt_serial.funciones;
 using SpreadsheetLight;
+using SpreadsheetLight.Drawing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -63,6 +64,7 @@ namespace mqtt_serial.ventanas
             timer1.Enabled = true;
             trackBarPWM.Value = 0;
             Directory.CreateDirectory(pathSave);
+            VariablesControl.limpiarLista();
         }
         
 
@@ -201,6 +203,11 @@ namespace mqtt_serial.ventanas
                         document.SetCellValue(i + 2, 3, VariablesControl.listaCorriente2[i]);
                         document.SetCellValue(i + 2, 4, VariablesControl.listaPWM2[i]);
                     }
+                    
+                    SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_AdquirirQ2_{fecha}.png");
+                    imagenGrafica.SetPosition(1, 6);
+                    document.InsertPicture(imagenGrafica);
+
                     document.SaveAs($@"{pathSave}DatosGrafica_AdquirirQ2_{fecha}.xlsx");
                 }
                 timer1.Start();
