@@ -81,7 +81,16 @@ namespace mqtt_serial.funciones
         public static bool EstadoDeConexion { get { return estadoDeConexion; } set { estadoDeConexion = value; } }
 
         #endregion
-
+        public static void reseteoParametros()
+        {
+    
+         pwm1 = "0";
+         pwm2 = "0";
+         alarmaLed1 = "off";
+         alarmaLed2 = "off";
+         ventilador1 = "off";
+         ventilador2 = "off";
+        }
         public static void limpiarLista()
         {
             //parametros de grafica

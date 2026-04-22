@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace mqtt_serial.ventanas
 {
@@ -64,6 +65,8 @@ namespace mqtt_serial.ventanas
             timer1.Enabled = true;
             trackBarPWM.Value = 0;
             Directory.CreateDirectory(pathSave);
+
+            VariablesControl.reseteoParametros();
             VariablesControl.limpiarLista();
         }
         
@@ -221,6 +224,17 @@ namespace mqtt_serial.ventanas
 
         }
 
-        
+        private void chargraficaQ2_CustomizeLegend(object sender, CustomizeLegendEventArgs e)
+        {
+            foreach (var item in e.LegendItems)
+            {
+                // Forzamos a que el símbolo sea un rectángulo (SeriesSymbolType.Rectangle)
+                // en lugar de una línea.
+                item.ImageStyle = LegendImageStyle.Rectangle;
+
+                // Opcional: Aumentar el tamaño de la fuente para que el bloque sea más alto
+                // El tamaño del bloque escala con el tamaño del texto.
+            }
+        }
     }
 }

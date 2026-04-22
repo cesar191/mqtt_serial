@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms.VisualStyles;
 
 namespace mqtt_serial.ventanas
@@ -104,6 +105,8 @@ namespace mqtt_serial.ventanas
             comboBoxTs.Text = "0";
 
             VariablesControl.limpiarLista();
+            VariablesControl.reseteoParametros();
+
             Directory.CreateDirectory(pathSave);
             timer1.Enabled = true;
 
@@ -303,6 +306,19 @@ namespace mqtt_serial.ventanas
         {
             graficarCorrienteToolStripMenuItem.Checked = !checkBoxCurrent.Checked;
             checkBoxCurrent.Checked = graficarCorrienteToolStripMenuItem.Checked;
+        }
+
+        private void chargraficaQ1_CustomizeLegend(object sender, System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs e)
+        {
+            foreach (var item in e.LegendItems)
+            {
+                // Forzamos a que el símbolo sea un rectángulo (SeriesSymbolType.Rectangle)
+                // en lugar de una línea.
+                item.ImageStyle = LegendImageStyle.Rectangle;
+
+                // Opcional: Aumentar el tamaño de la fuente para que el bloque sea más alto
+                // El tamaño del bloque escala con el tamaño del texto.
+            }
         }
     }
 }

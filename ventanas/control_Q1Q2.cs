@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace mqtt_serial.ventanas
 {
@@ -22,8 +23,8 @@ namespace mqtt_serial.ventanas
 
         private double pwm1, pwm2, setPoint1 = 0, setPoint2 = 0, errorDouble1 = 0, errorDouble2 = 0;
         private double kp1 = 0, kp2 = 0, ki1 = 0, ki2 = 0, kd1 = 0, kd2 = 0, ts1 = 0, ts2 = 0;
-     
 
+        
 
         private ControlPID controlPIDQ1 = new ControlPID();
         private ControlPID controlPIDQ2 = new ControlPID();
@@ -175,6 +176,8 @@ namespace mqtt_serial.ventanas
             comboBoxTsQ2.Text = "0";
 
             VariablesControl.limpiarLista();
+            VariablesControl.reseteoParametros();
+
             Directory.CreateDirectory(pathSave);
             timer1.Enabled = true;
         }
@@ -431,6 +434,18 @@ namespace mqtt_serial.ventanas
             catch
             {
                 //MessageBox.Show("no es un numero uno de los datos");
+            }
+        }
+        private void chargraficaQ1_CustomizeLegend(object sender, System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs e)
+        {
+            foreach (var item in e.LegendItems)
+            {
+                // Forzamos a que el símbolo sea un rectángulo (SeriesSymbolType.Rectangle)
+                // en lugar de una línea.
+                item.ImageStyle = LegendImageStyle.Rectangle;
+
+                // Opcional: Aumentar el tamaño de la fuente para que el bloque sea más alto
+                // El tamaño del bloque escala con el tamaño del texto.
             }
         }
 

@@ -32,6 +32,8 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn1 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
+            System.Windows.Forms.DataVisualization.Charting.LegendCellColumn legendCellColumn2 = new System.Windows.Forms.DataVisualization.Charting.LegendCellColumn();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -263,19 +265,31 @@
             chartArea2.Name = "graficaPWM";
             this.chargraficaQ1.ChartAreas.Add(chartArea1);
             this.chargraficaQ1.ChartAreas.Add(chartArea2);
+            legend1.AutoFitMinFontSize = 15;
             legend1.BackColor = System.Drawing.Color.White;
+            legend1.BorderColor = System.Drawing.Color.White;
+            legend1.BorderWidth = 0;
+            legendCellColumn1.ColumnType = System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType.SeriesSymbol;
+            legendCellColumn1.Name = "Column4";
+            legendCellColumn1.SeriesSymbolSize = new System.Drawing.Size(200, 100);
+            legendCellColumn1.Text = "";
+            legendCellColumn2.Name = "Column2";
+            legend1.CellColumns.Add(legendCellColumn1);
+            legend1.CellColumns.Add(legendCellColumn2);
             legend1.DockedToChartArea = "ChartAreaTempCurrent";
             legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             legend1.IsDockedInsideChartArea = false;
             legend1.IsEquallySpacedItems = true;
             legend1.IsTextAutoFit = false;
+            legend1.ItemColumnSpacing = 0;
             legend1.Name = "LegendGraficaTem";
             legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Wide;
+            legend2.AutoFitMinFontSize = 15;
             legend2.BackColor = System.Drawing.Color.White;
             legend2.DockedToChartArea = "graficaPWM";
             legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+            legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             legend2.IsDockedInsideChartArea = false;
             legend2.IsTextAutoFit = false;
             legend2.Name = "LegendGraficaPWM";
@@ -283,6 +297,7 @@
             this.chargraficaQ1.Legends.Add(legend2);
             this.chargraficaQ1.Location = new System.Drawing.Point(7, 0);
             this.chargraficaQ1.Name = "chargraficaQ1";
+            series1.BorderColor = System.Drawing.Color.White;
             series1.BorderWidth = 3;
             series1.ChartArea = "ChartAreaTempCurrent";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -290,6 +305,8 @@
             series1.EmptyPointStyle.Color = System.Drawing.Color.Black;
             series1.Legend = "LegendGraficaTem";
             series1.Name = "Temperatura";
+            series1.SmartLabelStyle.MaxMovingDistance = 1D;
+            series1.YValuesPerPoint = 2;
             series2.BorderWidth = 3;
             series2.ChartArea = "ChartAreaTempCurrent";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -309,6 +326,7 @@
             this.chargraficaQ1.Size = new System.Drawing.Size(567, 601);
             this.chargraficaQ1.TabIndex = 0;
             this.chargraficaQ1.Text = "chart1";
+            this.chargraficaQ1.CustomizeLegend += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs>(this.chargraficaQ1_CustomizeLegend);
             // 
             // timer1
             // 

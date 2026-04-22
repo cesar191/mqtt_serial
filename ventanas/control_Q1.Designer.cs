@@ -628,7 +628,7 @@
             this.chargraficaQ1.Name = "chargraficaQ1";
             series1.BorderWidth = 3;
             series1.ChartArea = "ChartAreaTempCurrent";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Color = System.Drawing.Color.Red;
             series1.EmptyPointStyle.Color = System.Drawing.Color.Black;
             series1.Legend = "LegendGraficaTem";
@@ -646,11 +646,11 @@
             series3.Color = System.Drawing.Color.Blue;
             series3.Legend = "LegendGraficaPWM";
             series3.Name = "PWM         ";
-            series4.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
             series4.BorderWidth = 5;
             series4.ChartArea = "ChartAreaTempCurrent";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
             series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            series4.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
             series4.Legend = "LegendGraficaTem";
             series4.Name = "SetPoint";
             this.chargraficaQ1.Series.Add(series1);
@@ -660,6 +660,7 @@
             this.chargraficaQ1.Size = new System.Drawing.Size(567, 601);
             this.chargraficaQ1.TabIndex = 1;
             this.chargraficaQ1.Text = "chart1";
+            this.chargraficaQ1.CustomizeLegend += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs>(this.chargraficaQ1_CustomizeLegend);
             // 
             // contextMenuStripGrafica
             // 

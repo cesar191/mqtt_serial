@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace mqtt_serial.ventanas
 {
@@ -104,13 +105,16 @@ namespace mqtt_serial.ventanas
             trackBarPWM.Value = 0;
             //limpiar lista de datos y crear la carpeta donde se alojan los datos e imagen de proceso
             VariablesControl.limpiarLista();
+            VariablesControl.reseteoParametros();
+
             Directory.CreateDirectory(pathSave);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             //codigo util
-            try {
+            try
+            {
                 //enviar datos
                 VariablesControl.Pwm1 = trackBarPWM.Value.ToString();
                 //VariablesControl.AlarmaLed1 = comboBoxTemperatura.Text;
@@ -121,8 +125,8 @@ namespace mqtt_serial.ventanas
                 corriente1 = (double.Parse(VariablesControl.Corriente1.Replace('.', ','))) * 1000;
                 tiempo = double.Parse(VariablesControl.Tiempo.Replace('.', ','));
 
-                
-                checkBoxCurrent.Text= " " + corriente1 + " mA";
+
+                checkBoxCurrent.Text = " " + corriente1 + " mA";
                 labelTemperature.Text = " " + temperatura1 + " °C";
                 if (checkBoxCurrent.Checked)
                 {
@@ -132,6 +136,8 @@ namespace mqtt_serial.ventanas
                 {
                     this.chargraficaQ1.Series[1].Enabled = false;
                 }
+                //testeo de configuracion grafica
+                this.chargraficaQ1.Legends[0].CellColumns[0].SeriesSymbolSize = new Size(200,100);
 
                 if (tiempo > 10 && VariablesControl.EstadoDeConexion)
                 {
@@ -232,6 +238,17 @@ namespace mqtt_serial.ventanas
             
         }
 
-       
+        private void chargraficaQ1_CustomizeLegend(object sender, System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs e)
+        {
+            foreach (var item in e.LegendItems)
+            {
+                // Forzamos a que el símbolo sea un rectángulo (SeriesSymbolType.Rectangle)
+                // en lugar de una línea.
+                item.ImageStyle = LegendImageStyle.Rectangle;
+
+                // Opcional: Aumentar el tamaño de la fuente para que el bloque sea más alto
+                // El tamaño del bloque escala con el tamaño del texto.
+            }
+        }
     }
 }
