@@ -2,7 +2,7 @@
 Este proyecto esta implementado para poder realizar practicas de control PID de manera IOT al usar MQTT como servidor, el cual se comunica con una tarjeta ESP32 para el respectivo control.
 ## Usos del software correcto
 para que el software funcione correctamente se debe tener lo siguiente
-- Instalado Mosquito (para el Mqtt local)
+- Instalado Mosquito (para el Mqtt local) seguir la guía de este video https://youtu.be/G_Xj6II8waY?si=RZoSo-mNR9eyXzGo
 - Los topicos que manejen en la ESP32 serian los siguientes
   - para enviar informacióm:
     - test/sensor/temperatura1
@@ -19,4 +19,7 @@ para que el software funcione correctamente se debe tener lo siguiente
     - test/datos/ventilador2
 ## Codigo de arduino
 el codigo de arduino se puede reviar en el siguiente repositorio: https://github.com/cesar191/CodigoEsp32Mqtt.git
+## Funcionamiento del Software
+El Software tiene al Form1 de Raiz ya que es la ventana que llama las ventanas con el proceso
+
 
