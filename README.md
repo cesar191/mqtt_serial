@@ -17,3 +17,6 @@ para que el software funcione correctamente se debe tener lo siguiente
     - test/datos/led2
     - test/datos/ventilador1
     - test/datos/ventilador2
+## Codigo de arduino
+el codigo de arduino se puede reviar en el siguiente repositorio: https://github.com/cesar191/CodigoEsp32Mqtt.git
+
