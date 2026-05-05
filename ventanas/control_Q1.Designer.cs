@@ -660,8 +660,7 @@
             this.chargraficaQ1.Size = new System.Drawing.Size(567, 601);
             this.chargraficaQ1.TabIndex = 1;
             this.chargraficaQ1.Text = "chart1";
-            this.chargraficaQ1.CustomizeLegend += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs>(this.chargraficaQ1_CustomizeLegend);
-            // 
+            //
             // contextMenuStripGrafica
             // 
             this.contextMenuStripGrafica.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {

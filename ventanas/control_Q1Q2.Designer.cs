@@ -289,8 +289,7 @@
             this.chargraficaQ1.Size = new System.Drawing.Size(420, 606);
             this.chargraficaQ1.TabIndex = 1;
             this.chargraficaQ1.Text = "chart1";
-            this.chargraficaQ1.CustomizeLegend += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs>(this.chargraficaQ1_CustomizeLegend);
-            // 
+            //
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 

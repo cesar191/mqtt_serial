@@ -68,8 +68,8 @@ namespace mqtt_serial.funciones
         public void SystemControlPID(double errorDouble,double kp,double ki,double kd, double ts)
         {
           
-            double q0 = (kp + (kd / ts));
-            double q1 = (-kp + ki * ts - (2 * (kd / ts)));
+            double q0 = (kp +ki*ts+ (kd / ts));
+            double q1 = (-kp - (2 * (kd / ts)));
             double q2 = (kd / ts);
             //actualizar
             pwmArray[1] = pwmArray[0];

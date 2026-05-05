@@ -308,17 +308,6 @@ namespace mqtt_serial.ventanas
             checkBoxCurrent.Checked = graficarCorrienteToolStripMenuItem.Checked;
         }
 
-        private void chargraficaQ1_CustomizeLegend(object sender, System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs e)
-        {
-            foreach (var item in e.LegendItems)
-            {
-                // Forzamos a que el símbolo sea un rectángulo (SeriesSymbolType.Rectangle)
-                // en lugar de una línea.
-                item.ImageStyle = LegendImageStyle.Rectangle;
-
-                // Opcional: Aumentar el tamaño de la fuente para que el bloque sea más alto
-                // El tamaño del bloque escala con el tamaño del texto.
-            }
-        }
+        
     }
 }

@@ -283,6 +283,7 @@
             legend1.IsEquallySpacedItems = true;
             legend1.IsTextAutoFit = false;
             legend1.ItemColumnSpacing = 0;
+            legend1.MaximumAutoSize = 100F;
             legend1.Name = "LegendGraficaTem";
             legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Wide;
             legend2.AutoFitMinFontSize = 15;
@@ -292,6 +293,7 @@
             legend2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             legend2.IsDockedInsideChartArea = false;
             legend2.IsTextAutoFit = false;
+            legend2.MaximumAutoSize = 100F;
             legend2.Name = "LegendGraficaPWM";
             this.chargraficaQ1.Legends.Add(legend1);
             this.chargraficaQ1.Legends.Add(legend2);
@@ -326,7 +328,6 @@
             this.chargraficaQ1.Size = new System.Drawing.Size(567, 601);
             this.chargraficaQ1.TabIndex = 0;
             this.chargraficaQ1.Text = "chart1";
-            this.chargraficaQ1.CustomizeLegend += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs>(this.chargraficaQ1_CustomizeLegend);
             // 
             // timer1
             // 
