@@ -20,6 +20,6 @@ para que el software funcione correctamente se debe tener lo siguiente
 ## Codigo de arduino
 el codigo de arduino se puede reviar en el siguiente repositorio: https://github.com/cesar191/CodigoEsp32Mqtt.git
 ## Funcionamiento del Software
-El Software tiene al Form1 de Raiz ya que es la ventana que llama las ventanas con el proceso
+El Software tiene al Form1 de Raiz ya que es la ventana que llama las ventanas en un panel.
 
 
