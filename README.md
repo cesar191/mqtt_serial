@@ -34,8 +34,8 @@ La comunicación entre el HMI en C# y la tarjeta ESP32 se gestiona de manera est
 | **Envía (Publica)** | `test/sensor/corrienteQ1` | Monitoreo de corriente en actuador Q1 |
 | **Envía (Publica)** | `test/sensor/corrienteQ2` | Monitoreo de corriente en actuador Q2 |
 | **Envía (Publica)** | `test/sensor/tiempo` | Sincronización o estampa de tiempo del sistema |
-| **Recibe (Suscribe)** | `test/datos/pwm1` | Señal de control manipulada para Q1 1 |
-| **Recibe (Suscribe)** | `test/datos/pwm2` | Señal de control manipulada para Q2 2 |
+| **Recibe (Suscribe)** | `test/datos/pwm1` | Señal de control manipulada para Q1 |
+| **Recibe (Suscribe)** | `test/datos/pwm2` | Señal de control manipulada para Q2 |
 | **Recibe (Suscribe)** | `test/datos/led1` | Estado / Activación de indicador LED 1 |
 | **Recibe (Suscribe)** | `test/datos/led2` | Estado / Activación de indicador LED 2 |
 | **Recibe (Suscribe)** | `test/datos/ventilador1` | Estado de activación del ventilador 1 |
