@@ -270,7 +270,11 @@ namespace mqtt_serial
 
         private void pantalla_principal_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            if (ventanaConexion != null && !ventanaConexion.IsDisposed)
+            {
+                this.ventanaConexion.desconectar();
+            }
+            
             CerrarForm<conexion>();
             CerrarForm<adquirir_Q1>();
             CerrarForm<Adquirir_Q2>();
@@ -283,9 +287,11 @@ namespace mqtt_serial
 
         private void buttonEstadoConexion_Click(object sender, EventArgs e)
         {
+            this.ventanaConexion.desconectar();
             VariablesControl.EstadoDeConexion = false;
             buttonEstadoConexion.Visible = false;
         }
     }
 }
 
+   

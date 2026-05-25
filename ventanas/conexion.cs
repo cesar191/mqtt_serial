@@ -243,10 +243,8 @@ namespace mqtt_serial.ventanas
         }
         private void conexionMqtt(){
             
-           
-            
             if (mqttClient.IsConnected && buttonConectar.Text == "Conectar")
-            {   //imporante tener en cuenta el timer por que es lo que puede causar problemas mas adelante
+            {   //importante tener en cuenta el timer por que es lo que puede causar problemas mas adelante
                 timer1.Enabled = true;
                 VariablesControl.EstadoDeConexion = true;
                 //
@@ -276,20 +274,10 @@ namespace mqtt_serial.ventanas
                 {   //
                     timer1.Enabled = false;
                     //
-                    mqttClient.Publish(topicEnviar[0], Encoding.UTF8.GetBytes("0"));
-                    mqttClient.Publish(topicEnviar[1], Encoding.UTF8.GetBytes("0"));
-                    mqttClient.Publish(topicEnviar[2], Encoding.UTF8.GetBytes("off"));
-                    mqttClient.Publish(topicEnviar[3], Encoding.UTF8.GetBytes("off"));
-                    mqttClient.Publish(topicEnviar[4], Encoding.UTF8.GetBytes("off"));
-                    mqttClient.Publish(topicEnviar[5], Encoding.UTF8.GetBytes("off"));
-                    //
-                    //VariablesControl.Temperatura1 = "desconectado";
-                    mqttClient.Disconnect();
-                    mqttClient = null;
+                    desconectar();
+                    
                 }
-                comboBoxTipoConexion.Enabled = true;
-                buttonConectar.Text = "Conectar";
-                buttonConectar.BackColor = Color.FromArgb(44, 169, 94);                
+                            
             }
         }
         
@@ -319,15 +307,12 @@ namespace mqtt_serial.ventanas
             else
             {
                 if (serialPort1.IsOpen)
-                {   //
-                    timer1.Enabled = false;
+                { 
                     //
-                    serialPort1.Close();
+                    desconectar();
+
                     buttonConectar.Text = "Conectar";
                 }
-               
-                comboBoxTipoConexion.Enabled = true;
-                buttonConectar.BackColor = Color.FromArgb(44, 169, 94);
 
             }
 
@@ -336,20 +321,10 @@ namespace mqtt_serial.ventanas
 
         private void conexion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            timer1.Enabled = false;
 
             try
             {
-                if (mqttClient != null)
-                {
-                    if (mqttClient.IsConnected) {
-                        mqttClient.Disconnect();
-                    }
-                }
-                else if(serialPort1.IsOpen)
-                {
-                    serialPort1.Close();
-                }
+                desconectar();
             }
             catch (Exception error)
             {
@@ -362,6 +337,47 @@ namespace mqtt_serial.ventanas
         {
             visibleoption();
             comboBoxTipoConexion.SelectedIndex = 0;
+        }
+        public void desconectar()
+        {
+            try
+            {
+                timer1.Enabled = false;
+               
+                if (mqttClient != null)
+                {
+                    if (mqttClient.IsConnected)
+                    {
+                        VariablesControl.reseteoParametros();
+                        
+                        mqttClient.Publish(topicEnviar[0], Encoding.UTF8.GetBytes(VariablesControl.Pwm1));
+                        mqttClient.Publish(topicEnviar[1], Encoding.UTF8.GetBytes(VariablesControl.Pwm2));
+                        mqttClient.Publish(topicEnviar[2], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed1));
+                        mqttClient.Publish(topicEnviar[3], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed2));
+                        mqttClient.Publish(topicEnviar[4], Encoding.UTF8.GetBytes(VariablesControl.Ventilador1));
+                        mqttClient.Publish(topicEnviar[5], Encoding.UTF8.GetBytes(VariablesControl.Ventilador2));
+                        System.Threading.Thread.Sleep(2000);
+                        mqttClient.Disconnect();
+                        mqttClient = null;
+                        VariablesControl.EstadoDeConexion = false;
+                        comboBoxTipoConexion.Enabled = true;
+                        buttonConectar.Text = "Conectar";
+                        buttonConectar.BackColor = Color.FromArgb(44, 169, 94);
+                    }
+                }
+                else if (serialPort1.IsOpen)
+                {
+                    serialPort1.Close();
+                    VariablesControl.EstadoDeConexion = false;
+                    comboBoxTipoConexion.Enabled = true;
+                    buttonConectar.Text = "Conectar";
+                    buttonConectar.BackColor = Color.FromArgb(44, 169, 94);
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
