@@ -139,6 +139,13 @@ namespace mqtt_serial.ventanas
                 VariablesControl.listaPWM2.Add(pwm);
                 VariablesControl.listaTiempo.Add(tiempo);
                 //
+
+                int axisGraficaX = 600;
+                if (tiempo - VariablesControl.listaTiempo[0] > axisGraficaX)
+                {
+                    this.chargraficaQ2.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
+                    this.chargraficaQ2.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
+                }
                 //this.chargraficaQ2.Series[2].Name = "pwm";
                 //this.chargraficaQ1.ChartAreas[1].AxisY.Maximum = corriente1 + 0.5;
                 //this.chargraficaQ1.ChartAreas[1].AxisY.Minimum = corriente1 - 0.5;

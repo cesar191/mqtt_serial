@@ -171,7 +171,12 @@ namespace mqtt_serial.ventanas
                     VariablesControl.listaSetPoint1.Add(setPoint);
 
                     //this.chargraficaQ1.ChartAreas[2].AxisY.Minimum = VariablesControl.listaTemperatura1.Min()-10;
-
+                    int axisGraficaX = 600;
+                    if (tiempo - VariablesControl.listaTiempo[0] > axisGraficaX)
+                    {
+                        this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
+                        this.chargraficaQ1.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
+                    }
 
                     //
 

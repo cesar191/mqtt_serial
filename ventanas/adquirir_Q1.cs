@@ -145,6 +145,14 @@ namespace mqtt_serial.ventanas
                     VariablesControl.listaCorriente1.Add(corriente1);
                     VariablesControl.listaPWM1.Add(pwm);
                     VariablesControl.listaTiempo.Add(tiempo);
+
+                    int axisGraficaX = 600;
+                    if (tiempo - VariablesControl.listaTiempo[0] > axisGraficaX)
+                    {
+                        this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
+                        this.chargraficaQ1.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
+                    }
+
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[0].Points.AddXY(tiempo, temperatura1)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[1].Points.AddXY(tiempo, corriente1)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[2].Points.AddXY(tiempo, pwm)));

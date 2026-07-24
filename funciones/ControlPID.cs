@@ -69,7 +69,7 @@ namespace mqtt_serial.funciones
         {
           
             double q0 = (kp +ki*ts+ (kd / ts));
-            double q1 = (-kp - (2 * (kd / ts)));
+            double q1 = (-kp - (2 * (kd / ts)));    
             double q2 = (kd / ts);
             //actualizar
             pwmArray[1] = pwmArray[0];

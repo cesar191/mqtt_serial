@@ -289,7 +289,7 @@
             this.chargraficaQ1.Size = new System.Drawing.Size(420, 606);
             this.chargraficaQ1.TabIndex = 1;
             this.chargraficaQ1.Text = "chart1";
-            //
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1030,7 +1030,7 @@
             this.buttonExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(254)));
             this.buttonExportarExcel.ForeColor = System.Drawing.Color.White;
-            this.buttonExportarExcel.Location = new System.Drawing.Point(-2, 357);
+            this.buttonExportarExcel.Location = new System.Drawing.Point(48, 359);
             this.buttonExportarExcel.Name = "buttonExportarExcel";
             this.buttonExportarExcel.Size = new System.Drawing.Size(185, 66);
             this.buttonExportarExcel.TabIndex = 21;
