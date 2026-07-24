@@ -69,3 +69,6 @@ mqtt_serial/
 │   └── control_Q1Q2.cs
 ├── Form1.cs                # Formulario contenedor principal HMI (Manejador de vistas)
 └── Program.cs              # Punto de entrada de la aplicación .NET
+```
+
+
