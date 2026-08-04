@@ -31,8 +31,6 @@ namespace mqtt_serial
             
             
         }
-
-
         //#region MoverVentana
         //[DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         //private extern static void ReleaseCapture();

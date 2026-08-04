@@ -103,10 +103,10 @@ namespace mqtt_serial.ventanas
 
         private void buttonRefrescarQ1_Click(object sender, EventArgs e)
         {
-            double.TryParse(comboBoxKpQ1.Text, out kp1);
-            double.TryParse(comboBoxKiQ1.Text, out ki1);
-            double.TryParse(comboBoxKdQ1.Text, out kd1);
-            double.TryParse(comboBoxTsQ1.Text, out ts1);
+            double.TryParse(comboBoxKpQ1.Text.Replace('.', ','), out kp1);
+            double.TryParse(comboBoxKiQ1.Text.Replace('.', ','), out ki1);
+            double.TryParse(comboBoxKdQ1.Text.Replace('.', ','), out kd1);
+            double.TryParse(comboBoxTsQ1.Text.Replace('.', ','), out ts1);
 
             for (int i = 0; i < controlPIDQ1.ErrorArray.Length; i++)
             {
@@ -130,7 +130,7 @@ namespace mqtt_serial.ventanas
             VariablesControl.listaTiempo2.Add(tiempo);
         }
         private void buttonRefrescarQ2_Click(object sender, EventArgs e)
-        {
+        {   
             double.TryParse(comboBoxKpQ2.Text, out kp2);
             double.TryParse(comboBoxKiQ2.Text, out ki2);
             double.TryParse(comboBoxKdQ2.Text, out kd2);
@@ -205,10 +205,12 @@ namespace mqtt_serial.ventanas
                 //}
                 string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");
 
-                this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1Q2_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
+                
 
                 if (VariablesControl.listaTiempo.Count > 0)
                 {
+                    this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1Q2_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
+
                     SLDocument document = new SLDocument();
                     document.SetCellValue(1, 1, "Tiempo");
                     document.SetCellValue(1, 2, "Temperatura1");
@@ -361,12 +363,12 @@ namespace mqtt_serial.ventanas
 
 
                     //this.chargraficaQ1.ChartAreas[2].AxisY.Minimum = VariablesControl.listaTemperatura1.Min()-10;
-                    int axisGraficaX = 600;
-                    if (tiempo - VariablesControl.listaTiempo[0] > axisGraficaX)
-                    {
-                        this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
-                        this.chargraficaQ1.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
-                    }
+                    //int axisGraficaX = 600;
+                    //if (tiempo - VariablesControl.listaTiempo[0] > axisGraficaX)
+                    //  {
+                    //      this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
+                    //      this.chargraficaQ1.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
+                    //  }
 
                     //
 
@@ -379,7 +381,7 @@ namespace mqtt_serial.ventanas
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[6].Points.AddXY(tiempo, pwm2)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[7].Points.AddXY(tiempo, corriente2)));
                 }
-                else
+                else if(tiempo < 10)
                 {
                     this.chargraficaQ1.Series[0].Points.Clear();
                     this.chargraficaQ1.Series[1].Points.Clear();

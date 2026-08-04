@@ -73,10 +73,10 @@ namespace mqtt_serial.ventanas
 
         {
 
-            double.TryParse(comboBoxKp.Text, out kp);
-            double.TryParse(comboBoxKi.Text, out ki);
-            double.TryParse(comboBoxKd.Text, out kd);
-            double.TryParse(comboBoxTs.Text, out ts);
+            double.TryParse(comboBoxKp.Text.Replace('.', ','), out kp);
+            double.TryParse(comboBoxKi.Text.Replace('.', ','), out ki);
+            double.TryParse(comboBoxKd.Text.Replace('.', ','), out kd);
+            double.TryParse(comboBoxTs.Text.Replace('.', ','), out ts);
 
             for (int i = 0; i < controlPID.ErrorArray.Length; i++)
             {
@@ -171,12 +171,12 @@ namespace mqtt_serial.ventanas
                     VariablesControl.listaSetPoint1.Add(setPoint);
 
                     //this.chargraficaQ1.ChartAreas[2].AxisY.Minimum = VariablesControl.listaTemperatura1.Min()-10;
-                    int axisGraficaX = 600;
-                    if (tiempo - VariablesControl.listaTiempo[0] > axisGraficaX)
-                    {
-                        this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
-                        this.chargraficaQ1.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
-                    }
+                    //int axisGraficaX = 600;
+                    //if (tiempo - VariablesControl.listaTiempo[0] > axisGraficaX)
+                    //{
+                    //    this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
+                    //    this.chargraficaQ1.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
+                    //}
 
                     //
 
@@ -185,7 +185,7 @@ namespace mqtt_serial.ventanas
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[1].Points.AddXY(tiempo, corriente1)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[3].Points.AddXY(tiempo, setPoint)));
                 }
-                else
+                else if (tiempo < 10)
                 {
                     this.chargraficaQ1.Series[0].Points.Clear();
                     this.chargraficaQ1.Series[1].Points.Clear();
@@ -256,10 +256,11 @@ namespace mqtt_serial.ventanas
                 //}
                 string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");
 
-                this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
+                
 
                 if (VariablesControl.listaTiempo.Count > 0)
                 {
+                    this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
                     SLDocument document = new SLDocument();
                     
                     //lista de titulos del excel
