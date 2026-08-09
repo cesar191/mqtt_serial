@@ -131,10 +131,10 @@ namespace mqtt_serial.ventanas
         }
         private void buttonRefrescarQ2_Click(object sender, EventArgs e)
         {   
-            double.TryParse(comboBoxKpQ2.Text, out kp2);
-            double.TryParse(comboBoxKiQ2.Text, out ki2);
-            double.TryParse(comboBoxKdQ2.Text, out kd2);
-            double.TryParse(comboBoxTsQ2.Text, out ts2);
+            double.TryParse(comboBoxKpQ2.Text.Replace('.', ','), out kp2);
+            double.TryParse(comboBoxKiQ2.Text.Replace('.', ','), out ki2);
+            double.TryParse(comboBoxKdQ2.Text.Replace('.', ','), out kd2);
+            double.TryParse(comboBoxTsQ2.Text.Replace('.', ','), out ts2);
 
             for (int i = 0; i < controlPIDQ2.ErrorArray.Length; i++)
             {
