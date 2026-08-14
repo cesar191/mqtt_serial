@@ -36,6 +36,7 @@ namespace mqtt_serial.ventanas
         private double corriente1;
         private double tiempo;
         private double pwm;
+        
 
         private string pathSave = VariablesControl.pathSave + @"ControlQ1\";
 
@@ -44,21 +45,26 @@ namespace mqtt_serial.ventanas
 
         private void SystemControl(double errorDouble, double kp, double ki, double kd, double ts)
         {
+            ts = (ts != 0) ? (ts) : (0.1);
             if (kp != 0 && ki == 0 && kd == 0)
             {
                 this.controlPID.SystemControlP(errorDouble, kp);
+                
             }
             else if (kp != 0 && ki != 0 && kd == 0)
             {
+                
                 this.controlPID.SystemControlPI(errorDouble, kp, ki, ts);
+                
             }
             else if (kp != 0 && ki != 0 && kd != 0)
             {
                 this.controlPID.SystemControlPID(errorDouble, kp, ki, kd, ts);
+                
             }
             else
             {
-
+                
             }
 
             VariablesControl.Pwm1 = controlPID.PWM.ToString();
