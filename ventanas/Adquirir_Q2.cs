@@ -75,11 +75,12 @@ namespace mqtt_serial.ventanas
         {
             try
             {
+                this.comboBoxPWM.SelectionStart = comboBoxPWM.Text.Length;
 
-
-                if (comboBoxPWM.Text == null)
+                if (comboBoxPWM.Text == null || comboBoxPWM.Text == "")
                 {
                     this.trackBarPWM.Value = 0;
+                    comboBoxPWM.Text = "0";
                 }
                 else if (int.Parse(comboBoxPWM.Text.Replace('.', ',')) >= 100)
                 {
@@ -95,6 +96,11 @@ namespace mqtt_serial.ventanas
                 {
 
                     this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace('.', ','));
+                    if (this.comboBoxPWM.Text[0] == '0')
+                    {
+                        this.comboBoxPWM.Text = this.comboBoxPWM.Text.Substring(1);
+
+                    }
                 }
             }
             catch (Exception error)

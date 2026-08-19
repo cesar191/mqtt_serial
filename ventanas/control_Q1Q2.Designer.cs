@@ -1030,7 +1030,7 @@
             this.buttonExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(254)));
             this.buttonExportarExcel.ForeColor = System.Drawing.Color.White;
-            this.buttonExportarExcel.Location = new System.Drawing.Point(48, 359);
+            this.buttonExportarExcel.Location = new System.Drawing.Point(3, 359);
             this.buttonExportarExcel.Name = "buttonExportarExcel";
             this.buttonExportarExcel.Size = new System.Drawing.Size(185, 66);
             this.buttonExportarExcel.TabIndex = 21;
