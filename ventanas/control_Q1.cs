@@ -94,10 +94,10 @@ namespace mqtt_serial.ventanas
             }
 
             VariablesControl.listaTiempo2.Add(tiempo);
-            VariablesControl.listaKp1.Add(kp);
-            VariablesControl.listaKi1.Add(ki);
-            VariablesControl.listaKd1.Add(kd);
-            VariablesControl.listaTs1.Add(ts);
+            VariablesControl.listaKp.Add(kp);
+            VariablesControl.listaKi.Add(ki);
+            VariablesControl.listaKd.Add(kd);
+            VariablesControl.listaTs.Add(ts);
 
         }
 
@@ -292,10 +292,10 @@ namespace mqtt_serial.ventanas
                     }
                     for(int i = 0; i < VariablesControl.listaTiempo2.Count; i++)
                     {
-                        document.SetCellValue(i + 2, 7, VariablesControl.listaKp1[i]);
-                        document.SetCellValue(i + 2, 8, VariablesControl.listaKi1[i]);
-                        document.SetCellValue(i + 2, 9, VariablesControl.listaKd1[i]);
-                        document.SetCellValue(i + 2, 10, VariablesControl.listaTs1[i]);
+                        document.SetCellValue(i + 2, 7, VariablesControl.listaKp[i]);
+                        document.SetCellValue(i + 2, 8, VariablesControl.listaKi[i]);
+                        document.SetCellValue(i + 2, 9, VariablesControl.listaKd[i]);
+                        document.SetCellValue(i + 2, 10, VariablesControl.listaTs[i]);
                         document.SetCellValue(i + 2, 11, VariablesControl.listaTiempo2[i]);
 
                     }
@@ -320,6 +320,9 @@ namespace mqtt_serial.ventanas
             checkBoxCurrent.Checked = graficarCorrienteToolStripMenuItem.Checked;
         }
 
-        
+        private void chargraficaQ1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

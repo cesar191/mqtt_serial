@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -24,7 +25,67 @@ namespace mqtt_serial.ventanas
         private double pwm1, pwm2, setPoint1 = 0, setPoint2 = 0, errorDouble1 = 0, errorDouble2 = 0;
         private double kp1 = 0, kp2 = 0, ki1 = 0, ki2 = 0, kd1 = 0, kd2 = 0, ts1 = 0, ts2 = 0;
 
-        
+        private void buttoActualizarQ2_Click(object sender, EventArgs e)
+        {
+            controlActulizar.Titulo = "Parametros Control Q2";
+            controlActulizar.ShowDialog();
+
+            kp2 = controlActulizar.Kp;
+            ki2 = controlActulizar.Ki;
+            kd2 = controlActulizar.Kd;
+            ts2 = controlActulizar.Ts;
+
+            labelControlQ2.Text = $@"KP= {kp2}{Environment.NewLine}Ki= {ki2}{Environment.NewLine}Kd= {kd2}{Environment.NewLine}T= {ts2}";
+            for (int i = 0; i < controlPIDQ2.ErrorArray.Length; i++)
+            {
+                controlPIDQ2.ErrorArray[i] = 0;
+            }
+            for (int i = 0; i < controlPIDQ2.PwmArray.Length; i++)
+            {
+                controlPIDQ2.PwmArray[i] = 0;
+            }
+
+            //para exportar al exce
+            VariablesControl.listaKp.Add(kp2);
+            VariablesControl.listaKi.Add(ki2);
+            VariablesControl.listaKd.Add(kd2);
+            VariablesControl.listaTs.Add(ts2);
+            VariablesControl.listaTiempo2.Add(tiempo);
+            VariablesControl.PlantaControl.Add("Q2");
+
+        }
+
+        private void buttonActulizarQ1_Click(object sender, EventArgs e)
+        {
+            controlActulizar.Titulo = "Parametros Control Q1";
+            controlActulizar.ShowDialog();
+            
+            kp1 = controlActulizar.Kp;
+            ki1 = controlActulizar.Ki;
+            kd1 = controlActulizar.Kd;
+            ts1 = controlActulizar.Ts;
+
+            labelControlQ1.Text =$@"KP= {kp1}{Environment.NewLine}Ki= {ki1}{Environment.NewLine}Kd= {kd1}{Environment.NewLine}T= {ts1}";
+
+            for (int i = 0; i < controlPIDQ1.ErrorArray.Length; i++)
+            {
+                controlPIDQ1.ErrorArray[i] = 0;
+            }
+            for (int i = 0; i < controlPIDQ1.PwmArray.Length; i++)
+            {
+                controlPIDQ1.PwmArray[i] = 0;
+            }
+
+            //para exportar al excel
+            VariablesControl.listaKp.Add(kp1);
+            VariablesControl.listaKi.Add(ki1);
+            VariablesControl.listaKd.Add(kd1);
+            VariablesControl.listaTs.Add(ts1);
+            VariablesControl.listaTiempo2.Add(tiempo);
+            VariablesControl.PlantaControl.Add("Q1");
+        }
+
+        ControlActual controlActulizar = new ControlActual();
 
         private ControlPID controlPIDQ1 = new ControlPID();
         private ControlPID controlPIDQ2 = new ControlPID();
@@ -37,6 +98,7 @@ namespace mqtt_serial.ventanas
             if (kp != 0 && ki == 0 && kd == 0)
             {
                 control.SystemControlP(errorDouble, kp);
+                
             }
             else if (kp != 0 && ki != 0 && kd == 0)
             {
@@ -101,79 +163,9 @@ namespace mqtt_serial.ventanas
             }
         }
 
-        private void buttonRefrescarQ1_Click(object sender, EventArgs e)
-        {
-            double.TryParse(comboBoxKpQ1.Text.Replace('.', ','), out kp1);
-            double.TryParse(comboBoxKiQ1.Text.Replace('.', ','), out ki1);
-            double.TryParse(comboBoxKdQ1.Text.Replace('.', ','), out kd1);
-            double.TryParse(comboBoxTsQ1.Text.Replace('.', ','), out ts1);
-
-            for (int i = 0; i < controlPIDQ1.ErrorArray.Length; i++)
-            {
-                controlPIDQ1.ErrorArray[i] = 0;
-            }
-            for (int i = 0; i < controlPIDQ1.PwmArray.Length; i++)
-            {
-                controlPIDQ1.PwmArray[i] = 0;
-            }
-
-            //para exportar al excel
-            VariablesControl.listaKp1.Add(kp1);
-            VariablesControl.listaKp2.Add(kp2);
-            VariablesControl.listaKi1.Add(ki1);
-            VariablesControl.listaKi2.Add(ki2);
-            VariablesControl.listaKd1.Add(kd1);
-            VariablesControl.listaKd2.Add(kd2);
-            VariablesControl.listaTs1.Add(ts1);
-            VariablesControl.listaTs2.Add(ts2);
-
-            VariablesControl.listaTiempo2.Add(tiempo);
-        }
-        private void buttonRefrescarQ2_Click(object sender, EventArgs e)
-        {   
-            double.TryParse(comboBoxKpQ2.Text.Replace('.', ','), out kp2);
-            double.TryParse(comboBoxKiQ2.Text.Replace('.', ','), out ki2);
-            double.TryParse(comboBoxKdQ2.Text.Replace('.', ','), out kd2);
-            double.TryParse(comboBoxTsQ2.Text.Replace('.', ','), out ts2);
-
-            for (int i = 0; i < controlPIDQ2.ErrorArray.Length; i++)
-            {
-                controlPIDQ2.ErrorArray[i] = 0;
-            }
-            for (int i = 0; i < controlPIDQ2.PwmArray.Length; i++)
-            {
-                controlPIDQ2.PwmArray[i] = 0;
-            }
-
-            //para exportar al excel
-            VariablesControl.listaKp1.Add(kp1);
-            VariablesControl.listaKp2.Add(kp2);
-            VariablesControl.listaKi1.Add(ki1);
-            VariablesControl.listaKi2.Add(ki2);
-            VariablesControl.listaKd1.Add(kd1);
-            VariablesControl.listaKd2.Add(kd2);
-            VariablesControl.listaTs1.Add(ts1);
-            VariablesControl.listaTs2.Add(ts2);
-
-            VariablesControl.listaTiempo2.Add(tiempo);
-
-        }
-
         private void control_Q1Q2_Load(object sender, EventArgs e)
         {
             comboBoxSetPointQ1.Text = "0";
-
-            comboBoxKpQ1.Text = "0";
-            comboBoxKiQ1.Text = "0";
-            comboBoxKdQ1.Text = "0";
-            comboBoxTsQ1.Text = "0";
-
-            comboBoxSetPointQ2.Text = "0";
-
-            comboBoxKpQ2.Text = "0";
-            comboBoxKiQ2.Text = "0";
-            comboBoxKdQ2.Text = "0";
-            comboBoxTsQ2.Text = "0";
 
             VariablesControl.limpiarLista();
             VariablesControl.reseteoParametros();
@@ -223,16 +215,12 @@ namespace mqtt_serial.ventanas
                     document.SetCellValue(1, 8, "PWM1");
                     document.SetCellValue(1, 9, "SetPoint2");
 
-                    document.SetCellValue(1, 12, "Kp1");
-                    document.SetCellValue(1, 13, "Ki1");
-                    document.SetCellValue(1, 14, "Kd1");
-                    document.SetCellValue(1, 15, "Ts1");
+                    document.SetCellValue(1, 12, "Kp");
+                    document.SetCellValue(1, 13, "Ki");
+                    document.SetCellValue(1, 14, "Kd");
+                    document.SetCellValue(1, 15, "Ts");
                     document.SetCellValue(1, 16, "Cambio (s)");
-
-                    document.SetCellValue(1, 17, "Kp2");
-                    document.SetCellValue(1, 18, "Ki2");
-                    document.SetCellValue(1, 19, "Kd2");
-                    document.SetCellValue(1, 20, "Ts2");
+                    document.SetCellValue(1, 17, "Planta");
                     
 
                     for (int i = 0; i < VariablesControl.listaTiempo.Count; i++)
@@ -251,18 +239,16 @@ namespace mqtt_serial.ventanas
 
                     for (int i=0; i<VariablesControl.listaTiempo2.Count;i++)
                     {
-                        document.SetCellValue(i + 2, 12, VariablesControl.listaKp1[i]);
-                        document.SetCellValue(i + 2, 13, VariablesControl.listaKi1[i]);
-                        document.SetCellValue(i + 2, 14, VariablesControl.listaKd1[i]);
-                        document.SetCellValue(i + 2, 15, VariablesControl.listaTs1[i]);
+                        document.SetCellValue(i + 2, 12, VariablesControl.listaKp[i]);
+                        document.SetCellValue(i + 2, 13, VariablesControl.listaKi[i]);
+                        document.SetCellValue(i + 2, 14, VariablesControl.listaKd[i]);
+                        document.SetCellValue(i + 2, 15, VariablesControl.listaTs[i]);
                         document.SetCellValue(i + 2, 16, VariablesControl.listaTiempo2[i]);
-                        document.SetCellValue(i + 2, 17, VariablesControl.listaKp2[i]);
-                        document.SetCellValue(i + 2, 18, VariablesControl.listaKi2[i]);
-                        document.SetCellValue(i + 2, 19, VariablesControl.listaKd2[i]);
-                        document.SetCellValue(i + 2, 20, VariablesControl.listaTs2[i]);
+                        document.SetCellValue(i + 2, 17, VariablesControl.PlantaControl[i]);
+                        
                     }
                     SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_ControlQ1Q2_{fecha}.png");
-                    imagenGrafica.SetPosition(1,22);
+                    imagenGrafica.SetPosition(1,19);
                     document.InsertPicture(imagenGrafica);
                     document.SaveAs($@"{pathSave}DatosGrafica_ControlQ1Q2_{fecha}.xlsx");
                 }

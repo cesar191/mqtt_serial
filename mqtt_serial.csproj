@@ -26,7 +26,7 @@
     <TargetCulture>es-CO</TargetCulture>
     <ProductName>UscoControl</ProductName>
     <PublisherName>Cesar Muñoz Usco</PublisherName>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -67,9 +67,7 @@
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationIcon>Gemini_Generated_Image_11vvqd11vvqd11vv.ico</ApplicationIcon>
   </PropertyGroup>
@@ -138,6 +136,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ventanas\ControlActual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ventanas\ControlActual.Designer.cs">
+      <DependentUpon>ControlActual.cs</DependentUpon>
+    </Compile>
     <Compile Include="funciones\ControlPID.cs" />
     <Compile Include="funciones\VariablesControl.cs" />
     <Compile Include="Program.cs" />
@@ -172,6 +176,9 @@
     <Compile Include="ventanas\control_Q1Q2.Designer.cs">
       <DependentUpon>control_Q1Q2.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ventanas\ControlActual.resx">
+      <DependentUpon>ControlActual.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

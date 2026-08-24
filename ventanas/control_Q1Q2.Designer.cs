@@ -46,34 +46,19 @@
             this.graficarCorrienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chargraficaQ1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.buttonRefrescarQ2 = new System.Windows.Forms.Button();
-            this.comboBoxTsQ2 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBoxKdQ2 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboBoxKiQ2 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.comboBoxKpQ2 = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.labelControlQ2 = new System.Windows.Forms.Label();
+            this.buttoActualizarQ2 = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.comboBoxSetPointQ2 = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.buttonRefrescarQ1 = new System.Windows.Forms.Button();
-            this.comboBoxTsQ1 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxKdQ1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxKiQ1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxKpQ1 = new System.Windows.Forms.ComboBox();
-            this.comboBoxSetPointQ1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.labelControlQ1 = new System.Windows.Forms.Label();
+            this.buttonActulizarQ1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.comboBoxSetPointQ1 = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pictureBoxVentiladorQ2 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -95,14 +80,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxTemperaturaQ1 = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.contextMenuStripGrafica.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chargraficaQ1)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVentiladorQ2)).BeginInit();
@@ -112,6 +97,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVentiladorQ1)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -290,248 +276,76 @@
             this.chargraficaQ1.TabIndex = 1;
             this.chargraficaQ1.Text = "chart1";
             // 
-            // panel1
+            // tableLayoutPanel2
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.groupBox4);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(0, -5);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(272, 600);
-            this.panel1.TabIndex = 4;
+            this.tableLayoutPanel2.AutoScroll = true;
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.groupBox8, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox7, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, -1);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(272, 600);
+            this.tableLayoutPanel2.TabIndex = 2;
             // 
-            // groupBox4
+            // groupBox8
             // 
-            this.groupBox4.Controls.Add(this.groupBox5);
-            this.groupBox4.Controls.Add(this.comboBoxSetPointQ2);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(254)));
-            this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(3, 470);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(247, 435);
-            this.groupBox4.TabIndex = 22;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Control Q2";
+            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox8.Controls.Add(this.labelControlQ2);
+            this.groupBox8.Controls.Add(this.buttoActualizarQ2);
+            this.groupBox8.Controls.Add(this.panel8);
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.groupBox8.ForeColor = System.Drawing.Color.White;
+            this.groupBox8.Location = new System.Drawing.Point(8, 303);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(256, 289);
+            this.groupBox8.TabIndex = 28;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Control Q1";
             // 
-            // groupBox5
+            // labelControlQ2
             // 
-            this.groupBox5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.buttonRefrescarQ2);
-            this.groupBox5.Controls.Add(this.comboBoxTsQ2);
-            this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Controls.Add(this.comboBoxKdQ2);
-            this.groupBox5.Controls.Add(this.label10);
-            this.groupBox5.Controls.Add(this.comboBoxKiQ2);
-            this.groupBox5.Controls.Add(this.label11);
-            this.groupBox5.Controls.Add(this.comboBoxKpQ2);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(254)));
-            this.groupBox5.ForeColor = System.Drawing.Color.White;
-            this.groupBox5.Location = new System.Drawing.Point(9, 82);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(224, 289);
-            this.groupBox5.TabIndex = 21;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Parametros de Control";
+            this.labelControlQ2.AutoSize = true;
+            this.labelControlQ2.Location = new System.Drawing.Point(25, 166);
+            this.labelControlQ2.Name = "labelControlQ2";
+            this.labelControlQ2.Size = new System.Drawing.Size(65, 100);
+            this.labelControlQ2.TabIndex = 29;
+            this.labelControlQ2.Text = "Kp=0 \r\nKi=0 \r\nKd=0 \r\nT=0\r\n";
             // 
-            // label4
+            // buttoActualizarQ2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(27, 181);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 25);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "TS";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttoActualizarQ2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttoActualizarQ2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
+            this.buttoActualizarQ2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttoActualizarQ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.buttoActualizarQ2.ForeColor = System.Drawing.Color.White;
+            this.buttoActualizarQ2.Location = new System.Drawing.Point(41, 96);
+            this.buttoActualizarQ2.Name = "buttoActualizarQ2";
+            this.buttoActualizarQ2.Size = new System.Drawing.Size(164, 52);
+            this.buttoActualizarQ2.TabIndex = 27;
+            this.buttoActualizarQ2.Text = "Actualizar Q2";
+            this.buttoActualizarQ2.UseVisualStyleBackColor = false;
+            this.buttoActualizarQ2.Click += new System.EventHandler(this.buttoActualizarQ2_Click);
             // 
-            // buttonRefrescarQ2
+            // panel8
             // 
-            this.buttonRefrescarQ2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefrescarQ2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
-            this.buttonRefrescarQ2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonRefrescarQ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.buttonRefrescarQ2.ForeColor = System.Drawing.Color.White;
-            this.buttonRefrescarQ2.Location = new System.Drawing.Point(6, 224);
-            this.buttonRefrescarQ2.Name = "buttonRefrescarQ2";
-            this.buttonRefrescarQ2.Size = new System.Drawing.Size(164, 52);
-            this.buttonRefrescarQ2.TabIndex = 17;
-            this.buttonRefrescarQ2.Text = "Refrescar Q2";
-            this.buttonRefrescarQ2.UseVisualStyleBackColor = false;
-            this.buttonRefrescarQ2.Click += new System.EventHandler(this.buttonRefrescarQ2_Click);
-            // 
-            // comboBoxTsQ2
-            // 
-            this.comboBoxTsQ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxTsQ2.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxTsQ2.FormatString = "N0";
-            this.comboBoxTsQ2.FormattingEnabled = true;
-            this.comboBoxTsQ2.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxTsQ2.Location = new System.Drawing.Point(100, 173);
-            this.comboBoxTsQ2.Name = "comboBoxTsQ2";
-            this.comboBoxTsQ2.Size = new System.Drawing.Size(109, 33);
-            this.comboBoxTsQ2.TabIndex = 26;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(27, 136);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 25);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "KD";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // comboBoxKdQ2
-            // 
-            this.comboBoxKdQ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxKdQ2.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxKdQ2.FormatString = "N0";
-            this.comboBoxKdQ2.FormattingEnabled = true;
-            this.comboBoxKdQ2.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxKdQ2.Location = new System.Drawing.Point(100, 128);
-            this.comboBoxKdQ2.Name = "comboBoxKdQ2";
-            this.comboBoxKdQ2.Size = new System.Drawing.Size(109, 33);
-            this.comboBoxKdQ2.TabIndex = 24;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(27, 91);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 25);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "KI";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // comboBoxKiQ2
-            // 
-            this.comboBoxKiQ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxKiQ2.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxKiQ2.FormatString = "N0";
-            this.comboBoxKiQ2.FormattingEnabled = true;
-            this.comboBoxKiQ2.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxKiQ2.Location = new System.Drawing.Point(100, 83);
-            this.comboBoxKiQ2.Name = "comboBoxKiQ2";
-            this.comboBoxKiQ2.Size = new System.Drawing.Size(110, 33);
-            this.comboBoxKiQ2.TabIndex = 22;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(27, 46);
-            this.label11.Margin = new System.Windows.Forms.Padding(0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 25);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "KP";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // comboBoxKpQ2
-            // 
-            this.comboBoxKpQ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxKpQ2.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxKpQ2.FormatString = "N0";
-            this.comboBoxKpQ2.FormattingEnabled = true;
-            this.comboBoxKpQ2.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxKpQ2.Location = new System.Drawing.Point(100, 38);
-            this.comboBoxKpQ2.Name = "comboBoxKpQ2";
-            this.comboBoxKpQ2.Size = new System.Drawing.Size(110, 33);
-            this.comboBoxKpQ2.TabIndex = 20;
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.Controls.Add(this.comboBoxSetPointQ2);
+            this.panel8.Controls.Add(this.label16);
+            this.panel8.Location = new System.Drawing.Point(6, 28);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(244, 46);
+            this.panel8.TabIndex = 0;
             // 
             // comboBoxSetPointQ2
             // 
@@ -562,254 +376,75 @@
             "90",
             "95",
             "100"});
-            this.comboBoxSetPointQ2.Location = new System.Drawing.Point(117, 36);
+            this.comboBoxSetPointQ2.Location = new System.Drawing.Point(131, 8);
             this.comboBoxSetPointQ2.Name = "comboBoxSetPointQ2";
             this.comboBoxSetPointQ2.Size = new System.Drawing.Size(110, 33);
-            this.comboBoxSetPointQ2.TabIndex = 20;
+            this.comboBoxSetPointQ2.TabIndex = 21;
             // 
-            // label12
+            // label16
             // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(18, 36);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(86, 25);
-            this.label12.TabIndex = 19;
-            this.label12.Text = "SetPoint";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(19, 11);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(86, 25);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "SetPoint";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // groupBox1
+            // groupBox7
             // 
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.comboBoxSetPointQ1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(254)));
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(0, 17);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(247, 435);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Control Q1";
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.labelControlQ1);
+            this.groupBox7.Controls.Add(this.buttonActulizarQ1);
+            this.groupBox7.Controls.Add(this.panel3);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.groupBox7.ForeColor = System.Drawing.Color.White;
+            this.groupBox7.Location = new System.Drawing.Point(8, 8);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(256, 289);
+            this.groupBox7.TabIndex = 0;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Control Q1";
             // 
-            // groupBox3
+            // labelControlQ1
             // 
-            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.buttonRefrescarQ1);
-            this.groupBox3.Controls.Add(this.comboBoxTsQ1);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.comboBoxKdQ1);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.comboBoxKiQ1);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.comboBoxKpQ1);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(254)));
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(6, 108);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(224, 289);
-            this.groupBox3.TabIndex = 21;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Parametros de Control";
+            this.labelControlQ1.AutoSize = true;
+            this.labelControlQ1.Location = new System.Drawing.Point(25, 159);
+            this.labelControlQ1.Name = "labelControlQ1";
+            this.labelControlQ1.Size = new System.Drawing.Size(65, 100);
+            this.labelControlQ1.TabIndex = 28;
+            this.labelControlQ1.Text = "Kp=0 \r\nKi=0 \r\nKd=0 \r\nT=0";
             // 
-            // label9
+            // buttonActulizarQ1
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(27, 181);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 25);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "TS";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonActulizarQ1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonActulizarQ1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
+            this.buttonActulizarQ1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonActulizarQ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.buttonActulizarQ1.ForeColor = System.Drawing.Color.White;
+            this.buttonActulizarQ1.Location = new System.Drawing.Point(41, 96);
+            this.buttonActulizarQ1.Name = "buttonActulizarQ1";
+            this.buttonActulizarQ1.Size = new System.Drawing.Size(164, 52);
+            this.buttonActulizarQ1.TabIndex = 27;
+            this.buttonActulizarQ1.Text = "Actualizar Q1";
+            this.buttonActulizarQ1.UseVisualStyleBackColor = false;
+            this.buttonActulizarQ1.Click += new System.EventHandler(this.buttonActulizarQ1_Click);
             // 
-            // buttonRefrescarQ1
+            // panel3
             // 
-            this.buttonRefrescarQ1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefrescarQ1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
-            this.buttonRefrescarQ1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonRefrescarQ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.buttonRefrescarQ1.ForeColor = System.Drawing.Color.White;
-            this.buttonRefrescarQ1.Location = new System.Drawing.Point(6, 224);
-            this.buttonRefrescarQ1.Name = "buttonRefrescarQ1";
-            this.buttonRefrescarQ1.Size = new System.Drawing.Size(164, 52);
-            this.buttonRefrescarQ1.TabIndex = 17;
-            this.buttonRefrescarQ1.Text = "Refrescar Q1";
-            this.buttonRefrescarQ1.UseVisualStyleBackColor = false;
-            this.buttonRefrescarQ1.Click += new System.EventHandler(this.buttonRefrescarQ1_Click);
-            // 
-            // comboBoxTsQ1
-            // 
-            this.comboBoxTsQ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxTsQ1.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxTsQ1.FormatString = "N0";
-            this.comboBoxTsQ1.FormattingEnabled = true;
-            this.comboBoxTsQ1.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxTsQ1.Location = new System.Drawing.Point(100, 173);
-            this.comboBoxTsQ1.Name = "comboBoxTsQ1";
-            this.comboBoxTsQ1.Size = new System.Drawing.Size(109, 33);
-            this.comboBoxTsQ1.TabIndex = 26;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(27, 136);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 25);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "KD";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // comboBoxKdQ1
-            // 
-            this.comboBoxKdQ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxKdQ1.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxKdQ1.FormatString = "N0";
-            this.comboBoxKdQ1.FormattingEnabled = true;
-            this.comboBoxKdQ1.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxKdQ1.Location = new System.Drawing.Point(100, 128);
-            this.comboBoxKdQ1.Name = "comboBoxKdQ1";
-            this.comboBoxKdQ1.Size = new System.Drawing.Size(109, 33);
-            this.comboBoxKdQ1.TabIndex = 24;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(27, 91);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 25);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "KI";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // comboBoxKiQ1
-            // 
-            this.comboBoxKiQ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxKiQ1.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxKiQ1.FormatString = "N0";
-            this.comboBoxKiQ1.FormattingEnabled = true;
-            this.comboBoxKiQ1.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxKiQ1.Location = new System.Drawing.Point(100, 83);
-            this.comboBoxKiQ1.Name = "comboBoxKiQ1";
-            this.comboBoxKiQ1.Size = new System.Drawing.Size(110, 33);
-            this.comboBoxKiQ1.TabIndex = 22;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(27, 46);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 25);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "KP";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // comboBoxKpQ1
-            // 
-            this.comboBoxKpQ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxKpQ1.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxKpQ1.FormatString = "N0";
-            this.comboBoxKpQ1.FormattingEnabled = true;
-            this.comboBoxKpQ1.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxKpQ1.Location = new System.Drawing.Point(100, 38);
-            this.comboBoxKpQ1.Name = "comboBoxKpQ1";
-            this.comboBoxKpQ1.Size = new System.Drawing.Size(110, 33);
-            this.comboBoxKpQ1.TabIndex = 20;
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.comboBoxSetPointQ1);
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Location = new System.Drawing.Point(6, 28);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(244, 46);
+            this.panel3.TabIndex = 0;
             // 
             // comboBoxSetPointQ1
             // 
@@ -840,48 +475,36 @@
             "90",
             "95",
             "100"});
-            this.comboBoxSetPointQ1.Location = new System.Drawing.Point(105, 45);
+            this.comboBoxSetPointQ1.Location = new System.Drawing.Point(131, 8);
             this.comboBoxSetPointQ1.Name = "comboBoxSetPointQ1";
             this.comboBoxSetPointQ1.Size = new System.Drawing.Size(110, 33);
-            this.comboBoxSetPointQ1.TabIndex = 20;
+            this.comboBoxSetPointQ1.TabIndex = 21;
             // 
-            // label2
+            // label13
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(10, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 25);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "SetPoint";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.AutoScroll = true;
-            this.panel3.Controls.Add(this.groupBox6);
-            this.panel3.Controls.Add(this.buttonExportarExcel);
-            this.panel3.Controls.Add(this.groupBox2);
-            this.panel3.Location = new System.Drawing.Point(770, -5);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(273, 600);
-            this.panel3.TabIndex = 7;
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(19, 11);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(86, 25);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "SetPoint";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // groupBox6
             // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.groupBox6.Controls.Add(this.pictureBoxVentiladorQ2);
             this.groupBox6.Controls.Add(this.panel5);
             this.groupBox6.Controls.Add(this.buttonVentiladorQ2);
             this.groupBox6.Controls.Add(this.panel7);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(254)));
             this.groupBox6.ForeColor = System.Drawing.Color.White;
-            this.groupBox6.Location = new System.Drawing.Point(21, 447);
+            this.groupBox6.Location = new System.Drawing.Point(18, 332);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(237, 321);
+            this.groupBox6.Size = new System.Drawing.Size(237, 260);
             this.groupBox6.TabIndex = 20;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Panel de monitoreo Q2";
@@ -890,7 +513,7 @@
             // 
             this.pictureBoxVentiladorQ2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxVentiladorQ2.Image = global::mqtt_serial.Properties.Resources.ventilador_off;
-            this.pictureBoxVentiladorQ2.Location = new System.Drawing.Point(163, 265);
+            this.pictureBoxVentiladorQ2.Location = new System.Drawing.Point(163, 195);
             this.pictureBoxVentiladorQ2.Name = "pictureBoxVentiladorQ2";
             this.pictureBoxVentiladorQ2.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxVentiladorQ2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -899,10 +522,10 @@
             // 
             // panel5
             // 
-            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel5.Controls.Add(this.checkBoxCurrentQ2);
             this.panel5.Controls.Add(this.labelTemperaturaQ2);
-            this.panel5.Location = new System.Drawing.Point(22, 45);
+            this.panel5.Location = new System.Drawing.Point(21, 27);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(190, 104);
             this.panel5.TabIndex = 13;
@@ -947,7 +570,7 @@
             this.buttonVentiladorQ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonVentiladorQ2.ForeColor = System.Drawing.Color.White;
             this.buttonVentiladorQ2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonVentiladorQ2.Location = new System.Drawing.Point(22, 263);
+            this.buttonVentiladorQ2.Location = new System.Drawing.Point(14, 193);
             this.buttonVentiladorQ2.Name = "buttonVentiladorQ2";
             this.buttonVentiladorQ2.Size = new System.Drawing.Size(130, 52);
             this.buttonVentiladorQ2.TabIndex = 14;
@@ -961,7 +584,7 @@
             this.panel7.Controls.Add(this.label14);
             this.panel7.Controls.Add(this.label15);
             this.panel7.Controls.Add(this.comboBoxTemperaturaQ2);
-            this.panel7.Location = new System.Drawing.Point(14, 169);
+            this.panel7.Location = new System.Drawing.Point(14, 137);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(200, 45);
             this.panel7.TabIndex = 13;
@@ -1024,15 +647,15 @@
             // 
             // buttonExportarExcel
             // 
-            this.buttonExportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExportarExcel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonExportarExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(33)))), ((int)(((byte)(171)))));
             this.buttonExportarExcel.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.buttonExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(254)));
             this.buttonExportarExcel.ForeColor = System.Drawing.Color.White;
-            this.buttonExportarExcel.Location = new System.Drawing.Point(3, 359);
+            this.buttonExportarExcel.Location = new System.Drawing.Point(44, 273);
             this.buttonExportarExcel.Name = "buttonExportarExcel";
-            this.buttonExportarExcel.Size = new System.Drawing.Size(185, 66);
+            this.buttonExportarExcel.Size = new System.Drawing.Size(185, 53);
             this.buttonExportarExcel.TabIndex = 21;
             this.buttonExportarExcel.Text = "Exportar Excel";
             this.buttonExportarExcel.UseVisualStyleBackColor = false;
@@ -1040,15 +663,16 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.groupBox2.Controls.Add(this.pictureBoxVentiladorQ1);
             this.groupBox2.Controls.Add(this.panel6);
             this.groupBox2.Controls.Add(this.buttonVentiladorQ1);
             this.groupBox2.Controls.Add(this.panel4);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(254)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(21, 17);
+            this.groupBox2.Location = new System.Drawing.Point(18, 8);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(237, 321);
+            this.groupBox2.Size = new System.Drawing.Size(237, 259);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Panel de monitoreo Q1";
@@ -1057,7 +681,7 @@
             // 
             this.pictureBoxVentiladorQ1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxVentiladorQ1.Image = global::mqtt_serial.Properties.Resources.ventilador_off;
-            this.pictureBoxVentiladorQ1.Location = new System.Drawing.Point(163, 265);
+            this.pictureBoxVentiladorQ1.Location = new System.Drawing.Point(161, 180);
             this.pictureBoxVentiladorQ1.Name = "pictureBoxVentiladorQ1";
             this.pictureBoxVentiladorQ1.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxVentiladorQ1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1066,10 +690,10 @@
             // 
             // panel6
             // 
-            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel6.Controls.Add(this.checkBoxCurrentQ1);
             this.panel6.Controls.Add(this.labelTemperatureQ1);
-            this.panel6.Location = new System.Drawing.Point(22, 45);
+            this.panel6.Location = new System.Drawing.Point(23, 28);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(190, 104);
             this.panel6.TabIndex = 13;
@@ -1114,7 +738,7 @@
             this.buttonVentiladorQ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonVentiladorQ1.ForeColor = System.Drawing.Color.White;
             this.buttonVentiladorQ1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonVentiladorQ1.Location = new System.Drawing.Point(22, 263);
+            this.buttonVentiladorQ1.Location = new System.Drawing.Point(14, 180);
             this.buttonVentiladorQ1.Name = "buttonVentiladorQ1";
             this.buttonVentiladorQ1.Size = new System.Drawing.Size(130, 52);
             this.buttonVentiladorQ1.TabIndex = 14;
@@ -1128,7 +752,7 @@
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.comboBoxTemperaturaQ1);
-            this.panel4.Location = new System.Drawing.Point(14, 169);
+            this.panel4.Location = new System.Drawing.Point(14, 129);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 45);
             this.panel4.TabIndex = 13;
@@ -1189,15 +813,35 @@
             this.comboBoxTemperaturaQ1.Size = new System.Drawing.Size(75, 33);
             this.comboBoxTemperaturaQ1.TabIndex = 9;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.AutoScroll = true;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.groupBox6, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonExportarExcel, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(759, -1);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(273, 600);
+            this.tableLayoutPanel1.TabIndex = 9;
+            // 
             // control_Q1Q2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(37)))), ((int)(((byte)(95)))));
             this.ClientSize = new System.Drawing.Size(1044, 591);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "control_Q1Q2";
             this.Text = "control_Q1Q2";
@@ -1206,16 +850,15 @@
             this.contextMenuStripGrafica.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chargraficaQ1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVentiladorQ2)).EndInit();
             this.panel5.ResumeLayout(false);
@@ -1228,6 +871,7 @@
             this.panel6.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1238,34 +882,6 @@
         private System.Windows.Forms.ToolStripMenuItem graficarCorrienteToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chargraficaQ1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button buttonRefrescarQ2;
-        private System.Windows.Forms.ComboBox comboBoxTsQ2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBoxKdQ2;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBoxKiQ2;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBoxKpQ2;
-        private System.Windows.Forms.ComboBox comboBoxSetPointQ2;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button buttonRefrescarQ1;
-        private System.Windows.Forms.ComboBox comboBoxTsQ1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBoxKdQ1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBoxKiQ1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxKpQ1;
-        private System.Windows.Forms.ComboBox comboBoxSetPointQ1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBoxVentiladorQ1;
         private System.Windows.Forms.Panel panel6;
@@ -1287,5 +903,19 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBoxTemperaturaQ2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ComboBox comboBoxSetPointQ1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button buttonActulizarQ1;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button buttoActualizarQ2;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.ComboBox comboBoxSetPointQ2;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label labelControlQ2;
+        private System.Windows.Forms.Label labelControlQ1;
     }
 }

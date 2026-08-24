@@ -45,14 +45,12 @@ namespace mqtt_serial.funciones
 
         //exportar cambios de valores 
         public static List<double> listaTiempo2=new List<double>();
-        public static List<double> listaKp1 = new List<double>();
-        public static List<double> listaKp2 = new List<double>();
-        public static List<double> listaKi1 = new List<double>();
-        public static List<double> listaKi2 = new List<double>();
-        public static List<double> listaKd1 = new List<double>();
-        public static List<double> listaKd2 = new List<double>();
-        public static List<double> listaTs1 = new List<double>();
-        public static List<double> listaTs2 = new List<double>();
+        public static List<string> PlantaControl = new List<string>();
+        public static List<double> listaKp = new List<double>();
+        public static List<double> listaKi = new List<double>();
+        public static List<double> listaKd = new List<double>();
+        public static List<double> listaTs = new List<double>();
+       
 
 
 
@@ -109,18 +107,10 @@ namespace mqtt_serial.funciones
             listaSetPoint2.Clear();
             
             //parametros de control
-            listaKd1.Clear();
-            listaKd2.Clear();
-            
-            listaKp1.Clear();
-            listaKp2.Clear();
-            
-            listaKi1.Clear();
-            listaKi2.Clear();
-            
-            listaTs1.Clear();
-            listaTs2.Clear();
-
+            listaKd.Clear();
+            listaKp.Clear();
+            listaKi.Clear();
+            listaTs.Clear();
             listaTiempo2.Clear();
         }
         
