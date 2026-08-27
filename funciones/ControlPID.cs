@@ -97,7 +97,7 @@ namespace mqtt_serial.funciones
             }
             else
             {
-                pwm = pwmDoublef;
+                pwm = Math.Round(pwmDoublef,2);
             }
             pwmArray[0] = pwm;
         }
