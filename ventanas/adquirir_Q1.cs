@@ -26,7 +26,6 @@ namespace mqtt_serial.ventanas
         private double corriente1;
         private double tiempo;
         private double pwm;
-
         private string pathSave = VariablesControl.pathSave + @"AdquirirQ1\";
         
        
@@ -155,13 +154,18 @@ namespace mqtt_serial.ventanas
                     //int axisGraficaX = 600;
                     //if (tiempo - VariablesControl.listaTiempo[0] > axisGraficaX)
                     //{
-                     //   this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
-                     //   this.chargraficaQ1.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
+                    //   this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
+                    //   this.chargraficaQ1.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
                     //}
+                    
 
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[0].Points.AddXY(tiempo, temperatura1)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[1].Points.AddXY(tiempo, corriente1)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[2].Points.AddXY(tiempo, pwm)));
+
+                    
+
+
 
                 }
                 else if (tiempo < 10)
@@ -237,9 +241,19 @@ namespace mqtt_serial.ventanas
                         document.SetCellValue(i + 2, 3, VariablesControl.listaCorriente1[i]);
                         document.SetCellValue(i + 2, 4, VariablesControl.listaPWM1[i]);
                     }
+                    //modelo FODPT
+                    document.SetCellValue(1, 7, "FODPT");
+                    document.SetCellValue(2, 6, "Kgain");
+                    document.SetCellValue(3, 6, "Tau/ts");
+                    document.SetCellValue(4, 6, "Td");
+                    // Fórmulas usando nombres en inglés, comas como separadores y el prefijo _xlfn.
+                    document.SetCellValue(2, 7, "=(MAX(B:B)-MIN(B:B))/(MODE(D:D)-MIN(D:D))");
+                    document.SetCellValue(3, 7, "=INDEX(A:A, MATCH(MAX(B:B)*0.632, B:B)) - (INDEX(A:A, MATCH(MODE(D:D), D:D,0))*1)");
+                    document.SetCellValue(4, 7, "=INDEX(A:A, MATCH(MIN(B:B)*1.02, B:B)) - (INDEX(A:A, MATCH(MODE(D:D), D:D,0)))");
 
+                    //imagen Grafica
                     SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_Adquirir1_{fecha}.png");
-                    imagenGrafica.SetPosition(1, 6);
+                    imagenGrafica.SetPosition(1, 8);
                     document.InsertPicture(imagenGrafica);
 
                     document.SaveAs($@"{pathSave}DatosGrafica_AdquirirQ1_{fecha}.xlsx");
