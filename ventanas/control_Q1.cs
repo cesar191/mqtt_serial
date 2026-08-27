@@ -36,8 +36,6 @@ namespace mqtt_serial.ventanas
         private double corriente1;
         private double tiempo;
         private double pwm;
-        
-
         private string pathSave = VariablesControl.pathSave + @"ControlQ1\";
 
 
@@ -131,7 +129,6 @@ namespace mqtt_serial.ventanas
             try
             {
 
-
                 //para graficar
                 pwm = controlPID.PWM;
                 temperatura1 = double.Parse(VariablesControl.Temperatura1.Replace('.', ','));
@@ -190,6 +187,7 @@ namespace mqtt_serial.ventanas
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[2].Points.AddXY(tiempo, pwm)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[1].Points.AddXY(tiempo, corriente1)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[3].Points.AddXY(tiempo, setPoint)));
+
                 }
                 else if (tiempo < 10)
                 {
@@ -320,9 +318,6 @@ namespace mqtt_serial.ventanas
             checkBoxCurrent.Checked = graficarCorrienteToolStripMenuItem.Checked;
         }
 
-        private void chargraficaQ1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -25,6 +25,8 @@ namespace mqtt_serial.ventanas
         private double pwm1, pwm2, setPoint1 = 0, setPoint2 = 0, errorDouble1 = 0, errorDouble2 = 0;
         private double kp1 = 0, kp2 = 0, ki1 = 0, ki2 = 0, kd1 = 0, kd2 = 0, ts1 = 0, ts2 = 0;
 
+        
+
         private void buttoActualizarQ2_Click(object sender, EventArgs e)
         {
             controlActulizar.Titulo = "Parametros Control Q2";
