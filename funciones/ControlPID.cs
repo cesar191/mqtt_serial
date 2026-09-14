@@ -47,9 +47,7 @@ namespace mqtt_serial.funciones
 
             errorArray[0] = errorDouble;
             pwmArray[0]=errorArray[0]*kp;
-            validacion(pwmArray[0]);
-
-            
+            validacion(pwmArray[0]);   
 
         }
         public void SystemControlPI(double errorDouble, double kp, double ki, double ts)
@@ -97,7 +95,7 @@ namespace mqtt_serial.funciones
             }
             else
             {
-                pwm = Math.Round(pwmDoublef,2);
+                pwm =Math.Round(pwmDoublef,2);
             }
             pwmArray[0] = pwm;
         }

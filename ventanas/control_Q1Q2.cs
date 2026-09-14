@@ -22,10 +22,11 @@ namespace mqtt_serial.ventanas
     #region parametros de  control y medicion
         private double temperatura1, temperatura2, corriente1, corriente2, tiempo;
 
-        private double pwm1, pwm2, setPoint1 = 0, setPoint2 = 0, errorDouble1 = 0, errorDouble2 = 0;
+        private double setPoint1 = 0, setPoint2 = 0, errorDouble1 = 0, errorDouble2 = 0;
         private double kp1 = 0, kp2 = 0, ki1 = 0, ki2 = 0, kd1 = 0, kd2 = 0, ts1 = 0, ts2 = 0;
+        private double pwm1 = 0, pwm2 = 0;
 
-        
+
 
         private void buttoActualizarQ2_Click(object sender, EventArgs e)
         {
@@ -168,6 +169,7 @@ namespace mqtt_serial.ventanas
         private void control_Q1Q2_Load(object sender, EventArgs e)
         {
             comboBoxSetPointQ1.Text = "0";
+            comboBoxSetPointQ2.Text = "0";
 
             VariablesControl.limpiarLista();
             VariablesControl.reseteoParametros();
@@ -428,7 +430,7 @@ namespace mqtt_serial.ventanas
             }
             catch
             {
-                //MessageBox.Show("no es un numero uno de los datos");
+                MessageBox.Show("no es un numero uno de los datos");
             }
         }
 

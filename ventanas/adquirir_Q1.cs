@@ -25,7 +25,7 @@ namespace mqtt_serial.ventanas
         private double temperatura1;
         private double corriente1;
         private double tiempo;
-        private double pwm;
+        private int pwm;
         private string pathSave = VariablesControl.pathSave + @"AdquirirQ1\";
         
        

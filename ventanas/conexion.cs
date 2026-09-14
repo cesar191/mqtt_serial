@@ -30,16 +30,27 @@ namespace mqtt_serial.ventanas
         //variables a manejar
         public MqttClient mqttClient;
         string[] topicEnviar =
-                     {
+            {
                     "test/datos/pwm1",
                     "test/datos/pwm2",
                     "test/datos/led1",
                     "test/datos/led2",
                     "test/datos/ventilador1",
                     "test/datos/ventilador2"
-        };
-
-
+            };
+        public string ObtenerIPLocal()
+        {
+            try
+            {
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                var ip = host.AddressList.FirstOrDefault(a => a.AddressFamily == AddressFamily.InterNetwork);
+                return ip?.ToString() ?? "127.0.0.1";
+            }
+            catch (Exception ex)
+            {
+                return $"Error IP: {ex.Message}";
+            }
+        }
 
         public conexion()
         {
@@ -54,19 +65,7 @@ namespace mqtt_serial.ventanas
             this.buttonRefrescar.Visible = false;
 
         }
-        public string ObtenerIPLocal()
-        {
-            try
-            {
-                var host = Dns.GetHostEntry(Dns.GetHostName());
-                var ip = host.AddressList.FirstOrDefault(a => a.AddressFamily == AddressFamily.InterNetwork);
-                return ip?.ToString() ?? "127.0.0.1";
-            }
-            catch (Exception ex)
-            {
-                return $"Error IP: {ex.Message}";
-            }
-        }
+        
 
 
         //parametros que se reciben del mqtt
@@ -253,6 +252,7 @@ namespace mqtt_serial.ventanas
                 buttonConectar.Text = "Desconectar";
                 buttonConectar.BackColor = Color.FromArgb(227, 58, 24);
                 mqttClient.MqttMsgPublishReceived += MqClient_MqttMsgPublishReceived;
+               
                 string[] topics = new string[5];
                 topics[0] = "test/sensor/temperatura1";
                 topics[1] = "test/sensor/temperatura2";

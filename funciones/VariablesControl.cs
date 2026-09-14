@@ -111,7 +111,9 @@ namespace mqtt_serial.funciones
             listaKp.Clear();
             listaKi.Clear();
             listaTs.Clear();
+
             listaTiempo2.Clear();
+            PlantaControl.Clear();
         }
         
     }
