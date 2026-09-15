@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -54,7 +55,7 @@ namespace mqtt_serial.ventanas
                 }
                 else
                 {
-                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace('.', ','));
+                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text, CultureInfo.InvariantCulture);
                 }
             }
             catch
@@ -75,19 +76,19 @@ namespace mqtt_serial.ventanas
                     this.trackBarPWM.Value = 0;
                     comboBoxPWM.Text = "0";
                 }
-                else if (int.Parse(comboBoxPWM.Text.Replace('.', ','))>=100)
+                else if (int.Parse(comboBoxPWM.Text, CultureInfo.InvariantCulture) >=100)
                 {
                     comboBoxPWM.Text = "100";
                     this.trackBarPWM.Value = 100;
                 }
-                else if (int.Parse(comboBoxPWM.Text.Replace('.', ',')) <= 0)
+                else if (int.Parse(comboBoxPWM.Text, CultureInfo.InvariantCulture) <= 0)
                 {
                     comboBoxPWM.Text="0";
                     this.trackBarPWM.Value = 0;
                 }
                 else {
                     
-                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace('.', ','));
+                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text, CultureInfo.InvariantCulture);
                     if (this.comboBoxPWM.Text[0]=='0')
                     {
                         this.comboBoxPWM.Text=this.comboBoxPWM.Text.Substring(1);
@@ -126,9 +127,9 @@ namespace mqtt_serial.ventanas
 
                 //para graficar
                 pwm = trackBarPWM.Value;
-                temperatura1 = double.Parse(VariablesControl.Temperatura1.Replace('.', ','));
-                corriente1 = (double.Parse(VariablesControl.Corriente1.Replace('.', ','))) * 1000;
-                tiempo = double.Parse(VariablesControl.Tiempo.Replace('.', ','));
+                temperatura1 = double.Parse(VariablesControl.Temperatura1, CultureInfo.InvariantCulture);
+                corriente1 = (double.Parse(VariablesControl.Corriente1, CultureInfo.InvariantCulture))* 1000;
+                tiempo = double.Parse(VariablesControl.Tiempo, CultureInfo.InvariantCulture);
 
 
                 checkBoxCurrent.Text = " " + corriente1 + " mA";
@@ -241,8 +242,8 @@ namespace mqtt_serial.ventanas
                         document.SetCellValue(i + 2, 3, VariablesControl.listaCorriente1[i]);
                         document.SetCellValue(i + 2, 4, VariablesControl.listaPWM1[i]);
                     }
-                    //modelo FODPT
-                    document.SetCellValue(1, 7, "FODPT");
+                    //modelo FOPDT
+                    document.SetCellValue(1, 7, "FOPDT");
                     document.SetCellValue(2, 6, "Kgain");
                     document.SetCellValue(3, 6, "Tau/ts");
                     document.SetCellValue(4, 6, "Td");

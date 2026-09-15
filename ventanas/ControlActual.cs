@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
@@ -29,10 +30,10 @@ namespace mqtt_serial
 
         private void buttonRefrescar_Click(object sender, EventArgs e)
         {
-            double.TryParse(comboBoxKp.Text.Replace('.', ','), out kp);
-            double.TryParse(comboBoxKi.Text.Replace('.', ','), out ki);
-            double.TryParse(comboBoxKd.Text.Replace('.', ','), out kd);
-            double.TryParse(comboBoxTs.Text.Replace('.', ','), out ts);
+            kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text, CultureInfo.InvariantCulture) : 0;
+            ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text, CultureInfo.InvariantCulture) : 0;
+            kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text, CultureInfo.InvariantCulture) : 0;
+            ts = (comboBoxTs.Text != "") ? double.Parse(comboBoxTs.Text, CultureInfo.InvariantCulture) : 0;
 
             this.Close();
         }
@@ -49,7 +50,10 @@ namespace mqtt_serial
         private void ControlActual_Load(object sender, EventArgs e)
         {
             Text = titulo;
-             
+            comboBoxKd.Text=(kd != 0) ? kd.ToString() : "0";
+            comboBoxKi.Text = (ki != 0) ? ki.ToString() : "0";
+            comboBoxKp.Text = (kp != 0) ? kp.ToString() : "0";
+            comboBoxTs.Text = (ts != 0) ? ts.ToString() : "0";  
         }
 
     

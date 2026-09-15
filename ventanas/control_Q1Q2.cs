@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -216,7 +217,7 @@ namespace mqtt_serial.ventanas
 
                     document.SetCellValue(1, 6, "Temperatura2");
                     document.SetCellValue(1, 7, "Corriente2");
-                    document.SetCellValue(1, 8, "PWM1");
+                    document.SetCellValue(1, 8, "PWM2");
                     document.SetCellValue(1, 9, "SetPoint2");
 
                     document.SetCellValue(1, 12, "Kp");
@@ -277,17 +278,16 @@ namespace mqtt_serial.ventanas
                 VariablesControl.Pwm1 = pwm1.ToString();
                 
 
-                temperatura1 = double.Parse(VariablesControl.Temperatura1.Replace('.', ','));
-                corriente1 = (double.Parse(VariablesControl.Corriente1.Replace('.', ','))) * 1000;
+                temperatura1 = (VariablesControl.Temperatura1 != "") ? double.Parse(VariablesControl.Temperatura1, CultureInfo.InvariantCulture) : 0;
+                corriente1 = (VariablesControl.Corriente1 != "") ? (double.Parse(VariablesControl.Corriente1, CultureInfo.InvariantCulture)) * 1000 : 0;
 
                 pwm2 = controlPIDQ2.PWM;
                 VariablesControl.Pwm2 = pwm2.ToString();
 
-                temperatura2 = double.Parse(VariablesControl.Temperatura2.Replace('.', ','));
-                corriente2 = (double.Parse(VariablesControl.Corriente2.Replace('.', ','))) * 1000;
+                temperatura2 = (VariablesControl.Temperatura2 != "") ? double.Parse(VariablesControl.Temperatura2, CultureInfo.InvariantCulture) : 0;
+                corriente2 = (VariablesControl.Corriente2 != "") ? (double.Parse(VariablesControl.Corriente2, CultureInfo.InvariantCulture)) * 1000 : 0;
 
-                tiempo = double.Parse(VariablesControl.Tiempo.Replace('.', ','));
-
+                tiempo = (VariablesControl.Tiempo != "") ? double.Parse(VariablesControl.Tiempo, CultureInfo.InvariantCulture) : 0;
 
                 labelTemperatureQ1.Text = " " + temperatura1 + " °C";
                 checkBoxCurrentQ1.Text = " " + corriente1 + " mA";
@@ -297,12 +297,12 @@ namespace mqtt_serial.ventanas
 
 
 
-                double.TryParse(comboBoxSetPointQ1.Text, out setPoint1);
+                setPoint1 = (comboBoxSetPointQ1.Text != "") ? double.Parse(comboBoxSetPointQ1.Text, CultureInfo.InvariantCulture) : 0;
                 errorDouble1 = setPoint1 - temperatura1;
                 //errorString1 = errorDouble1.ToString();
                 SystemControl(errorDouble1, kp1, ki1, kd1, ts1, controlPIDQ1);
 
-                double.TryParse(comboBoxSetPointQ2.Text, out setPoint2);
+                setPoint2 = (comboBoxSetPointQ2.Text != "") ? double.Parse(comboBoxSetPointQ2.Text, CultureInfo.InvariantCulture) : 0;
                 errorDouble2 = setPoint2 - temperatura2;
                 //errorString1 = errorDouble1.ToString();
                 SystemControl(errorDouble2, kp2, ki2, kd2, ts2, controlPIDQ2);
