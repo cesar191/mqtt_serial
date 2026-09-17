@@ -92,7 +92,7 @@
             this.buttonAdquiriQ1.Name = "buttonAdquiriQ1";
             this.buttonAdquiriQ1.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
             this.buttonAdquiriQ1.Size = new System.Drawing.Size(201, 73);
-            this.buttonAdquiriQ1.TabIndex = 0;
+            this.buttonAdquiriQ1.TabIndex = 2;
             this.buttonAdquiriQ1.Text = "Adquirir \r\ndatos Q1";
             this.buttonAdquiriQ1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonAdquiriQ1.UseVisualStyleBackColor = false;
@@ -112,7 +112,7 @@
             this.buttonControlQ1Q2.Margin = new System.Windows.Forms.Padding(0);
             this.buttonControlQ1Q2.Name = "buttonControlQ1Q2";
             this.buttonControlQ1Q2.Size = new System.Drawing.Size(201, 73);
-            this.buttonControlQ1Q2.TabIndex = 0;
+            this.buttonControlQ1Q2.TabIndex = 5;
             this.buttonControlQ1Q2.Text = "Control \r\nQ1 y Q2";
             this.buttonControlQ1Q2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonControlQ1Q2.UseVisualStyleBackColor = true;
@@ -132,7 +132,7 @@
             this.buttonAdquiriQ2.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAdquiriQ2.Name = "buttonAdquiriQ2";
             this.buttonAdquiriQ2.Size = new System.Drawing.Size(201, 73);
-            this.buttonAdquiriQ2.TabIndex = 5;
+            this.buttonAdquiriQ2.TabIndex = 4;
             this.buttonAdquiriQ2.Text = "Adquirir \r\ndatos Q2";
             this.buttonAdquiriQ2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonAdquiriQ2.UseVisualStyleBackColor = false;
@@ -152,7 +152,7 @@
             this.buttonControlQ1.Margin = new System.Windows.Forms.Padding(2);
             this.buttonControlQ1.Name = "buttonControlQ1";
             this.buttonControlQ1.Size = new System.Drawing.Size(201, 73);
-            this.buttonControlQ1.TabIndex = 4;
+            this.buttonControlQ1.TabIndex = 3;
             this.buttonControlQ1.Text = "Control Q1";
             this.buttonControlQ1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonControlQ1.UseVisualStyleBackColor = false;
@@ -200,7 +200,8 @@
             this.panel_ventanas.Margin = new System.Windows.Forms.Padding(0);
             this.panel_ventanas.Name = "panel_ventanas";
             this.panel_ventanas.Size = new System.Drawing.Size(1060, 700);
-            this.panel_ventanas.TabIndex = 1;
+            this.panel_ventanas.TabIndex = 7;
+            this.panel_ventanas.TabStop = true;
             // 
             // pantalla_principal
             // 
@@ -218,6 +219,7 @@
             this.MinimumSize = new System.Drawing.Size(1300, 700);
             this.Name = "pantalla_principal";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Software de control IOT con MQTT y ESP32";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.pantalla_principal_FormClosing);
             this.Load += new System.EventHandler(this.pantalla_principal_Load);

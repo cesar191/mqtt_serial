@@ -71,16 +71,22 @@ namespace mqtt_serial.ventanas
         //parametros que se reciben del mqtt
         private void MqClient_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
-            string topic = e.Topic;
-            string message = Encoding.UTF8.GetString(e.Message);
-            switch (topic)
-            {
-                case "test/sensor/temperatura1": VariablesControl.Temperatura1 = message; break;
-                case "test/sensor/temperatura2": VariablesControl.Temperatura2 = message; break;
-                case "test/sensor/corrienteQ1": VariablesControl.Corriente1 = message; break;
-                case "test/sensor/corrienteQ2": VariablesControl.Corriente2 = message; break;
-                case "test/sensor/tiempo": VariablesControl.Tiempo = message; break;
+            try {
+                string topic = e.Topic;
+                string message = Encoding.UTF8.GetString(e.Message);
+                switch (topic)
+                {
+                    case "test/sensor/temperatura1": VariablesControl.Temperatura1 = message; break;
+                    case "test/sensor/temperatura2": VariablesControl.Temperatura2 = message; break;
+                    case "test/sensor/corrienteQ1": VariablesControl.Corriente1 = message; break;
+                    case "test/sensor/corrienteQ2": VariablesControl.Corriente2 = message; break;
+                    case "test/sensor/tiempo": VariablesControl.Tiempo = message; break;
+                }
             }
+            catch(Exception ex){
+                
+            }
+            
         }
 
 
@@ -103,7 +109,7 @@ namespace mqtt_serial.ventanas
                     case (0)://opción de conexion local
                         this.panelUserPass.Visible = false;
                         this.label_IP_COM.Text = "Dirección IP";
-                        this.label_Conexion_Baudio.Text = "Nombre PC";
+                        this.label_Conexion_Baudio.Text = "Nombre Cliente";
                         this.comboBoxIPCOM.Items.Add(ObtenerIPLocal());
                         this.comboBoxIPCOM.SelectedIndex = 0;
                         this.comboBoxConexionBaudio.Items.AddRange(new object[] { "Laptop1", "ControlPC" });
@@ -114,7 +120,7 @@ namespace mqtt_serial.ventanas
                         this.panelUserPass.Visible = true;
                         this.buttonRefrescar.Visible = false;
                         this.label_IP_COM.Text = "Dirección IP";
-                        this.label_Conexion_Baudio.Text = "Nombre PC";
+                        this.label_Conexion_Baudio.Text = "Nombre Cliente";
                         this.panel_conexion.Enabled = true;
                         this.comboBoxIPCOM.Items.Add(ObtenerIPLocal());
                         this.comboBoxConexionBaudio.Items.AddRange(new object[] { "Laptop1", "ControlPC" });
@@ -415,7 +421,7 @@ namespace mqtt_serial.ventanas
             
         }
 
-        
+       
     }
  }
 

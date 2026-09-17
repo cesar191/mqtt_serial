@@ -18,8 +18,8 @@ namespace mqtt_serial
     {
 
         #region ventanas
-            conexion ventanaConexion;// = new conexion();    
-            adquirir_Q1 ventanaAdquirirQ1;// = new adquirir_Q1();
+            conexion ventanaConexion;    
+            adquirir_Q1 ventanaAdquirirQ1;
             Adquirir_Q2 ventanaAdquirirQ2;
             control_Q1 ventanaControlQ1; 
             control_Q1Q2 ventanaControlQ1Q2;
@@ -27,81 +27,9 @@ namespace mqtt_serial
 
         public pantalla_principal()
         {
-            InitializeComponent();
-            
+            InitializeComponent();   
             
         }
-        //#region MoverVentana
-        //[DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        //private extern static void ReleaseCapture();
-        //[DllImport("user32.dll", EntryPoint = "SendMessage")]
-        //private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-        //private void panel_top_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    ReleaseCapture();
-        //    SendMessage(this.Handle, 0x112, 0xf012, 0);
-        //}
-        //private void text_ventana_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    ReleaseCapture();
-        //    SendMessage(this.Handle, 0x112, 0xf012, 0);
-        //}
-        //private void pictureBoxLogo_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    ReleaseCapture();
-        //    SendMessage(this.Handle, 0x112, 0xf012, 0);
-        //}
-
-        //#endregion
-        //#region Cerrar_minimizar
-        //private void button_Cerrar_Click(object sender, EventArgs e)
-        //{
-        //    Application.Exit();
-        //}
-
-        //private void button_minimizar_Click(object sender, EventArgs e)
-        //{
-        //    this.WindowState = FormWindowState.Minimized;
-        //}
-        //#endregion
-        //función de sub-ventanas opción 1 problemas de memoria
-            /*private void AbrirSubVentana(object formhija)
-        {
-            if (this.panel_ventanas.Controls.Count>0)
-            {
-                this.panel_ventanas.Controls.RemoveAt(0);
-            }
-            Form fh = formhija as Form;
-            fh.TopLevel = false;
-            fh.Dock = DockStyle.Fill;
-            this.panel_ventanas.Controls.Add(fh);
-            this.panel_ventanas.Tag = fh;
-            fh.Show();
-        }*/
-            //opción 2 mejor
-            /*
-            private void AbrirSubVentana<formhija>() where formhija : Form, new()
-                {
-                Form formulario;
-                formulario=this.panel_ventanas.Controls.OfType<formhija>().FirstOrDefault();//busca ventanas ya abiertas
-                if (formulario == null)//si no esta abierta la ventana
-                {
-                    formulario = new formhija();
-                    formulario.TopLevel = false;
-                    formulario.Dock=DockStyle.Fill;
-                    this.panel_ventanas.Controls.Add(formulario);
-                    this.panel_ventanas.Tag = formulario;
-                    formulario.Show();
-                    formulario.BringToFront();
-
-                }
-                else { //si ya existe la ventana
-                    formulario.BringToFront();
-                }
-
-            } 
-            */
 
         private formhija AbrirSubVentana<formhija>() where formhija : Form, new()
         {

@@ -370,6 +370,8 @@ namespace mqtt_serial.ventanas
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[5].Points.AddXY(tiempo, corriente1)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[6].Points.AddXY(tiempo, pwm2)));
                     this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[7].Points.AddXY(tiempo, corriente2)));
+                    //
+                   
                 }
                 else if(tiempo < 10)
                 {

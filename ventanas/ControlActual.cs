@@ -37,9 +37,6 @@ namespace mqtt_serial
 
             this.Close();
         }
-
-        
-
         
 
         public ControlActual()
@@ -50,10 +47,10 @@ namespace mqtt_serial
         private void ControlActual_Load(object sender, EventArgs e)
         {
             Text = titulo;
-            comboBoxKd.Text=(kd != 0) ? kd.ToString() : "0";
-            comboBoxKi.Text = (ki != 0) ? ki.ToString() : "0";
-            comboBoxKp.Text = (kp != 0) ? kp.ToString() : "0";
-            comboBoxTs.Text = (ts != 0) ? ts.ToString() : "0";  
+            comboBoxKd.Text = (kd != 0) ? kd.ToString(CultureInfo.InvariantCulture) : "0";
+            comboBoxKi.Text = (ki != 0) ? ki.ToString(CultureInfo.InvariantCulture) : "0";
+            comboBoxKp.Text = (kp != 0) ? kp.ToString(CultureInfo.InvariantCulture) : "0";
+            comboBoxTs.Text = (ts != 0) ? ts.ToString(CultureInfo.InvariantCulture) : "0";  
         }
 
     

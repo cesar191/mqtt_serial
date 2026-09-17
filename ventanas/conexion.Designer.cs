@@ -85,7 +85,7 @@
             this.textBoxPass.Location = new System.Drawing.Point(234, 31);
             this.textBoxPass.Name = "textBoxPass";
             this.textBoxPass.Size = new System.Drawing.Size(200, 30);
-            this.textBoxPass.TabIndex = 6;
+            this.textBoxPass.TabIndex = 5;
             // 
             // textBoxNameUser
             // 
@@ -93,7 +93,7 @@
             this.textBoxNameUser.Location = new System.Drawing.Point(0, 31);
             this.textBoxNameUser.Name = "textBoxNameUser";
             this.textBoxNameUser.Size = new System.Drawing.Size(200, 30);
-            this.textBoxNameUser.TabIndex = 5;
+            this.textBoxNameUser.TabIndex = 4;
             // 
             // labelPassword
             // 
@@ -114,9 +114,9 @@
             this.labelNameuser.Location = new System.Drawing.Point(0, 3);
             this.labelNameuser.Margin = new System.Windows.Forms.Padding(0);
             this.labelNameuser.Name = "labelNameuser";
-            this.labelNameuser.Size = new System.Drawing.Size(110, 25);
+            this.labelNameuser.Size = new System.Drawing.Size(183, 25);
             this.labelNameuser.TabIndex = 1;
-            this.labelNameuser.Text = "Name User";
+            this.labelNameuser.Text = "Nombre De Usuario";
             // 
             // panel_ip_serial
             // 
@@ -137,9 +137,9 @@
             this.label_Conexion_Baudio.ForeColor = System.Drawing.Color.White;
             this.label_Conexion_Baudio.Location = new System.Drawing.Point(234, 20);
             this.label_Conexion_Baudio.Name = "label_Conexion_Baudio";
-            this.label_Conexion_Baudio.Size = new System.Drawing.Size(114, 25);
+            this.label_Conexion_Baudio.Size = new System.Drawing.Size(147, 25);
             this.label_Conexion_Baudio.TabIndex = 3;
-            this.label_Conexion_Baudio.Text = "Nombre PC";
+            this.label_Conexion_Baudio.Text = "Nombre Cliente";
             // 
             // comboBoxConexionBaudio
             // 
@@ -148,7 +148,7 @@
             this.comboBoxConexionBaudio.Location = new System.Drawing.Point(234, 48);
             this.comboBoxConexionBaudio.Name = "comboBoxConexionBaudio";
             this.comboBoxConexionBaudio.Size = new System.Drawing.Size(200, 33);
-            this.comboBoxConexionBaudio.TabIndex = 2;
+            this.comboBoxConexionBaudio.TabIndex = 3;
             // 
             // comboBoxIPCOM
             // 
@@ -157,7 +157,7 @@
             this.comboBoxIPCOM.Location = new System.Drawing.Point(0, 48);
             this.comboBoxIPCOM.Name = "comboBoxIPCOM";
             this.comboBoxIPCOM.Size = new System.Drawing.Size(200, 33);
-            this.comboBoxIPCOM.TabIndex = 1;
+            this.comboBoxIPCOM.TabIndex = 2;
             // 
             // label_IP_COM
             // 
@@ -190,7 +190,7 @@
             this.buttonRefrescar.Location = new System.Drawing.Point(287, 0);
             this.buttonRefrescar.Name = "buttonRefrescar";
             this.buttonRefrescar.Size = new System.Drawing.Size(150, 73);
-            this.buttonRefrescar.TabIndex = 1;
+            this.buttonRefrescar.TabIndex = 7;
             this.buttonRefrescar.Text = "Refrescar";
             this.buttonRefrescar.UseVisualStyleBackColor = false;
             this.buttonRefrescar.Click += new System.EventHandler(this.buttonrefrescar_Click);
@@ -205,7 +205,7 @@
             this.buttonConectar.Location = new System.Drawing.Point(0, 0);
             this.buttonConectar.Name = "buttonConectar";
             this.buttonConectar.Size = new System.Drawing.Size(150, 73);
-            this.buttonConectar.TabIndex = 0;
+            this.buttonConectar.TabIndex = 6;
             this.buttonConectar.Text = "Conectar";
             this.buttonConectar.UseVisualStyleBackColor = false;
             this.buttonConectar.Click += new System.EventHandler(this.buttonConectar_Click);
@@ -221,7 +221,7 @@
             this.comboBoxTipoConexion.Location = new System.Drawing.Point(0, 25);
             this.comboBoxTipoConexion.Name = "comboBoxTipoConexion";
             this.comboBoxTipoConexion.Size = new System.Drawing.Size(437, 33);
-            this.comboBoxTipoConexion.TabIndex = 2;
+            this.comboBoxTipoConexion.TabIndex = 1;
             this.comboBoxTipoConexion.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoConexion_SelectedIndexChanged);
             // 
             // labelTexconexion
