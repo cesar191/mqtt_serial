@@ -39,7 +39,7 @@ namespace mqtt_serial.ventanas
             kd2 = controlActulizar.Kd;
             ts2 = controlActulizar.Ts;
 
-            labelControlQ2.Text = $@"KP= {kp2}{Environment.NewLine}Ki= {ki2}{Environment.NewLine}Kd= {kd2}{Environment.NewLine}T= {ts2}";
+            labelControlQ2.Text = $@"Kp = {kp2:f4}{Environment.NewLine}Ki = {ki2:f4}{Environment.NewLine}Kd = {kd2:f4}{Environment.NewLine}Ts = {ts2:f4}";
             for (int i = 0; i < controlPIDQ2.ErrorArray.Length; i++)
             {
                 controlPIDQ2.ErrorArray[i] = 0;
@@ -69,7 +69,7 @@ namespace mqtt_serial.ventanas
             kd1 = controlActulizar.Kd;
             ts1 = controlActulizar.Ts;
 
-            labelControlQ1.Text =$@"KP= {kp1}{Environment.NewLine}Ki= {ki1}{Environment.NewLine}Kd= {kd1}{Environment.NewLine}T= {ts1}";
+            labelControlQ1.Text =$@"Kp = {kp1:f4}{Environment.NewLine}Ki = {ki1:f4}{Environment.NewLine}Kd = {kd1:f4}{Environment.NewLine}Ts = {ts1:f4}";
 
             for (int i = 0; i < controlPIDQ1.ErrorArray.Length; i++)
             {
@@ -183,23 +183,13 @@ namespace mqtt_serial.ventanas
         {
             timer1.Enabled = false;
         }
-        //private void graficarCorrienteToolStripMenuItem_Click(object sender, EventArgs e)
-            // {
-            // graficarCorrienteToolStripMenuItem.Checked = !checkBoxCurrentQ1.Checked;
-           // checkBoxCurrentQ1.Checked = graficarCorrienteToolStripMenuItem.Checked;
-            //   checkBoxCurrentQ2.Checked = checkBoxCurrentQ1.Checked;
-            // }
 
         private void buttonExportarExcel_Click(object sender, EventArgs e)
         {
             try
             {
                 timer1.Stop();
-                //alternativa para que el usuario escoga donde guardar la informacion
-                //if (folderBrowserDialog1.ShowDialog()==DialogResult.OK)
-                //{
-                //    Console.WriteLine(folderBrowserDialog1.SelectedPath);
-                //}
+               
                 string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");
 
                 

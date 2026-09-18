@@ -143,6 +143,7 @@
             // 
             // comboBoxConexionBaudio
             // 
+            this.comboBoxConexionBaudio.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxConexionBaudio.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.comboBoxConexionBaudio.FormattingEnabled = true;
             this.comboBoxConexionBaudio.Location = new System.Drawing.Point(234, 48);
