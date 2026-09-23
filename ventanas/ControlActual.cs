@@ -30,10 +30,10 @@ namespace mqtt_serial
 
         private void buttonRefrescar_Click(object sender, EventArgs e)
         {
-            kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text, CultureInfo.InvariantCulture) : 0;
-            ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text, CultureInfo.InvariantCulture) : 0;
-            kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text, CultureInfo.InvariantCulture) : 0;
-            ts = (comboBoxTs.Text != "") ? double.Parse(comboBoxTs.Text, CultureInfo.InvariantCulture) : 0;
+            kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text.Replace(".", ",")) : 0;
+            ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text.Replace(".", ",")) : 0;
+            kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text.Replace(".", ",")) : 0;
+            ts = (comboBoxTs.Text != "") ? double.Parse(comboBoxTs.Text.Replace(".", ",")) : 0;
 
             this.Close();
         }
@@ -47,10 +47,10 @@ namespace mqtt_serial
         private void ControlActual_Load(object sender, EventArgs e)
         {
             Text = titulo;
-            comboBoxKd.Text = (kd != 0) ? kd.ToString(CultureInfo.InvariantCulture) : "0";
-            comboBoxKi.Text = (ki != 0) ? ki.ToString(CultureInfo.InvariantCulture) : "0";
-            comboBoxKp.Text = (kp != 0) ? kp.ToString(CultureInfo.InvariantCulture) : "0";
-            comboBoxTs.Text = (ts != 0) ? ts.ToString(CultureInfo.InvariantCulture) : "0";  
+            comboBoxKd.Text = (kd != 0) ? kd.ToString() : "0";
+            comboBoxKi.Text = (ki != 0) ? ki.ToString() : "0";
+            comboBoxKp.Text = (kp != 0) ? kp.ToString() : "0";
+            comboBoxTs.Text = (ts != 0) ? ts.ToString() : "0";  
         }
 
     

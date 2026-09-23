@@ -268,16 +268,16 @@ namespace mqtt_serial.ventanas
                 VariablesControl.Pwm1 = pwm1.ToString();
                 
 
-                temperatura1 = (VariablesControl.Temperatura1 != "") ? double.Parse(VariablesControl.Temperatura1, CultureInfo.InvariantCulture) : 0;
-                corriente1 = (VariablesControl.Corriente1 != "") ? (double.Parse(VariablesControl.Corriente1, CultureInfo.InvariantCulture)) * 1000 : 0;
+                temperatura1 = (VariablesControl.Temperatura1 != "") ? double.Parse(VariablesControl.Temperatura1.Replace(".", ",")) : 0;
+                corriente1 = (VariablesControl.Corriente1 != "") ? (double.Parse(VariablesControl.Corriente1.Replace(".", ","))) * 1000 : 0;
 
                 pwm2 = controlPIDQ2.PWM;
                 VariablesControl.Pwm2 = pwm2.ToString();
 
-                temperatura2 = (VariablesControl.Temperatura2 != "") ? double.Parse(VariablesControl.Temperatura2, CultureInfo.InvariantCulture) : 0;
-                corriente2 = (VariablesControl.Corriente2 != "") ? (double.Parse(VariablesControl.Corriente2, CultureInfo.InvariantCulture)) * 1000 : 0;
+                temperatura2 = (VariablesControl.Temperatura2 != "") ? double.Parse(VariablesControl.Temperatura2.Replace(".", ",")) : 0;
+                corriente2 = (VariablesControl.Corriente2 != "") ? (double.Parse(VariablesControl.Corriente2.Replace(".", ","))) * 1000 : 0;
 
-                tiempo = (VariablesControl.Tiempo != "") ? double.Parse(VariablesControl.Tiempo, CultureInfo.InvariantCulture) : 0;
+                tiempo = (VariablesControl.Tiempo != "") ? double.Parse(VariablesControl.Tiempo.Replace(".", ",")) : 0;
 
                 labelTemperatureQ1.Text = " " + temperatura1 + " °C";
                 checkBoxCurrentQ1.Text = " " + corriente1 + " mA";
@@ -287,12 +287,12 @@ namespace mqtt_serial.ventanas
 
 
 
-                setPoint1 = (comboBoxSetPointQ1.Text != "") ? double.Parse(comboBoxSetPointQ1.Text, CultureInfo.InvariantCulture) : 0;
+                setPoint1 = (comboBoxSetPointQ1.Text != "") ? double.Parse(comboBoxSetPointQ1.Text.Replace(".", ",")) : 0;
                 errorDouble1 = setPoint1 - temperatura1;
                 //errorString1 = errorDouble1.ToString();
                 SystemControl(errorDouble1, kp1, ki1, kd1, ts1, controlPIDQ1);
 
-                setPoint2 = (comboBoxSetPointQ2.Text != "") ? double.Parse(comboBoxSetPointQ2.Text, CultureInfo.InvariantCulture) : 0;
+                setPoint2 = (comboBoxSetPointQ2.Text != "") ? double.Parse(comboBoxSetPointQ2.Text.Replace(".", ",")) : 0;
                 errorDouble2 = setPoint2 - temperatura2;
                 //errorString1 = errorDouble1.ToString();
                 SystemControl(errorDouble2, kp2, ki2, kd2, ts2, controlPIDQ2);

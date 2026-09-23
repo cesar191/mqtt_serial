@@ -194,6 +194,7 @@
     </Compile>
     <EmbeddedResource Include="ventanas\adquirir_Q1.resx">
       <DependentUpon>adquirir_Q1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ventanas\Adquirir_Q2.resx">
       <DependentUpon>Adquirir_Q2.cs</DependentUpon>

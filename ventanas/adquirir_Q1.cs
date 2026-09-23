@@ -55,7 +55,7 @@ namespace mqtt_serial.ventanas
                 }
                 else
                 {
-                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text, CultureInfo.InvariantCulture);
+                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace(".", ","));
                 }
             }
             catch
@@ -76,19 +76,19 @@ namespace mqtt_serial.ventanas
                     this.trackBarPWM.Value = 0;
                     comboBoxPWM.Text = "0";
                 }
-                else if (int.Parse(comboBoxPWM.Text, CultureInfo.InvariantCulture) >=100)
+                else if (int.Parse(comboBoxPWM.Text.Replace(".", ",")) >=100)
                 {
                     comboBoxPWM.Text = "100";
                     this.trackBarPWM.Value = 100;
                 }
-                else if (int.Parse(comboBoxPWM.Text, CultureInfo.InvariantCulture) <= 0)
+                else if (int.Parse(comboBoxPWM.Text.Replace(".", ",")) <= 0)
                 {
                     comboBoxPWM.Text="0";
                     this.trackBarPWM.Value = 0;
                 }
                 else {
                     
-                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text, CultureInfo.InvariantCulture);
+                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace(".", ","));
                     if (this.comboBoxPWM.Text[0]=='0')
                     {
                         this.comboBoxPWM.Text=this.comboBoxPWM.Text.Substring(1);
@@ -127,9 +127,9 @@ namespace mqtt_serial.ventanas
 
                 //para graficar
                 pwm = trackBarPWM.Value;
-                temperatura1 = double.Parse(VariablesControl.Temperatura1, CultureInfo.InvariantCulture);
-                corriente1 = (double.Parse(VariablesControl.Corriente1, CultureInfo.InvariantCulture))* 1000;
-                tiempo = double.Parse(VariablesControl.Tiempo, CultureInfo.InvariantCulture);
+                temperatura1 = double.Parse(VariablesControl.Temperatura1.Replace(".", ","));
+                corriente1 = double.Parse(VariablesControl.Corriente1.Replace(".", ",")) * 1000;
+                tiempo = double.Parse(VariablesControl.Tiempo.Replace(".", ","));
 
 
                 checkBoxCurrent.Text = " " + corriente1 + " mA";
