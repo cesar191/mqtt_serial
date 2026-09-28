@@ -29,65 +29,7 @@ namespace mqtt_serial.ventanas
 
 
 
-        private void buttoActualizarQ2_Click(object sender, EventArgs e)
-        {
-            controlActulizar.Titulo = "Parametros Control Q2";
-            controlActulizar.ShowDialog();
-
-            kp2 = controlActulizar.Kp;
-            ki2 = controlActulizar.Ki;
-            kd2 = controlActulizar.Kd;
-            ts2 = controlActulizar.Ts;
-
-            labelControlQ2.Text = $@"Kp = {kp2:f4}{Environment.NewLine}Ki = {ki2:f4}{Environment.NewLine}Kd = {kd2:f4}{Environment.NewLine}Ts = {ts2:f4}";
-            for (int i = 0; i < controlPIDQ2.ErrorArray.Length; i++)
-            {
-                controlPIDQ2.ErrorArray[i] = 0;
-            }
-            for (int i = 0; i < controlPIDQ2.PwmArray.Length; i++)
-            {
-                controlPIDQ2.PwmArray[i] = 0;
-            }
-
-            //para exportar al exce
-            VariablesControl.listaKp.Add(kp2);
-            VariablesControl.listaKi.Add(ki2);
-            VariablesControl.listaKd.Add(kd2);
-            VariablesControl.listaTs.Add(ts2);
-            VariablesControl.listaTiempo2.Add(tiempo);
-            VariablesControl.PlantaControl.Add("Q2");
-
-        }
-
-        private void buttonActulizarQ1_Click(object sender, EventArgs e)
-        {
-            controlActulizar.Titulo = "Parametros Control Q1";
-            controlActulizar.ShowDialog();
-            
-            kp1 = controlActulizar.Kp;
-            ki1 = controlActulizar.Ki;
-            kd1 = controlActulizar.Kd;
-            ts1 = controlActulizar.Ts;
-
-            labelControlQ1.Text =$@"Kp = {kp1:f4}{Environment.NewLine}Ki = {ki1:f4}{Environment.NewLine}Kd = {kd1:f4}{Environment.NewLine}Ts = {ts1:f4}";
-
-            for (int i = 0; i < controlPIDQ1.ErrorArray.Length; i++)
-            {
-                controlPIDQ1.ErrorArray[i] = 0;
-            }
-            for (int i = 0; i < controlPIDQ1.PwmArray.Length; i++)
-            {
-                controlPIDQ1.PwmArray[i] = 0;
-            }
-
-            //para exportar al excel
-            VariablesControl.listaKp.Add(kp1);
-            VariablesControl.listaKi.Add(ki1);
-            VariablesControl.listaKd.Add(kd1);
-            VariablesControl.listaTs.Add(ts1);
-            VariablesControl.listaTiempo2.Add(tiempo);
-            VariablesControl.PlantaControl.Add("Q1");
-        }
+       
 
         ControlActual controlActulizar = new ControlActual();
 
@@ -167,6 +109,69 @@ namespace mqtt_serial.ventanas
             }
         }
 
+        private void buttoActualizarQ2_Click(object sender, EventArgs e)
+        {
+            controlActulizar.Titulo = "Parametros Control Q2";
+            controlActulizar.Boton = "Refrescar Q2";
+            controlActulizar.variables(kp2, ki2, kd2, ts2);
+            controlActulizar.ShowDialog();
+
+            kp2 = controlActulizar.Kp;
+            ki2 = controlActulizar.Ki;
+            kd2 = controlActulizar.Kd;
+            ts2 = controlActulizar.Ts;
+
+            labelControlQ2.Text = $@"Kp = {kp2:f4}{Environment.NewLine}Ki = {ki2:f4}{Environment.NewLine}Kd = {kd2:f4}{Environment.NewLine}Ts = {ts2:f4}";
+            for (int i = 0; i < controlPIDQ2.ErrorArray.Length; i++)
+            {
+                controlPIDQ2.ErrorArray[i] = errorDouble2;
+            }
+            //for (int i = 0; i < controlPIDQ2.PwmArray.Length; i++)
+            //{
+            //    controlPIDQ2.PwmArray[i] = 0;
+            //}
+
+            //para exportar al exce
+            VariablesControl.listaKp.Add(kp2);
+            VariablesControl.listaKi.Add(ki2);
+            VariablesControl.listaKd.Add(kd2);
+            VariablesControl.listaTs.Add(ts2);
+            VariablesControl.listaTiempo2.Add(tiempo);
+            VariablesControl.PlantaControl.Add("Q2");
+
+        }
+
+        private void buttonActulizarQ1_Click(object sender, EventArgs e)
+        {
+            controlActulizar.Titulo = "Parametros Control Q1";
+            controlActulizar.Boton = "Refrescar Q1";
+            controlActulizar.variables(kp1, ki1, kd1, ts1);
+            controlActulizar.ShowDialog();
+
+            kp1 = controlActulizar.Kp;
+            ki1 = controlActulizar.Ki;
+            kd1 = controlActulizar.Kd;
+            ts1 = controlActulizar.Ts;
+
+            labelControlQ1.Text = $@"Kp = {kp1:f4}{Environment.NewLine}Ki = {ki1:f4}{Environment.NewLine}Kd = {kd1:f4}{Environment.NewLine}Ts = {ts1:f4}";
+
+            for (int i = 0; i < controlPIDQ1.ErrorArray.Length; i++)
+            {
+                controlPIDQ1.ErrorArray[i] = 0;
+            }
+            //for (int i = 0; i < controlPIDQ1.PwmArray.Length; i++)
+            //{
+            //    controlPIDQ1.PwmArray[i] = 0;
+            //}
+
+            //para exportar al excel
+            VariablesControl.listaKp.Add(kp1);
+            VariablesControl.listaKi.Add(ki1);
+            VariablesControl.listaKd.Add(kd1);
+            VariablesControl.listaTs.Add(ts1);
+            VariablesControl.listaTiempo2.Add(tiempo);
+            VariablesControl.PlantaControl.Add("Q1");
+        }
         private void control_Q1Q2_Load(object sender, EventArgs e)
         {
             comboBoxSetPointQ1.Text = "0";
@@ -268,31 +273,31 @@ namespace mqtt_serial.ventanas
                 VariablesControl.Pwm1 = pwm1.ToString();
                 
 
-                temperatura1 = (VariablesControl.Temperatura1 != "") ? double.Parse(VariablesControl.Temperatura1.Replace(".", ",")) : 0;
-                corriente1 = (VariablesControl.Corriente1 != "") ? (double.Parse(VariablesControl.Corriente1.Replace(".", ","))) * 1000 : 0;
+                temperatura1 = (VariablesControl.Temperatura1 != "") ? double.Parse(VariablesControl.Temperatura1.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                corriente1 = (VariablesControl.Corriente1 != "") ? (double.Parse(VariablesControl.Corriente1.Replace(",", "."), CultureInfo.InvariantCulture)) * 1000 : 0;
 
                 pwm2 = controlPIDQ2.PWM;
                 VariablesControl.Pwm2 = pwm2.ToString();
 
-                temperatura2 = (VariablesControl.Temperatura2 != "") ? double.Parse(VariablesControl.Temperatura2.Replace(".", ",")) : 0;
-                corriente2 = (VariablesControl.Corriente2 != "") ? (double.Parse(VariablesControl.Corriente2.Replace(".", ","))) * 1000 : 0;
+                temperatura2 = (VariablesControl.Temperatura2 != "") ? double.Parse(VariablesControl.Temperatura2.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                corriente2 = (VariablesControl.Corriente2 != "") ? (double.Parse(VariablesControl.Corriente2.Replace(",", "."), CultureInfo.InvariantCulture)) * 1000 : 0;
 
-                tiempo = (VariablesControl.Tiempo != "") ? double.Parse(VariablesControl.Tiempo.Replace(".", ",")) : 0;
+                tiempo = (VariablesControl.Tiempo != "") ? double.Parse(VariablesControl.Tiempo.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
 
-                labelTemperatureQ1.Text = " " + temperatura1 + " °C";
-                checkBoxCurrentQ1.Text = " " + corriente1 + " mA";
+                labelTemperatureQ1.Text = $@" {temperatura1:f2} °C";
+                checkBoxCurrentQ1.Text = $@" {corriente1:f2} mA";
 
-                labelTemperaturaQ2.Text = " " + temperatura2 + " °C";
-                checkBoxCurrentQ2.Text = " " + corriente2 + " mA";
+                labelTemperaturaQ2.Text = $@" {temperatura2:f2} °C";
+                checkBoxCurrentQ2.Text = $@" {corriente2:f2} mA";
 
 
 
-                setPoint1 = (comboBoxSetPointQ1.Text != "") ? double.Parse(comboBoxSetPointQ1.Text.Replace(".", ",")) : 0;
+                setPoint1 = (comboBoxSetPointQ1.Text != "") ? double.Parse(comboBoxSetPointQ1.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
                 errorDouble1 = setPoint1 - temperatura1;
                 //errorString1 = errorDouble1.ToString();
                 SystemControl(errorDouble1, kp1, ki1, kd1, ts1, controlPIDQ1);
 
-                setPoint2 = (comboBoxSetPointQ2.Text != "") ? double.Parse(comboBoxSetPointQ2.Text.Replace(".", ",")) : 0;
+                setPoint2 = (comboBoxSetPointQ2.Text != "") ? double.Parse(comboBoxSetPointQ2.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
                 errorDouble2 = setPoint2 - temperatura2;
                 //errorString1 = errorDouble1.ToString();
                 SystemControl(errorDouble2, kp2, ki2, kd2, ts2, controlPIDQ2);
@@ -324,11 +329,7 @@ namespace mqtt_serial.ventanas
 
                 if (tiempo > 10 && VariablesControl.EstadoDeConexion)
                 {
-                    // this.chargraficaQ1.Series[1].Enabled = false;
-                    //this.chargraficaQ1.ChartAreas[1].AxisY.Maximum = corriente1 + 0.5;
-                    //this.chargraficaQ1.ChartAreas[1].AxisY.Minimum = corriente1 - 0.5;
-
-                    //
+                   
                     VariablesControl.listaTemperatura1.Add(temperatura1);
                     VariablesControl.listaCorriente1.Add(corriente1);
                     VariablesControl.listaPWM1.Add(pwm1);
@@ -340,27 +341,34 @@ namespace mqtt_serial.ventanas
                     VariablesControl.listaSetPoint2.Add(setPoint2);
 
                     VariablesControl.listaTiempo.Add(tiempo);
-
-
-                    //this.chargraficaQ1.ChartAreas[2].AxisY.Minimum = VariablesControl.listaTemperatura1.Min()-10;
-                    //int axisGraficaX = 600;
-                    //if (tiempo - VariablesControl.listaTiempo[0] > axisGraficaX)
-                    //  {
-                    //      this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
-                    //      this.chargraficaQ1.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
-                    //  }
-
-                    //
-
-                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[0].Points.AddXY(tiempo, temperatura1)));
-                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[1].Points.AddXY(tiempo, temperatura2)));
-                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[2].Points.AddXY(tiempo, pwm1)));
-                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[3].Points.AddXY(tiempo, setPoint1)));
-                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[4].Points.AddXY(tiempo, setPoint2)));
-                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[5].Points.AddXY(tiempo, corriente1)));
-                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[6].Points.AddXY(tiempo, pwm2)));
-                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[7].Points.AddXY(tiempo, corriente2)));
-                    //
+                    //grafica 
+                    double ventanaTiempo = 1200;
+                    foreach (var area in chargraficaQ1.ChartAreas)
+                    {
+                        if (tiempo - VariablesControl.listaTiempo[0] > ventanaTiempo)
+                        {
+                            area.AxisX.Minimum = tiempo - ventanaTiempo;
+                            area.AxisX.Maximum = tiempo;
+                        }
+                        else
+                        {
+                            area.AxisX.Minimum = VariablesControl.listaTiempo[0];
+                            area.AxisX.Maximum = tiempo;
+                        }
+                    }
+                  
+                    this.chargraficaQ1.BeginInvoke((MethodInvoker)(() => 
+                        {
+                            var series = chargraficaQ1.Series;
+                            series[0].Points.AddXY(tiempo, temperatura1);
+                            series[1].Points.AddXY(tiempo, temperatura2);
+                            series[2].Points.AddXY(tiempo, pwm1);
+                            series[3].Points.AddXY(tiempo, setPoint1);
+                            series[4].Points.AddXY(tiempo, setPoint2);
+                            series[5].Points.AddXY(tiempo, corriente1);
+                            series[6].Points.AddXY(tiempo, pwm2);
+                            series[7].Points.AddXY(tiempo, corriente2);
+                        }));
                    
                 }
                 else if(tiempo < 10)
@@ -415,7 +423,7 @@ namespace mqtt_serial.ventanas
                 {
 
                     VariablesControl.AlarmaLed2 = "off";
-                    labelTemperatureQ1.ForeColor = System.Drawing.Color.White;
+                    labelTemperaturaQ2.ForeColor = System.Drawing.Color.White;
                 }
 
 

@@ -47,7 +47,7 @@ namespace mqtt_serial.ventanas
                 }
                 else
                 {
-                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace(".", ","));
+                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture);
                 }
             }
             catch
@@ -83,12 +83,12 @@ namespace mqtt_serial.ventanas
                     this.trackBarPWM.Value = 0;
                     comboBoxPWM.Text = "0";
                 }
-                else if (int.Parse(comboBoxPWM.Text.Replace(".", ",")) >= 100)
+                else if (int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture) >= 100)
                 {
                     comboBoxPWM.Text = "100";
                     this.trackBarPWM.Value = 100;
                 }
-                else if (int.Parse(comboBoxPWM.Text.Replace(".", ",")) <= 0)
+                else if (int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture) <= 0)
                 {
                     comboBoxPWM.Text = "0";
                     this.trackBarPWM.Value = 0;
@@ -96,7 +96,7 @@ namespace mqtt_serial.ventanas
                 else
                 {
 
-                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace(".", ",")   );
+                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture);
                     if (this.comboBoxPWM.Text[0] == '0')
                     {
                         this.comboBoxPWM.Text = this.comboBoxPWM.Text.Substring(1);
@@ -119,12 +119,12 @@ namespace mqtt_serial.ventanas
             
             //para graficar
             pwm = trackBarPWM.Value;
-            temperatura2 = double.Parse(VariablesControl.Temperatura2.Replace(".", ","));
-            corriente2 = (double.Parse(VariablesControl.Corriente2.Replace(".", ","))) * 1000;
-            tiempo = double.Parse(VariablesControl.Tiempo.Replace(".", ","));
+            temperatura2 = double.Parse(VariablesControl.Temperatura2.Replace(",", "."), CultureInfo.InvariantCulture);
+            corriente2 = (double.Parse(VariablesControl.Corriente2.Replace(",", "."), CultureInfo.InvariantCulture)) * 1000;
+            tiempo = double.Parse(VariablesControl.Tiempo.Replace(",", "."), CultureInfo.InvariantCulture);
 
-            checkBoxCurrent.Text = " " + corriente2 + " mA";
-            labelTemperature.Text = " " + temperatura2 + " °C";
+            checkBoxCurrent.Text = $@" {corriente2:f2} mA";
+            labelTemperature.Text = $@" {temperatura2:f2} °C";
 
 
             if (checkBoxCurrent.Checked)
@@ -146,19 +146,28 @@ namespace mqtt_serial.ventanas
                 VariablesControl.listaPWM2.Add(pwm);
                 VariablesControl.listaTiempo.Add(tiempo);
                 //
-
-                //int axisGraficaX = 600;
-                //if (tiempo - VariablesControl.listaTiempo[0] > axisGraficaX)
-                //{
-                //   this.chargraficaQ2.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
-                //   this.chargraficaQ2.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
-                //}
-                //this.chargraficaQ2.Series[2].Name = "pwm";
-                //this.chargraficaQ1.ChartAreas[1].AxisY.Maximum = corriente1 + 0.5;
-                //this.chargraficaQ1.ChartAreas[1].AxisY.Minimum = corriente1 - 0.5;
-                this.chargraficaQ2.Invoke((MethodInvoker)(() => chargraficaQ2.Series[0].Points.AddXY(tiempo, temperatura2)));
-                this.chargraficaQ2.Invoke((MethodInvoker)(() => chargraficaQ2.Series[1].Points.AddXY(tiempo, corriente2)));
-                this.chargraficaQ2.Invoke((MethodInvoker)(() => chargraficaQ2.Series[2].Points.AddXY(tiempo, pwm)));
+                double ventanaTiempo = 1200;
+                foreach (var area in chargraficaQ2.ChartAreas)
+                {
+                    if (tiempo - VariablesControl.listaTiempo[0] > ventanaTiempo)
+                    {
+                        area.AxisX.Minimum = tiempo - ventanaTiempo;
+                        area.AxisX.Maximum = tiempo;
+                    }
+                    else
+                    {
+                        area.AxisX.Minimum = VariablesControl.listaTiempo[0];
+                        area.AxisX.Maximum = tiempo;
+                    }
+                }
+                //
+                this.chargraficaQ2.BeginInvoke((MethodInvoker)(() => {
+                    var series = chargraficaQ2.Series;
+                    series[0].Points.AddXY(tiempo, temperatura2);
+                    series[1].Points.AddXY(tiempo, corriente2);
+                    series[2].Points.AddXY(tiempo, pwm);
+                }));
+                
             }
             else if (tiempo < 10)
             {

@@ -55,7 +55,7 @@ namespace mqtt_serial.ventanas
                 }
                 else
                 {
-                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace(".", ","));
+                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture);
                 }
             }
             catch
@@ -76,12 +76,12 @@ namespace mqtt_serial.ventanas
                     this.trackBarPWM.Value = 0;
                     comboBoxPWM.Text = "0";
                 }
-                else if (int.Parse(comboBoxPWM.Text.Replace(".", ",")) >=100)
+                else if (int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture) >=100)
                 {
                     comboBoxPWM.Text = "100";
                     this.trackBarPWM.Value = 100;
                 }
-                else if (int.Parse(comboBoxPWM.Text.Replace(".", ",")) <= 0)
+                else if (int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture ) <= 0)
                 {
                     comboBoxPWM.Text="0";
                     this.trackBarPWM.Value = 0;
@@ -127,13 +127,13 @@ namespace mqtt_serial.ventanas
 
                 //para graficar
                 pwm = trackBarPWM.Value;
-                temperatura1 = double.Parse(VariablesControl.Temperatura1.Replace(".", ","));
-                corriente1 = double.Parse(VariablesControl.Corriente1.Replace(".", ",")) * 1000;
-                tiempo = double.Parse(VariablesControl.Tiempo.Replace(".", ","));
+                temperatura1 = double.Parse(VariablesControl.Temperatura1.Replace(",", "."), CultureInfo.InvariantCulture);
+                corriente1 = double.Parse(VariablesControl.Corriente1.Replace(",", "."), CultureInfo.InvariantCulture) * 1000;
+                tiempo = double.Parse(VariablesControl.Tiempo.Replace(",", "."), CultureInfo.InvariantCulture);
 
 
-                checkBoxCurrent.Text = " " + corriente1 + " mA";
-                labelTemperature.Text = " " + temperatura1 + " °C";
+                checkBoxCurrent.Text = $@" {corriente1:f2} mA";
+                labelTemperature.Text = $@" {temperatura1:f2} °C";
                 if (checkBoxCurrent.Checked)
                 {
                     this.chargraficaQ1.Series[1].Enabled = true;
@@ -152,21 +152,27 @@ namespace mqtt_serial.ventanas
                     VariablesControl.listaPWM1.Add(pwm);
                     VariablesControl.listaTiempo.Add(tiempo);
 
-                    //int axisGraficaX = 600;
-                    //if (tiempo - VariablesControl.listaTiempo[0] > axisGraficaX)
-                    //{
-                    //   this.chargraficaQ1.ChartAreas[0].AxisX.Minimum = tiempo - axisGraficaX;
-                    //   this.chargraficaQ1.ChartAreas[1].AxisX.Minimum = tiempo - axisGraficaX;
-                    //}
-                    
+                    double ventanaTiempo = 1200;
+                    foreach (var area in chargraficaQ1.ChartAreas)
+                    {
+                        if (tiempo - VariablesControl.listaTiempo[0] > ventanaTiempo)
+                        {
+                            area.AxisX.Minimum = tiempo - ventanaTiempo;
+                            area.AxisX.Maximum = tiempo;
+                        }
+                        else
+                        {
+                            area.AxisX.Minimum = VariablesControl.listaTiempo[0];
+                            area.AxisX.Maximum = tiempo;
+                        }
+                    }
 
-                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[0].Points.AddXY(tiempo, temperatura1)));
-                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[1].Points.AddXY(tiempo, corriente1)));
-                    this.chargraficaQ1.Invoke((MethodInvoker)(() => chargraficaQ1.Series[2].Points.AddXY(tiempo, pwm)));
-
-                    
-
-
+                    this.chargraficaQ1.BeginInvoke((MethodInvoker)(() => {
+                        var series = chargraficaQ1.Series;
+                        series[0].Points.AddXY(tiempo, temperatura1);
+                        series[1].Points.AddXY(tiempo, corriente1);
+                        series[2].Points.AddXY(tiempo, pwm);
+                    }));
 
                 }
                 else if (tiempo < 10)

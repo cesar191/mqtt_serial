@@ -21,19 +21,21 @@ namespace mqtt_serial
         private double ts = 0;
 
         private string titulo = "control";
+        private string boton = "Refrescar";
 
         public double Kp { get { return kp; } set { kp = value; } }
         public double Ki { get { return ki; } set { ki = value; } }
         public double Kd { get { return kd; } set { kd = value; } }
         public double Ts { get { return ts; } set { ts = value; } }
         public string Titulo { get { return titulo; } set { titulo = value; } }
+        public string Boton { get { return boton; } set { boton = value; } }
 
         private void buttonRefrescar_Click(object sender, EventArgs e)
         {
-            kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text.Replace(".", ",")) : 0;
-            ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text.Replace(".", ",")) : 0;
-            kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text.Replace(".", ",")) : 0;
-            ts = (comboBoxTs.Text != "") ? double.Parse(comboBoxTs.Text.Replace(".", ",")) : 0;
+            kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+            ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+            kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+            ts = (comboBoxTs.Text != "") ? double.Parse(comboBoxTs.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
 
             this.Close();
         }
@@ -43,10 +45,18 @@ namespace mqtt_serial
         {
             InitializeComponent();
         }
+        public void variables(double kp, double ki, double kd, double ts)
+        {
+            this.kp = kp;
+            this.ki = ki;
+            this.kd = kd;
+            this.ts = ts;
+        }
 
         private void ControlActual_Load(object sender, EventArgs e)
         {
             Text = titulo;
+            buttonRefrescar.Text = boton;
             comboBoxKd.Text = (kd != 0) ? kd.ToString() : "0";
             comboBoxKi.Text = (ki != 0) ? ki.ToString() : "0";
             comboBoxKp.Text = (kp != 0) ? kp.ToString() : "0";

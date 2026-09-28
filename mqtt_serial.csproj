@@ -24,10 +24,10 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>es-CO</TargetCulture>
-    <ProductName>UscoControl</ProductName>
+    <ProductName>MQTTusco</ProductName>
     <PublisherName>Cesar Muñoz Usco</PublisherName>
     <ApplicationRevision>6</ApplicationRevision>
-    <ApplicationVersion>0.1.2.%2a</ApplicationVersion>
+    <ApplicationVersion>0.1.2.6</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
