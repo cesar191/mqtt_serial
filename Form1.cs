@@ -27,15 +27,15 @@ namespace mqtt_serial
 
         public pantalla_principal()
         {
-            InitializeComponent();   
-            
+            InitializeComponent();       
         }
-
+        #region panel abrir y cerrar ventanas
+        //ver las ventansa en el panel deseado
         private formhija AbrirSubVentana<formhija>() where formhija : Form, new()
         {
             formhija formulario;
             formulario=this.panel_ventanas.Controls.OfType<formhija>().FirstOrDefault();//busca ventanas ya abiertas
-            if (formulario == null)//si no esta abierta la ventana
+            if (formulario == null)
             {
                 formulario = new formhija();
                 formulario.TopLevel = false;
@@ -44,38 +44,27 @@ namespace mqtt_serial
                 this.panel_ventanas.Tag = formulario;
                 formulario.Show();
                 formulario.BringToFront();
-                //pruba de ventana cerrada
-                //formulario.FormClosed += new FormClosedEventHandler(CloseForms);
-
-
             }
-            else { //si ya existe la ventana
+            else { 
                 formulario.BringToFront();
             }
             return formulario;
-
         }
        
         
-        //cerrar ventana
+        //cerrar ventanas 
         private void CerrarForm<formhija>() where formhija : Form, new()
         {
             formhija formulario;
             formulario = this.panel_ventanas.Controls.OfType<formhija>().FirstOrDefault();
-            if (formulario == null)//si no esta abierta la ventana
-            {
-               // MessageBox.Show("ventana no abierta");
-            }
-            else
-            { //si ya existe la ventana
-                formulario.Close();
-                //MessageBox.Show("ventana cerrada");
+            if (!(formulario == null))
+            { 
+                formulario.Close(); 
             }
                 
         }
-
-
-        //cuando se incia la ventanta
+        #endregion
+        #region arranque y cierre de la aplicacion
         private void pantalla_principal_Load(object sender, EventArgs e)
         {
             //colores botones menu
@@ -85,18 +74,27 @@ namespace mqtt_serial
             this.buttonControlQ1Q2.BackColor = Color.FromArgb(58, 7, 88);
             this.buttonControlQ1.BackColor = Color.FromArgb(58, 7, 88);
 
-            //por si acaso se asegura que las ventanas de pwm esten cerradas
+            ventanaConexion = AbrirSubVentana<conexion>();
+            buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
+
+        }
+
+        private void pantalla_principal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (ventanaConexion != null && !ventanaConexion.IsDisposed)
+            {
+                this.ventanaConexion.desconectar();
+            }
+            CerrarForm<conexion>();
             CerrarForm<adquirir_Q1>();
             CerrarForm<Adquirir_Q2>();
             CerrarForm<control_Q1>();
             CerrarForm<control_Q1Q2>();
 
-            ventanaConexion = AbrirSubVentana<conexion>();
-            buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
-
         }
-        
-        //al presionar el boton de conectar
+        #endregion
+
+        #region botones menu
         private void button_conexion_Click(object sender, EventArgs e)
         {
             //colores botones menu
@@ -107,11 +105,10 @@ namespace mqtt_serial
             this.buttonControlQ1.BackColor = Color.FromArgb(58, 7, 88);
             //abrir ventana
             ventanaConexion = AbrirSubVentana<conexion>();
-            //labelPrueba.Text =ventanaConexion.Temperatura1;
             buttonEstadoConexion.Visible = false;
 
         }
-        //al presionar el boton de adquirir 1
+
         private void button_adquiri_q1_Click(object sender, EventArgs e)
         {
             
@@ -133,8 +130,6 @@ namespace mqtt_serial
 
         }
         
-        
-        //al presionar el boton de control Q1
         private void button_controlQ1_Click(object sender, EventArgs e)
         {
             
@@ -153,7 +148,7 @@ namespace mqtt_serial
             ventanaControlQ1 = AbrirSubVentana<control_Q1>();
             buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
         }
-        //al presionar el boton adquirir 2
+        
         private void button_adquiri_q2_Click(object sender, EventArgs e)
         {
             
@@ -173,7 +168,6 @@ namespace mqtt_serial
             buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
         }
 
-        //al presionar el boton de control 2
         private void buttonControlQ1Q2_Click(object sender, EventArgs e)
         {
             
@@ -193,30 +187,15 @@ namespace mqtt_serial
             buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
         }
 
-
-        private void pantalla_principal_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (ventanaConexion != null && !ventanaConexion.IsDisposed)
-            {
-                this.ventanaConexion.desconectar();
-            }
-            
-            CerrarForm<conexion>();
-            CerrarForm<adquirir_Q1>();
-            CerrarForm<Adquirir_Q2>();
-            CerrarForm<control_Q1>();
-            CerrarForm<control_Q1Q2>();
-
-          
-
-        }
-
         private void buttonEstadoConexion_Click(object sender, EventArgs e)
         {
             this.ventanaConexion.desconectar();
             VariablesControl.EstadoDeConexion = false;
             buttonEstadoConexion.Visible = false;
         }
+        
+        #endregion
+
     }
 }
 

@@ -22,45 +22,33 @@ namespace mqtt_serial.ventanas
 {
     public partial class adquirir_Q1 : Form
     {
-       
-        private double temperatura1;
-        private double corriente1;
-        private double tiempo;
-        private int pwm;
+        #region varianbles y path
+        private double temperatura1, corriente1,tiempo,pwm;
         private string pathSave = VariablesControl.pathSave + @"AdquirirQ1\";
-        
-       
-
+        #endregion
         public adquirir_Q1()
         {
             InitializeComponent();
             
-            
         }
-
+        #region encargados de manejar PWM
         private void trackBarPWM_Scroll(object sender, EventArgs e)
         {
             this.comboBoxPWM.Text=trackBarPWM.Value.ToString();
             VariablesControl.Pwm1 = trackBarPWM.Value.ToString();
         }
 
+
         private void comboBoxPWM_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
+        { 
             try
             {
-                if (comboBoxPWM.Text == null)
-                {
-                    this.trackBarPWM.Value = 0;
-                }
-                else
-                {
-                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture);
-                }
-            }
-            catch
-            {
+                this.trackBarPWM.Value = (comboBoxPWM.Text != null) ? int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al parsear el valor del PWM: " + ex.Message);
             }
 
         }
@@ -70,40 +58,55 @@ namespace mqtt_serial.ventanas
             try
             {
                 this.comboBoxPWM.SelectionStart = comboBoxPWM.Text.Length;
+                int numero = (comboBoxPWM.Text != null) ? int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
 
-                if (comboBoxPWM.Text==null || comboBoxPWM.Text=="")
-                {
-                    this.trackBarPWM.Value = 0;
-                    comboBoxPWM.Text = "0";
-                }
-                else if (int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture) >=100)
+                if (numero >=100)
                 {
                     comboBoxPWM.Text = "100";
                     this.trackBarPWM.Value = 100;
                 }
-                else if (int.Parse(comboBoxPWM.Text.Replace(",", "."), CultureInfo.InvariantCulture ) <= 0)
+                else if (numero <= 0)
                 {
                     comboBoxPWM.Text="0";
                     this.trackBarPWM.Value = 0;
                 }
                 else {
                     
-                    this.trackBarPWM.Value = int.Parse(comboBoxPWM.Text.Replace(".", ","));
-                    if (this.comboBoxPWM.Text[0]=='0')
-                    {
-                        this.comboBoxPWM.Text=this.comboBoxPWM.Text.Substring(1);
-                        
-                    }
+                    this.trackBarPWM.Value = numero;
+                    this.comboBoxPWM.Text = (this.comboBoxPWM.Text[0] == '0') ? this.comboBoxPWM.Text.Substring(1) : this.comboBoxPWM.Text;
+
                 }
             }
             catch(Exception error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Error al parsear el valor del PWM: " + error.Message);
 
             }
             
         }
 
+        private void trackBarPWM_MouseDown(object sender, MouseEventArgs e)
+        {
+
+            // Limitar los márgenes internos aproximados del TrackBar
+            double mousePosition = e.Y;
+            double totalHeight = trackBarPWM.Height;
+
+            // Normalizar la posición al rango del TrackBar (0 a 100)
+            double valueRatio = mousePosition / totalHeight;
+            int newValue = trackBarPWM.Maximum - (int)(valueRatio * (trackBarPWM.Maximum - trackBarPWM.Minimum));
+
+            // Asegurar que se mantenga dentro de los límites
+            if ((newValue - 5) <= trackBarPWM.Minimum) newValue = trackBarPWM.Minimum;
+            if ((newValue + 5) >= trackBarPWM.Maximum) newValue = trackBarPWM.Maximum;
+
+            trackBarPWM.Value = newValue;
+            comboBoxPWM.Text = newValue.ToString();
+
+        }
+
+        #endregion
+        #region abrir y cerrar ventana
         private void adquirir_Q1_Load(object sender, EventArgs e)
         {
             comboBoxPWM.Text=trackBarPWM.Value.ToString();
@@ -115,35 +118,36 @@ namespace mqtt_serial.ventanas
 
             Directory.CreateDirectory(pathSave);
         }
+        
+        private void adquirir_Q1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Enabled = false;
 
+        }
+
+        #endregion
+
+        #region greficar y exportar 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //codigo util
+            
             try
             {
                 //enviar datos
                 VariablesControl.Pwm1 = trackBarPWM.Value.ToString();
-                //VariablesControl.AlarmaLed1 = comboBoxTemperatura.Text;
-
+              
                 //para graficar
                 pwm = trackBarPWM.Value;
-                temperatura1 = double.Parse(VariablesControl.Temperatura1.Replace(",", "."), CultureInfo.InvariantCulture);
-                corriente1 = double.Parse(VariablesControl.Corriente1.Replace(",", "."), CultureInfo.InvariantCulture) * 1000;
-                tiempo = double.Parse(VariablesControl.Tiempo.Replace(",", "."), CultureInfo.InvariantCulture);
-
+                temperatura1 = (VariablesControl.Temperatura1 != "") ? double.Parse(VariablesControl.Temperatura1.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                
+                corriente1 = (VariablesControl.Corriente1 != "") ? (double.Parse(VariablesControl.Corriente1.Replace(",", "."), CultureInfo.InvariantCulture)) * 1000 : 0;
+                tiempo = (VariablesControl.Tiempo != "") ? double.Parse(VariablesControl.Tiempo.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
 
                 checkBoxCurrent.Text = $@" {corriente1:f2} mA";
                 labelTemperature.Text = $@" {temperatura1:f2} °C";
-                if (checkBoxCurrent.Checked)
-                {
-                    this.chargraficaQ1.Series[1].Enabled = true;
-                }
-                else
-                {
-                    this.chargraficaQ1.Series[1].Enabled = false;
-                }
-                //testeo de configuracion grafica
-                this.chargraficaQ1.Legends[0].CellColumns[0].SeriesSymbolSize = new Size(200,100);
+                
+                
+                
 
                 if (tiempo > 10 && VariablesControl.EstadoDeConexion)
                 {
@@ -152,35 +156,53 @@ namespace mqtt_serial.ventanas
                     VariablesControl.listaPWM1.Add(pwm);
                     VariablesControl.listaTiempo.Add(tiempo);
 
+                    double tiempo2=tiempo - VariablesControl.listaTiempo[0];
+
                     double ventanaTiempo = 1200;
-                    foreach (var area in chargraficaQ1.ChartAreas)
+                    if (tiempo2 > ventanaTiempo)
                     {
-                        if (tiempo - VariablesControl.listaTiempo[0] > ventanaTiempo)
+                        double limiteInferior = tiempo2 - ventanaTiempo;
+
+                        foreach (var area in chargraficaQ1.ChartAreas)
                         {
-                            area.AxisX.Minimum = tiempo - ventanaTiempo;
-                            area.AxisX.Maximum = tiempo;
+                            area.AxisX.Minimum = limiteInferior;
+                            area.AxisX.Maximum = tiempo2;
                         }
-                        else
+
+                        foreach (var series in chargraficaQ1.Series)
                         {
-                            area.AxisX.Minimum = VariablesControl.listaTiempo[0];
-                            area.AxisX.Maximum = tiempo;
+                            while (series.Points.Count > 0 && series.Points[0].XValue < limiteInferior)
+                            {
+                                series.Points.RemoveAt(0);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var area in chargraficaQ1.ChartAreas)
+                        {
+                            area.AxisX.Minimum = 0;
+                            area.AxisX.Maximum = tiempo2;
                         }
                     }
 
-                    this.chargraficaQ1.BeginInvoke((MethodInvoker)(() => {
-                        var series = chargraficaQ1.Series;
-                        series[0].Points.AddXY(tiempo, temperatura1);
-                        series[1].Points.AddXY(tiempo, corriente1);
-                        series[2].Points.AddXY(tiempo, pwm);
-                    }));
+                    if (chargraficaQ1.Series.Count >= 2) { 
+                            var series = chargraficaQ1.Series;
+                            series[1].Enabled = checkBoxCurrent.Checked;
 
+                            series[0].Points.AddXY(tiempo2, temperatura1);
+                            series[1].Points.AddXY(tiempo2, corriente1);
+                            series[2].Points.AddXY(tiempo2, pwm);
+
+                        }
+                    
                 }
                 else if (tiempo < 10)
                 {
-                    this.chargraficaQ1.Series[0].Points.Clear();
-                    this.chargraficaQ1.Series[1].Points.Clear();
-                    this.chargraficaQ1.Series[2].Points.Clear();
-
+                    foreach (var series in chargraficaQ1.Series)
+                    {
+                        series.Points.Clear();
+                    }
                     VariablesControl.limpiarLista();
                 }
 
@@ -205,17 +227,11 @@ namespace mqtt_serial.ventanas
                     labelTemperature.ForeColor = System.Drawing.Color.White;
                 }
             }
-            catch
+            catch (Exception error)
             {
-
+                MessageBox.Show($"hubo un error en: {error.Message}");
             }
             
-        }
-
-        private void adquirir_Q1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            timer1.Enabled = false;
-
         }
 
         private void buttonExportarExcel_Click(object sender, EventArgs e)
@@ -223,18 +239,13 @@ namespace mqtt_serial.ventanas
             try
             {
                 timer1.Stop();
-                //alternativa para que el usuario escoga donde guardar la informacion
-                //if (folderBrowserDialog1.ShowDialog()==DialogResult.OK)
-                //{
-                //    Console.WriteLine(folderBrowserDialog1.SelectedPath);
-                //}
                 string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");
                 
 
                 if (VariablesControl.listaTiempo.Count > 0)
                 {
                     
-                    this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_Adquirir1_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
+
                     SLDocument document = new SLDocument();
 
                     document.SetCellValue(1, 1, "Tiempo");
@@ -243,7 +254,7 @@ namespace mqtt_serial.ventanas
                     document.SetCellValue(1, 4, "PWM1");
                     for (int i = 0; i < VariablesControl.listaTiempo.Count; i++)
                     {
-                        document.SetCellValue(i + 2, 1, VariablesControl.listaTiempo[i]);
+                        document.SetCellValue(i + 2, 1, VariablesControl.listaTiempo[i] - VariablesControl.listaTiempo[0]);
                         document.SetCellValue(i + 2, 2, VariablesControl.listaTemperatura1[i]);
                         document.SetCellValue(i + 2, 3, VariablesControl.listaCorriente1[i]);
                         document.SetCellValue(i + 2, 4, VariablesControl.listaPWM1[i]);
@@ -259,41 +270,37 @@ namespace mqtt_serial.ventanas
                     document.SetCellValue(4, 7, "=INDEX(A:A, MATCH(MIN(B:B)*1.02, B:B)) - (INDEX(A:A, MATCH(MODE(D:D), D:D,0)))");
 
                     //imagen Grafica
-                    SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_Adquirir1_{fecha}.png");
-                    imagenGrafica.SetPosition(1, 8);
-                    document.InsertPicture(imagenGrafica);
+                    if (this.chargraficaQ1 != null)
+                    {
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            this.chargraficaQ1.SaveImage(ms, System.Drawing.Imaging.ImageFormat.Png);
+                            ms.Position = 0;
+
+                            // Guardar copia física si se requiere
+                            string rutaImagen = $@"{pathSave}Grafica_Adquirir1_{fecha}.png";
+                            File.WriteAllBytes(rutaImagen, ms.ToArray());
+
+                            // Usar la imagen desde el stream o archivo validando liberación
+                            SLPicture imagenGrafica = new SLPicture(rutaImagen);
+                            imagenGrafica.SetPosition(1, 8);
+                            document.InsertPicture(imagenGrafica);
+                        }
+                    }
 
                     document.SaveAs($@"{pathSave}DatosGrafica_AdquirirQ1_{fecha}.xlsx");
                 }
                 timer1.Start();
                 MessageBox.Show($"Se exporto los datos en la ubicacion: \n {pathSave}");
             }
-            catch
+            catch (Exception error)
             {
-
+                MessageBox.Show($"hubo un error en: {error.Message}");
             }
             
         }
+        
+        #endregion
 
-
-        private void trackBarPWM_MouseDown(object sender, MouseEventArgs e)
-        {
-
-            // Limitar los márgenes internos aproximados del TrackBar
-            double mousePosition = e.Y;
-            double totalHeight = trackBarPWM.Height;
-
-            // Normalizar la posición al rango del TrackBar (0 a 100)
-            double valueRatio = mousePosition / totalHeight;
-            int newValue = trackBarPWM.Maximum - (int)(valueRatio * (trackBarPWM.Maximum - trackBarPWM.Minimum)) ;
-
-            // Asegurar que se mantenga dentro de los límites
-            if ((newValue-5) <= trackBarPWM.Minimum) newValue = trackBarPWM.Minimum;
-            if ((newValue+5) >= trackBarPWM.Maximum) newValue = trackBarPWM.Maximum;
-
-            trackBarPWM.Value = newValue;
-            comboBoxPWM.Text = newValue.ToString();
-
-        }
     }
 }
