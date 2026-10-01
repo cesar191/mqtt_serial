@@ -64,9 +64,8 @@
             this.comboBoxTemperatura = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chargraficaQ1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.contextMenuStripGrafica = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.graficarCorrienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerControl = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -76,7 +75,6 @@
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chargraficaQ1)).BeginInit();
-            this.contextMenuStripGrafica.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -604,7 +602,6 @@
             chartArea2.Name = "graficaPWM";
             this.chargraficaQ1.ChartAreas.Add(chartArea1);
             this.chargraficaQ1.ChartAreas.Add(chartArea2);
-            this.chargraficaQ1.ContextMenuStrip = this.contextMenuStripGrafica;
             legend1.AutoFitMinFontSize = 10;
             legend1.BackColor = System.Drawing.Color.White;
             legend1.DockedToChartArea = "ChartAreaTempCurrent";
@@ -661,24 +658,15 @@
             this.chargraficaQ1.TabIndex = 1;
             this.chargraficaQ1.Text = "chart1";
             // 
-            // contextMenuStripGrafica
-            // 
-            this.contextMenuStripGrafica.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.graficarCorrienteToolStripMenuItem});
-            this.contextMenuStripGrafica.Name = "contextMenuStripGrafica";
-            this.contextMenuStripGrafica.Size = new System.Drawing.Size(165, 26);
-            // 
-            // graficarCorrienteToolStripMenuItem
-            // 
-            this.graficarCorrienteToolStripMenuItem.Name = "graficarCorrienteToolStripMenuItem";
-            this.graficarCorrienteToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.graficarCorrienteToolStripMenuItem.Text = "graficar corriente";
-            this.graficarCorrienteToolStripMenuItem.Click += new System.EventHandler(this.graficarCorrienteToolStripMenuItem_Click);
-            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timerControl
+            // 
+            this.timerControl.Interval = 1000;
+            this.timerControl.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // control_Q1
             // 
@@ -707,7 +695,6 @@
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chargraficaQ1)).EndInit();
-            this.contextMenuStripGrafica.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -742,7 +729,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.CheckBox checkBoxCurrent;
         private System.Windows.Forms.DataVisualization.Charting.Chart chargraficaQ1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripGrafica;
-        private System.Windows.Forms.ToolStripMenuItem graficarCorrienteToolStripMenuItem;
+        private System.Windows.Forms.Timer timerControl;
     }
 }

@@ -22,88 +22,57 @@ namespace mqtt_serial.ventanas
     {
         #region VariablesDeControl
         private ControlPID controlPID = new ControlPID();
+        private double kp = 0, ki = 0, kd = 0,ts = 1, setPoint = 0, errorDouble = 0;
 
-        private double kp = 0;
-        private double ki = 0;
-        private double kd = 0;
-        private double ts = 0;
-        private double setPoint = 0;
-        private string errorString;
-        private double errorDouble = 0;
+        #endregion
+        
+        #region variables recibidas y path de guardado
+        private double temperatura1, corriente1,tiempo,pwm;
+        private string pathSave = VariablesControl.pathSave + @"ControlQ1\";
         #endregion
 
-        private double temperatura1;
-        //private string temperatura2;
-        private double corriente1;
-        private double tiempo;
-        private double pwm;
-        private string pathSave = VariablesControl.pathSave + @"ControlQ1\";
-
-
-
-
+        #region procesos de control
         private void SystemControl(double errorDouble, double kp, double ki, double kd, double ts)
         {
-            ts = (ts != 0) ? (ts) : (0.1);
+            ts = (ts != 0) ? (ts) : (1);
             if (kp != 0 && ki == 0 && kd == 0)
             {
                 this.controlPID.SystemControlP(errorDouble, kp);
-                
             }
             else if (kp != 0 && ki != 0 && kd == 0)
             {
-                
                 this.controlPID.SystemControlPI(errorDouble, kp, ki, ts);
-                
             }
             else if (kp != 0 && ki != 0 && kd != 0)
             {
                 this.controlPID.SystemControlPID(errorDouble, kp, ki, kd, ts);
-                
             }
-            else
-            {
-                
-            }
-
-            VariablesControl.Pwm1 = controlPID.PWM.ToString();
         }
 
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                errorDouble = setPoint - temperatura1;
+                SystemControl(errorDouble, kp, ki, kd, ts);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hubo un Error: {ex.Message}");
+            }
+        }
+
+        #endregion
         public control_Q1()
         {
             InitializeComponent();
         }
 
-        private void buttonRefrescar_Click(object sender, EventArgs e)
-
-        {
-
-            kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-            ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-            kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-            ts = (comboBoxTs.Text != "") ? double.Parse(comboBoxTs.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-
-            for (int i = 0; i < controlPID.ErrorArray.Length; i++)
-            {
-                controlPID.ErrorArray[i] = 0;
-            }
-            for (int i = 0; i < controlPID.PwmArray.Length; i++)
-            {
-                controlPID.PwmArray[i] = 0;
-            }
-
-            VariablesControl.listaTiempo2.Add(tiempo);
-            VariablesControl.listaKp.Add(kp);
-            VariablesControl.listaKi.Add(ki);
-            VariablesControl.listaKd.Add(kd);
-            VariablesControl.listaTs.Add(ts);
-
-        }
-
+        #region al abrir y cerrar la ventana
         private void control_Q1_Load(object sender, EventArgs e)
         {
             comboBoxSetPoint.Text = "0";
-
             comboBoxKp.Text = "0";
             comboBoxKi.Text = "0";
             comboBoxKd.Text = "0";
@@ -119,89 +88,174 @@ namespace mqtt_serial.ventanas
 
         private void control_Q1_FormClosing(object sender, FormClosingEventArgs e)
         {
+
             timer1.Enabled = false;
+            timerControl.Enabled = false;
+
         }
 
+        #endregion
+        #region botones y graficas
+        private void buttonRefrescar_Click(object sender, EventArgs e)
+        {
+            try {
+                
+                kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                ts = (comboBoxTs.Text != "") ? double.Parse(comboBoxTs.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                
+                VariablesControl.listaTiempo2.Add(tiempo);
+                VariablesControl.listaKp.Add(kp);
+                VariablesControl.listaKi.Add(ki);
+                VariablesControl.listaKd.Add(kd);
+                VariablesControl.listaTs.Add(ts);
 
+                timerControl.Interval = (int)((ts != 0) ? (ts)*1000 : (1) * 1000);
+                timerControl.Enabled = true;
+            }
+            catch (Exception ex) { 
+                MessageBox.Show("Error al parsear los valores: " + ex.Message);
+            }
+        }
 
+        private void buttonVentilador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (buttonVentilador.Text == "Encender")
+                {
+                    pictureBoxVentilador.Image = Properties.Resources.ventilador_on;
+                    VariablesControl.Ventilador1 = "on";
+                    buttonVentilador.Text = "Apagar";
+                    buttonVentilador.BackColor = Color.FromArgb(227, 58, 24);
+                }
+                else
+                {
+                    buttonVentilador.Text = "Encender";
+                    pictureBoxVentilador.Image = Properties.Resources.ventilador_off;
+                    VariablesControl.Ventilador1 = "off";
+                    buttonVentilador.BackColor = Color.FromArgb(44, 169, 94);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hubo un Error: {ex.Message}");
+            }
+
+        }
+
+        private void buttonExportarExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                timer1.Stop();
+                string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
+                if (VariablesControl.listaTiempo.Count > 0)
+                {
+                    this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
+                    SLDocument document = new SLDocument();
+
+                    //lista de titulos del excel
+                    document.SetCellValue(1, 1, "Tiempo");
+                    document.SetCellValue(1, 2, "Temperatura1");
+                    document.SetCellValue(1, 3, "Corriente1");
+                    document.SetCellValue(1, 4, "PWM1");
+                    document.SetCellValue(1, 5, "SetPoint");
+
+                    document.SetCellValue(1, 7, "Kp");
+                    document.SetCellValue(1, 8, "Ki");
+                    document.SetCellValue(1, 9, "Kd");
+                    document.SetCellValue(1, 10, "Ts");
+                    document.SetCellValue(1, 11, "Cambio (s)");
+
+                    for (int i = 0; i < VariablesControl.listaTiempo.Count; i++)
+                    {
+                        document.SetCellValue(i + 2, 1, VariablesControl.listaTiempo[i] - VariablesControl.listaTiempo[0]);
+                        document.SetCellValue(i + 2, 2, VariablesControl.listaTemperatura1[i]);
+                        document.SetCellValue(i + 2, 3, VariablesControl.listaCorriente1[i]);
+                        document.SetCellValue(i + 2, 4, VariablesControl.listaPWM1[i]);
+                        document.SetCellValue(i + 2, 5, VariablesControl.listaSetPoint1[i]);
+                    }
+                    for (int i = 0; i < VariablesControl.listaTiempo2.Count; i++)
+                    {
+                        document.SetCellValue(i + 2, 7, VariablesControl.listaKp[i]);
+                        document.SetCellValue(i + 2, 8, VariablesControl.listaKi[i]);
+                        document.SetCellValue(i + 2, 9, VariablesControl.listaKd[i]);
+                        document.SetCellValue(i + 2, 10, VariablesControl.listaTs[i]);
+                        document.SetCellValue(i + 2, 11, VariablesControl.listaTiempo2[i] - VariablesControl.listaTiempo[0]);
+
+                    }
+                    SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_ControlQ1_{fecha}.png");
+                    imagenGrafica.SetPosition(1, 14);
+                    document.InsertPicture(imagenGrafica);
+
+                    document.SaveAs($@"{pathSave}DatosGrafica_ControlQ1_{fecha}.xlsx");
+                }
+                timer1.Start();
+                MessageBox.Show($"Se exporto los datos en la ubicacion: \n {pathSave}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al exportar los datos.por {ex.Message}");
+            }
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
-            {
-
-                //para graficar
+            {        
                 pwm = controlPID.PWM;
+                VariablesControl.Pwm1 = pwm.ToString();
+
                 temperatura1 = double.Parse(VariablesControl.Temperatura1.Replace(",", "."), CultureInfo.InvariantCulture);
                 corriente1 = (double.Parse(VariablesControl.Corriente1.Replace(",", "."), CultureInfo.InvariantCulture)) * 1000;
                 tiempo = double.Parse(VariablesControl.Tiempo.Replace(",", "."), CultureInfo.InvariantCulture);
 
-
                 labelTemperature.Text = $@" {temperatura1:f2} °C";
                 checkBoxCurrent.Text = $@" {corriente1:f2} mA";
-
-
-                setPoint = (comboBoxSetPoint.Text != "") ? double.Parse(comboBoxSetPoint.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-
-                errorDouble = setPoint - temperatura1;
-                errorString = errorDouble.ToString();
-                SystemControl(errorDouble, kp, ki, kd, ts);
-
-                //
-                graficarCorrienteToolStripMenuItem.Checked = checkBoxCurrent.Checked;
-                if (checkBoxCurrent.Checked)
-                {
-                    
-                    this.chargraficaQ1.Series[1].Enabled = true;
-                }
-                else
-                {
-                    this.chargraficaQ1.Series[1].Enabled = false;
-                }
-
-
+                
 
                 if (tiempo > 10 && VariablesControl.EstadoDeConexion)
                 {
-                    // this.chargraficaQ1.Series[1].Enabled = false;
-                    //this.chargraficaQ1.ChartAreas[1].AxisY.Maximum = corriente1 + 0.5;
-                    //this.chargraficaQ1.ChartAreas[1].AxisY.Minimum = corriente1 - 0.5;
-
-                    //
                     VariablesControl.listaTemperatura1.Add(temperatura1);
                     VariablesControl.listaCorriente1.Add(corriente1);
                     VariablesControl.listaPWM1.Add(pwm);
                     VariablesControl.listaTiempo.Add(tiempo);
                     VariablesControl.listaSetPoint1.Add(setPoint);
                     //
+                    setPoint = (comboBoxSetPoint.Text != "") ? double.Parse(comboBoxSetPoint.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+
+                    double tiempo2 = tiempo - VariablesControl.listaTiempo[0];
                     //
                     double ventanaTiempo = 1200;
                     foreach (var area in chargraficaQ1.ChartAreas)
                     {
                         if (tiempo - VariablesControl.listaTiempo[0] > ventanaTiempo)
                         {
-                            area.AxisX.Minimum = tiempo - ventanaTiempo;
-                            area.AxisX.Maximum = tiempo;
+                            area.AxisX.Minimum = tiempo2 - ventanaTiempo;
+                            area.AxisX.Maximum = tiempo2;
                         }
                         else
                         {
-                            area.AxisX.Minimum = VariablesControl.listaTiempo[0];
-                            area.AxisX.Maximum = tiempo;
+                            area.AxisX.Minimum = 0;
+                            area.AxisX.Maximum = tiempo2;
                         }
                     }
                     //
-                    this.chargraficaQ1.BeginInvoke((MethodInvoker)(() => {
-                        var series = chargraficaQ1.Series;
-                        series[0].Points.AddXY(tiempo, temperatura1);
-                        series[2].Points.AddXY(tiempo, pwm);
-                        series[1].Points.AddXY(tiempo, corriente1);
-                        series[3].Points.AddXY(tiempo, setPoint);
-                        
-                    }));
+                    
+                    if (chargraficaQ1.Series.Count >= 4)
+                    {
+                        chargraficaQ1.Series[1].Enabled = checkBoxCurrent.Checked;
 
-                    //
+                        chargraficaQ1.Series[0].Points.AddXY(tiempo2, temperatura1);
+                        chargraficaQ1.Series[1].Points.AddXY(tiempo2, corriente1);
+                        chargraficaQ1.Series[2].Points.AddXY(tiempo2, pwm);
+                        chargraficaQ1.Series[3].Points.AddXY(tiempo2, setPoint);
+                    }
                 }
-                else if (tiempo < 10)
+                else if (tiempo <=10)
                 {
                     foreach (var series in chargraficaQ1.Series)
                     {
@@ -226,109 +280,21 @@ namespace mqtt_serial.ventanas
                 }
                 else
                 {
-
                     VariablesControl.AlarmaLed1 = "off";
                     labelTemperature.ForeColor = System.Drawing.Color.White;
                 }
 
 
             }
-            catch
+            catch (Exception ex)
             {
-                //MessageBox.Show("no es un numero uno de los datos");
+                MessageBox.Show($"Hubo un Error: {ex.Message}");
             }
 
         }
-
-        private void buttonVentilador_Click(object sender, EventArgs e)
-        {
-            if (buttonVentilador.Text == "Encender")
-            {
-                pictureBoxVentilador.Image = Properties.Resources.ventilador_on;
-                VariablesControl.Ventilador1 = "on";
-                buttonVentilador.Text = "Apagar";
-                buttonVentilador.BackColor = Color.FromArgb(227, 58, 24);
-            }
-            else
-            {
-                buttonVentilador.Text = "Encender";
-                pictureBoxVentilador.Image = Properties.Resources.ventilador_off;
-                VariablesControl.Ventilador1 = "off";
-                buttonVentilador.BackColor = Color.FromArgb(44, 169, 94);
-
-            }
-        }
-
-        private void buttonExportarExcel_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                timer1.Stop();
-                //alternativa para que el usuario escoga donde guardar la informacion
-                //if (folderBrowserDialog1.ShowDialog()==DialogResult.OK)
-                //{
-                //    Console.WriteLine(folderBrowserDialog1.SelectedPath);
-                //}
-                string fecha = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-
-                
-
-                if (VariablesControl.listaTiempo.Count > 0)
-                {
-                    this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
-                    SLDocument document = new SLDocument();
-                    
-                    //lista de titulos del excel
-                    document.SetCellValue(1, 1, "Tiempo");
-                    document.SetCellValue(1, 2, "Temperatura1");
-                    document.SetCellValue(1, 3, "Corriente1");
-                    document.SetCellValue(1, 4, "PWM1");
-                    document.SetCellValue(1, 5, "SetPoint");
-
-                    document.SetCellValue(1, 7,  "Kp");
-                    document.SetCellValue(1, 8, "Ki");
-                    document.SetCellValue(1, 9, "Kd");
-                    document.SetCellValue(1, 10, "Ts");
-                    document.SetCellValue(1, 11, "Cambio (s)");
-
-                    for (int i = 0; i < VariablesControl.listaTiempo.Count; i++)
-                    {
-                        document.SetCellValue(i + 2, 1, VariablesControl.listaTiempo[i]);
-                        document.SetCellValue(i + 2, 2, VariablesControl.listaTemperatura1[i]);
-                        document.SetCellValue(i + 2, 3, VariablesControl.listaCorriente1[i]);
-                        document.SetCellValue(i + 2, 4, VariablesControl.listaPWM1[i]);
-                        document.SetCellValue(i + 2, 5, VariablesControl.listaSetPoint1[i]);
-                    }
-                    for(int i = 0; i < VariablesControl.listaTiempo2.Count; i++)
-                    {
-                        document.SetCellValue(i + 2, 7, VariablesControl.listaKp[i]);
-                        document.SetCellValue(i + 2, 8, VariablesControl.listaKi[i]);
-                        document.SetCellValue(i + 2, 9, VariablesControl.listaKd[i]);
-                        document.SetCellValue(i + 2, 10, VariablesControl.listaTs[i]);
-                        document.SetCellValue(i + 2, 11, VariablesControl.listaTiempo2[i]);
-
-                    }
-                    SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_ControlQ1_{fecha}.png");
-                    imagenGrafica.SetPosition(1, 14);
-                    document.InsertPicture(imagenGrafica);
-
-                    document.SaveAs($@"{pathSave}DatosGrafica_ControlQ1_{fecha}.xlsx");
-                }
-                timer1.Start();
-                MessageBox.Show($"Se exporto los datos en la ubicacion: \n {pathSave}");
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void graficarCorrienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            graficarCorrienteToolStripMenuItem.Checked = !checkBoxCurrent.Checked;
-            checkBoxCurrent.Checked = graficarCorrienteToolStripMenuItem.Checked;
-        }
-
         
+        #endregion
+
+
     }
 }

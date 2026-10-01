@@ -32,14 +32,20 @@ namespace mqtt_serial
 
         private void buttonRefrescar_Click(object sender, EventArgs e)
         {
-            kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-            ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-            kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-            ts = (comboBoxTs.Text != "") ? double.Parse(comboBoxTs.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+            try
+            {
+                kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                ts = (comboBoxTs.Text != "") ? double.Parse(comboBoxTs.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
 
-            this.Close();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al parsear los valores: " + ex.Message);
+            }
         }
-        
 
         public ControlActual()
         {

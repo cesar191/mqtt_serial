@@ -29,8 +29,14 @@ namespace mqtt_serial.ventanas
     {
         //variables a manejar
         public MqttClient mqttClient;
-        string[] topicEnviar =
-            {
+        string[] topicRecibir ={
+                    "test/sensor/temperatura1",
+                    "test/sensor/temperatura2",
+                    "test/sensor/corrienteQ1",
+                    "test/sensor/corrienteQ2",
+                    "test/sensor/tiempo"
+            };
+        string[] topicEnviar ={
                     "test/datos/pwm1",
                     "test/datos/pwm2",
                     "test/datos/led1",
@@ -66,25 +72,24 @@ namespace mqtt_serial.ventanas
 
         }
         
-
-
         //parametros que se reciben del mqtt
         private void MqClient_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             try {
                 string topic = e.Topic;
                 string message = Encoding.UTF8.GetString(e.Message);
-                switch (topic)
+                int index = Array.IndexOf(topicRecibir, topic);
+                switch (index)
                 {
-                    case "test/sensor/temperatura1": VariablesControl.Temperatura1 = message; break;
-                    case "test/sensor/temperatura2": VariablesControl.Temperatura2 = message; break;
-                    case "test/sensor/corrienteQ1": VariablesControl.Corriente1 = message; break;
-                    case "test/sensor/corrienteQ2": VariablesControl.Corriente2 = message; break;
-                    case "test/sensor/tiempo": VariablesControl.Tiempo = message; break;
+                    case 0: VariablesControl.Temperatura1 = message; break;
+                    case 1: VariablesControl.Temperatura2 = message; break;
+                    case 2: VariablesControl.Corriente1 = message; break;
+                    case 3: VariablesControl.Corriente2 = message; break;
+                    case 4: VariablesControl.Tiempo = message; break;
                 }
             }
             catch(Exception ex){
-                
+                MessageBox.Show("Error al recibir mensaje MQTT: " + ex.Message);
             }
             
         }
@@ -127,7 +132,7 @@ namespace mqtt_serial.ventanas
 
                         break;
                     case (2):
-                    //case (2)://opción de comunicacion serial
+                    //case (2)://opción de comunicación serial
                         //datos para la comunicación
 
                         this.panelUserPass.Visible = false;
@@ -162,6 +167,7 @@ namespace mqtt_serial.ventanas
         {
             this.comboBoxIPCOM.Items.Clear();
             this.comboBoxIPCOM.Text = "";
+
             switch (comboBoxTipoConexion.SelectedIndex)
             {
                 case 0:
@@ -169,7 +175,7 @@ namespace mqtt_serial.ventanas
                     comboBoxIPCOM.Items.Add(ipActualizada);
                     break;
                 case 2:
-                    string[] puertosActualizados= SerialPort.GetPortNames();
+                    string[] puertosActualizados = SerialPort.GetPortNames();
                     comboBoxIPCOM.Items.AddRange(puertosActualizados);
                     break;
 
@@ -248,7 +254,7 @@ namespace mqtt_serial.ventanas
         }
         private void conexionMqtt(){
             
-            if (mqttClient.IsConnected && buttonConectar.Text == "Conectar")
+            if (mqttClient != null && mqttClient.IsConnected && buttonConectar.Text == "Conectar")
             {   //importante tener en cuenta el timer por que es lo que puede causar problemas mas adelante
                 timer1.Enabled = true;
                 VariablesControl.EstadoDeConexion = true;
@@ -260,11 +266,11 @@ namespace mqtt_serial.ventanas
                 mqttClient.MqttMsgPublishReceived += MqClient_MqttMsgPublishReceived;
                
                 string[] topics = new string[5];
-                topics[0] = "test/sensor/temperatura1";
-                topics[1] = "test/sensor/temperatura2";
-                topics[2] = "test/sensor/corrienteQ1";
-                topics[3] = "test/sensor/corrienteQ2";
-                topics[4] = "test/sensor/tiempo";
+                topics[0] = this.topicRecibir[0];
+                topics[1] = this.topicRecibir[1];
+                topics[2] = this.topicRecibir[2];
+                topics[3] = this.topicRecibir[3];
+                topics[4] = this.topicRecibir[4];
                 byte[] msg = new byte[5];
                 msg[0] = MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE;
                 msg[1] = MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE;
@@ -276,7 +282,7 @@ namespace mqtt_serial.ventanas
             }
             else //if (buttonConectar.Text == "Desconectar")
             {
-                if (mqttClient.IsConnected)
+                if (mqttClient != null && mqttClient.IsConnected)
                 {   //
                     timer1.Enabled = false;
                     //
@@ -338,6 +344,17 @@ namespace mqtt_serial.ventanas
             }
             //MessageBox.Show("se esta cerrando");
         }
+        private void publicar() {
+            if(mqttClient != null && mqttClient.IsConnected)
+            {
+                mqttClient.Publish(topicEnviar[0], Encoding.UTF8.GetBytes(VariablesControl.Pwm1));
+                mqttClient.Publish(topicEnviar[1], Encoding.UTF8.GetBytes(VariablesControl.Pwm2));
+                mqttClient.Publish(topicEnviar[2], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed1));
+                mqttClient.Publish(topicEnviar[3], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed2));
+                mqttClient.Publish(topicEnviar[4], Encoding.UTF8.GetBytes(VariablesControl.Ventilador1));
+                mqttClient.Publish(topicEnviar[5], Encoding.UTF8.GetBytes(VariablesControl.Ventilador2));
+            }
+        }
 
         private void conexion_Load(object sender, EventArgs e)
         {
@@ -350,26 +367,19 @@ namespace mqtt_serial.ventanas
             {
                 timer1.Enabled = false;
                
-                if (mqttClient != null)
+                if (mqttClient != null && mqttClient.IsConnected)
                 {
-                    if (mqttClient.IsConnected)
-                    {
                         VariablesControl.reseteoParametros();
+                        publicar();
                         
-                        mqttClient.Publish(topicEnviar[0], Encoding.UTF8.GetBytes(VariablesControl.Pwm1));
-                        mqttClient.Publish(topicEnviar[1], Encoding.UTF8.GetBytes(VariablesControl.Pwm2));
-                        mqttClient.Publish(topicEnviar[2], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed1));
-                        mqttClient.Publish(topicEnviar[3], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed2));
-                        mqttClient.Publish(topicEnviar[4], Encoding.UTF8.GetBytes(VariablesControl.Ventilador1));
-                        mqttClient.Publish(topicEnviar[5], Encoding.UTF8.GetBytes(VariablesControl.Ventilador2));
-                        System.Threading.Thread.Sleep(2000);
+                        System.Threading.Thread.Sleep(1000);
                         mqttClient.Disconnect();
                         mqttClient = null;
                         VariablesControl.EstadoDeConexion = false;
                         comboBoxTipoConexion.Enabled = true;
                         buttonConectar.Text = "Conectar";
                         buttonConectar.BackColor = Color.FromArgb(44, 169, 94);
-                    }
+                    
                 }
                 else if (serialPort1.IsOpen)
                 {
@@ -390,19 +400,18 @@ namespace mqtt_serial.ventanas
         {
             try
             {
-                if (mqttClient.IsConnected)
+                if (mqttClient !=null && mqttClient.IsConnected)
                 {
 
-                    mqttClient.Publish(topicEnviar[0], Encoding.UTF8.GetBytes(VariablesControl.Pwm1));
-                    mqttClient.Publish(topicEnviar[1], Encoding.UTF8.GetBytes(VariablesControl.Pwm2));
-                    mqttClient.Publish(topicEnviar[2], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed1));
-                    mqttClient.Publish(topicEnviar[3], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed2));
-                    mqttClient.Publish(topicEnviar[4], Encoding.UTF8.GetBytes(VariablesControl.Ventilador1));
-                    mqttClient.Publish(topicEnviar[5], Encoding.UTF8.GetBytes(VariablesControl.Ventilador2));
+                        publicar();
+        
+                }else if (serialPort1.IsOpen)
+                {
+
                 }
                 if(!VariablesControl.EstadoDeConexion)
                 {
-                    if (mqttClient.IsConnected)
+                    if (mqttClient != null && mqttClient.IsConnected)
                     {
                         conexionMqtt();
                     }

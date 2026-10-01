@@ -81,6 +81,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxTemperaturaQ1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.timerControl1 = new System.Windows.Forms.Timer(this.components);
+            this.timerControl2 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStripGrafica.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chargraficaQ1)).BeginInit();
@@ -833,6 +835,14 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(273, 600);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
+            // timerControl1
+            // 
+            this.timerControl1.Tick += new System.EventHandler(this.timerControl1_Tick);
+            // 
+            // timerControl2
+            // 
+            this.timerControl2.Tick += new System.EventHandler(this.timerControl2_Tick);
+            // 
             // control_Q1Q2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -917,5 +927,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label labelControlQ2;
         private System.Windows.Forms.Label labelControlQ1;
+        private System.Windows.Forms.Timer timerControl1;
+        private System.Windows.Forms.Timer timerControl2;
     }
 }
