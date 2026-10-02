@@ -62,6 +62,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pictureBoxVentiladorQ2 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.labelPWM2 = new System.Windows.Forms.Label();
             this.checkBoxCurrentQ2 = new System.Windows.Forms.CheckBox();
             this.labelTemperaturaQ2 = new System.Windows.Forms.Label();
             this.buttonVentiladorQ2 = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBoxVentiladorQ1 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.labelPWM1 = new System.Windows.Forms.Label();
             this.checkBoxCurrentQ1 = new System.Windows.Forms.CheckBox();
             this.labelTemperatureQ1 = new System.Windows.Forms.Label();
             this.buttonVentiladorQ1 = new System.Windows.Forms.Button();
@@ -515,7 +517,7 @@
             // 
             this.pictureBoxVentiladorQ2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxVentiladorQ2.Image = global::mqtt_serial.Properties.Resources.ventilador_off;
-            this.pictureBoxVentiladorQ2.Location = new System.Drawing.Point(163, 195);
+            this.pictureBoxVentiladorQ2.Location = new System.Drawing.Point(163, 201);
             this.pictureBoxVentiladorQ2.Name = "pictureBoxVentiladorQ2";
             this.pictureBoxVentiladorQ2.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxVentiladorQ2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -525,20 +527,37 @@
             // panel5
             // 
             this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel5.Controls.Add(this.labelPWM2);
             this.panel5.Controls.Add(this.checkBoxCurrentQ2);
             this.panel5.Controls.Add(this.labelTemperaturaQ2);
             this.panel5.Location = new System.Drawing.Point(21, 27);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(190, 104);
+            this.panel5.Size = new System.Drawing.Size(190, 118);
             this.panel5.TabIndex = 13;
+            // 
+            // labelPWM2
+            // 
+            this.labelPWM2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelPWM2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.labelPWM2.ForeColor = System.Drawing.Color.White;
+            this.labelPWM2.Image = global::mqtt_serial.Properties.Resources.PWM;
+            this.labelPWM2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelPWM2.Location = new System.Drawing.Point(25, 78);
+            this.labelPWM2.Margin = new System.Windows.Forms.Padding(0);
+            this.labelPWM2.Name = "labelPWM2";
+            this.labelPWM2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelPWM2.Size = new System.Drawing.Size(150, 35);
+            this.labelPWM2.TabIndex = 13;
+            this.labelPWM2.Text = "PWM";
+            this.labelPWM2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // checkBoxCurrentQ2
             // 
-            this.checkBoxCurrentQ2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBoxCurrentQ2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBoxCurrentQ2.AutoSize = true;
             this.checkBoxCurrentQ2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxCurrentQ2.Image = global::mqtt_serial.Properties.Resources.game_icons__electrical_resistance;
-            this.checkBoxCurrentQ2.Location = new System.Drawing.Point(29, 63);
+            this.checkBoxCurrentQ2.Location = new System.Drawing.Point(29, 37);
             this.checkBoxCurrentQ2.Name = "checkBoxCurrentQ2";
             this.checkBoxCurrentQ2.Size = new System.Drawing.Size(125, 32);
             this.checkBoxCurrentQ2.TabIndex = 12;
@@ -549,7 +568,7 @@
             // 
             // labelTemperaturaQ2
             // 
-            this.labelTemperaturaQ2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelTemperaturaQ2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelTemperaturaQ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.labelTemperaturaQ2.ForeColor = System.Drawing.Color.White;
             this.labelTemperaturaQ2.Image = global::mqtt_serial.Properties.Resources.fluent__temperature_16_filled;
@@ -572,7 +591,7 @@
             this.buttonVentiladorQ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonVentiladorQ2.ForeColor = System.Drawing.Color.White;
             this.buttonVentiladorQ2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonVentiladorQ2.Location = new System.Drawing.Point(14, 193);
+            this.buttonVentiladorQ2.Location = new System.Drawing.Point(14, 199);
             this.buttonVentiladorQ2.Name = "buttonVentiladorQ2";
             this.buttonVentiladorQ2.Size = new System.Drawing.Size(130, 52);
             this.buttonVentiladorQ2.TabIndex = 14;
@@ -586,7 +605,7 @@
             this.panel7.Controls.Add(this.label14);
             this.panel7.Controls.Add(this.label15);
             this.panel7.Controls.Add(this.comboBoxTemperaturaQ2);
-            this.panel7.Location = new System.Drawing.Point(14, 137);
+            this.panel7.Location = new System.Drawing.Point(14, 151);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(200, 45);
             this.panel7.TabIndex = 13;
@@ -683,7 +702,7 @@
             // 
             this.pictureBoxVentiladorQ1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxVentiladorQ1.Image = global::mqtt_serial.Properties.Resources.ventilador_off;
-            this.pictureBoxVentiladorQ1.Location = new System.Drawing.Point(161, 180);
+            this.pictureBoxVentiladorQ1.Location = new System.Drawing.Point(161, 195);
             this.pictureBoxVentiladorQ1.Name = "pictureBoxVentiladorQ1";
             this.pictureBoxVentiladorQ1.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxVentiladorQ1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -693,20 +712,37 @@
             // panel6
             // 
             this.panel6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel6.Controls.Add(this.labelPWM1);
             this.panel6.Controls.Add(this.checkBoxCurrentQ1);
             this.panel6.Controls.Add(this.labelTemperatureQ1);
             this.panel6.Location = new System.Drawing.Point(23, 28);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(190, 104);
+            this.panel6.Size = new System.Drawing.Size(190, 112);
             this.panel6.TabIndex = 13;
+            // 
+            // labelPWM1
+            // 
+            this.labelPWM1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelPWM1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.labelPWM1.ForeColor = System.Drawing.Color.White;
+            this.labelPWM1.Image = global::mqtt_serial.Properties.Resources.PWM;
+            this.labelPWM1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelPWM1.Location = new System.Drawing.Point(28, 74);
+            this.labelPWM1.Margin = new System.Windows.Forms.Padding(0);
+            this.labelPWM1.Name = "labelPWM1";
+            this.labelPWM1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelPWM1.Size = new System.Drawing.Size(150, 35);
+            this.labelPWM1.TabIndex = 13;
+            this.labelPWM1.Text = "PWM";
+            this.labelPWM1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // checkBoxCurrentQ1
             // 
-            this.checkBoxCurrentQ1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBoxCurrentQ1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBoxCurrentQ1.AutoSize = true;
             this.checkBoxCurrentQ1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxCurrentQ1.Image = global::mqtt_serial.Properties.Resources.game_icons__electrical_resistance;
-            this.checkBoxCurrentQ1.Location = new System.Drawing.Point(29, 63);
+            this.checkBoxCurrentQ1.Location = new System.Drawing.Point(32, 38);
             this.checkBoxCurrentQ1.Name = "checkBoxCurrentQ1";
             this.checkBoxCurrentQ1.Size = new System.Drawing.Size(125, 32);
             this.checkBoxCurrentQ1.TabIndex = 12;
@@ -717,12 +753,12 @@
             // 
             // labelTemperatureQ1
             // 
-            this.labelTemperatureQ1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelTemperatureQ1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelTemperatureQ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.labelTemperatureQ1.ForeColor = System.Drawing.Color.White;
             this.labelTemperatureQ1.Image = global::mqtt_serial.Properties.Resources.fluent__temperature_16_filled;
             this.labelTemperatureQ1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelTemperatureQ1.Location = new System.Drawing.Point(24, 0);
+            this.labelTemperatureQ1.Location = new System.Drawing.Point(24, 4);
             this.labelTemperatureQ1.Margin = new System.Windows.Forms.Padding(0);
             this.labelTemperatureQ1.Name = "labelTemperatureQ1";
             this.labelTemperatureQ1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -740,7 +776,7 @@
             this.buttonVentiladorQ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonVentiladorQ1.ForeColor = System.Drawing.Color.White;
             this.buttonVentiladorQ1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonVentiladorQ1.Location = new System.Drawing.Point(14, 180);
+            this.buttonVentiladorQ1.Location = new System.Drawing.Point(14, 193);
             this.buttonVentiladorQ1.Name = "buttonVentiladorQ1";
             this.buttonVentiladorQ1.Size = new System.Drawing.Size(130, 52);
             this.buttonVentiladorQ1.TabIndex = 14;
@@ -754,7 +790,7 @@
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.comboBoxTemperaturaQ1);
-            this.panel4.Location = new System.Drawing.Point(14, 129);
+            this.panel4.Location = new System.Drawing.Point(14, 146);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 45);
             this.panel4.TabIndex = 13;
@@ -895,7 +931,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBoxVentiladorQ1;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.CheckBox checkBoxCurrentQ1;
         private System.Windows.Forms.Label labelTemperatureQ1;
         private System.Windows.Forms.Button buttonVentiladorQ1;
         private System.Windows.Forms.Panel panel4;
@@ -929,5 +964,8 @@
         private System.Windows.Forms.Label labelControlQ1;
         private System.Windows.Forms.Timer timerControl1;
         private System.Windows.Forms.Timer timerControl2;
+        private System.Windows.Forms.Label labelPWM2;
+        private System.Windows.Forms.Label labelPWM1;
+        private System.Windows.Forms.CheckBox checkBoxCurrentQ1;
     }
 }

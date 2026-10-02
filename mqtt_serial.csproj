@@ -26,8 +26,8 @@
     <TargetCulture>es-CO</TargetCulture>
     <ProductName>MQTTusco</ProductName>
     <PublisherName>Cesar Muñoz Usco</PublisherName>
-    <ApplicationRevision>6</ApplicationRevision>
-    <ApplicationVersion>0.1.2.6</ApplicationVersion>
+    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationVersion>0.1.2.7</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -69,7 +69,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>Gemini_Generated_Image_11vvqd11vvqd11vv.ico</ApplicationIcon>
+    <ApplicationIcon>imagenes\Gemini_Generated_Image_11vvqd11vvqd11vv.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>mqtt_serial.Program</StartupObject>
@@ -80,15 +80,6 @@
     </Reference>
     <Reference Include="DocumentFormat.OpenXml.Framework, Version=3.5.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>packages\DocumentFormat.OpenXml.Framework.3.5.1\lib\net46\DocumentFormat.OpenXml.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
-    </Reference>
-    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="M2Mqtt.Net, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\M2Mqtt.4.3.0.0\lib\net45\M2Mqtt.Net.dll</HintPath>
@@ -225,12 +216,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Gemini_Generated_Image_11vvqd11vvqd11vv.ico" />
-    <Content Include="imagenes\led_off.png" />
-    <Content Include="imagenes\led_on.png" />
+    <Content Include="imagenes\Gemini_Generated_Image_11vvqd11vvqd11vv.ico" />
     <Content Include="imagenes\logo_usco.png" />
     <Content Include="imagenes\ventilador_off.png" />
     <Content Include="imagenes\ventilador_on.png" />
+    <None Include="Resources\PWM.png" />
     <None Include="Resources\game-icons--electrical-resistance.png" />
     <None Include="Resources\fluent--temperature-16-filled.png" />
     <None Include="Resources\Gemini_Generated_Image_11vvqd11vvqd11vv.png" />

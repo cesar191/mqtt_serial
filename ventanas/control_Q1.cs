@@ -53,9 +53,15 @@ namespace mqtt_serial.ventanas
         {
             try
             {
-                
-                errorDouble = setPoint - temperatura1;
-                SystemControl(errorDouble, kp, ki, kd, ts);
+                if (setPoint != 0)
+                {
+                    errorDouble = setPoint - temperatura1;
+                    SystemControl(errorDouble, kp, ki, kd, ts);
+                }
+                else
+                {
+                    controlPID.PWM = 0;
+                }
             }
             catch (Exception ex)
             {
@@ -99,7 +105,7 @@ namespace mqtt_serial.ventanas
         private void buttonRefrescar_Click(object sender, EventArgs e)
         {
             try {
-                
+                controlPID.reseteo();
                 kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
                 ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
                 kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
@@ -207,6 +213,7 @@ namespace mqtt_serial.ventanas
             try
             {        
                 pwm = controlPID.PWM;
+                labelPWM.Text = $@" {pwm:f2} %";
                 VariablesControl.Pwm1 = pwm.ToString();
 
                 temperatura1 = double.Parse(VariablesControl.Temperatura1.Replace(",", "."), CultureInfo.InvariantCulture);

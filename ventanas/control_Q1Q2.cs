@@ -1,5 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Presentation;
-using LiveCharts.Defaults;
+
 using mqtt_serial.funciones;
 using SpreadsheetLight;
 using SpreadsheetLight.Drawing;
@@ -23,17 +23,16 @@ namespace mqtt_serial.ventanas
     public partial class control_Q1Q2 : Form
     {
     #region parametros de  control y medicion
-        private double temperatura1, temperatura2, corriente1, corriente2, tiempo;
+        private double temperatura1, temperatura2, corriente1, corriente2, tiempo,pwm1,pwm2;
         private double setPoint1 = 0, setPoint2 = 0, errorDouble1 = 0, errorDouble2 = 0;
         private double kp1 = 0, kp2 = 0, ki1 = 0, ki2 = 0, kd1 = 0, kd2 = 0, ts1 = 1, ts2 = 1;
-        private double pwm1 = 0, pwm2 = 0;
 
-        
 
         ControlActual controlActulizar = new ControlActual();
 
         private ControlPID controlPIDQ1 = new ControlPID();
         private ControlPID controlPIDQ2 = new ControlPID();
+
         #endregion
 
         private string pathSave = VariablesControl.pathSave + @"ControlQ1Q2\";
@@ -54,17 +53,134 @@ namespace mqtt_serial.ventanas
             {
                 control.SystemControlPID(errorDouble, kp, ki, kd, ts);
             }
-            else
-            {
-
-            }
+            
 
         }
+
+
+        private void timerControl1_Tick(object sender, EventArgs e)
+        {
+            if (setPoint1 != 0)
+            {
+                errorDouble1 = setPoint1 - temperatura1;
+                SystemControl(errorDouble1, kp1, ki1, kd1, ts1, controlPIDQ1);
+            }
+            else
+            {
+                controlPIDQ1.PWM = 0;
+            }
+        }
+        private void timerControl2_Tick(object sender, EventArgs e)
+        {
+            if(setPoint2 != 0)
+            {
+                errorDouble2 = setPoint2 - temperatura2;
+                SystemControl(errorDouble2, kp2, ki2, kd2, ts2, controlPIDQ2);
+            }
+            else
+            {
+                controlPIDQ2.PWM = 0;
+            }   
+        }
+
 
         public control_Q1Q2()
         {
             InitializeComponent();
         }
+
+        private void control_Q1Q2_Load(object sender, EventArgs e)
+        {
+            comboBoxSetPointQ1.Text = "0";
+            comboBoxSetPointQ2.Text = "0";
+
+            VariablesControl.limpiarLista();
+            VariablesControl.reseteoParametros();
+
+            Directory.CreateDirectory(pathSave);
+            timer1.Enabled = true;
+
+        }
+
+        private void control_Q1Q2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Enabled = false;
+            timerControl1.Enabled = false;
+            timerControl2.Enabled = false;
+        }
+
+        private void buttoActualizarQ2_Click(object sender, EventArgs e)
+        {
+            controlPIDQ2.reseteo();
+            controlActulizar.Titulo = "Parametros Control Q2";
+            controlActulizar.Boton = "Refrescar Q2";
+            controlActulizar.variables(kp2, ki2, kd2, ts2);
+            controlActulizar.ShowDialog();
+
+            kp2 = controlActulizar.Kp;
+            ki2 = controlActulizar.Ki;
+            kd2 = controlActulizar.Kd;
+            ts2 = controlActulizar.Ts;
+
+            
+
+            string kpText = (kp2 != 0) ? $"Kp = {kp2:f4}{Environment.NewLine}" : "";
+            string kiText = (ki2 != 0) ? $"Ki = {ki2:f4}{Environment.NewLine}" : "";
+            string kdText = (kd2 != 0) ? $"Kd = {kd2:f4}{Environment.NewLine}" : "";
+            string tsText = (ts2 != 0) ? $"Ts = {ts2:f4}" : "";
+
+
+            labelControlQ2.Text = $@"{kpText}{kiText}{kdText}{tsText}";
+
+            //para exportar al exce
+            VariablesControl.listaKp.Add(kp2);
+            VariablesControl.listaKi.Add(ki2);
+            VariablesControl.listaKd.Add(kd2);
+            VariablesControl.listaTs.Add(ts2);
+            VariablesControl.listaTiempo2.Add(tiempo);
+            VariablesControl.PlantaControl.Add("Q2");
+
+            timerControl2.Interval = (int)((ts2 != 0) ? ts2 * 1000 : 1000);
+            timerControl2.Enabled = true;
+
+        }
+
+        private void buttonActulizarQ1_Click(object sender, EventArgs e)
+        {
+
+            controlPIDQ1.reseteo();
+
+            controlActulizar.Titulo = "Parametros Control Q1";
+            controlActulizar.Boton = "Refrescar Q1";
+            controlActulizar.variables(kp1, ki1, kd1, ts1);
+            controlActulizar.ShowDialog();
+
+            kp1 = controlActulizar.Kp;
+            ki1 = controlActulizar.Ki;
+            kd1 = controlActulizar.Kd;
+            ts1 = controlActulizar.Ts;
+
+            
+
+            string kpText = (kp1 != 0) ? $"Kp = {kp1:f4}{Environment.NewLine}" : "";
+            string kiText = (ki1 != 0) ? $"Ki = {ki1:f4}{Environment.NewLine}" : "";
+            string kdText = (kd1 != 0) ? $"Kd = {kd1:f4}{Environment.NewLine}" : "";
+            string tsText = (ts1 != 0) ? $"Ts = {ts1:f4}" : "";
+
+            labelControlQ1.Text = $@"{kpText}{kiText}{kdText}{tsText}";
+
+            //para exportar al excel
+            VariablesControl.listaKp.Add(kp1);
+            VariablesControl.listaKi.Add(ki1);
+            VariablesControl.listaKd.Add(kd1);
+            VariablesControl.listaTs.Add(ts1);
+            VariablesControl.listaTiempo2.Add(tiempo);
+            VariablesControl.PlantaControl.Add("Q1");
+
+            timerControl1.Interval = (int)((ts1 != 0) ? ts1 * 1000 : 1000);
+            timerControl1.Enabled = true;
+        }
+
 
         private void buttonVentiladorQ1_Click(object sender, EventArgs e)
         {
@@ -113,89 +229,8 @@ namespace mqtt_serial.ventanas
             }
         }
 
-        private void buttoActualizarQ2_Click(object sender, EventArgs e)
-        {
-            controlActulizar.Titulo = "Parametros Control Q2";
-            controlActulizar.Boton = "Refrescar Q2";
-            controlActulizar.variables(kp2, ki2, kd2, ts2);
-            controlActulizar.ShowDialog();
-
-            kp2 = controlActulizar.Kp;
-            ki2 = controlActulizar.Ki;
-            kd2 = controlActulizar.Kd;
-            ts2 = controlActulizar.Ts;
-
-            timerControl2.Interval = (int)((ts2 != 0) ? ts2 * 1000 : 1000);
-            timerControl2.Enabled = true;
-            
-            string kpText = (kp2 != 0) ? $"Kp = {kp2:f4}{Environment.NewLine}" : "";
-            string kiText = (ki2 != 0) ? $"Ki = {ki2:f4}{Environment.NewLine}" : "";
-            string kdText = (kd2 != 0) ? $"Kd = {kd2:f4}{Environment.NewLine}" : "";
-            string tsText = (ts2 != 0) ? $"Ts = {ts2:f4}" : "";
-
-
-            labelControlQ2.Text = $@"{kpText}{kiText}{kdText}{tsText}";
-            
-            //para exportar al exce
-            VariablesControl.listaKp.Add(kp2);
-            VariablesControl.listaKi.Add(ki2);
-            VariablesControl.listaKd.Add(kd2);
-            VariablesControl.listaTs.Add(ts2);
-            VariablesControl.listaTiempo2.Add(tiempo);
-            VariablesControl.PlantaControl.Add("Q2");
-
-        }
-
-        private void buttonActulizarQ1_Click(object sender, EventArgs e)
-        {
-            controlActulizar.Titulo = "Parametros Control Q1";
-            controlActulizar.Boton = "Refrescar Q1";
-            controlActulizar.variables(kp1, ki1, kd1, ts1);
-            controlActulizar.ShowDialog();
-
-            kp1 = controlActulizar.Kp;
-            ki1 = controlActulizar.Ki;
-            kd1 = controlActulizar.Kd;
-            ts1 = controlActulizar.Ts;
-            
-            timerControl1.Interval = (int)((ts1 != 0) ? ts1 * 1000 : 1000);
-            timerControl1.Enabled = true;
-
-            string kpText = (kp1 != 0) ? $"Kp = {kp1:f4}{Environment.NewLine}" : "";
-            string kiText = (ki1 != 0) ? $"Ki = {ki1:f4}{Environment.NewLine}" : "";
-            string kdText = (kd1 != 0) ? $"Kd = {kd1:f4}{Environment.NewLine}" : "";
-            string tsText = (ts1 != 0) ? $"Ts = {ts1:f4}" : "";
-
-            labelControlQ1.Text = $@"{kpText}{kiText}{kdText}{tsText}";
-
-            //para exportar al excel
-            VariablesControl.listaKp.Add(kp1);
-            VariablesControl.listaKi.Add(ki1);
-            VariablesControl.listaKd.Add(kd1);
-            VariablesControl.listaTs.Add(ts1);
-            VariablesControl.listaTiempo2.Add(tiempo);
-            VariablesControl.PlantaControl.Add("Q1");
-        }
-        private void control_Q1Q2_Load(object sender, EventArgs e)
-        {
-            comboBoxSetPointQ1.Text = "0";
-            comboBoxSetPointQ2.Text = "0";
-
-            VariablesControl.limpiarLista();
-            VariablesControl.reseteoParametros();
-
-            Directory.CreateDirectory(pathSave);
-            timer1.Enabled = true;
-            
-        }
-
-        private void control_Q1Q2_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            timer1.Enabled = false;
-            timerControl1.Enabled = false;
-            timerControl2.Enabled = false;
-        }
-
+        
+        
         private void buttonExportarExcel_Click(object sender, EventArgs e)
         {
             try
@@ -277,9 +312,11 @@ namespace mqtt_serial.ventanas
                 //para graficar
                 pwm1 = controlPIDQ1.PWM;
                 VariablesControl.Pwm1 = pwm1.ToString();
+                labelPWM1.Text = $@" {pwm1:f2} %";
 
                 pwm2 = controlPIDQ2.PWM;
                 VariablesControl.Pwm2 = pwm2.ToString();
+                labelPWM2.Text = $@" {pwm2:f2} %";
 
                 temperatura1 = (VariablesControl.Temperatura1 != "") ? double.Parse(VariablesControl.Temperatura1.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
                 temperatura2 = (VariablesControl.Temperatura2 != "") ? double.Parse(VariablesControl.Temperatura2.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
@@ -350,15 +387,10 @@ namespace mqtt_serial.ventanas
                 }
                 else if(tiempo < 10)
                 {
-                    this.chargraficaQ1.Series[0].Points.Clear();
-                    this.chargraficaQ1.Series[1].Points.Clear();
-                    this.chargraficaQ1.Series[2].Points.Clear();
-                    this.chargraficaQ1.Series[3].Points.Clear();
-                    this.chargraficaQ1.Series[4].Points.Clear();
-                    this.chargraficaQ1.Series[5].Points.Clear();
-                    this.chargraficaQ1.Series[6].Points.Clear();
-                    this.chargraficaQ1.Series[7].Points.Clear();
-
+                    foreach (var series in chargraficaQ1.Series)
+                    {
+                        series.Points.Clear();
+                    }
                     VariablesControl.limpiarLista();
                 }
 
@@ -402,8 +434,6 @@ namespace mqtt_serial.ventanas
                     VariablesControl.AlarmaLed2 = "off";
                     labelTemperaturaQ2.ForeColor = System.Drawing.Color.White;
                 }
-
-
             }
             catch
             {
@@ -411,20 +441,6 @@ namespace mqtt_serial.ventanas
             }
         }
         //
-        private void timerControl1_Tick(object sender, EventArgs e)
-        {
-            
-
-            errorDouble1 = setPoint1 - temperatura1;
-            SystemControl(errorDouble1, kp1, ki1, kd1, ts1, controlPIDQ1);
-        }
-        private void timerControl2_Tick(object sender, EventArgs e)
-        {
-            
-            errorDouble2 = setPoint2 - temperatura2;   
-            SystemControl(errorDouble2, kp2, ki2, kd2, ts2, controlPIDQ2);
-        }
-
 
     }
 }

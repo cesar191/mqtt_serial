@@ -19,31 +19,42 @@ namespace mqtt_serial.funciones
         public double Kp { get; set; } = 0;
         public double Ki { get; set; } = 0;
         public double Kd { get; set; } = 0;
-        public double Ts { get; set; } = 0.01;
+        public double Ts { get; set; } = 1;
         public double PWM { get; set; } = 0;
 
         //filtro
         private double pwmfiltro = 0;
-        private double alpha = 1; //1 sin filtro, y 0<alpha<1
+        private double alpha = 0.7; //1 sin filtro, y 0<alpha<1
 
         public ControlPID(){ }
 
         // calculos para el %pwm dependiendo de que tipo de control sea
+
+        public void reseteo()
+        {
+            ErrorArray[0] = 0;
+            ErrorArray[1] = 0;
+            ErrorArray[2] = 0;
+            PwmArray[0] = 0;
+            PwmArray[1] = 0;
+            pwmfiltro = 0;
+        }
         public void SystemControlP(double errorDouble, double kp)
         {
+            ErrorArray[0] = errorDouble;
+
             PwmArray[0]=ErrorArray[0]*kp;
             validacion(PwmArray[0]);
-            ErrorArray[0] = errorDouble;
+            
         }
         public void SystemControlPI(double errorDouble, double kp, double ki, double ts)
         {
-
+            ErrorArray[1] = ErrorArray[0];
+            ErrorArray[0] = errorDouble;
 
             PwmArray[0] = PwmArray[1] + (kp + ki * ts) * ErrorArray[0] - kp * ErrorArray[1];
             validacion(PwmArray[0]);
 
-            ErrorArray[1] = ErrorArray[0];
-            ErrorArray[0] = errorDouble;
             PwmArray[1] = PwmArray[0];
 
         }
@@ -54,15 +65,15 @@ namespace mqtt_serial.funciones
             double q1 = -(kp + (2 * (kd / ts)));    
             double q2 = kd / ts;
             //control
-            
+            ErrorArray[2] = ErrorArray[1];
+            ErrorArray[1] = ErrorArray[0];
+            ErrorArray[0] = errorDouble;
 
             PwmArray[0] = PwmArray[1]+q0*ErrorArray[0]+q1*ErrorArray[1]+q2*ErrorArray[2];
             validacion(PwmArray[0]);
             //actualizar
             PwmArray[1] = PwmArray[0];
-            ErrorArray[2] = ErrorArray[1];
-            ErrorArray[1] = ErrorArray[0];
-            ErrorArray[0] = errorDouble;
+            
 
         }
         public void validacion(double pwmDoublef)
