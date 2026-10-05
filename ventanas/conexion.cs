@@ -1,4 +1,5 @@
-﻿using mqtt_serial.funciones;
+﻿using DocumentFormat.OpenXml.Drawing.Diagrams;
+using mqtt_serial.funciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -93,6 +94,7 @@ namespace mqtt_serial.ventanas
             }
             
         }
+       
 
 
         private void comboBoxTipoConexion_SelectedIndexChanged(object sender, EventArgs e)
@@ -264,21 +266,12 @@ namespace mqtt_serial.ventanas
                 buttonConectar.Text = "Desconectar";
                 buttonConectar.BackColor = Color.FromArgb(227, 58, 24);
                 mqttClient.MqttMsgPublishReceived += MqClient_MqttMsgPublishReceived;
-               
-                string[] topics = new string[5];
-                topics[0] = this.topicRecibir[0];
-                topics[1] = this.topicRecibir[1];
-                topics[2] = this.topicRecibir[2];
-                topics[3] = this.topicRecibir[3];
-                topics[4] = this.topicRecibir[4];
-                byte[] msg = new byte[5];
-                msg[0] = MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE;
-                msg[1] = MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE;
-                msg[2] = MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE;
-                msg[3] = MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE;
-                msg[4] = MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE;
 
-                mqttClient.Subscribe(topics, msg);
+                
+                 foreach (string topic in topicRecibir)
+                 {
+                    mqttClient.Subscribe(new string[] { topic }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+                 }
             }
             else //if (buttonConectar.Text == "Desconectar")
             {
@@ -347,6 +340,7 @@ namespace mqtt_serial.ventanas
         private void publicar() {
             if(mqttClient != null && mqttClient.IsConnected)
             {
+
                 mqttClient.Publish(topicEnviar[0], Encoding.UTF8.GetBytes(VariablesControl.Pwm1));
                 mqttClient.Publish(topicEnviar[1], Encoding.UTF8.GetBytes(VariablesControl.Pwm2));
                 mqttClient.Publish(topicEnviar[2], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed1));
@@ -402,8 +396,8 @@ namespace mqtt_serial.ventanas
             {
                 if (mqttClient !=null && mqttClient.IsConnected)
                 {
-
                         publicar();
+                    
         
                 }else if (serialPort1.IsOpen)
                 {

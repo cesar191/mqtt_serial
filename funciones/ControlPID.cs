@@ -24,7 +24,7 @@ namespace mqtt_serial.funciones
 
         //filtro
         private double pwmfiltro = 0;
-        private double alpha = 0.7; //1 sin filtro, y 0<alpha<1
+        private double alpha = 1; //1 sin filtro, y 0<alpha<1
 
         public ControlPID(){ }
 

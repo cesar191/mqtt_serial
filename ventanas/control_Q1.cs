@@ -79,10 +79,10 @@ namespace mqtt_serial.ventanas
         private void control_Q1_Load(object sender, EventArgs e)
         {
             comboBoxSetPoint.Text = "0";
-            comboBoxKp.Text = "0";
-            comboBoxKi.Text = "0";
-            comboBoxKd.Text = "0";
-            comboBoxTs.Text = "0";
+            textBoxKP.Text = "0";
+            textBoxKI.Text = "0";
+            textBoxKD.Text = "0";
+            textBoxTS.Text = "0";
 
             VariablesControl.limpiarLista();
             VariablesControl.reseteoParametros();
@@ -106,10 +106,10 @@ namespace mqtt_serial.ventanas
         {
             try {
                 controlPID.reseteo();
-                kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-                ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-                kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-                ts = (comboBoxTs.Text != "") ? double.Parse(comboBoxTs.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                kp = (textBoxKP.Text != "") ? double.Parse(textBoxKP.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                ki = (textBoxKI.Text != "") ? double.Parse(textBoxKI.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                kd = (textBoxKD.Text != "") ? double.Parse(textBoxKD.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                ts = (textBoxTS.Text != "") ? double.Parse(textBoxTS.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
                 
                 VariablesControl.listaTiempo2.Add(tiempo);
                 VariablesControl.listaKp.Add(kp);

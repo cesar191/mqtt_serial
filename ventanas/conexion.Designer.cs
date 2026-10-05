@@ -214,8 +214,10 @@
             // comboBoxTipoConexion
             // 
             this.comboBoxTipoConexion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.comboBoxTipoConexion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTipoConexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.comboBoxTipoConexion.FormattingEnabled = true;
+            this.comboBoxTipoConexion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.comboBoxTipoConexion.Items.AddRange(new object[] {
             "MQTT (local)",
             "MQTT (servidor)"});

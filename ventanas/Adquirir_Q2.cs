@@ -145,19 +145,27 @@ namespace mqtt_serial.ventanas
                     
                     double tiempo2 = tiempo - VariablesControl.listaTiempo[0];
                     double ventanaTiempo = 1200;
-                    foreach (var area in chargraficaQ2.ChartAreas)
+                    
+
+                    if (tiempo2 > ventanaTiempo)
                     {
-                        if (tiempo - VariablesControl.listaTiempo[0] > ventanaTiempo)
+                        double limiteInferior = tiempo2 - ventanaTiempo;
+
+                        foreach (var area in chargraficaQ2.ChartAreas)
                         {
-                            area.AxisX.Minimum = tiempo2 - ventanaTiempo;
+                            area.AxisX.Minimum = limiteInferior;
                             area.AxisX.Maximum = tiempo2;
                         }
-                        else
+
+                        foreach (var series in chargraficaQ2.Series)
                         {
-                            area.AxisX.Minimum = 0;
-                            area.AxisX.Maximum = tiempo2;
+                            while (series.Points.Count > 0 && series.Points[0].XValue < limiteInferior)
+                            {
+                                series.Points.RemoveAt(0);
+                            }
                         }
                     }
+                
                     //
                     if (chargraficaQ2.Series.Count >= 3)
                     {

@@ -118,7 +118,26 @@ namespace mqtt_serial.ventanas
 
             Directory.CreateDirectory(pathSave);
         }
-        
+
+        private void labelCorriente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chargraficaQ1.Series[1].Enabled)
+                {
+                    chargraficaQ1.Series[1].Enabled = false;
+                }
+                else
+                {
+                    chargraficaQ1.Series[1].Enabled = true;
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show($"hubo un error en: {error.Message}");
+            }
+        }
+
         private void adquirir_Q1_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer1.Enabled = false;
@@ -143,7 +162,7 @@ namespace mqtt_serial.ventanas
                 corriente1 = (VariablesControl.Corriente1 != "") ? (double.Parse(VariablesControl.Corriente1.Replace(",", "."), CultureInfo.InvariantCulture)) * 1000 : 0;
                 tiempo = (VariablesControl.Tiempo != "") ? double.Parse(VariablesControl.Tiempo.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
 
-                checkBoxCurrent.Text = $@" {corriente1:f2} mA";
+                labelCorriente.Text = $@" {corriente1:f2} mA";
                 labelTemperature.Text = $@" {temperatura1:f2} °C";
                 
                 
@@ -188,7 +207,7 @@ namespace mqtt_serial.ventanas
 
                     if (chargraficaQ1.Series.Count >= 2) { 
                             var series = chargraficaQ1.Series;
-                            series[1].Enabled = checkBoxCurrent.Checked;
+                            //series[1].Enabled = checkBoxCurrent.Checked;
 
                             series[0].Points.AddXY(tiempo2, temperatura1);
                             series[1].Points.AddXY(tiempo2, corriente1);
