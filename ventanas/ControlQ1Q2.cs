@@ -20,7 +20,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace mqtt_serial.ventanas
 {
-    public partial class control_Q1Q2 : Form
+    public partial class ControlQ1Q2 : Form
     {
     #region parametros de  control y medicion
         private double temperatura1, temperatura2, corriente1, corriente2, tiempo,pwm1,pwm2;
@@ -84,7 +84,7 @@ namespace mqtt_serial.ventanas
         }
 
 
-        public control_Q1Q2()
+        public ControlQ1Q2()
         {
             InitializeComponent();
         }
@@ -312,11 +312,11 @@ namespace mqtt_serial.ventanas
                 //para graficar
                 pwm1 = controlPIDQ1.PWM;
                 VariablesControl.Pwm1 = pwm1.ToString();
-                labelPWM1.Text = $@" {pwm1:f2} %";
+                labelPWMQ1.Text = $@" {pwm1:f2} %";
 
                 pwm2 = controlPIDQ2.PWM;
                 VariablesControl.Pwm2 = pwm2.ToString();
-                labelPWM2.Text = $@" {pwm2:f2} %";
+                labelPWMQ2.Text = $@" {pwm2:f2} %";
 
                 temperatura1 = (VariablesControl.Temperatura1 != "") ? double.Parse(VariablesControl.Temperatura1.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
                 temperatura2 = (VariablesControl.Temperatura2 != "") ? double.Parse(VariablesControl.Temperatura2.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
@@ -327,10 +327,10 @@ namespace mqtt_serial.ventanas
                 tiempo = (VariablesControl.Tiempo != "") ? double.Parse(VariablesControl.Tiempo.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
 
                 labelTemperatureQ1.Text = $@" {temperatura1:f2} °C";
-                checkBoxCurrentQ1.Text = $@" {corriente1:f2} mA";
+                labelCorrienteQ1.Text = $@" {corriente1:f2} mA";
 
                 labelTemperaturaQ2.Text = $@" {temperatura2:f2} °C";
-                checkBoxCurrentQ2.Text = $@" {corriente2:f2} mA";
+                labelCorrienteQ2.Text = $@" {corriente2:f2} mA";
 
                 if (tiempo > 10 && VariablesControl.EstadoDeConexion)
                 {
@@ -370,9 +370,6 @@ namespace mqtt_serial.ventanas
                     if (chargraficaQ1.Series.Count >= 8)
                     {
                         var series = chargraficaQ1.Series;
-
-                        series[5].Enabled = checkBoxCurrentQ1.Checked;
-                        series[7].Enabled = checkBoxCurrentQ2.Checked;
 
                         series[0].Points.AddXY(tiempo2, temperatura1);
                         series[1].Points.AddXY(tiempo2, temperatura2);

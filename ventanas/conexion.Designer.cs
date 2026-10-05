@@ -1,6 +1,6 @@
 ﻿namespace mqtt_serial.ventanas
 {
-    partial class conexion
+    partial class Conexion
     {
         /// <summary>
         /// Required designer variable.

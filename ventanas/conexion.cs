@@ -26,7 +26,7 @@ using uPLibrary.Networking.M2Mqtt.Messages;
 
 namespace mqtt_serial.ventanas
 {
-    public partial class conexion : Form
+    public partial class Conexion : Form
     {
         //variables a manejar
         public MqttClient mqttClient;
@@ -59,7 +59,7 @@ namespace mqtt_serial.ventanas
             }
         }
 
-        public conexion()
+        public Conexion()
         {
             InitializeComponent();
             

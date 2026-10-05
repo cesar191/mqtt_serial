@@ -18,7 +18,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace mqtt_serial.ventanas
 {
-    public partial class control_Q1 : Form
+    public partial class ControlQ1 : Form
     {
         #region VariablesDeControl
         private ControlPID controlPID = new ControlPID();
@@ -49,6 +49,18 @@ namespace mqtt_serial.ventanas
             }
         }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
+            if (chargraficaQ1.Series[1].Enabled)
+            {
+                chargraficaQ1.Series[1].Enabled = false;
+            }
+            else
+            {
+                chargraficaQ1.Series[1].Enabled = true;
+            }
+        }
+
         private void timer2_Tick(object sender, EventArgs e)
         {
             try
@@ -70,7 +82,7 @@ namespace mqtt_serial.ventanas
         }
 
         #endregion
-        public control_Q1()
+        public ControlQ1()
         {
             InitializeComponent();
         }
@@ -83,6 +95,8 @@ namespace mqtt_serial.ventanas
             textBoxKI.Text = "0";
             textBoxKD.Text = "0";
             textBoxTS.Text = "0";
+
+            chargraficaQ1.Series[1].Enabled = false;
 
             VariablesControl.limpiarLista();
             VariablesControl.reseteoParametros();
@@ -221,7 +235,7 @@ namespace mqtt_serial.ventanas
                 tiempo = double.Parse(VariablesControl.Tiempo.Replace(",", "."), CultureInfo.InvariantCulture);
 
                 labelTemperature.Text = $@" {temperatura1:f2} °C";
-                checkBoxCurrent.Text = $@" {corriente1:f2} mA";
+                labelCorriente.Text = $@" {corriente1:f2} mA";
                 
 
                 if (tiempo > 10 && VariablesControl.EstadoDeConexion)
@@ -254,7 +268,7 @@ namespace mqtt_serial.ventanas
                     
                     if (chargraficaQ1.Series.Count >= 4)
                     {
-                        chargraficaQ1.Series[1].Enabled = checkBoxCurrent.Checked;
+                        // chargraficaQ1.Series[1].Enabled = checkBoxCurrent.Checked;
 
                         chargraficaQ1.Series[0].Points.AddXY(tiempo2, temperatura1);
                         chargraficaQ1.Series[1].Points.AddXY(tiempo2, corriente1);

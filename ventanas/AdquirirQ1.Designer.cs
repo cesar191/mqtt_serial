@@ -1,6 +1,6 @@
 ﻿namespace mqtt_serial.ventanas
 {
-    partial class adquirir_Q1
+    partial class AdquirirQ1
     {
         /// <summary>
         /// Required designer variable.

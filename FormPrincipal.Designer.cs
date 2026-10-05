@@ -128,7 +128,7 @@
             this.buttonAdquiriQ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonAdquiriQ2.ForeColor = System.Drawing.Color.White;
             this.buttonAdquiriQ2.Image = global::mqtt_serial.Properties.Resources.hugeicons__chart;
-            this.buttonAdquiriQ2.Location = new System.Drawing.Point(20, 395);
+            this.buttonAdquiriQ2.Location = new System.Drawing.Point(20, 313);
             this.buttonAdquiriQ2.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAdquiriQ2.Name = "buttonAdquiriQ2";
             this.buttonAdquiriQ2.Size = new System.Drawing.Size(201, 73);
@@ -148,7 +148,7 @@
             this.buttonControlQ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonControlQ1.ForeColor = System.Drawing.Color.White;
             this.buttonControlQ1.Image = global::mqtt_serial.Properties.Resources.cbi__battery_temp;
-            this.buttonControlQ1.Location = new System.Drawing.Point(19, 315);
+            this.buttonControlQ1.Location = new System.Drawing.Point(19, 393);
             this.buttonControlQ1.Margin = new System.Windows.Forms.Padding(2);
             this.buttonControlQ1.Name = "buttonControlQ1";
             this.buttonControlQ1.Size = new System.Drawing.Size(201, 73);

@@ -18,11 +18,11 @@ namespace mqtt_serial
     {
 
         #region ventanas
-            conexion ventanaConexion;    
-            adquirir_Q1 ventanaAdquirirQ1;
-            Adquirir_Q2 ventanaAdquirirQ2;
-            control_Q1 ventanaControlQ1; 
-            control_Q1Q2 ventanaControlQ1Q2;
+            Conexion ventanaConexion;    
+            AdquirirQ1 ventanaAdquirirQ1;
+            AdquirirQ2 ventanaAdquirirQ2;
+            ControlQ1 ventanaControlQ1; 
+            ControlQ1Q2 ventanaControlQ1Q2;
         #endregion
 
         public pantalla_principal()
@@ -74,7 +74,7 @@ namespace mqtt_serial
             this.buttonControlQ1Q2.BackColor = Color.FromArgb(58, 7, 88);
             this.buttonControlQ1.BackColor = Color.FromArgb(58, 7, 88);
 
-            ventanaConexion = AbrirSubVentana<conexion>();
+            ventanaConexion = AbrirSubVentana<Conexion>();
             buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
 
         }
@@ -85,11 +85,11 @@ namespace mqtt_serial
             {
                 this.ventanaConexion.desconectar();
             }
-            CerrarForm<conexion>();
-            CerrarForm<adquirir_Q1>();
-            CerrarForm<Adquirir_Q2>();
-            CerrarForm<control_Q1>();
-            CerrarForm<control_Q1Q2>();
+            CerrarForm<Conexion>();
+            CerrarForm<AdquirirQ1>();
+            CerrarForm<AdquirirQ2>();
+            CerrarForm<ControlQ1>();
+            CerrarForm<ControlQ1Q2>();
 
         }
         #endregion
@@ -104,7 +104,7 @@ namespace mqtt_serial
             this.buttonControlQ1Q2.BackColor = Color.FromArgb(58, 7, 88);
             this.buttonControlQ1.BackColor = Color.FromArgb(58, 7, 88);
             //abrir ventana
-            ventanaConexion = AbrirSubVentana<conexion>();
+            ventanaConexion = AbrirSubVentana<Conexion>();
             buttonEstadoConexion.Visible = false;
 
         }
@@ -120,16 +120,34 @@ namespace mqtt_serial
             this.buttonControlQ1.BackColor = Color.FromArgb(58, 7, 88);
 
             //si existe una ventana abierta se cierra diferente a la que se conecta
-            CerrarForm<Adquirir_Q2>();
-            CerrarForm<control_Q1>();
-            CerrarForm<control_Q1Q2>();
+            CerrarForm<AdquirirQ2>();
+            CerrarForm<ControlQ1>();
+            CerrarForm<ControlQ1Q2>();
             //se abre la ventana necesaria
-            ventanaAdquirirQ1 = AbrirSubVentana<adquirir_Q1>();
+            ventanaAdquirirQ1 = AbrirSubVentana<AdquirirQ1>();
 
             buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
 
         }
-        
+        private void button_adquiri_q2_Click(object sender, EventArgs e)
+        {
+
+            //colores botones menu
+            this.buttonConexion.BackColor = Color.FromArgb(58, 7, 88);
+            this.buttonAdquiriQ1.BackColor = Color.FromArgb(58, 7, 88);
+            this.buttonAdquiriQ2.BackColor = Color.FromArgb(121, 33, 171);
+            this.buttonControlQ1Q2.BackColor = Color.FromArgb(58, 7, 88);
+            this.buttonControlQ1.BackColor = Color.FromArgb(58, 7, 88);
+
+            CerrarForm<AdquirirQ1>();
+            //CerrarForm<Adquirir_Q2>();
+            CerrarForm<ControlQ1>();
+            CerrarForm<ControlQ1Q2>();
+
+            ventanaAdquirirQ2 = AbrirSubVentana<AdquirirQ2>();
+            buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
+        }
+
         private void button_controlQ1_Click(object sender, EventArgs e)
         {
             
@@ -140,33 +158,16 @@ namespace mqtt_serial
             this.buttonControlQ1Q2.BackColor = Color.FromArgb(58, 7, 88);
             this.buttonControlQ1.BackColor = Color.FromArgb(121, 53, 171);
 
-            CerrarForm<adquirir_Q1>();
-            CerrarForm<Adquirir_Q2>();
+            CerrarForm<AdquirirQ1>();
+            CerrarForm<AdquirirQ2>();
             //CerrarForm<control_Q1>();
-            CerrarForm<control_Q1Q2>();
+            CerrarForm<ControlQ1Q2>();
 
-            ventanaControlQ1 = AbrirSubVentana<control_Q1>();
+            ventanaControlQ1 = AbrirSubVentana<ControlQ1>();
             buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
         }
         
-        private void button_adquiri_q2_Click(object sender, EventArgs e)
-        {
-            
-            //colores botones menu
-            this.buttonConexion.BackColor = Color.FromArgb(58, 7, 88);
-            this.buttonAdquiriQ1.BackColor = Color.FromArgb(58, 7, 88);
-            this.buttonAdquiriQ2.BackColor = Color.FromArgb(121,33, 171);
-            this.buttonControlQ1Q2.BackColor = Color.FromArgb(58, 7, 88);
-            this.buttonControlQ1.BackColor = Color.FromArgb(58, 7, 88);
-
-            CerrarForm<adquirir_Q1>();
-            //CerrarForm<Adquirir_Q2>();
-            CerrarForm<control_Q1>();
-            CerrarForm<control_Q1Q2>();
-
-            ventanaAdquirirQ2 = AbrirSubVentana<Adquirir_Q2>();
-            buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
-        }
+        
 
         private void buttonControlQ1Q2_Click(object sender, EventArgs e)
         {
@@ -178,12 +179,12 @@ namespace mqtt_serial
             this.buttonControlQ1Q2.BackColor = Color.FromArgb(121,33,171);
             this.buttonControlQ1.BackColor = Color.FromArgb(58, 7, 88);
 
-            CerrarForm<adquirir_Q1>();
-            CerrarForm<Adquirir_Q2>();
-            CerrarForm<control_Q1>();
+            CerrarForm<AdquirirQ1>();
+            CerrarForm<AdquirirQ2>();
+            CerrarForm<ControlQ1>();
             //CerrarForm<control_Q1Q2>();
 
-            ventanaControlQ1Q2 = AbrirSubVentana<control_Q1Q2>();
+            ventanaControlQ1Q2 = AbrirSubVentana<ControlQ1Q2>();
             buttonEstadoConexion.Visible = VariablesControl.EstadoDeConexion;
         }
 

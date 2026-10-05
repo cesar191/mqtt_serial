@@ -121,11 +121,11 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="ventanas\ControlActual.cs">
       <SubType>Form</SubType>
@@ -137,41 +137,41 @@
     <Compile Include="funciones\VariablesControl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ventanas\adquirir_Q1.cs">
+    <Compile Include="ventanas\AdquirirQ1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ventanas\adquirir_Q1.Designer.cs">
-      <DependentUpon>adquirir_Q1.cs</DependentUpon>
+    <Compile Include="ventanas\AdquirirQ1.Designer.cs">
+      <DependentUpon>AdquirirQ1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ventanas\Adquirir_Q2.cs">
+    <Compile Include="ventanas\AdquirirQ2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ventanas\Adquirir_Q2.Designer.cs">
-      <DependentUpon>Adquirir_Q2.cs</DependentUpon>
+    <Compile Include="ventanas\AdquirirQ2.Designer.cs">
+      <DependentUpon>AdquirirQ2.cs</DependentUpon>
     </Compile>
-    <Compile Include="ventanas\conexion.cs">
+    <Compile Include="ventanas\Conexion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ventanas\conexion.Designer.cs">
-      <DependentUpon>conexion.cs</DependentUpon>
+    <Compile Include="ventanas\Conexion.Designer.cs">
+      <DependentUpon>Conexion.cs</DependentUpon>
     </Compile>
-    <Compile Include="ventanas\control_Q1.cs">
+    <Compile Include="ventanas\ControlQ1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ventanas\control_Q1.Designer.cs">
-      <DependentUpon>control_Q1.cs</DependentUpon>
+    <Compile Include="ventanas\ControlQ1.Designer.cs">
+      <DependentUpon>ControlQ1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ventanas\control_Q1Q2.cs">
+    <Compile Include="ventanas\ControlQ1Q2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ventanas\control_Q1Q2.Designer.cs">
-      <DependentUpon>control_Q1Q2.cs</DependentUpon>
+    <Compile Include="ventanas\ControlQ1Q2.Designer.cs">
+      <DependentUpon>ControlQ1Q2.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ventanas\ControlActual.resx">
       <DependentUpon>ControlActual.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -183,21 +183,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ventanas\adquirir_Q1.resx">
-      <DependentUpon>adquirir_Q1.cs</DependentUpon>
+    <EmbeddedResource Include="ventanas\AdquirirQ1.resx">
+      <DependentUpon>AdquirirQ1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ventanas\Adquirir_Q2.resx">
-      <DependentUpon>Adquirir_Q2.cs</DependentUpon>
+    <EmbeddedResource Include="ventanas\AdquirirQ2.resx">
+      <DependentUpon>AdquirirQ2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ventanas\conexion.resx">
-      <DependentUpon>conexion.cs</DependentUpon>
+    <EmbeddedResource Include="ventanas\Conexion.resx">
+      <DependentUpon>Conexion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ventanas\control_Q1.resx">
-      <DependentUpon>control_Q1.cs</DependentUpon>
+    <EmbeddedResource Include="ventanas\ControlQ1.resx">
+      <DependentUpon>ControlQ1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ventanas\control_Q1Q2.resx">
-      <DependentUpon>control_Q1Q2.cs</DependentUpon>
+    <EmbeddedResource Include="ventanas\ControlQ1Q2.resx">
+      <DependentUpon>ControlQ1Q2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="mqtt_serial_TemporaryKey.pfx" />
     <None Include="packages.config" />
