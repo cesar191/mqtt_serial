@@ -55,6 +55,7 @@
             this.buttonExportarExcel = new System.Windows.Forms.Button();
             this.pictureBoxVentilador = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.labelCorriente = new System.Windows.Forms.Label();
             this.labelPWM = new System.Windows.Forms.Label();
             this.labelTemperature = new System.Windows.Forms.Label();
             this.buttonVentilador = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.chargraficaQ1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerControl = new System.Windows.Forms.Timer(this.components);
-            this.labelCorriente = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -323,6 +323,23 @@
             this.panel6.Size = new System.Drawing.Size(190, 201);
             this.panel6.TabIndex = 13;
             // 
+            // labelCorriente
+            // 
+            this.labelCorriente.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelCorriente.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.labelCorriente.ForeColor = System.Drawing.Color.White;
+            this.labelCorriente.Image = global::mqtt_serial.Properties.Resources.game_icons__electrical_resistance;
+            this.labelCorriente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelCorriente.Location = new System.Drawing.Point(6, 78);
+            this.labelCorriente.Margin = new System.Windows.Forms.Padding(0);
+            this.labelCorriente.Name = "labelCorriente";
+            this.labelCorriente.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelCorriente.Size = new System.Drawing.Size(184, 35);
+            this.labelCorriente.TabIndex = 18;
+            this.labelCorriente.Text = "   Corriente";
+            this.labelCorriente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelCorriente.Click += new System.EventHandler(this.label4_Click);
+            // 
             // labelPWM
             // 
             this.labelPWM.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -575,23 +592,6 @@
             // 
             this.timerControl.Interval = 1000;
             this.timerControl.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // labelCorriente
-            // 
-            this.labelCorriente.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelCorriente.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.labelCorriente.ForeColor = System.Drawing.Color.White;
-            this.labelCorriente.Image = global::mqtt_serial.Properties.Resources.game_icons__electrical_resistance;
-            this.labelCorriente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelCorriente.Location = new System.Drawing.Point(6, 78);
-            this.labelCorriente.Margin = new System.Windows.Forms.Padding(0);
-            this.labelCorriente.Name = "labelCorriente";
-            this.labelCorriente.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelCorriente.Size = new System.Drawing.Size(184, 35);
-            this.labelCorriente.TabIndex = 18;
-            this.labelCorriente.Text = "   Corriente";
-            this.labelCorriente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.labelCorriente.Click += new System.EventHandler(this.label4_Click);
             // 
             // ControlQ1
             // 

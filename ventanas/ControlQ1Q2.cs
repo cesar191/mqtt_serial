@@ -27,6 +27,29 @@ namespace mqtt_serial.ventanas
         private double setPoint1 = 0, setPoint2 = 0, errorDouble1 = 0, errorDouble2 = 0;
         private double kp1 = 0, kp2 = 0, ki1 = 0, ki2 = 0, kd1 = 0, kd2 = 0, ts1 = 1, ts2 = 1;
 
+        private void labelCorrienteQ1_Click(object sender, EventArgs e)
+        {
+            if (chargraficaQ1.Series[5].Enabled)
+            {
+                chargraficaQ1.Series[5].Enabled = false;
+            }
+            else
+            {
+                chargraficaQ1.Series[5].Enabled = true;
+            }
+        }
+
+        private void labelCorrienteQ2_Click(object sender, EventArgs e)
+        {
+            if (chargraficaQ1.Series[7].Enabled)
+            {
+                chargraficaQ1.Series[7].Enabled = false;
+            }
+            else
+            {
+                chargraficaQ1.Series[7].Enabled = true;
+            }
+        }
 
         ControlActual controlActulizar = new ControlActual();
 
@@ -91,6 +114,9 @@ namespace mqtt_serial.ventanas
 
         private void control_Q1Q2_Load(object sender, EventArgs e)
         {
+            chargraficaQ1.Series[5].Enabled = false;
+            chargraficaQ1.Series[7].Enabled = false;
+
             comboBoxSetPointQ1.Text = "0";
             comboBoxSetPointQ2.Text = "0";
 
@@ -353,14 +379,25 @@ namespace mqtt_serial.ventanas
                     double tiempo2 = tiempo - VariablesControl.listaTiempo[0];
                     //grafica 
                     double ventanaTiempo = 1200;
-                    foreach (var area in chargraficaQ1.ChartAreas)
+                    if (tiempo2 > ventanaTiempo)
                     {
-                        if (tiempo - VariablesControl.listaTiempo[0] > ventanaTiempo)
+                        double limiteIngfferior = tiempo2 - ventanaTiempo;
+                        foreach (var area in chargraficaQ1.ChartAreas)
                         {
                             area.AxisX.Minimum = tiempo2 - ventanaTiempo;
                             area.AxisX.Maximum = tiempo2;
                         }
-                        else
+                        foreach (var series in chargraficaQ1.Series)
+                        {
+                            while (series.Points.Count > 0 && series.Points[0].XValue < limiteIngfferior)
+                            {
+                                series.Points.RemoveAt(0);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var area in chargraficaQ1.ChartAreas)
                         {
                             area.AxisX.Minimum = 0;
                             area.AxisX.Maximum = tiempo2;

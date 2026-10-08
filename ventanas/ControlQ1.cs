@@ -61,6 +61,19 @@ namespace mqtt_serial.ventanas
             }
         }
 
+        private void TextBox_SeleccionarTodo_Enter(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                // Pasa la ejecución al final de la cola de la interfaz para evitar que el clic del ratón desmarque la selección
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    textBox.SelectAll();
+                });
+            }
+        }
+
         private void timer2_Tick(object sender, EventArgs e)
         {
             try
@@ -85,6 +98,11 @@ namespace mqtt_serial.ventanas
         public ControlQ1()
         {
             InitializeComponent();
+            textBoxKP.Enter += TextBox_SeleccionarTodo_Enter;
+            textBoxKI.Enter += TextBox_SeleccionarTodo_Enter;
+            textBoxKD.Enter += TextBox_SeleccionarTodo_Enter;
+            textBoxTS.Enter += TextBox_SeleccionarTodo_Enter;
+
         }
 
         #region al abrir y cerrar la ventana
@@ -119,6 +137,7 @@ namespace mqtt_serial.ventanas
         private void buttonRefrescar_Click(object sender, EventArgs e)
         {
             try {
+                //
                 controlPID.reseteo();
                 kp = (textBoxKP.Text != "") ? double.Parse(textBoxKP.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
                 ki = (textBoxKI.Text != "") ? double.Parse(textBoxKI.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
@@ -130,6 +149,12 @@ namespace mqtt_serial.ventanas
                 VariablesControl.listaKi.Add(ki);
                 VariablesControl.listaKd.Add(kd);
                 VariablesControl.listaTs.Add(ts);
+                //
+                textBoxKP.Text=$"{kp:f4}";
+                textBoxKI.Text = $"{ki:f4}";
+                textBoxKD.Text = $"{kd:f4}";
+                textBoxTS.Text = $"{ts:f4}";
+
 
                 timerControl.Interval = (int)((ts != 0) ? (ts)*1000 : (1) * 1000);
                 timerControl.Enabled = true;
@@ -251,21 +276,33 @@ namespace mqtt_serial.ventanas
                     double tiempo2 = tiempo - VariablesControl.listaTiempo[0];
                     //
                     double ventanaTiempo = 1200;
-                    foreach (var area in chargraficaQ1.ChartAreas)
+
+                    if (tiempo2 > ventanaTiempo)
                     {
-                        if (tiempo - VariablesControl.listaTiempo[0] > ventanaTiempo)
+                        double limiteIngfferior = tiempo2 - ventanaTiempo;
+                        foreach (var area in chargraficaQ1.ChartAreas)
                         {
                             area.AxisX.Minimum = tiempo2 - ventanaTiempo;
                             area.AxisX.Maximum = tiempo2;
                         }
-                        else
+                        foreach (var series in chargraficaQ1.Series)
+                        {
+                            while (series.Points.Count > 0 && series.Points[0].XValue < limiteIngfferior)
+                            {
+                                series.Points.RemoveAt(0);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var area in chargraficaQ1.ChartAreas)
                         {
                             area.AxisX.Minimum = 0;
                             area.AxisX.Maximum = tiempo2;
                         }
                     }
                     //
-                    
+
                     if (chargraficaQ1.Series.Count >= 4)
                     {
                         // chargraficaQ1.Series[1].Enabled = checkBoxCurrent.Checked;

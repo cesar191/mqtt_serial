@@ -32,28 +32,28 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.buttonRefrescar = new System.Windows.Forms.Button();
-            this.comboBoxTs = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxKd = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxKi = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxKp = new System.Windows.Forms.ComboBox();
+            this.textBoxKP = new System.Windows.Forms.TextBox();
+            this.textBoxKI = new System.Windows.Forms.TextBox();
+            this.textBoxKD = new System.Windows.Forms.TextBox();
+            this.textBoxTS = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox3.Controls.Add(this.textBoxTS);
+            this.groupBox3.Controls.Add(this.textBoxKD);
+            this.groupBox3.Controls.Add(this.textBoxKI);
+            this.groupBox3.Controls.Add(this.textBoxKP);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.buttonRefrescar);
-            this.groupBox3.Controls.Add(this.comboBoxTs);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.comboBoxKd);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.comboBoxKi);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.comboBoxKp);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(254)));
             this.groupBox3.ForeColor = System.Drawing.Color.White;
             this.groupBox3.Location = new System.Drawing.Point(38, 27);
@@ -82,46 +82,13 @@
             this.buttonRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRefrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonRefrescar.ForeColor = System.Drawing.Color.White;
-            this.buttonRefrescar.Location = new System.Drawing.Point(6, 216);
+            this.buttonRefrescar.Location = new System.Drawing.Point(31, 216);
             this.buttonRefrescar.Name = "buttonRefrescar";
             this.buttonRefrescar.Size = new System.Drawing.Size(164, 52);
             this.buttonRefrescar.TabIndex = 17;
             this.buttonRefrescar.Text = "Refrescar Q1";
             this.buttonRefrescar.UseVisualStyleBackColor = false;
             this.buttonRefrescar.Click += new System.EventHandler(this.buttonRefrescar_Click);
-            // 
-            // comboBoxTs
-            // 
-            this.comboBoxTs.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxTs.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxTs.FormatString = "N0";
-            this.comboBoxTs.FormattingEnabled = true;
-            this.comboBoxTs.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxTs.Location = new System.Drawing.Point(100, 173);
-            this.comboBoxTs.Name = "comboBoxTs";
-            this.comboBoxTs.Size = new System.Drawing.Size(109, 33);
-            this.comboBoxTs.TabIndex = 26;
             // 
             // label5
             // 
@@ -135,39 +102,6 @@
             this.label5.Text = "KD";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // comboBoxKd
-            // 
-            this.comboBoxKd.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxKd.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxKd.FormatString = "N0";
-            this.comboBoxKd.FormattingEnabled = true;
-            this.comboBoxKd.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxKd.Location = new System.Drawing.Point(100, 128);
-            this.comboBoxKd.Name = "comboBoxKd";
-            this.comboBoxKd.Size = new System.Drawing.Size(109, 33);
-            this.comboBoxKd.TabIndex = 24;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -179,39 +113,6 @@
             this.label3.TabIndex = 21;
             this.label3.Text = "KI";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // comboBoxKi
-            // 
-            this.comboBoxKi.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxKi.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxKi.FormatString = "N0";
-            this.comboBoxKi.FormattingEnabled = true;
-            this.comboBoxKi.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxKi.Location = new System.Drawing.Point(100, 83);
-            this.comboBoxKi.Name = "comboBoxKi";
-            this.comboBoxKi.Size = new System.Drawing.Size(110, 33);
-            this.comboBoxKi.TabIndex = 22;
             // 
             // label1
             // 
@@ -226,38 +127,33 @@
             this.label1.Text = "KP";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // comboBoxKp
+            // textBoxKP
             // 
-            this.comboBoxKp.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.comboBoxKp.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxKp.FormatString = "N0";
-            this.comboBoxKp.FormattingEnabled = true;
-            this.comboBoxKp.Items.AddRange(new object[] {
-            "0",
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "95",
-            "100"});
-            this.comboBoxKp.Location = new System.Drawing.Point(100, 38);
-            this.comboBoxKp.Name = "comboBoxKp";
-            this.comboBoxKp.Size = new System.Drawing.Size(110, 33);
-            this.comboBoxKp.TabIndex = 20;
+            this.textBoxKP.Location = new System.Drawing.Point(100, 38);
+            this.textBoxKP.Name = "textBoxKP";
+            this.textBoxKP.Size = new System.Drawing.Size(109, 30);
+            this.textBoxKP.TabIndex = 23;
+            // 
+            // textBoxKI
+            // 
+            this.textBoxKI.Location = new System.Drawing.Point(99, 86);
+            this.textBoxKI.Name = "textBoxKI";
+            this.textBoxKI.Size = new System.Drawing.Size(109, 30);
+            this.textBoxKI.TabIndex = 27;
+            // 
+            // textBoxKD
+            // 
+            this.textBoxKD.Location = new System.Drawing.Point(99, 129);
+            this.textBoxKD.Name = "textBoxKD";
+            this.textBoxKD.Size = new System.Drawing.Size(109, 30);
+            this.textBoxKD.TabIndex = 28;
+            // 
+            // textBoxTS
+            // 
+            this.textBoxTS.Location = new System.Drawing.Point(99, 173);
+            this.textBoxTS.Name = "textBoxTS";
+            this.textBoxTS.Size = new System.Drawing.Size(109, 30);
+            this.textBoxTS.TabIndex = 29;
             // 
             // ControlActual
             // 
@@ -285,12 +181,12 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button buttonRefrescar;
-        private System.Windows.Forms.ComboBox comboBoxTs;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBoxKd;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBoxKi;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxKp;
+        private System.Windows.Forms.TextBox textBoxKP;
+        private System.Windows.Forms.TextBox textBoxTS;
+        private System.Windows.Forms.TextBox textBoxKD;
+        private System.Windows.Forms.TextBox textBoxKI;
     }
 }

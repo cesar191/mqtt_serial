@@ -178,7 +178,7 @@ namespace mqtt_serial.ventanas
                     VariablesControl.listaPWM1.Add(pwm);
                     VariablesControl.listaTiempo.Add(tiempo);
 
-                    double tiempo2=tiempo - VariablesControl.listaTiempo[0];
+                    double tiempo2 = tiempo - VariablesControl.listaTiempo[0];
 
                     double ventanaTiempo = 1200;
                     if (tiempo2 > ventanaTiempo)
@@ -204,7 +204,7 @@ namespace mqtt_serial.ventanas
                         foreach (var area in chargraficaQ1.ChartAreas)
                         {
                             area.AxisX.Minimum = 0;
-                            area.AxisX.Maximum = tiempo2;
+                            area.AxisX.Maximum = tiempo2+1;
                         }
                     }
 

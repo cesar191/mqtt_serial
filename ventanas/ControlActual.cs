@@ -34,10 +34,11 @@ namespace mqtt_serial
         {
             try
             {
-                kp = (comboBoxKp.Text != "") ? double.Parse(comboBoxKp.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-                ki = (comboBoxKi.Text != "") ? double.Parse(comboBoxKi.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-                kd = (comboBoxKd.Text != "") ? double.Parse(comboBoxKd.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-                ts = (comboBoxTs.Text != "") ? double.Parse(comboBoxTs.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                
+                kp = (this.textBoxKP.Text != "") ? double.Parse(this.textBoxKP.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                ki = (this.textBoxKI.Text != "") ? double.Parse(this.textBoxKI.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                kd = (this.textBoxKD.Text != "") ? double.Parse(this.textBoxKD.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                ts = (this.textBoxTS.Text != "") ? double.Parse(this.textBoxTS.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
 
                 this.Close();
             }
@@ -46,10 +47,26 @@ namespace mqtt_serial
                 MessageBox.Show("Error al parsear los valores: " + ex.Message);
             }
         }
+        private void TextBox_SeleccionarTodo_Enter(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                // Pasa la ejecución al final de la cola de la interfaz para evitar que el clic del ratón desmarque la selección
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    textBox.SelectAll();
+                });
+            }
+        }
 
         public ControlActual()
         {
             InitializeComponent();
+            textBoxKP.Enter += TextBox_SeleccionarTodo_Enter;
+            textBoxKI.Enter += TextBox_SeleccionarTodo_Enter;
+            textBoxKD.Enter += TextBox_SeleccionarTodo_Enter;
+            textBoxTS.Enter += TextBox_SeleccionarTodo_Enter;
         }
         public void variables(double kp, double ki, double kd, double ts)
         {
@@ -63,10 +80,10 @@ namespace mqtt_serial
         {
             Text = titulo;
             buttonRefrescar.Text = boton;
-            comboBoxKd.Text = (kd != 0) ? kd.ToString() : "0";
-            comboBoxKi.Text = (ki != 0) ? ki.ToString() : "0";
-            comboBoxKp.Text = (kp != 0) ? kp.ToString() : "0";
-            comboBoxTs.Text = (ts != 0) ? ts.ToString() : "0";  
+            textBoxKP.Text = (kp != 0) ? kp.ToString() : "0";
+            textBoxKI.Text = (ki != 0) ? ki.ToString() : "0";
+            textBoxKD.Text = (kd != 0) ? kd.ToString() : "0";
+            textBoxTS.Text = (ts != 0) ? ts.ToString() : "0";  
         }
 
     
