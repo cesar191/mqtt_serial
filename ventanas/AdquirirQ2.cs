@@ -1,4 +1,5 @@
-﻿using mqtt_serial.funciones;
+﻿using DocumentFormat.OpenXml.Packaging;
+using mqtt_serial.funciones;
 using SpreadsheetLight;
 using SpreadsheetLight.Drawing;
 using System;
@@ -180,12 +181,22 @@ namespace mqtt_serial.ventanas
                             }
                         }
                     }
-                
+
                     //
-                    if (chargraficaQ2.Series.Count >= 3)
+                    if (chargraficaQ2.InvokeRequired)
+                    {
+                        chargraficaQ2.Invoke( (MethodInvoker)(()=>
+                        {
+                            var series = chargraficaQ2.Series;
+
+                            series[0].Points.AddXY(tiempo2, temperatura2);
+                            series[1].Points.AddXY(tiempo2, corriente2);
+                            series[2].Points.AddXY(tiempo2, pwm);
+                        }));
+                    }
+                    else
                     {
                         var series = chargraficaQ2.Series;
-
                         series[0].Points.AddXY(tiempo2, temperatura2);
                         series[1].Points.AddXY(tiempo2, corriente2);
                         series[2].Points.AddXY(tiempo2, pwm);
@@ -240,7 +251,6 @@ namespace mqtt_serial.ventanas
 
                 if (VariablesControl.listaTiempo.Count > 0)
                 {
-                    this.chargraficaQ2.SaveImage($@"{pathSave}Grafica_AdquirirQ2_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
                     SLDocument document = new SLDocument();
 
                     document.SetCellValue(1, 1, "Tiempo");
@@ -264,10 +274,29 @@ namespace mqtt_serial.ventanas
                     document.SetCellValue(3, 7, "=INDEX(A:A, MATCH(MAX(B:B)*0.632, B:B)) - (INDEX(A:A, MATCH(MODE(D:D), D:D,0))*1)");
                     document.SetCellValue(4, 7, "=INDEX(A:A, MATCH(MIN(B:B)*1.02, B:B)) - (INDEX(A:A, MATCH(MODE(D:D), D:D,0)))");
 
-                    SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_AdquirirQ2_{fecha}.png");
-                    
-                    imagenGrafica.SetPosition(1, 8);
-                    document.InsertPicture(imagenGrafica);
+                    if (chargraficaQ2 != null)
+                    {
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            // Guardar gráfica en el buffer de memoria
+                            chargraficaQ2.SaveImage(ms, ChartImageFormat.Png);
+                            byte[] imageBytes = ms.ToArray();
+
+                            // Instanciar la imagen directamente desde los bytes
+                            SLPicture imagenGrafica = new SLPicture(imageBytes, ImagePartType.Png);
+
+                            // Posicionar la imagen en la celda H1 (Fila 1, Columna 8)
+                            imagenGrafica.SetPosition(1, 8);
+
+                            // Redimensionamiento de la imagen (Ancho, Alto) en píxeles
+                            //imagenGrafica.ResizeInPixels(500, 200);
+
+                            // Alternativa: Redimensionar por porcentaje de la imagen original
+                            imagenGrafica.ResizeInPercentage(60, 60);
+
+                            document.InsertPicture(imagenGrafica);
+                        }
+                    }
 
                     document.SaveAs($@"{pathSave}DatosGrafica_AdquirirQ2_{fecha}.xlsx");
                 }

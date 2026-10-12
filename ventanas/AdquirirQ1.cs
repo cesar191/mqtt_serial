@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Wordprocessing;
+﻿using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 using mqtt_serial.funciones;
 using SpreadsheetLight;
 using SpreadsheetLight.Drawing;
@@ -37,7 +38,6 @@ namespace mqtt_serial.ventanas
             this.comboBoxPWM.Text=trackBarPWM.Value.ToString();
             VariablesControl.Pwm1 = trackBarPWM.Value.ToString();
         }
-
 
         private void comboBoxPWM_SelectedIndexChanged(object sender, EventArgs e)
         { 
@@ -208,7 +208,10 @@ namespace mqtt_serial.ventanas
                         }
                     }
 
-                    if (chargraficaQ1.Series.Count >= 2) { 
+                    if (chargraficaQ1.InvokeRequired)
+                    {
+                        chargraficaQ1.Invoke( (MethodInvoker)(()=>
+                        {
                             var series = chargraficaQ1.Series;
                             //series[1].Enabled = checkBoxCurrent.Checked;
 
@@ -216,8 +219,16 @@ namespace mqtt_serial.ventanas
                             series[1].Points.AddXY(tiempo2, corriente1);
                             series[2].Points.AddXY(tiempo2, pwm);
 
-                        }
-                    
+                        }));
+                    }
+                    else
+                    {
+                        var series = chargraficaQ1.Series;
+                        //series[1].Enabled = checkBoxCurrent.Checked;
+                        series[0].Points.AddXY(tiempo2, temperatura1);
+                        series[1].Points.AddXY(tiempo2, corriente1);
+                        series[2].Points.AddXY(tiempo2, pwm);
+                    }
                 }
                 else if (tiempo < 10)
                 {
@@ -225,6 +236,7 @@ namespace mqtt_serial.ventanas
                     {
                         series.Points.Clear();
                     }
+                    
                     VariablesControl.limpiarLista();
                 }
 
@@ -288,24 +300,30 @@ namespace mqtt_serial.ventanas
                     document.SetCellValue(4, 6, "Td");
                     // Fórmulas usando nombres en inglés, comas como separadores y el prefijo _xlfn.
                     document.SetCellValue(2, 7, "=(MAX(B:B)-MIN(B:B))/(MODE(D:D)-MIN(D:D))");
-                    document.SetCellValue(3, 7, "=INDEX(A:A, MATCH(MAX(B:B)*0.632, B:B)) - (INDEX(A:A, MATCH(MODE(D:D), D:D,0))*1)");
+                    document.SetCellValue(3, 7, "=INDEX(A:A, MATCH(MAX(B:B)*0.632, B:B)) - (INDEX(A:A, MATCH(MODE(D:D), D:D,0)))");
                     document.SetCellValue(4, 7, "=INDEX(A:A, MATCH(MIN(B:B)*1.02, B:B)) - (INDEX(A:A, MATCH(MODE(D:D), D:D,0)))");
 
                     //imagen Grafica
-                    if (this.chargraficaQ1 != null)
+                    if (chargraficaQ1 != null)
                     {
                         using (MemoryStream ms = new MemoryStream())
                         {
-                            this.chargraficaQ1.SaveImage(ms, System.Drawing.Imaging.ImageFormat.Png);
-                            ms.Position = 0;
+                            // Guardar gráfica en el buffer de memoria
+                            chargraficaQ1.SaveImage(ms, ChartImageFormat.Png);
+                            byte[] imageBytes = ms.ToArray();
 
-                            // Guardar copia física si se requiere
-                            string rutaImagen = $@"{pathSave}Grafica_Adquirir1_{fecha}.png";
-                            File.WriteAllBytes(rutaImagen, ms.ToArray());
+                            // Instanciar la imagen directamente desde los bytes
+                            SLPicture imagenGrafica = new SLPicture(imageBytes, ImagePartType.Png);
 
-                            // Usar la imagen desde el stream o archivo validando liberación
-                            SLPicture imagenGrafica = new SLPicture(rutaImagen);
+                            // Posicionar la imagen en la celda H1 (Fila 1, Columna 8)
                             imagenGrafica.SetPosition(1, 8);
+                            
+                            // Redimensionamiento de la imagen (Ancho, Alto) en píxeles
+                            //imagenGrafica.ResizeInPixels(500, 200);
+
+                            // Alternativa: Redimensionar por porcentaje de la imagen original
+                            imagenGrafica.ResizeInPercentage(60, 60);
+
                             document.InsertPicture(imagenGrafica);
                         }
                     }

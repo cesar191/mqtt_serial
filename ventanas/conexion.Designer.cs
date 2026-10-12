@@ -244,7 +244,7 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // conexion
+            // Conexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -253,7 +253,7 @@
             this.ClientSize = new System.Drawing.Size(1060, 640);
             this.Controls.Add(this.panelDatos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "conexion";
+            this.Name = "Conexion";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.conexion_FormClosing);
             this.Load += new System.EventHandler(this.conexion_Load);
             this.panelDatos.ResumeLayout(false);

@@ -1,4 +1,5 @@
-﻿using mqtt_serial.funciones;
+﻿using DocumentFormat.OpenXml.Packaging;
+using mqtt_serial.funciones;
 using SpreadsheetLight;
 using SpreadsheetLight.Drawing;
 using System;
@@ -199,7 +200,6 @@ namespace mqtt_serial.ventanas
 
                 if (VariablesControl.listaTiempo.Count > 0)
                 {
-                    this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
                     SLDocument document = new SLDocument();
 
                     //lista de titulos del excel
@@ -232,9 +232,29 @@ namespace mqtt_serial.ventanas
                         document.SetCellValue(i + 2, 11, VariablesControl.listaTiempo2[i] - VariablesControl.listaTiempo[0]);
 
                     }
-                    SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_ControlQ1_{fecha}.png");
-                    imagenGrafica.SetPosition(1, 14);
-                    document.InsertPicture(imagenGrafica);
+                    if (chargraficaQ1 != null)
+                    {
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            // Guardar gráfica en el buffer de memoria
+                            chargraficaQ1.SaveImage(ms, ChartImageFormat.Png);
+                            byte[] imageBytes = ms.ToArray();
+
+                            // Instanciar la imagen directamente desde los bytes
+                            SLPicture imagenGrafica = new SLPicture(imageBytes, ImagePartType.Png);
+
+                            // Posicionar la imagen en la celda H1 (Fila 1, Columna 8)
+                            imagenGrafica.SetPosition(1, 12);
+
+                            // Redimensionamiento de la imagen (Ancho, Alto) en píxeles
+                            //imagenGrafica.ResizeInPixels(500, 200);
+
+                            // Alternativa: Redimensionar por porcentaje de la imagen original
+                            imagenGrafica.ResizeInPercentage(60, 60);
+
+                            document.InsertPicture(imagenGrafica);
+                        }
+                    }
 
                     document.SaveAs($@"{pathSave}DatosGrafica_ControlQ1_{fecha}.xlsx");
                 }
@@ -250,7 +270,7 @@ namespace mqtt_serial.ventanas
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
-            {        
+            {
                 pwm = controlPID.PWM;
                 labelPWM.Text = $@" {pwm:f2} %";
                 VariablesControl.Pwm1 = pwm.ToString();
@@ -261,7 +281,7 @@ namespace mqtt_serial.ventanas
 
                 labelTemperature.Text = $@" {temperatura1:f2} °C";
                 labelCorriente.Text = $@" {corriente1:f2} mA";
-                
+
 
                 if (tiempo > 10 && VariablesControl.EstadoDeConexion)
                 {
@@ -303,17 +323,30 @@ namespace mqtt_serial.ventanas
                     }
                     //
 
-                    if (chargraficaQ1.Series.Count >= 4)
+                    if (chargraficaQ1.InvokeRequired)
+                    {
+                        chargraficaQ1.Invoke( (MethodInvoker)(()=>
+                        {
+                            // chargraficaQ1.Series[1].Enabled = checkBoxCurrent.Checked;
+
+                            chargraficaQ1.Series[0].Points.AddXY(tiempo2, temperatura1);
+                            chargraficaQ1.Series[1].Points.AddXY(tiempo2, corriente1);
+                            chargraficaQ1.Series[2].Points.AddXY(tiempo2, pwm);
+                            chargraficaQ1.Series[3].Points.AddXY(tiempo2, setPoint);
+                        }));
+
+                    }
+                    else
                     {
                         // chargraficaQ1.Series[1].Enabled = checkBoxCurrent.Checked;
-
                         chargraficaQ1.Series[0].Points.AddXY(tiempo2, temperatura1);
                         chargraficaQ1.Series[1].Points.AddXY(tiempo2, corriente1);
                         chargraficaQ1.Series[2].Points.AddXY(tiempo2, pwm);
                         chargraficaQ1.Series[3].Points.AddXY(tiempo2, setPoint);
-                    }
+
+                    } 
                 }
-                else if (tiempo <=10)
+                else if (tiempo <= 10)
                 {
                     foreach (var series in chargraficaQ1.Series)
                     {
@@ -322,27 +355,28 @@ namespace mqtt_serial.ventanas
                     VariablesControl.limpiarLista();
                 }
 
-                //encender el led
-                if (double.TryParse(comboBoxTemperatura.Text, out double tempAlarma))
-                {
-                    if (tempAlarma <= temperatura1)
+                    //encender el led
+                    if (double.TryParse(comboBoxTemperatura.Text, out double tempAlarma))
                     {
-                        VariablesControl.AlarmaLed1 = "on";
-                        labelTemperature.ForeColor = System.Drawing.Color.Red;
+                        if (tempAlarma <= temperatura1)
+                        {
+                            VariablesControl.AlarmaLed1 = "on";
+                            labelTemperature.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+                            VariablesControl.AlarmaLed1 = "off";
+                            labelTemperature.ForeColor = System.Drawing.Color.White;
+                        }
                     }
                     else
                     {
                         VariablesControl.AlarmaLed1 = "off";
                         labelTemperature.ForeColor = System.Drawing.Color.White;
                     }
-                }
-                else
-                {
-                    VariablesControl.AlarmaLed1 = "off";
-                    labelTemperature.ForeColor = System.Drawing.Color.White;
-                }
 
 
+                
             }
             catch (Exception ex)
             {

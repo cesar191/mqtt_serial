@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Presentation;
+﻿using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Presentation;
 
 using mqtt_serial.funciones;
 using SpreadsheetLight;
@@ -269,8 +270,7 @@ namespace mqtt_serial.ventanas
 
                 if (VariablesControl.listaTiempo.Count > 0)
                 {
-                    this.chargraficaQ1.SaveImage($@"{pathSave}Grafica_ControlQ1Q2_{fecha}.png", System.Drawing.Imaging.ImageFormat.Png);
-
+                    
                     SLDocument document = new SLDocument();
                     document.SetCellValue(1, 1, "Tiempo");
                     document.SetCellValue(1, 2, "Temperatura1");
@@ -315,9 +315,29 @@ namespace mqtt_serial.ventanas
                         document.SetCellValue(i + 2, 16, VariablesControl.PlantaControl[i]);
                         
                     }
-                    SLPicture imagenGrafica = new SLPicture($@"{pathSave}Grafica_ControlQ1Q2_{fecha}.png");
-                    imagenGrafica.SetPosition(1,19);
-                    document.InsertPicture(imagenGrafica);
+                    if (chargraficaQ1 != null)
+                    {
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            // Guardar gráfica en el buffer de memoria
+                            chargraficaQ1.SaveImage(ms, ChartImageFormat.Png);
+                            byte[] imageBytes = ms.ToArray();
+
+                            // Instanciar la imagen directamente desde los bytes
+                            SLPicture imagenGrafica = new SLPicture(imageBytes, ImagePartType.Png);
+
+                            // Posicionar la imagen en la celda H1 (Fila 1, Columna 8)
+                            imagenGrafica.SetPosition(1, 17);
+
+                            // Redimensionamiento de la imagen (Ancho, Alto) en píxeles
+                            //imagenGrafica.ResizeInPixels(500, 200);
+
+                            // Alternativa: Redimensionar por porcentaje de la imagen original
+                            imagenGrafica.ResizeInPercentage(60, 60);
+
+                            document.InsertPicture(imagenGrafica);
+                        }
+                    }
                     document.SaveAs($@"{pathSave}DatosGrafica_ControlQ1Q2_{fecha}.xlsx");
                 }
                 timer1.Start();
@@ -404,10 +424,25 @@ namespace mqtt_serial.ventanas
                         }
                     }
 
-                    if (chargraficaQ1.Series.Count >= 8)
+                    if (chargraficaQ1.InvokeRequired)
+                    {
+                        chargraficaQ1.Invoke( (MethodInvoker)(()=>
+                        {
+                            var series = chargraficaQ1.Series;
+
+                            series[0].Points.AddXY(tiempo2, temperatura1);
+                            series[1].Points.AddXY(tiempo2, temperatura2);
+                            series[2].Points.AddXY(tiempo2, pwm1);
+                            series[3].Points.AddXY(tiempo2, setPoint1);
+                            series[4].Points.AddXY(tiempo2, setPoint2);
+                            series[5].Points.AddXY(tiempo2, corriente1);
+                            series[6].Points.AddXY(tiempo2, pwm2);
+                            series[7].Points.AddXY(tiempo2, corriente2);
+                        }));
+                    }
+                    else
                     {
                         var series = chargraficaQ1.Series;
-
                         series[0].Points.AddXY(tiempo2, temperatura1);
                         series[1].Points.AddXY(tiempo2, temperatura2);
                         series[2].Points.AddXY(tiempo2, pwm1);

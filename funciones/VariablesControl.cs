@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+//
 
 namespace mqtt_serial.funciones
 {
@@ -74,12 +77,11 @@ namespace mqtt_serial.funciones
         public static string Ventilador1 { get { return ventilador1; } set { ventilador1 = value; } }
         public static string Ventilador2 { get { return ventilador2; } set { ventilador2 = value; } }
 
-
-        //estados de prueba
-        public static bool EstadoDeConexion { get { return estadoDeConexion; } set { estadoDeConexion = value; } }
+    //estados de prueba
+    public static bool EstadoDeConexion { get { return estadoDeConexion; } set { estadoDeConexion = value; } }
 
         #endregion
-        public static void reseteoParametros()
+    public static void reseteoParametros()
         {
     
          pwm1 = "0";
@@ -89,7 +91,7 @@ namespace mqtt_serial.funciones
          ventilador1 = "off";
          ventilador2 = "off";
         }
-        public static void limpiarLista()
+    public static void limpiarLista()
         {
             //parametros de grafica
             listaTiempo.Clear(); 
