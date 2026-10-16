@@ -236,7 +236,7 @@ namespace mqtt_serial.ventanas
                             else
                             {
                                 mqttClient = new MqttClient(comboBoxIPCOM.Text);
-                                mqttClient.Connect(comboBoxConexionBaudio.Text,textBoxNameUser.Text,textBoxPass.Text);
+                                mqttClient.Connect(comboBoxConexionBaudio.Text, textBoxNameUser.Text, textBoxPass.Text);
                                 conexionMqtt();
                             }
                         }
@@ -394,16 +394,15 @@ namespace mqtt_serial.ventanas
         {
             try
             {
-                if (mqttClient !=null && mqttClient.IsConnected)
+                if (mqttClient != null && mqttClient.IsConnected)
                 {
-                        publicar();
-                    
-        
-                }else if (serialPort1.IsOpen)
+                    publicar();
+                }
+                else if (serialPort1.IsOpen)
                 {
 
                 }
-                if(!VariablesControl.EstadoDeConexion)
+                if (!VariablesControl.EstadoDeConexion)
                 {
                     if (mqttClient != null && mqttClient.IsConnected)
                     {
@@ -411,7 +410,7 @@ namespace mqtt_serial.ventanas
                     }
                     if (serialPort1.IsOpen)
                     {
-                        conexionSerial(); 
+                        conexionSerial();
                     }
                 }
 
@@ -420,8 +419,8 @@ namespace mqtt_serial.ventanas
             {
                 MessageBox.Show("hubo un error");
             }
-           
-            
+
+
         }
 
        
