@@ -137,15 +137,18 @@
             this.label_Conexion_Baudio.ForeColor = System.Drawing.Color.White;
             this.label_Conexion_Baudio.Location = new System.Drawing.Point(234, 20);
             this.label_Conexion_Baudio.Name = "label_Conexion_Baudio";
-            this.label_Conexion_Baudio.Size = new System.Drawing.Size(147, 25);
+            this.label_Conexion_Baudio.Size = new System.Drawing.Size(69, 25);
             this.label_Conexion_Baudio.TabIndex = 3;
-            this.label_Conexion_Baudio.Text = "Nombre Cliente";
+            this.label_Conexion_Baudio.Text = "Puerto";
             // 
             // comboBoxConexionBaudio
             // 
             this.comboBoxConexionBaudio.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxConexionBaudio.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.comboBoxConexionBaudio.FormattingEnabled = true;
+            this.comboBoxConexionBaudio.Items.AddRange(new object[] {
+            "1883",
+            "1884"});
             this.comboBoxConexionBaudio.Location = new System.Drawing.Point(234, 48);
             this.comboBoxConexionBaudio.Name = "comboBoxConexionBaudio";
             this.comboBoxConexionBaudio.Size = new System.Drawing.Size(200, 33);

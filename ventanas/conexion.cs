@@ -22,6 +22,7 @@ using System.Windows.Forms;
 //librerias mqtt
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace mqtt_serial.ventanas
@@ -59,19 +60,20 @@ namespace mqtt_serial.ventanas
             }
         }
 
+        string nombreUsuario = $"Usco_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}";
+
+        //seguridad de conexion
+        X509Certificate cacert = null;
+        X509Certificate clientsert = null;
+        bool ssl = false;
+
+
         public Conexion()
         {
             InitializeComponent();
             
         }
-        private void visibleoption()
-        {
-            this.panel_ip_serial.Visible = false;
-            this.panel_conexion.Enabled = false;
-            this.panelUserPass.Visible = false;
-            this.buttonRefrescar.Visible = false;
-
-        }
+        
         
         //parametros que se reciben del mqtt
         private void MqClient_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
@@ -107,30 +109,25 @@ namespace mqtt_serial.ventanas
                 this.comboBoxIPCOM.Items.Clear();
                 this.comboBoxIPCOM.Text = "";
 
-                this.buttonRefrescar.Visible = true;
-                this.panel_conexion.Enabled = true;
-                this.panel_ip_serial.Visible = true;
-
                 switch (comboBoxTipoConexion.SelectedIndex)
                 {
                     case (0)://opción de conexion local
-                        this.panelUserPass.Visible = false;
+                       
                         this.label_IP_COM.Text = "Dirección IP";
-                        this.label_Conexion_Baudio.Text = "Nombre Cliente";
+                        this.label_Conexion_Baudio.Text = "Puerto";
                         this.comboBoxIPCOM.Items.Add(ObtenerIPLocal());
                         this.comboBoxIPCOM.SelectedIndex = 0;
-                        this.comboBoxConexionBaudio.Items.AddRange(new object[] { "Laptop1", "ControlPC" });
+                        this.comboBoxConexionBaudio.Items.AddRange(new object[] { "1883", "1884" });
                         this.comboBoxConexionBaudio.SelectedIndex = 0;
 
                         break;
                     case (1)://opcion de conexion a servidor
-                        this.panelUserPass.Visible = true;
-                        this.buttonRefrescar.Visible = false;
+                        
                         this.label_IP_COM.Text = "Dirección IP";
-                        this.label_Conexion_Baudio.Text = "Nombre Cliente";
-                        this.panel_conexion.Enabled = true;
+                        this.label_Conexion_Baudio.Text = "Puerto";
+                        
                         this.comboBoxIPCOM.Items.Add(ObtenerIPLocal());
-                        this.comboBoxConexionBaudio.Items.AddRange(new object[] { "Laptop1", "ControlPC" });
+                        this.comboBoxConexionBaudio.Items.AddRange(new object[] { "1883", "1884" });
 
                         break;
                     case (2):
@@ -204,8 +201,8 @@ namespace mqtt_serial.ventanas
                             }
                             else
                             {
-                                mqttClient = new MqttClient(comboBoxIPCOM.Text);
-                                mqttClient.Connect(comboBoxConexionBaudio.Text);
+                                mqttClient = new MqttClient(comboBoxIPCOM.Text,int.Parse(comboBoxConexionBaudio.Text),ssl,cacert,clientsert,MqttSslProtocols.None);
+                                mqttClient.Connect(nombreUsuario);
                                 conexionMqtt();
                             }
                         }
@@ -235,8 +232,8 @@ namespace mqtt_serial.ventanas
                             }
                             else
                             {
-                                mqttClient = new MqttClient(comboBoxIPCOM.Text);
-                                mqttClient.Connect(comboBoxConexionBaudio.Text, textBoxNameUser.Text, textBoxPass.Text);
+                                mqttClient = new MqttClient(comboBoxIPCOM.Text, int.Parse(comboBoxConexionBaudio.Text), ssl, cacert, clientsert, MqttSslProtocols.None);
+                                mqttClient.Connect(nombreUsuario, textBoxNameUser.Text, textBoxPass.Text);
                                 conexionMqtt();
                             }
                         }
@@ -257,11 +254,9 @@ namespace mqtt_serial.ventanas
         private void conexionMqtt(){
             
             if (mqttClient != null && mqttClient.IsConnected && buttonConectar.Text == "Conectar")
-            {   //importante tener en cuenta el timer por que es lo que puede causar problemas mas adelante
+            {   
                 timer1.Enabled = true;
                 VariablesControl.EstadoDeConexion = true;
-                //
-                //VariablesControl.Temperatura1 = "conectado";
                 comboBoxTipoConexion.Enabled = false;
                 buttonConectar.Text = "Desconectar";
                 buttonConectar.BackColor = Color.FromArgb(227, 58, 24);
@@ -352,7 +347,7 @@ namespace mqtt_serial.ventanas
 
         private void conexion_Load(object sender, EventArgs e)
         {
-            visibleoption();
+            
             comboBoxTipoConexion.SelectedIndex = 0;
         }
         public void desconectar()
