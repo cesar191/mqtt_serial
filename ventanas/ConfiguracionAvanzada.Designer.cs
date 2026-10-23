@@ -33,14 +33,14 @@
             this.buttonClienteCall = new System.Windows.Forms.Button();
             this.buttonSeguridad = new System.Windows.Forms.Button();
             this.dataGridViewTopicos = new System.Windows.Forms.DataGridView();
-            this.topic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Variable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tarea = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxTopicoModifica = new System.Windows.Forms.TextBox();
             this.buttonGuardarTopic = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.topic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Variable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tarea = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTopicos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,24 +96,6 @@
             this.dataGridViewTopicos.TabIndex = 4;
             this.dataGridViewTopicos.SelectionChanged += new System.EventHandler(this.DataGridViewTopicos_SelectionChanged);
             // 
-            // topic
-            // 
-            this.topic.HeaderText = "topics";
-            this.topic.Name = "topic";
-            this.topic.ReadOnly = true;
-            // 
-            // Variable
-            // 
-            this.Variable.HeaderText = "Variable";
-            this.Variable.Name = "Variable";
-            this.Variable.ReadOnly = true;
-            // 
-            // tarea
-            // 
-            this.tarea.HeaderText = "tarea";
-            this.tarea.Name = "tarea";
-            this.tarea.ReadOnly = true;
-            // 
             // textBoxTopicoModifica
             // 
             this.textBoxTopicoModifica.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
@@ -157,6 +139,27 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // topic
+            // 
+            this.topic.HeaderText = "topics";
+            this.topic.Name = "topic";
+            this.topic.ReadOnly = true;
+            this.topic.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // Variable
+            // 
+            this.Variable.HeaderText = "Variable";
+            this.Variable.Name = "Variable";
+            this.Variable.ReadOnly = true;
+            this.Variable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // tarea
+            // 
+            this.tarea.HeaderText = "tarea";
+            this.tarea.Name = "tarea";
+            this.tarea.ReadOnly = true;
+            this.tarea.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
             // ConfiguracionAvanzada
             // 
             this.AllowDrop = true;
@@ -194,13 +197,13 @@
         private System.Windows.Forms.Button buttonClienteCall;
         private System.Windows.Forms.Button buttonSeguridad;
         private System.Windows.Forms.DataGridView dataGridViewTopicos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn topic;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Variable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tarea;
         private System.Windows.Forms.TextBox textBoxTopicoModifica;
         private System.Windows.Forms.Button buttonGuardarTopic;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn topic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Variable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tarea;
     }
 }

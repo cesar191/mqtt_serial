@@ -1,26 +1,20 @@
 ﻿using System;
+using System.Data;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using mqtt_serial.funciones;
 
 namespace mqtt_serial.ventanas
 {
     public partial class ConfiguracionAvanzada : Form
     {
-        public string[] topicRecibir = {
-            "test/sensor/temperatura1",
-            "test/sensor/temperatura2",
-            "test/sensor/corrienteQ1",
-            "test/sensor/corrienteQ2",
-            "test/sensor/tiempo"
-        };
+        // Propiedades públicas para transferir los tópicos ordenados
 
-        public string[] topicEnviar = {
-            "test/datos/pwm1",
-            "test/datos/pwm2",
-            "test/datos/led1",
-            "test/datos/led2",
-            "test/datos/ventilador1",
-            "test/datos/ventilador2"
-        };
+        // Propiedades de seguridad y certificados
+        public string RutaCertificadoCA { get; private set; }
+        public string RutaCertificadoCliente { get; private set; }
+        public string RutaClavePrivada { get; private set; }
 
         public ConfiguracionAvanzada()
         {
@@ -47,17 +41,17 @@ namespace mqtt_serial.ventanas
         {
             dataGridViewTopicos.Rows.Clear();
 
-            // Cargar tópicos a recibir respetando el orden del arreglo
-            foreach (string topic in topicRecibir)
+            // Cargar primero el bloque de recepción ("suscribe")
+            foreach (string topic in VariablesControl.topicRecibir)
             {
                 dataGridViewTopicos.Rows.Add(topic, ExtraerVariable(topic), "suscribe");
             }
 
-            // Cargar tópicos a enviar a continuación
-            foreach (string topic in topicEnviar)
+            // Cargar a continuación el bloque de envío ("publish")
+           foreach (string topic in VariablesControl.topicEnviar)
             {
                 dataGridViewTopicos.Rows.Add(topic, ExtraerVariable(topic), "publish");
-            }
+           }
         }
 
         private string ExtraerVariable(string topic)
@@ -71,24 +65,16 @@ namespace mqtt_serial.ventanas
         {
             if (dataGridViewTopicos.SelectedRows.Count > 0)
             {
-                var cellValue = dataGridViewTopicos.SelectedRows[0].Cells[0].Value;
-                if (cellValue != null)
-                {
-                    textBoxTopicoModifica.Text = cellValue.ToString();
-                }
+                var val = dataGridViewTopicos.SelectedRows[0].Cells[0].Value;
+                textBoxTopicoModifica.Text = val != null ? val.ToString() : string.Empty;
             }
         }
 
         private void buttonModificar_Click(object sender, EventArgs e)
         {
-            if (dataGridViewTopicos.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Seleccione un registro de la lista.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (dataGridViewTopicos.SelectedRows.Count == 0) return;
 
             string nuevoTopic = textBoxTopicoModifica.Text.Trim();
-
             if (string.IsNullOrWhiteSpace(nuevoTopic))
             {
                 MessageBox.Show("El topic no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -96,34 +82,60 @@ namespace mqtt_serial.ventanas
             }
 
             int index = dataGridViewTopicos.SelectedRows[0].Index;
-            string nuevaVariable = ExtraerVariable(nuevoTopic);
-
-            // Actualizar interfaz
             dataGridViewTopicos.Rows[index].Cells[0].Value = nuevoTopic;
-            dataGridViewTopicos.Rows[index].Cells[1].Value = nuevaVariable;
-
-            // Sincronizar cambio con los arreglos fuente según el índice global
-            if (index < topicRecibir.Length)
-            {
-                topicRecibir[index] = nuevoTopic;
-            }
-            else
-            {
-                topicEnviar[index - topicRecibir.Length] = nuevoTopic;
-            }
+            dataGridViewTopicos.Rows[index].Cells[1].Value = ExtraerVariable(nuevoTopic);
         }
 
+        // Selección de archivos de certificados y claves
         private void buttonCertificadoCA_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Title = "Seleccionar certificado CA";
-            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            openFileDialog1.Filter = "Certificado CA (*.crt)|*.crt|Todos los archivos (*.*)|*.*";
-            openFileDialog1.ShowDialog();
+            RutaCertificadoCA = SeleccionarArchivo("Certificado CA (*.crt;*.pem)|*.crt;*.pem");
+
+            TextReader leer = new StreamReader(RutaCertificadoCA);
+            MessageBox.Show($"CA: {leer.ReadToEnd()}");
+            leer.Close();
+           
+        }
+
+        private void buttonCertificadoCliente_Click(object sender, EventArgs e)
+        {
+            RutaCertificadoCliente = SeleccionarArchivo("Certificado Cliente (*.crt;*.cer;*.pem)|*.crt;*.cer;*.pem");
+            
+        }
+
+        private void buttonLlavePrivada_Click(object sender, EventArgs e)
+        {
+            RutaClavePrivada = SeleccionarArchivo("Clave Privada (*.key;*.pem)|*.key;*.pem");
+           
+        }
+
+        private string SeleccionarArchivo(string filtro)
+        {
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
+                dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                dialog.Filter = filtro + "|Todos los archivos (*.*)|*.*";
+                return dialog.ShowDialog() == DialogResult.OK ? dialog.FileName : string.Empty;
+            }
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            // Lógica de guardado
+            var filas = dataGridViewTopicos.Rows.Cast<DataGridViewRow>();
+
+          //   Reconstruir arreglos manteniendo el orden visible de la grilla
+            VariablesControl.topicRecibir = filas
+                .Where(r => r.Cells[2].Value != null && r.Cells[2].Value.ToString() == "suscribe")
+                .Select(r => r.Cells[0].Value.ToString())
+                  .ToArray();
+
+            VariablesControl.topicEnviar = filas
+                .Where(r => r.Cells[2].Value != null && r.Cells[2].Value.ToString() == "publish")
+                .Select(r => r.Cells[0].Value.ToString())
+                .ToArray();
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

@@ -27,6 +27,8 @@ using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 using System.Security.Cryptography.X509Certificates;
 using System.Dynamic;
+using System.Windows.Media.Animation;
+
 
 
 namespace mqtt_serial.ventanas
@@ -35,21 +37,7 @@ namespace mqtt_serial.ventanas
     {
         //variables a manejar
         public MqttClient mqttClient;
-        string[] topicRecibir ={
-                    "test/sensor/temperatura1",
-                    "test/sensor/temperatura2",
-                    "test/sensor/corrienteQ1",
-                    "test/sensor/corrienteQ2",
-                    "test/sensor/tiempo"
-            };
-        string[] topicEnviar ={
-                    "test/datos/pwm1",
-                    "test/datos/pwm2",
-                    "test/datos/led1",
-                    "test/datos/led2",
-                    "test/datos/ventilador1",
-                    "test/datos/ventilador2"
-            };
+        
         public string ObtenerIPLocal()
         {
             try
@@ -71,8 +59,7 @@ namespace mqtt_serial.ventanas
         X509Certificate clientsert = null;
         RemoteCertificateValidationCallback certcallback = null;
         bool seguridad = false;
-
-        ConfiguracionAvanzada configurar= new ConfiguracionAvanzada();
+        ConfiguracionAvanzada configurar = new ConfiguracionAvanzada();
 
         public Conexion()
         {
@@ -97,7 +84,7 @@ namespace mqtt_serial.ventanas
             try {
                 string topic = e.Topic;
                 string message = Encoding.UTF8.GetString(e.Message);
-                int index = Array.IndexOf(topicRecibir, topic);
+                int index = Array.IndexOf(VariablesControl.topicRecibir, topic);
                 switch (index)
                 {
                     case 0: VariablesControl.Temperatura1 = message; break;
@@ -172,7 +159,8 @@ namespace mqtt_serial.ventanas
                 switch (comboBoxTipoConexion.SelectedIndex)
                 {
                     case 0:
-                        configurar.ShowDialog();
+                        this.configurar.ShowDialog();
+                        
                         break;
                     case 1:
                         this.comboBoxIPCOM.Items.Clear();
@@ -251,7 +239,7 @@ namespace mqtt_serial.ventanas
                     mqttClient.MqttMsgPublishReceived += MqClient_MqttMsgPublishReceived;
                     habilitarherramientas(false);
 
-                    foreach (string topic in topicRecibir)
+                    foreach (string topic in VariablesControl.topicRecibir)
                     {
                         mqttClient.Subscribe(new string[] { topic }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
                     }
@@ -333,12 +321,12 @@ namespace mqtt_serial.ventanas
             if(mqttClient != null && mqttClient.IsConnected)
             {
 
-                mqttClient.Publish(topicEnviar[0], Encoding.UTF8.GetBytes(VariablesControl.Pwm1));
-                mqttClient.Publish(topicEnviar[1], Encoding.UTF8.GetBytes(VariablesControl.Pwm2));
-                mqttClient.Publish(topicEnviar[2], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed1));
-                mqttClient.Publish(topicEnviar[3], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed2));
-                mqttClient.Publish(topicEnviar[4], Encoding.UTF8.GetBytes(VariablesControl.Ventilador1));
-                mqttClient.Publish(topicEnviar[5], Encoding.UTF8.GetBytes(VariablesControl.Ventilador2));
+                mqttClient.Publish(VariablesControl.topicEnviar[0], Encoding.UTF8.GetBytes(VariablesControl.Pwm1));
+                mqttClient.Publish(VariablesControl.topicEnviar[1], Encoding.UTF8.GetBytes(VariablesControl.Pwm2));
+                mqttClient.Publish(VariablesControl.topicEnviar[2], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed1));
+                mqttClient.Publish(VariablesControl.topicEnviar[3], Encoding.UTF8.GetBytes(VariablesControl.AlarmaLed2));
+                mqttClient.Publish(VariablesControl.topicEnviar[4], Encoding.UTF8.GetBytes(VariablesControl.Ventilador1));
+                mqttClient.Publish(VariablesControl.topicEnviar[5], Encoding.UTF8.GetBytes(VariablesControl.Ventilador2));
             }
         }
 
