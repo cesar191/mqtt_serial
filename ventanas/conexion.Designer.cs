@@ -47,10 +47,12 @@
             this.labelTexconexion = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.eventLog1 = new System.Diagnostics.EventLog();
             this.panelDatos.SuspendLayout();
             this.panelUserPass.SuspendLayout();
             this.panel_ip_serial.SuspendLayout();
             this.panel_conexion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelDatos
@@ -84,8 +86,10 @@
             this.textBoxPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.textBoxPass.Location = new System.Drawing.Point(234, 31);
             this.textBoxPass.Name = "textBoxPass";
+            this.textBoxPass.PasswordChar = '*';
             this.textBoxPass.Size = new System.Drawing.Size(200, 30);
             this.textBoxPass.TabIndex = 5;
+            this.textBoxPass.UseSystemPasswordChar = true;
             // 
             // textBoxNameUser
             // 
@@ -222,8 +226,8 @@
             this.comboBoxTipoConexion.FormattingEnabled = true;
             this.comboBoxTipoConexion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.comboBoxTipoConexion.Items.AddRange(new object[] {
-            "MQTT (local)",
-            "MQTT (servidor)"});
+            "MQTT ",
+            "SERIAL"});
             this.comboBoxTipoConexion.Location = new System.Drawing.Point(0, 25);
             this.comboBoxTipoConexion.Name = "comboBoxTipoConexion";
             this.comboBoxTipoConexion.Size = new System.Drawing.Size(437, 33);
@@ -247,6 +251,10 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // eventLog1
+            // 
+            this.eventLog1.SynchronizingObject = this;
+            // 
             // Conexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,6 +274,7 @@
             this.panel_ip_serial.ResumeLayout(false);
             this.panel_ip_serial.PerformLayout();
             this.panel_conexion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -290,5 +299,6 @@
         private System.Windows.Forms.TextBox textBoxPass;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Timer timer1;
+        private System.Diagnostics.EventLog eventLog1;
     }
 }

@@ -15,30 +15,24 @@ namespace mqtt_serial
 {
     public partial class ControlActual : Form
     {
-        private double kp = 0;
-        private double ki = 0;
-        private double kd = 0;
-        private double ts = 0;
+        
 
-        private string titulo = "control";
-        private string boton = "Refrescar";
-
-        public double Kp { get { return kp; } set { kp = value; } }
-        public double Ki { get { return ki; } set { ki = value; } }
-        public double Kd { get { return kd; } set { kd = value; } }
-        public double Ts { get { return ts; } set { ts = value; } }
-        public string Titulo { get { return titulo; } set { titulo = value; } }
-        public string Boton { get { return boton; } set { boton = value; } }
+        public double Kp { get; set; }
+        public double Ki { get; set; }
+        public double Kd { get; set ; }
+        public double Ts { get; set ; }
+        public string Titulo { get; set ; }
+        public string Boton { get; set ;}
 
         private void buttonRefrescar_Click(object sender, EventArgs e)
         {
             try
             {
                 
-                kp = (this.textBoxKP.Text != "") ? double.Parse(this.textBoxKP.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-                ki = (this.textBoxKI.Text != "") ? double.Parse(this.textBoxKI.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-                kd = (this.textBoxKD.Text != "") ? double.Parse(this.textBoxKD.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
-                ts = (this.textBoxTS.Text != "") ? double.Parse(this.textBoxTS.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                Kp = (this.textBoxKP.Text != "") ? double.Parse(this.textBoxKP.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                Ki = (this.textBoxKI.Text != "") ? double.Parse(this.textBoxKI.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                Kd = (this.textBoxKD.Text != "") ? double.Parse(this.textBoxKD.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
+                Ts = (this.textBoxTS.Text != "") ? double.Parse(this.textBoxTS.Text.Replace(",", "."), CultureInfo.InvariantCulture) : 0;
 
                 this.Close();
             }
@@ -70,20 +64,20 @@ namespace mqtt_serial
         }
         public void variables(double kp, double ki, double kd, double ts)
         {
-            this.kp = kp;
-            this.ki = ki;
-            this.kd = kd;
-            this.ts = ts;
+            this.Kp = kp;
+            this.Ki = ki;
+            this.Kd = kd;
+            this.Ts = ts;
         }
 
         private void ControlActual_Load(object sender, EventArgs e)
         {
-            Text = titulo;
-            buttonRefrescar.Text = boton;
-            textBoxKP.Text = (kp != 0) ? kp.ToString() : "0";
-            textBoxKI.Text = (ki != 0) ? ki.ToString() : "0";
-            textBoxKD.Text = (kd != 0) ? kd.ToString() : "0";
-            textBoxTS.Text = (ts != 0) ? ts.ToString() : "0";  
+            Text = Titulo;
+            buttonRefrescar.Text = Boton;
+            textBoxKP.Text = (Kp != 0) ? Kp.ToString() : "0";
+            textBoxKI.Text = (Ki != 0) ? Ki.ToString() : "0";
+            textBoxKD.Text = (Kd != 0) ? Kd.ToString() : "0";
+            textBoxTS.Text = (Ts != 0) ? Ts.ToString() : "0";  
         }
 
     

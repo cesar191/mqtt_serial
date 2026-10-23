@@ -127,6 +127,12 @@
     <Compile Include="FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="ventanas\ConfiguracionAvanzada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ventanas\ConfiguracionAvanzada.Designer.cs">
+      <DependentUpon>ConfiguracionAvanzada.cs</DependentUpon>
+    </Compile>
     <Compile Include="ventanas\ControlActual.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     <Compile Include="ventanas\ControlQ1Q2.Designer.cs">
       <DependentUpon>ControlQ1Q2.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ventanas\ConfiguracionAvanzada.resx">
+      <DependentUpon>ConfiguracionAvanzada.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ventanas\ControlActual.resx">
       <DependentUpon>ControlActual.cs</DependentUpon>
     </EmbeddedResource>
