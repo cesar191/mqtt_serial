@@ -1,42 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace mqtt_serial.ventanas
 {
     public partial class ConfiguracionAvanzada : Form
     {
-        // Modelo de datos unificado
-       public string[] topicRecibir ={
-                    "test/sensor/temperatura1",
-                    "test/sensor/temperatura2",
-                    "test/sensor/corrienteQ1",
-                    "test/sensor/corrienteQ2",
-                    "test/sensor/tiempo"
-            };
-       public string[] topicEnviar ={
-                    "test/datos/pwm1",
-                    "test/datos/pwm2",
-                    "test/datos/led1",
-                    "test/datos/led2",
-                    "test/datos/ventilador1",
-                    "test/datos/ventilador2"
-            };
-        public class ConfiguracionTopic
-        {
-            public string Topic { get; set; }
-            public string Variable { get; set; }
-            public string Tarea { get; set; }
+        public string[] topicRecibir = {
+            "test/sensor/temperatura1",
+            "test/sensor/temperatura2",
+            "test/sensor/corrienteQ1",
+            "test/sensor/corrienteQ2",
+            "test/sensor/tiempo"
+        };
 
-            public ConfiguracionTopic(string topic, string variable, string tarea)
-            {
-                Topic = topic;
-                Variable = variable;
-                Tarea = tarea;
-            }
-        }
-
-        private List<ConfiguracionTopic> listaTopics;
+        public string[] topicEnviar = {
+            "test/datos/pwm1",
+            "test/datos/pwm2",
+            "test/datos/led1",
+            "test/datos/led2",
+            "test/datos/ventilador1",
+            "test/datos/ventilador2"
+        };
 
         public ConfiguracionAvanzada()
         {
@@ -45,59 +29,52 @@ namespace mqtt_serial.ventanas
 
         private void ConfiguracionAvanzada_Load(object sender, EventArgs e)
         {
-            InicializarDatos(topicRecibir, topicEnviar);
             ConfigurarGrid();
             CargarGrid();
         }
 
-        private void InicializarDatos(string[] topicRecibir, string[] topicEnviar)
-        {
-            listaTopics = new List<ConfiguracionTopic>
-            {
-                new ConfiguracionTopic(topicRecibir[0], "temperatura1", "suscribe"),
-                new ConfiguracionTopic(topicRecibir[1], "temperatura2", "suscribe"),
-                new ConfiguracionTopic(topicRecibir[2], "corrienteQ1", "suscribe"),
-                new ConfiguracionTopic(topicRecibir[3], "corrienteQ2", "suscribe"),
-                new ConfiguracionTopic(topicRecibir[4], "tiempo", "suscribe"),
-                new ConfiguracionTopic(topicEnviar[0], "pwm1", "publish"),
-                new ConfiguracionTopic(topicEnviar[1], "pwm2", "publish"),
-                new ConfiguracionTopic(topicEnviar[2], "led1", "publish"),
-                new ConfiguracionTopic(topicEnviar[3], "led2", "publish"),
-                new ConfiguracionTopic(topicEnviar[4], "ventilador1", "publish"),
-                new ConfiguracionTopic(topicEnviar[5], "ventilador2", "publish")
-            };
-        }
-
         private void ConfigurarGrid()
         {
-            // Bloquear edición directa en las celdas del DataGridView
             dataGridViewTopicos.ReadOnly = true;
             dataGridViewTopicos.AllowUserToAddRows = false;
             dataGridViewTopicos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewTopicos.MultiSelect = false;
 
-            // Vincular evento de selección
             dataGridViewTopicos.SelectionChanged += DataGridViewTopicos_SelectionChanged;
         }
 
         private void CargarGrid()
         {
             dataGridViewTopicos.Rows.Clear();
-            foreach (var item in listaTopics)
+
+            // Cargar tópicos a recibir respetando el orden del arreglo
+            foreach (string topic in topicRecibir)
             {
-                dataGridViewTopicos.Rows.Add(item.Topic, item.Variable, item.Tarea);
+                dataGridViewTopicos.Rows.Add(topic, ExtraerVariable(topic), "suscribe");
             }
+
+            // Cargar tópicos a enviar a continuación
+            foreach (string topic in topicEnviar)
+            {
+                dataGridViewTopicos.Rows.Add(topic, ExtraerVariable(topic), "publish");
+            }
+        }
+
+        private string ExtraerVariable(string topic)
+        {
+            if (string.IsNullOrWhiteSpace(topic)) return string.Empty;
+            int lastSlash = topic.LastIndexOf('/');
+            return lastSlash >= 0 ? topic.Substring(lastSlash + 1) : topic;
         }
 
         private void DataGridViewTopicos_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewTopicos.SelectedRows.Count > 0)
             {
-                var row = dataGridViewTopicos.SelectedRows[0];
-                if (row.Cells[0].Value != null)
+                var cellValue = dataGridViewTopicos.SelectedRows[0].Cells[0].Value;
+                if (cellValue != null)
                 {
-                    // Asumiendo que el TextBox de la interfaz se llama textBoxTopic
-                    textBoxTopicoModifica.Text = row.Cells[0].Value.ToString();
+                    textBoxTopicoModifica.Text = cellValue.ToString();
                 }
             }
         }
@@ -119,10 +96,21 @@ namespace mqtt_serial.ventanas
             }
 
             int index = dataGridViewTopicos.SelectedRows[0].Index;
+            string nuevaVariable = ExtraerVariable(nuevoTopic);
 
-            // Actualizar la lista en memoria y la celda visible
-            listaTopics[index].Topic = nuevoTopic;
+            // Actualizar interfaz
             dataGridViewTopicos.Rows[index].Cells[0].Value = nuevoTopic;
+            dataGridViewTopicos.Rows[index].Cells[1].Value = nuevaVariable;
+
+            // Sincronizar cambio con los arreglos fuente según el índice global
+            if (index < topicRecibir.Length)
+            {
+                topicRecibir[index] = nuevoTopic;
+            }
+            else
+            {
+                topicEnviar[index - topicRecibir.Length] = nuevoTopic;
+            }
         }
 
         private void buttonCertificadoCA_Click(object sender, EventArgs e)
@@ -133,5 +121,9 @@ namespace mqtt_serial.ventanas
             openFileDialog1.ShowDialog();
         }
 
+        private void buttonGuardar_Click(object sender, EventArgs e)
+        {
+            // Lógica de guardado
+        }
     }
 }

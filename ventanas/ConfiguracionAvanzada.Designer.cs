@@ -90,6 +90,7 @@
             this.Variable,
             this.tarea});
             this.dataGridViewTopicos.Location = new System.Drawing.Point(32, 211);
+            this.dataGridViewTopicos.MultiSelect = false;
             this.dataGridViewTopicos.Name = "dataGridViewTopicos";
             this.dataGridViewTopicos.Size = new System.Drawing.Size(770, 226);
             this.dataGridViewTopicos.TabIndex = 4;
@@ -139,6 +140,7 @@
             this.buttonGuardar.TabIndex = 7;
             this.buttonGuardar.Text = "Cargar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // label1
             // 
@@ -171,9 +173,12 @@
             this.Controls.Add(this.buttonClienteCall);
             this.Controls.Add(this.buttonCertificadoCert);
             this.Controls.Add(this.buttonCertificadoCA);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(851, 564);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(851, 564);
             this.Name = "ConfiguracionAvanzada";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConfiguracionAvanzada";
             this.Load += new System.EventHandler(this.ConfiguracionAvanzada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTopicos)).EndInit();
