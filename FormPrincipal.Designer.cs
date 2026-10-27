@@ -67,7 +67,7 @@
             this.buttonEstadoConexion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonEstadoConexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.buttonEstadoConexion.ForeColor = System.Drawing.Color.White;
-            this.buttonEstadoConexion.Location = new System.Drawing.Point(19, 587);
+            this.buttonEstadoConexion.Location = new System.Drawing.Point(20, 570);
             this.buttonEstadoConexion.Name = "buttonEstadoConexion";
             this.buttonEstadoConexion.Size = new System.Drawing.Size(200, 70);
             this.buttonEstadoConexion.TabIndex = 6;
@@ -87,7 +87,7 @@
             this.buttonAdquiriQ1.ForeColor = System.Drawing.Color.White;
             this.buttonAdquiriQ1.Image = global::mqtt_serial.Properties.Resources.hugeicons__chart;
             this.buttonAdquiriQ1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAdquiriQ1.Location = new System.Drawing.Point(19, 235);
+            this.buttonAdquiriQ1.Location = new System.Drawing.Point(20, 228);
             this.buttonAdquiriQ1.Margin = new System.Windows.Forms.Padding(0);
             this.buttonAdquiriQ1.Name = "buttonAdquiriQ1";
             this.buttonAdquiriQ1.Padding = new System.Windows.Forms.Padding(15, 0, 15, 0);
@@ -108,7 +108,7 @@
             this.buttonControlQ1Q2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonControlQ1Q2.ForeColor = System.Drawing.Color.White;
             this.buttonControlQ1Q2.Image = global::mqtt_serial.Properties.Resources.cbi__battery_temp;
-            this.buttonControlQ1Q2.Location = new System.Drawing.Point(19, 475);
+            this.buttonControlQ1Q2.Location = new System.Drawing.Point(20, 483);
             this.buttonControlQ1Q2.Margin = new System.Windows.Forms.Padding(0);
             this.buttonControlQ1Q2.Name = "buttonControlQ1Q2";
             this.buttonControlQ1Q2.Size = new System.Drawing.Size(201, 73);
@@ -128,7 +128,7 @@
             this.buttonAdquiriQ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonAdquiriQ2.ForeColor = System.Drawing.Color.White;
             this.buttonAdquiriQ2.Image = global::mqtt_serial.Properties.Resources.hugeicons__chart;
-            this.buttonAdquiriQ2.Location = new System.Drawing.Point(20, 313);
+            this.buttonAdquiriQ2.Location = new System.Drawing.Point(20, 399);
             this.buttonAdquiriQ2.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAdquiriQ2.Name = "buttonAdquiriQ2";
             this.buttonAdquiriQ2.Size = new System.Drawing.Size(201, 73);
@@ -148,7 +148,7 @@
             this.buttonControlQ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonControlQ1.ForeColor = System.Drawing.Color.White;
             this.buttonControlQ1.Image = global::mqtt_serial.Properties.Resources.cbi__battery_temp;
-            this.buttonControlQ1.Location = new System.Drawing.Point(19, 393);
+            this.buttonControlQ1.Location = new System.Drawing.Point(20, 313);
             this.buttonControlQ1.Margin = new System.Windows.Forms.Padding(2);
             this.buttonControlQ1.Name = "buttonControlQ1";
             this.buttonControlQ1.Size = new System.Drawing.Size(201, 73);
@@ -169,7 +169,7 @@
             this.buttonConexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.buttonConexion.ForeColor = System.Drawing.Color.White;
             this.buttonConexion.Image = global::mqtt_serial.Properties.Resources.icon_park_outline__connection_box;
-            this.buttonConexion.Location = new System.Drawing.Point(19, 155);
+            this.buttonConexion.Location = new System.Drawing.Point(19, 146);
             this.buttonConexion.Name = "buttonConexion";
             this.buttonConexion.Padding = new System.Windows.Forms.Padding(30, 0, 30, 0);
             this.buttonConexion.Size = new System.Drawing.Size(201, 70);

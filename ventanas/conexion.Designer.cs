@@ -246,6 +246,10 @@
             this.labelTexconexion.TabIndex = 0;
             this.labelTexconexion.Text = "Tipo de conexión";
             // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
             // timer1
             // 
             this.timer1.Interval = 1000;

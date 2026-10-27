@@ -20,6 +20,7 @@ namespace mqtt_serial.funciones
         private static bool estadoDeConexion = false;
 
         //topicos y serial
+        public static string ClienteId { get; set; } = $"Usco_{DateTime.Now:yyyyMMdd_HHmmss}";
         public static string[] topicRecibir ={
                     "test/sensor/temperatura1",
                     "test/sensor/temperatura2",
@@ -34,7 +35,8 @@ namespace mqtt_serial.funciones
                     "test/datos/led2",
                     "test/datos/ventilador1",
                     "test/datos/ventilador2"
-            };
+        };
+       
 
 
         public static string pathSave = $@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\DatosInterfaz\";

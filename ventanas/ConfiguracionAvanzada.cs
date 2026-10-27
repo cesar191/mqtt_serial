@@ -23,6 +23,10 @@ namespace mqtt_serial.ventanas
 
         private void ConfiguracionAvanzada_Load(object sender, EventArgs e)
         {
+            panelBotonesSeguridad.Visible = false;
+            panelBotonesSeguridad.Enabled = false;
+
+            textBoxClientID.Text = VariablesControl.ClienteId;
             ConfigurarGrid();
             CargarGrid();
         }
@@ -72,41 +76,50 @@ namespace mqtt_serial.ventanas
 
         private void buttonModificar_Click(object sender, EventArgs e)
         {
-            if (dataGridViewTopicos.SelectedRows.Count == 0) return;
+            if (dataGridViewTopicos.SelectedRows.Count == 0) { return; }
 
             string nuevoTopic = textBoxTopicoModifica.Text.Trim();
-            if (string.IsNullOrWhiteSpace(nuevoTopic))
+            string topicActual = dataGridViewTopicos.SelectedRows[0].Cells[0].Value?.ToString();
+            dataGridViewTopicos.SelectedRows[0].Cells[0].Value = "";
+            if (dataGridViewTopicos.Rows.Cast<DataGridViewRow>().Any(r => r.Cells[0].Value.ToString() == nuevoTopic))
+            {
+                MessageBox.Show("topico repetido");
+                dataGridViewTopicos.SelectedRows[0].Cells[0].Value = topicActual; // Restaurar el valor original
+                dataGridViewTopicos.SelectedRows[0].Cells[1].Value = ExtraerVariable(topicActual); // Restaurar la variable original
+                textBoxTopicoModifica.Text = topicActual; // Restaurar el valor en el TextBox
+            }
+            else if (string.IsNullOrWhiteSpace(nuevoTopic))
             {
                 MessageBox.Show("El topic no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            else
+            {
+                dataGridViewTopicos.SelectedRows[0].Cells[0].Value = nuevoTopic;
+                dataGridViewTopicos.SelectedRows[0].Cells[1].Value = ExtraerVariable(nuevoTopic);
+            }
 
-            int index = dataGridViewTopicos.SelectedRows[0].Index;
-            dataGridViewTopicos.Rows[index].Cells[0].Value = nuevoTopic;
-            dataGridViewTopicos.Rows[index].Cells[1].Value = ExtraerVariable(nuevoTopic);
+            //int index = dataGridViewTopicos.SelectedRows[0].Index;
+            //dataGridViewTopicos.Rows[index].Cells[0].Value = nuevoTopic;
+            //dataGridViewTopicos.Rows[index].Cells[1].Value = ExtraerVariable(nuevoTopic);
         }
 
         // Selección de archivos de certificados y claves
         private void buttonCertificadoCA_Click(object sender, EventArgs e)
         {
             RutaCertificadoCA = SeleccionarArchivo("Certificado CA (*.crt;*.pem)|*.crt;*.pem");
-
-            TextReader leer = new StreamReader(RutaCertificadoCA);
-            MessageBox.Show($"CA: {leer.ReadToEnd()}");
-            leer.Close();
-           
+            
         }
 
         private void buttonCertificadoCliente_Click(object sender, EventArgs e)
         {
             RutaCertificadoCliente = SeleccionarArchivo("Certificado Cliente (*.crt;*.cer;*.pem)|*.crt;*.cer;*.pem");
-            
         }
 
         private void buttonLlavePrivada_Click(object sender, EventArgs e)
         {
             RutaClavePrivada = SeleccionarArchivo("Clave Privada (*.key;*.pem)|*.key;*.pem");
-           
+            
         }
 
         private string SeleccionarArchivo(string filtro)
@@ -123,7 +136,7 @@ namespace mqtt_serial.ventanas
         {
             var filas = dataGridViewTopicos.Rows.Cast<DataGridViewRow>();
 
-          //   Reconstruir arreglos manteniendo el orden visible de la grilla
+         
             VariablesControl.topicRecibir = filas
                 .Where(r => r.Cells[2].Value != null && r.Cells[2].Value.ToString() == "suscribe")
                 .Select(r => r.Cells[0].Value.ToString())
@@ -134,8 +147,38 @@ namespace mqtt_serial.ventanas
                 .Select(r => r.Cells[0].Value.ToString())
                 .ToArray();
 
+
+            VariablesControl.ClienteId = textBoxClientID.Text.Trim();
+
             this.DialogResult = DialogResult.OK;
             this.Close();
+
+
+        }
+
+        private void buttonModificarClientID_Click(object sender, EventArgs e)
+        {
+            VariablesControl.ClienteId = textBoxClientID.Text.Trim();
+        }
+
+        private void ConfiguracionAvanzada_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var filas = dataGridViewTopicos.Rows.Cast<DataGridViewRow>();
+
+
+            VariablesControl.topicRecibir = filas
+                .Where(r => r.Cells[2].Value != null && r.Cells[2].Value.ToString() == "suscribe")
+                .Select(r => r.Cells[0].Value.ToString())
+                  .ToArray();
+
+            VariablesControl.topicEnviar = filas
+                .Where(r => r.Cells[2].Value != null && r.Cells[2].Value.ToString() == "publish")
+                .Select(r => r.Cells[0].Value.ToString())
+                .ToArray();
+            VariablesControl.ClienteId = textBoxClientID.Text;
+
+            this.DialogResult = DialogResult.OK;
+           
         }
     }
 }
