@@ -168,6 +168,10 @@ namespace mqtt_serial.ventanas
                     case 0:
 
                         this.configurar.ShowDialog();
+                        cacert=X509Certificate.CreateFromCertFile(VariablesControl.RutaCertificadoCA);
+                        clientsert=X509Certificate2.CreateFromCertFile(VariablesControl.RutaCertificadoClient);
+                        //clientsert = X509Certificate.CreateFromCertFile(VariablesControl.RutaCertificadoClient);
+                        
 
                         break;
                     case 1:
@@ -241,9 +245,10 @@ namespace mqtt_serial.ventanas
         {
             try
             {
-                if (seguridad == true && cacert != null && clientsert != null && certcallback != null)
-                {
-                    mqttClient = new MqttClient(comboBoxIPCOM.Text, int.Parse(comboBoxConexionBaudio.Text), seguridad, cacert, clientsert, MqttSslProtocols.TLSv1_2);
+                //if (seguridad == true && cacert != null && clientsert != null && certcallback != null)
+                    if ( cacert != null && clientsert != null)
+                    {
+                    mqttClient = new MqttClient(comboBoxIPCOM.Text, int.Parse(comboBoxConexionBaudio.Text), true, cacert, clientsert, MqttSslProtocols.TLSv1_2);
                 }
                 else
                 {
@@ -337,6 +342,7 @@ namespace mqtt_serial.ventanas
 
             try
             {
+                timer1.Enabled = false;
                 desconectar();
             }
             catch (Exception error)
@@ -360,19 +366,19 @@ namespace mqtt_serial.ventanas
             }
             else if (serialPort1.IsOpen)
             {
-
+                //int tiempoEspera = 10; // Tiempo de espera en milisegundos entre cada envío
                 serialPort1.WriteLine($"$PWM1{VariablesControl.Pwm1}");
-                System.Threading.Thread.Sleep(10);
+                //System.Threading.Thread.Sleep(tiempoEspera);
                 serialPort1.WriteLine($"$PWM2{VariablesControl.Pwm2}");
-                System.Threading.Thread.Sleep(10);
+                //System.Threading.Thread.Sleep(tiempoEspera);
                 serialPort1.WriteLine($"$LED1{VariablesControl.AlarmaLed1}");
-                System.Threading.Thread.Sleep(10);
+                //System.Threading.Thread.Sleep(tiempoEspera);
                 serialPort1.WriteLine($"$LED2{VariablesControl.AlarmaLed2}");
-                System.Threading.Thread.Sleep(10);
+                //System.Threading.Thread.Sleep(tiempoEspera);
                 serialPort1.WriteLine($"$VENT1{VariablesControl.Ventilador1}");
-                System.Threading.Thread.Sleep(10);
+                //System.Threading.Thread.Sleep(tiempoEspera);
                 serialPort1.WriteLine($"$VENT2{VariablesControl.Ventilador2}");
-                System.Threading.Thread.Sleep(10);
+                //System.Threading.Thread.Sleep(tiempoEspera);
             }
         }
 

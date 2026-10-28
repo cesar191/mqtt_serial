@@ -5,6 +5,8 @@ VisualStudioVersion = 18.10.12201.205
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mqtt_serial", "mqtt_serial.csproj", "{0B99DE10-2335-4AA9-B116-DE941A55102D}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MQTTSerialSetup", "instalador\MQTTSerialSetup\MQTTSerialSetup.vdproj", "{A6AF98BC-469D-3B93-4927-7698D23A48A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{0B99DE10-2335-4AA9-B116-DE941A55102D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B99DE10-2335-4AA9-B116-DE941A55102D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B99DE10-2335-4AA9-B116-DE941A55102D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6AF98BC-469D-3B93-4927-7698D23A48A5}.Debug|Any CPU.ActiveCfg = Debug
+		{A6AF98BC-469D-3B93-4927-7698D23A48A5}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

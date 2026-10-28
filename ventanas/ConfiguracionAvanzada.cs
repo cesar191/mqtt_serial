@@ -12,9 +12,10 @@ namespace mqtt_serial.ventanas
         // Propiedades públicas para transferir los tópicos ordenados
 
         // Propiedades de seguridad y certificados
-        public string RutaCertificadoCA { get; private set; }
-        public string RutaCertificadoCliente { get; private set; }
-        public string RutaClavePrivada { get; private set; }
+        public string RutaCertificadoCA { get; private set; } = "";
+        public string RutaCertificadoCliente { get; private set; } = "";
+        public string RutaClavePrivada { get; private set; } = "";
+        
 
         public ConfiguracionAvanzada()
         {
@@ -23,8 +24,8 @@ namespace mqtt_serial.ventanas
 
         private void ConfiguracionAvanzada_Load(object sender, EventArgs e)
         {
-            panelBotonesSeguridad.Visible = false;
-            panelBotonesSeguridad.Enabled = false;
+            panelBotonesSeguridad.Visible = true;
+            panelBotonesSeguridad.Enabled = true;
 
             textBoxClientID.Text = VariablesControl.ClienteId;
             ConfigurarGrid();
@@ -108,18 +109,20 @@ namespace mqtt_serial.ventanas
         private void buttonCertificadoCA_Click(object sender, EventArgs e)
         {
             RutaCertificadoCA = SeleccionarArchivo("Certificado CA (*.crt;*.pem)|*.crt;*.pem");
-            
+            VariablesControl.RutaCertificadoCA = RutaCertificadoCA; // Guardar en VariablesControl
+
         }
 
         private void buttonCertificadoCliente_Click(object sender, EventArgs e)
         {
             RutaCertificadoCliente = SeleccionarArchivo("Certificado Cliente (*.crt;*.cer;*.pem)|*.crt;*.cer;*.pem");
+            VariablesControl.RutaCertificadoClient = RutaCertificadoCliente; // Guardar en VariablesControl
         }
 
         private void buttonLlavePrivada_Click(object sender, EventArgs e)
         {
             RutaClavePrivada = SeleccionarArchivo("Clave Privada (*.key;*.pem)|*.key;*.pem");
-            
+            VariablesControl.RutaClavePrivada = RutaClavePrivada; // Guardar en VariablesControl
         }
 
         private string SeleccionarArchivo(string filtro)

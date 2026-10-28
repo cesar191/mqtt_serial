@@ -36,7 +36,9 @@ namespace mqtt_serial.funciones
                     "test/datos/ventilador1",
                     "test/datos/ventilador2"
         };
-       
+       public static string RutaCertificadoCA { get; set; }
+        public static string RutaCertificadoClient { get; set; }
+        public static string RutaClavePrivada { get; set; }
 
 
         public static string pathSave = $@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\DatosInterfaz\";
